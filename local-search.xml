@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>腾讯云服务器（centos8）部署hexo博客</title>
+    <link href="/2021/11/16/post/"/>
+    <url>/2021/11/16/post/</url>
+    
+    <content type="html"><![CDATA[<h2 id="woaini"><a href="#woaini" class="headerlink" title="woaini"></a>woaini</h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>hello</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hello World</title>
     <link href="/2021/11/16/hello-world/"/>
     <url>/2021/11/16/hello-world/</url>
