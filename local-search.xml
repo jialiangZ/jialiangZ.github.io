@@ -4,7 +4,7 @@
   
   
   <entry>
-    <title>tkinter_1</title>
+    <title>一、Python的GUI编程——tkinter入门</title>
     <link href="/2021/11/18/tkinter-1/"/>
     <url>/2021/11/18/tkinter-1/</url>
     
@@ -20,7 +20,11 @@
     
     <tags>
       
-      <tag>tkinter Python GUI</tag>
+      <tag>tkinter</tag>
+      
+      <tag>Python</tag>
+      
+      <tag>GUI</tag>
       
     </tags>
     
