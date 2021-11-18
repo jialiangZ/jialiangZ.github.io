@@ -1,0 +1,639 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="编程记录成长点滴，有Python、前端、各种小知识">
+  <meta name="author" content="不想起名">
+  <meta name="keywords" content="编程">
+  <meta name="description" content="tk组件——标签 如果曾经学习过GUI编程，相信一定不会对标签陌生，组件就是widget，常见的比如按钮、文本框、输入框······  我们可以在一个窗口里增加若干组件来美化窗口和增添新功能  标签就是在其他控件前面贴上一个简短的说明，标签内容是文字信息   用法增加一个Lable，语法格式如下： 1w &#x3D; Label ( master, option, ... )  其中master是父框架，o">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二、tk组件——标签">
+<meta property="og:url" content="http://www.gandz.top/2021/11/18/tkinter-2/index.html">
+<meta property="og:site_name" content="G-and-Z">
+<meta property="og:description" content="tk组件——标签 如果曾经学习过GUI编程，相信一定不会对标签陌生，组件就是widget，常见的比如按钮、文本框、输入框······  我们可以在一个窗口里增加若干组件来美化窗口和增添新功能  标签就是在其他控件前面贴上一个简短的说明，标签内容是文字信息   用法增加一个Lable，语法格式如下： 1w &#x3D; Label ( master, option, ... )  其中master是父框架，o">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111182259302.png">
+<meta property="article:published_time" content="2021-11-18T14:35:19.000Z">
+<meta property="article:modified_time" content="2021-11-18T15:12:59.879Z">
+<meta property="article:author" content="不想起名">
+<meta property="article:tag" content="tkinter">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="GUI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111182259302.png">
+  
+  <title>二、tk组件——标签 - G-and-Z</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.gandz.top","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"m9Ckfw3lHgvWXKDzg3QrPPhW-gzGzoHsz","app_key":"hla1F0zLkSBfgfneXxzFV2Sk","server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>G-and-Z</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="二、tk组件——标签">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-18 22:35" pubdate>
+        2021年11月18日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.5k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">二、tk组件——标签</h1>
+            
+            <div class="markdown-body">
+              <h1 id="tk组件——标签"><a href="#tk组件——标签" class="headerlink" title="tk组件——标签"></a>tk组件——标签</h1><ol>
+<li><p>如果曾经学习过GUI编程，相信一定不会对标签陌生，组件就是widget，常见的比如按钮、文本框、输入框······</p>
+</li>
+<li><p>我们可以在一个窗口里增加若干组件来美化窗口和增添新功能</p>
+</li>
+<li><p>标签就是在其他控件前面贴上一个简短的说明，标签内容是文字信息</p>
+</li>
+</ol>
+<h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><p>增加一个Lable，语法格式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">w = Label ( master, option, ... )<br></code></pre></td></tr></table></figure>
+
+<p>其中master是父框架，option是可选参数</p>
+<p>看看源代码中Lable函数及其参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Label</span>(<span class="hljs-params">Widget</span>):</span><br>    <span class="hljs-string">&quot;&quot;&quot;Label widget which can display text and bitmaps.&quot;&quot;&quot;</span><br>    <span class="hljs-string">&quot;&quot;&quot;标签小组件，可以显示文本和位图。&quot;&quot;&quot;</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, master=<span class="hljs-literal">None</span>, cnf=&#123;&#125;, **kw</span>):</span><br>        <span class="hljs-string">&quot;&quot;&quot;Construct a label widget with the parent MASTER.</span><br><span class="hljs-string">        	用父级MASTER构建一个标签部件。</span><br><span class="hljs-string"></span><br><span class="hljs-string">        STANDARD OPTIONS</span><br><span class="hljs-string"></span><br><span class="hljs-string">            activebackground, activeforeground, anchor,</span><br><span class="hljs-string">            background, bitmap, borderwidth, cursor,</span><br><span class="hljs-string">            disabledforeground, font, foreground,</span><br><span class="hljs-string">            highlightbackground, highlightcolor,</span><br><span class="hljs-string">            highlightthickness, image, justify,</span><br><span class="hljs-string">            padx, pady, relief, takefocus, text,</span><br><span class="hljs-string">            textvariable, underline, wraplength</span><br><span class="hljs-string"></span><br><span class="hljs-string">        WIDGET-SPECIFIC OPTIONS</span><br><span class="hljs-string"></span><br><span class="hljs-string">            height, state, width</span><br><span class="hljs-string"></span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        Widget.__init__(self, master, <span class="hljs-string">&#x27;label&#x27;</span>, cnf, kw)<br></code></pre></td></tr></table></figure>
+
+<p>参数详解：</p>
+<table>
+<thead>
+<tr>
+<th><code>activebackground</code></th>
+<th>Background <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/colors.html">color</a> to be displayed when the mouse is over the widget.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>activeforeground</code></td>
+<td>Foreground <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/colors.html">color</a> to be displayed when the mouse is over the widget.</td>
+</tr>
+<tr>
+<td><code>anchor</code></td>
+<td>This options controls where the text is positioned if the widget has more space than the text needs. The default is <code>anchor=tk.CENTER</code>, which centers the text in the available space. For other values, see <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/anchors.html">Section 5.5, “Anchors”</a>. For example, if you use <code>anchor=tk.NW</code>, the text would be positioned in the upper left-hand corner of the available space.</td>
+</tr>
+<tr>
+<td><code>bg</code> or <code>background</code></td>
+<td>The background color of the label area. See <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/colors.html">Section 5.3, “Colors”</a>.</td>
+</tr>
+<tr>
+<td><code>bitmap</code></td>
+<td>Set this option equal to a bitmap or image object and the label will display that graphic. See <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/bitmaps.html">Section 5.7, “Bitmaps”</a> and <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/images.html">Section 5.9, “Images”</a>.</td>
+</tr>
+<tr>
+<td><code>bd</code> or <code>borderwidth</code></td>
+<td>Width of the border around the label; see <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/dimensions.html">Section 5.1, “Dimensions”</a>. The default value is two pixels.</td>
+</tr>
+<tr>
+<td><code>compound</code></td>
+<td>If you would like the <code>Label</code> widget to display both text and a graphic (either a bitmap or an image), the <code>compound</code> option specifies the relative orientation of the graphic relative to the text. Values may be any of <code>tk.LEFT</code>, <code>tk.RIGHT</code>, <code>tk.CENTER</code>, <code>tk.BOTTOM</code>, or <code>tk.TOP</code>. For example, if you specify <code>compound=BOTTOM</code>, the graphic will be displayed below the text.</td>
+</tr>
+<tr>
+<td><code>cursor</code></td>
+<td>Cursor that appears when the mouse is over this label. See <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/cursors.html">Section 5.8, “Cursors”</a>.</td>
+</tr>
+<tr>
+<td><code>disabledforeground</code></td>
+<td>The foreground <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/colors.html">color</a> to be displayed when the widget’s <code>state</code> is <code>tk.DISABLED</code>.</td>
+</tr>
+<tr>
+<td><code>font</code></td>
+<td>If you are displaying text in this label (with the <code>text</code> or <code>textvariable</code> option, the <code>font</code> option specifies in what font that text will be displayed. See <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/fonts.html">Section 5.4, “Type fonts”</a>.</td>
+</tr>
+<tr>
+<td><code>fg</code> or <code>foreground</code></td>
+<td>If you are displaying text or a bitmap in this label, this option specifies the color of the text. If you are displaying a bitmap, this is the color that will appear at the position of the 1-bits in the bitmap. See <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/colors.html">Section 5.3, “Colors”</a>.</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td>Height of the label in <em>lines</em> (not pixels!). If this option is not set, the label will be sized to fit its contents.</td>
+</tr>
+<tr>
+<td><code>highlightbackground</code></td>
+<td><a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/colors.html">Color</a> of the focus highlight when the widget does not have <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/focus.html">focus</a>.</td>
+</tr>
+<tr>
+<td><code>highlightcolor</code></td>
+<td>The <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/colors.html">color</a> of the focus highlight when the widget has <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/focus.html">focus</a>.</td>
+</tr>
+<tr>
+<td><code>highlightthickness</code></td>
+<td>Thickness of the <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/focus.html">focus</a> highlight.</td>
+</tr>
+<tr>
+<td><code>image</code></td>
+<td>To display a static image in the label widget, set this option to an image object. See <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/images.html">Section 5.9, “Images”</a>.</td>
+</tr>
+<tr>
+<td><code>justify</code></td>
+<td>Specifies how multiple lines of text will be aligned with respect to each other: <code>tk.LEFT</code> for flush left, <code>tk.CENTER</code> for centered (the default), or <code>tk.RIGHT</code> for right-justified.</td>
+</tr>
+<tr>
+<td><code>padx</code></td>
+<td>Extra space added to the left and right of the text within the widget. Default is 1.</td>
+</tr>
+<tr>
+<td><code>pady</code></td>
+<td>Extra space added above and below the text within the widget. Default is 1.</td>
+</tr>
+<tr>
+<td><code>relief</code></td>
+<td>Specifies the appearance of a decorative border around the label. The default is <code>tk.FLAT</code>; for other values, see <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/relief.html">Section 5.6, “Relief styles”</a>.</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td>By default, an <code>Entry</code> widget is in the <code>tk.NORMAL</code> state. Set this option to <code>tk.DISABLED</code> to make it unresponsive to mouse events. The state will be <code>tk.ACTIVE</code> when the mouse is over the widget.</td>
+</tr>
+<tr>
+<td><code>takefocus</code></td>
+<td>Normally, focus does not cycle through <code>Label</code> widgets; see <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/focus.html">Section 53, “Focus: routing keyboard input”</a>. If you want this widget to be visited by the focus, set <code>takefocus=1</code>.</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td>To display one or more lines of text in a label widget, set this option to a string containing the text. Internal newlines (<code>&#39;\n&#39;</code>) will force a line break.</td>
+</tr>
+<tr>
+<td><code>textvariable</code></td>
+<td>To slave the text displayed in a label widget to a control variable of class <code>StringVar</code>, set this option to that variable. See<a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/control-variables.html">Section 52, “Control variables: the values behind the widgets”</a>.</td>
+</tr>
+<tr>
+<td><code>underline</code></td>
+<td>You can display an underline (<code>_</code>) below the *<code>n</code>*th letter of the text, counting from 0, by setting this option to <em><code>n</code></em>. The default is <code>underline=-1</code>, which means no underlining.</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td>Width of the label in <em>characters</em> (not pixels!). If this option is not set, the label will be sized to fit its contents.</td>
+</tr>
+<tr>
+<td><code>wraplength</code></td>
+<td>You can limit the number of characters in each line by setting this option to the desired number. The default value, 0, means that lines will be broken only at newlines.</td>
+</tr>
+</tbody></table>
+<p>下面是代码示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> tkinter <span class="hljs-keyword">import</span> *  <span class="hljs-comment"># 引入了该模块</span><br><br>root = Tk()  <span class="hljs-comment"># 实例化Tk这个类</span><br>root.wm_title(<span class="hljs-string">&quot;OCR&quot;</span>)  <span class="hljs-comment"># 设置窗口标题</span><br>w = Label(root, text=<span class="hljs-string">&quot;这是标签&quot;</span>)<br>w.pack()<br>root.mainloop()  <span class="hljs-comment"># 让窗口一直执行，事件循环</span><br></code></pre></td></tr></table></figure>
+
+<p>下面是运行效果截图：</p>
+<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111182259302.png" srcset="/img/loading.gif" lazyload alt="新增标签"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/tkinter/">tkinter</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/tkinter/">tkinter</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Python/">Python</a>
+                    
+                      <a class="hover-with-bg" href="/tags/GUI/">GUI</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/18/tkinter-1/">
+                        <span class="hidden-mobile">一、Python的GUI编程——tkinter入门</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        皖ICP备20012286号
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
