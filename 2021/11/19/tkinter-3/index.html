@@ -23,13 +23,16 @@
 <meta property="og:site_name" content="G-and-Z">
 <meta property="og:description" content="tk组件——按钮 按钮是非常重要的组件，可以响应点击事件来完成一些执行逻辑，按钮英文是“button”，它随处可见  tkinter中有一个专门的类Button负责它   用法增加一个button，方法如下： 1B &#x3D; Button ( master, option, ... )  源代码中Button类及其参数： 12345678910111213141516171819202122232425">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111191612509.png">
+<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111191609477.png">
 <meta property="article:published_time" content="2021-11-19T04:24:55.000Z">
-<meta property="article:modified_time" content="2021-11-19T04:46:49.258Z">
+<meta property="article:modified_time" content="2021-11-19T09:08:48.193Z">
 <meta property="article:author" content="不想起名">
 <meta property="article:tag" content="tkinter">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="GUI">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111191612509.png">
   
   <title>三、tk组件——按钮 - G-and-Z</title>
 
@@ -198,7 +201,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.7k 字
+      8.3k 字
     </span>
   
 
@@ -207,7 +210,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      15 分钟
+      26 分钟
     </span>
   
 
@@ -250,10 +253,10 @@
               <h1 id="tk组件——按钮"><a href="#tk组件——按钮" class="headerlink" title="tk组件——按钮"></a>tk组件——按钮</h1><ol>
 <li><p>按钮是非常重要的组件，可以响应点击事件来完成一些执行逻辑，按钮英文是“button”，它随处可见</p>
 </li>
-<li><p>tkinter中有一个专门的类Button负责它</p>
+<li><p>tkinter中有一个专门的类<code>Button</code>负责它</p>
 </li>
 </ol>
-<h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><p>增加一个button，方法如下：</p>
+<h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><p>增加一个<code>button</code>，方法如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">B = Button ( master, option, ... )<br></code></pre></td></tr></table></figure>
 
 <p>源代码中Button类及其参数：</p>
@@ -388,6 +391,50 @@
 <td>If this value is set to a positive number, the text lines will be wrapped to fit within this length. For possible values, see <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/dimensions.html">Section 5.1, “Dimensions”</a>.</td>
 </tr>
 </tbody></table>
+<p>下面新建一个按钮示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> tkinter <span class="hljs-keyword">import</span> *  <span class="hljs-comment"># 引入了该模块</span><br><br>root = Tk()  <span class="hljs-comment"># 实例化Tk这个类</span><br>root.wm_title(<span class="hljs-string">&quot;OCR&quot;</span>)  <span class="hljs-comment"># 设置窗口标题</span><br>b = Button(root, text=<span class="hljs-string">&quot;这是按钮&quot;</span>)<br>b.pack()<br>root.mainloop()  <span class="hljs-comment"># 让窗口一直执行，事件循环</span><br></code></pre></td></tr></table></figure>
+
+<p>运行结果如下：</p>
+<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111191612509.png" srcset="/img/loading.gif" lazyload alt="新建按钮"></p>
+<p>其他参数的功能不一一赘述</p>
+<h1 id="按钮事件绑定"><a href="#按钮事件绑定" class="headerlink" title="按钮事件绑定"></a>按钮事件绑定</h1><p>按钮可以执行相应的功能，可以理解为点击之后执行一个函数，那么就需要有一个事件响应用户点击并执行响应函数</p>
+<p>事件绑定方式有以下几种：</p>
+<h2 id="1-command属性"><a href="#1-command属性" class="headerlink" title="1. command属性"></a>1. <code>command</code>属性</h2><p>声明按钮时用<code>command</code>属性声明，<code>command</code>属性会接受一个函数名，函数名不要加双引号。尽量不要给函数加参数，如果要加参数，就必须用<code>lambda</code></p>
+<table>
+<thead>
+<tr>
+<th align="left"><code>command</code></th>
+<th align="left">当按钮被单击之后执行的函数或方法</th>
+</tr>
+</thead>
+</table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> tkinter <span class="hljs-keyword">import</span> *  <span class="hljs-comment"># 引入了该模块</span><br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add_Label</span>():</span><br>    <span class="hljs-keyword">global</span> root<br>    s = Label(root, text=<span class="hljs-string">&quot;新建的label&quot;</span>)<br>    s.pack()<br><br><br>root = Tk()  <span class="hljs-comment"># 实例化Tk这个类</span><br>root.wm_title(<span class="hljs-string">&quot;OCR&quot;</span>)  <span class="hljs-comment"># 设置窗口标题</span><br>root.wm_minsize(<span class="hljs-number">300</span>, <span class="hljs-number">300</span>)  <span class="hljs-comment"># 设置窗口最小尺寸</span><br>b = Button(root, text=<span class="hljs-string">&quot;这是按钮&quot;</span>, command=add_Label)<br>b.pack()<br>root.mainloop()  <span class="hljs-comment"># 让窗口一直执行，事件循环</span><br></code></pre></td></tr></table></figure>
+
+<p>这里我们新建了一个函数<code>add_Label</code>，里面是==全局变量<code>root</code>==，作用是新建一个<code>Label</code>并增添到主窗口，然后我们在下面对其进行调用，将其赋给<code>Button b</code>的<code>command</code>属性上，我们每点击一次b，就会执行一次<code>command</code>后面的函数，效果如下：</p>
+<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111191609477.png" srcset="/img/loading.gif" lazyload alt="点击4次按钮"></p>
+<h2 id="2-使用bind方法。"><a href="#2-使用bind方法。" class="headerlink" title="2. 使用bind方法。"></a>2. 使用<code>bind</code>方法。</h2><p>首先，我们继续去源代码中找到<code>bind</code>函数，会发现<code>bind</code>方法是属于<code>Misc</code>类，且有三个参数：</p>
+<ul>
+<li><p><code>sequence</code></p>
+<p>SEQUENCE是一串串联的事件模式的字符串。一个事件模式的形式是</p>
+<p><code>&lt;MODIFIER-MODIFIER-TYPE-DETAIL&gt;</code>，其中：</p>
+<p><code>MODIFIER</code>是以下修饰符之一：<code>Control, Mod2, M2, Shift, Mod3, M3, Lock, Mod4, M4,</code><br><code>Button1, B1, Mod5, M5 Button2, B2, Meta, M, Button3,B3, Alt, Button4, B4, Double, Button5, B5 Triple, Mod1, M1</code></p>
+<p><code>TYPE</code>则是表示类型，全部取值有：<code>Activate, Enter, Map,ButtonPress, Button, Expose, Motion, ButtonReleaseFocusIn, MouseWheel, Circulate, FocusOut, Property, Colormap, Gravity Reparent, Configure, KeyPress, Key, Unmap, Deactivate, KeyRelease Visibility, Destroy,Leave</code></p>
+<p><code>DETAIL</code>是按键和释放键的键位表。例如<code>&lt;Button-1&gt;</code>代表了鼠标左键单击<code>&lt;Control-Button-1&gt;</code>表示按<code>Control</code>键和鼠标左键；<code>&lt;Alt-A&gt;</code>表示按下<code>A</code>和<code>Alt</code>键（KeyPress可以省略）。</p>
+</li>
+<li><p><code>func</code></p>
+<p>当上面的事件成立，就会执行这个函数</p>
+</li>
+<li><p><code>add</code></p>
+<p>一个额外的布尔参数<code>ADD</code>指定了<code>FUNC</code>是否会被另外调用，或者是否会被其他绑定的函数调用。是在其他绑定的函数之外再调用，还是它将取代之前的函数。</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bind</span>(<span class="hljs-params">self, sequence=<span class="hljs-literal">None</span>, func=<span class="hljs-literal">None</span>, add=<span class="hljs-literal">None</span></span>):</span><br>    <span class="hljs-string">&quot;&quot;&quot;Bind to this widget at event SEQUENCE a call to function FUNC.</span><br><span class="hljs-string"></span><br><span class="hljs-string">    SEQUENCE is a string of concatenated event</span><br><span class="hljs-string">    patterns. An event pattern is of the form</span><br><span class="hljs-string">    &lt;MODIFIER-MODIFIER-TYPE-DETAIL&gt; where MODIFIER is one</span><br><span class="hljs-string">    of Control, Mod2, M2, Shift, Mod3, M3, Lock, Mod4, M4,</span><br><span class="hljs-string">    Button1, B1, Mod5, M5 Button2, B2, Meta, M, Button3,</span><br><span class="hljs-string">    B3, Alt, Button4, B4, Double, Button5, B5 Triple,</span><br><span class="hljs-string">    Mod1, M1. TYPE is one of Activate, Enter, Map,</span><br><span class="hljs-string">    ButtonPress, Button, Expose, Motion, ButtonRelease</span><br><span class="hljs-string">    FocusIn, MouseWheel, Circulate, FocusOut, Property,</span><br><span class="hljs-string">    Colormap, Gravity Reparent, Configure, KeyPress, Key,</span><br><span class="hljs-string">    Unmap, Deactivate, KeyRelease Visibility, Destroy,</span><br><span class="hljs-string">    Leave and DETAIL is the button number for ButtonPress,</span><br><span class="hljs-string">    ButtonRelease and DETAIL is the Keysym for KeyPress and</span><br><span class="hljs-string">    KeyRelease. Examples are</span><br><span class="hljs-string">    &lt;Control-Button-1&gt; for pressing Control and mouse button 1 or</span><br><span class="hljs-string">    &lt;Alt-A&gt; for pressing A and the Alt key (KeyPress can be omitted).</span><br><span class="hljs-string">    An event pattern can also be a virtual event of the form</span><br><span class="hljs-string">    &lt;&lt;AString&gt;&gt; where AString can be arbitrary. This</span><br><span class="hljs-string">    event can be generated by event_generate.</span><br><span class="hljs-string">    If events are concatenated they must appear shortly</span><br><span class="hljs-string">    after each other.</span><br><span class="hljs-string"></span><br><span class="hljs-string">    FUNC will be called if the event sequence occurs with an</span><br><span class="hljs-string">    instance of Event as argument. If the return value of FUNC is</span><br><span class="hljs-string">    &quot;break&quot; no further bound function is invoked.</span><br><span class="hljs-string"></span><br><span class="hljs-string">    An additional boolean parameter ADD specifies whether FUNC will</span><br><span class="hljs-string">    be called additionally to the other bound function or whether</span><br><span class="hljs-string">    it will replace the previous function.</span><br><span class="hljs-string"></span><br><span class="hljs-string">    Bind will return an identifier to allow deletion of the bound function with</span><br><span class="hljs-string">    unbind without memory leak.</span><br><span class="hljs-string"></span><br><span class="hljs-string">    If FUNC or SEQUENCE is omitted the bound function or list</span><br><span class="hljs-string">    of bound events are returned.&quot;&quot;&quot;</span><br><br>    <span class="hljs-keyword">return</span> self._bind((<span class="hljs-string">&#x27;bind&#x27;</span>, self._w), sequence, func, add)<br></code></pre></td></tr></table></figure>
+
+<p>下面看一下<code>bind</code>函数使用示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> tkinter <span class="hljs-keyword">import</span> *  <span class="hljs-comment"># 引入了该模块</span><br><br>root = Tk()  <span class="hljs-comment"># 实例化Tk这个类</span><br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add_Label</span>(<span class="hljs-params">event</span>):</span><br>    s = Label(root, text=<span class="hljs-string">&quot;新建的label&quot;</span>)<br>    s.pack()<br><br><br>root.wm_title(<span class="hljs-string">&quot;OCR&quot;</span>)  <span class="hljs-comment"># 设置窗口标题</span><br>root.wm_minsize(<span class="hljs-number">300</span>, <span class="hljs-number">300</span>)  <span class="hljs-comment"># 设置窗口最小尺寸</span><br>b = Button(root, text=<span class="hljs-string">&quot;这是按钮&quot;</span>)<br>b.bind(<span class="hljs-string">&quot;&lt;Button-1&gt;&quot;</span>, add_Label)<br>b.pack()<br>root.mainloop()  <span class="hljs-comment"># 让窗口一直执行，事件循环</span><br></code></pre></td></tr></table></figure>
+
+<p>注意这个时候我把<code>root = Tk()</code>写在了最前面，这里推荐这样做，当然也可以设置为<code>global</code></p>
+<p>上面的代码实现的功能和<code>command</code>一样，这里就不展示了</p>
 
             </div>
             <hr>
