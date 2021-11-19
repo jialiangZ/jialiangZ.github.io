@@ -16,16 +16,16 @@
   <meta name="description" content="编程记录成长点滴，有Python、前端、各种小知识">
   <meta name="author" content="不想起名">
   <meta name="keywords" content="编程">
-  <meta name="description" content="tk组件——标签 如果曾经学习过GUI编程，相信一定不会对标签陌生，组件就是widget，常见的比如按钮、文本框、输入框······  我们可以在一个窗口里增加若干组件来美化窗口和增添新功能  标签就是在其他控件前面贴上一个简短的说明，标签内容是文字信息   用法增加一个Lable，语法格式如下： 1w &#x3D; Label ( master, option, ... )  其中master是父框架，o">
+  <meta name="description" content="tk组件——标签 如果曾经学习过GUI编程，相信一定不会对组件陌生，组件就是widget，常见的比如标签、按钮、文本框、输入框······ 我们可以在一个窗口里增加若干组件来美化窗口和增添新功能 标签就是在其他控件前面贴上一个简短的说明，标签内容是文字信息  用法增加一个Lable，语法格式如下： 1w &#x3D; Label ( master, option, ... )  其中master是父框架，o">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二、tk组件——标签">
 <meta property="og:url" content="http://www.gandz.top/2021/11/18/tkinter-2/index.html">
 <meta property="og:site_name" content="G-and-Z">
-<meta property="og:description" content="tk组件——标签 如果曾经学习过GUI编程，相信一定不会对标签陌生，组件就是widget，常见的比如按钮、文本框、输入框······  我们可以在一个窗口里增加若干组件来美化窗口和增添新功能  标签就是在其他控件前面贴上一个简短的说明，标签内容是文字信息   用法增加一个Lable，语法格式如下： 1w &#x3D; Label ( master, option, ... )  其中master是父框架，o">
+<meta property="og:description" content="tk组件——标签 如果曾经学习过GUI编程，相信一定不会对组件陌生，组件就是widget，常见的比如标签、按钮、文本框、输入框······ 我们可以在一个窗口里增加若干组件来美化窗口和增添新功能 标签就是在其他控件前面贴上一个简短的说明，标签内容是文字信息  用法增加一个Lable，语法格式如下： 1w &#x3D; Label ( master, option, ... )  其中master是父框架，o">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111182259302.png">
 <meta property="article:published_time" content="2021-11-18T14:35:19.000Z">
-<meta property="article:modified_time" content="2021-11-18T15:12:59.879Z">
+<meta property="article:modified_time" content="2021-11-19T03:45:08.532Z">
 <meta property="article:author" content="不想起名">
 <meta property="article:tag" content="tkinter">
 <meta property="article:tag" content="Python">
@@ -250,18 +250,14 @@
             
             <div class="markdown-body">
               <h1 id="tk组件——标签"><a href="#tk组件——标签" class="headerlink" title="tk组件——标签"></a>tk组件——标签</h1><ol>
-<li><p>如果曾经学习过GUI编程，相信一定不会对标签陌生，组件就是widget，常见的比如按钮、文本框、输入框······</p>
-</li>
-<li><p>我们可以在一个窗口里增加若干组件来美化窗口和增添新功能</p>
-</li>
-<li><p>标签就是在其他控件前面贴上一个简短的说明，标签内容是文字信息</p>
-</li>
+<li>如果曾经学习过GUI编程，相信一定不会对组件陌生，组件就是widget，常见的比如标签、按钮、文本框、输入框······</li>
+<li>我们可以在一个窗口里增加若干组件来美化窗口和增添新功能</li>
+<li>标签就是在其他控件前面贴上一个简短的说明，标签内容是文字信息</li>
 </ol>
 <h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><p>增加一个Lable，语法格式如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">w = Label ( master, option, ... )<br></code></pre></td></tr></table></figure>
 
-<p>其中master是父框架，option是可选参数</p>
-<p>看看源代码中Lable函数及其参数：</p>
+<p>其中master是父框架，option是可选参数<br>看看源代码中Lable函数及其参数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Label</span>(<span class="hljs-params">Widget</span>):</span><br>    <span class="hljs-string">&quot;&quot;&quot;Label widget which can display text and bitmaps.&quot;&quot;&quot;</span><br>    <span class="hljs-string">&quot;&quot;&quot;标签小组件，可以显示文本和位图。&quot;&quot;&quot;</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, master=<span class="hljs-literal">None</span>, cnf=&#123;&#125;, **kw</span>):</span><br>        <span class="hljs-string">&quot;&quot;&quot;Construct a label widget with the parent MASTER.</span><br><span class="hljs-string">        	用父级MASTER构建一个标签部件。</span><br><span class="hljs-string"></span><br><span class="hljs-string">        STANDARD OPTIONS</span><br><span class="hljs-string"></span><br><span class="hljs-string">            activebackground, activeforeground, anchor,</span><br><span class="hljs-string">            background, bitmap, borderwidth, cursor,</span><br><span class="hljs-string">            disabledforeground, font, foreground,</span><br><span class="hljs-string">            highlightbackground, highlightcolor,</span><br><span class="hljs-string">            highlightthickness, image, justify,</span><br><span class="hljs-string">            padx, pady, relief, takefocus, text,</span><br><span class="hljs-string">            textvariable, underline, wraplength</span><br><span class="hljs-string"></span><br><span class="hljs-string">        WIDGET-SPECIFIC OPTIONS</span><br><span class="hljs-string"></span><br><span class="hljs-string">            height, state, width</span><br><span class="hljs-string"></span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        Widget.__init__(self, master, <span class="hljs-string">&#x27;label&#x27;</span>, cnf, kw)<br></code></pre></td></tr></table></figure>
 
 <p>参数详解：</p>
