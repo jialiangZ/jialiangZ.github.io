@@ -16,17 +16,18 @@
   <meta name="description" content="编程记录成长点滴，有Python、前端、各种小知识">
   <meta name="author" content="不想起名">
   <meta name="keywords" content="编程">
-  <meta name="description" content="tk组件——按钮 按钮是非常重要的组件，可以响应点击事件来完成一些执行逻辑，按钮英文是“button”，它随处可见  tkinter中有一个专门的类Button负责它   用法增加一个button，方法如下： 1B &#x3D; Button ( master, option, ... )  源代码中Button类及其参数： 1234567891011121314151617181920212223clas">
+  <meta name="description" content="tk组件——按钮 按钮是非常重要的组件，可以响应点击事件来完成一些执行逻辑，按钮英文是“button”，它随处可见 tkinter中有一个专门的类Button负责它 ttk中的按钮和tkinter不一样  用法增加一个button，方法如下： 1B &#x3D; Button ( master, option, ... )  源代码中Button类及其参数： 123456789101112131415161">
 <meta property="og:type" content="article">
 <meta property="og:title" content="三、tk组件——按钮">
 <meta property="og:url" content="http://www.gandz.top/2021/11/19/tkinter-3/index.html">
 <meta property="og:site_name" content="G-and-Z">
-<meta property="og:description" content="tk组件——按钮 按钮是非常重要的组件，可以响应点击事件来完成一些执行逻辑，按钮英文是“button”，它随处可见  tkinter中有一个专门的类Button负责它   用法增加一个button，方法如下： 1B &#x3D; Button ( master, option, ... )  源代码中Button类及其参数： 1234567891011121314151617181920212223clas">
+<meta property="og:description" content="tk组件——按钮 按钮是非常重要的组件，可以响应点击事件来完成一些执行逻辑，按钮英文是“button”，它随处可见 tkinter中有一个专门的类Button负责它 ttk中的按钮和tkinter不一样  用法增加一个button，方法如下： 1B &#x3D; Button ( master, option, ... )  源代码中Button类及其参数： 123456789101112131415161">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111191612509.png">
 <meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111191609477.png">
+<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111231631394.png">
 <meta property="article:published_time" content="2021-11-19T04:24:55.000Z">
-<meta property="article:modified_time" content="2021-11-19T09:27:30.407Z">
+<meta property="article:modified_time" content="2021-11-23T08:33:45.150Z">
 <meta property="article:author" content="不想起名">
 <meta property="article:tag" content="tkinter">
 <meta property="article:tag" content="Python">
@@ -201,7 +202,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      7.6k 字
+      8.5k 字
     </span>
   
 
@@ -210,7 +211,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      24 分钟
+      26 分钟
     </span>
   
 
@@ -251,10 +252,9 @@
             
             <div class="markdown-body">
               <h1 id="tk组件——按钮"><a href="#tk组件——按钮" class="headerlink" title="tk组件——按钮"></a>tk组件——按钮</h1><ol>
-<li><p>按钮是非常重要的组件，可以响应点击事件来完成一些执行逻辑，按钮英文是“button”，它随处可见</p>
-</li>
-<li><p>tkinter中有一个专门的类<code>Button</code>负责它</p>
-</li>
+<li>按钮是非常重要的组件，可以响应点击事件来完成一些执行逻辑，按钮英文是“button”，它随处可见</li>
+<li>tkinter中有一个专门的类<code>Button</code>负责它</li>
+<li>ttk中的按钮和tkinter不一样</li>
 </ol>
 <h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><p>增加一个<code>button</code>，方法如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">B = Button ( master, option, ... )<br></code></pre></td></tr></table></figure>
@@ -401,9 +401,8 @@
 <p>运行结果如下：</p>
 <p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111191612509.png" srcset="/img/loading.gif" lazyload alt="新建按钮"></p>
 <p>其他参数的功能不一一赘述</p>
-<h1 id="按钮事件绑定"><a href="#按钮事件绑定" class="headerlink" title="按钮事件绑定"></a>按钮事件绑定</h1><p>按钮可以执行相应的功能，可以理解为点击之后执行一个函数，那么就需要有一个事件响应用户点击并执行响应函数</p>
-<p>事件绑定方式有以下几种：</p>
-<h2 id="1-command属性"><a href="#1-command属性" class="headerlink" title="1. command属性"></a>1. <code>command</code>属性</h2><p>声明按钮时包含<code>command</code>属性，<code>command</code>属性会接受一个函数名，函数名不要加双引号。尽量不要给函数加参数，如果要加参数，就必须用<code>lambda</code></p>
+<h1 id="按钮事件绑定"><a href="#按钮事件绑定" class="headerlink" title="按钮事件绑定"></a>按钮事件绑定</h1><p>按钮可以执行相应的功能，可以理解为点击之后执行一个函数，那么就需要有一个事件响应用户点击并执行响应函数。事件绑定方式有以下几种：</p>
+<h2 id="1-command属性"><a href="#1-command属性" class="headerlink" title="1. command属性"></a>1. <code>command</code>属性</h2><p>声明按钮时包含<code>command</code>属性，<code>command</code>属性会接受一个函数名，函数名不要加双引号。<strong>尽量不要给函数加参数，如果要加参数，就必须用<code>lambda</code></strong></p>
 <table>
 <thead>
 <tr>
@@ -440,6 +439,14 @@
 
 <p>注意这个时候我把<code>root = Tk()</code>写在了最前面，这里推荐这样做，当然也可以设置为<code>global</code></p>
 <p>上面的代码实现的功能和<code>command</code>一样，这里就不展示了</p>
+<h1 id="ttk中的Button"><a href="#ttk中的Button" class="headerlink" title="ttk中的Button"></a>ttk中的Button</h1><p>我们可以看到tkinter的按钮是真的不好看，与时俱进，这里介绍一下ttk。</p>
+<p>ttk可以看作是tkinter的升级组件，就是为了完善一些tkinter的功能。通俗地说，tkinter有的，ttk也有；tkinter没有的，ttk也有。记住，这两的办法和属性很多都是一样的，按照下面的代码你可以导入这两个库，并看一下他俩生成的按钮的区别</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> tkinter <span class="hljs-keyword">as</span> tk  <span class="hljs-comment"># 引入了该模块</span><br><span class="hljs-keyword">from</span> tkinter <span class="hljs-keyword">import</span> ttk<br><br>root = tk.Tk()  <span class="hljs-comment"># 实例化Tk这个类</span><br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add_Label</span>(<span class="hljs-params">event</span>):</span><br>    s = tk.Label(root, text=<span class="hljs-string">&quot;新建的label&quot;</span>)<br>    s.pack()<br><br><br>root.wm_title(<span class="hljs-string">&quot;OCR&quot;</span>)  <span class="hljs-comment"># 设置窗口标题</span><br>root.wm_minsize(<span class="hljs-number">300</span>, <span class="hljs-number">300</span>)  <span class="hljs-comment"># 设置窗口最小尺寸</span><br>b1 = tk.Button(root, text=<span class="hljs-string">&quot;tkinter按钮&quot;</span>)<br>b2 = ttk.Button(root, text=<span class="hljs-string">&quot;ttk按钮1&quot;</span>)<br>b3 = tk.ttk.Button(root, text=<span class="hljs-string">&quot;ttk按钮2&quot;</span>)<br>b1.bind(<span class="hljs-string">&quot;&lt;Button-1&gt;&quot;</span>, add_Label)<br>b1.pack()<br>b2.pack()<br>b3.pack()<br>root.mainloop()  <span class="hljs-comment"># 让窗口一直执行，事件循环</span><br></code></pre></td></tr></table></figure>
+
+<p>你可以直接使用<code>ttk.Button()</code>，也可以用这种形式<code>tk.ttk.Button()</code></p>
+<p>效果图：</p>
+<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111231631394.png" srcset="/img/loading.gif" lazyload alt="image-20211123163108235"></p>
+<p>可以看到，明显ttk的按钮更加美观。但是注意一点，<code>ttk</code>和<code>tkinter</code>还是有一些区别的。如 <code>tkinter</code> 中的<code>fg,bg</code>属性在<code>ttk</code>中并不被支持，<code>ttk</code>是通过<code>style</code>这个对象来实现的，后面再说。</p>
 
             </div>
             <hr>
@@ -477,6 +484,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2021/11/23/tkinter-4/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">四、tk布局</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
