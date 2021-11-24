@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111191609477.png">
 <meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111231631394.png">
 <meta property="article:published_time" content="2021-11-19T04:24:55.000Z">
-<meta property="article:modified_time" content="2021-11-23T08:33:45.150Z">
+<meta property="article:modified_time" content="2021-11-24T03:22:14.043Z">
 <meta property="article:author" content="不想起名">
 <meta property="article:tag" content="tkinter">
 <meta property="article:tag" content="Python">
@@ -202,7 +202,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      8.5k 字
+      8.4k 字
     </span>
   
 
@@ -283,12 +283,12 @@
 <td>Where the text is positioned on the button. See <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/anchors.html">Section 5.5, “Anchors”</a>. For example, <code>anchor=tk.NE</code> would position the text at the top right corner of the button.</td>
 </tr>
 <tr>
-<td><code>bd</code> or <code>borderwidth</code></td>
+<td><code>bd</code> 或 <code>borderwidth</code></td>
 <td>Width of the border around the outside of the button; see <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/dimensions.html">Section 5.1, “Dimensions”</a>. The default is two pixels.</td>
 </tr>
 <tr>
-<td><code>bg</code> or <code>background</code></td>
-<td>Normal background <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/colors.html">color</a>.</td>
+<td><code>bg</code> 或 <code>background</code></td>
+<td>背景颜色</td>
 </tr>
 <tr>
 <td><code>bitmap</code></td>
@@ -296,7 +296,7 @@
 </tr>
 <tr>
 <td><code>command</code></td>
-<td>Function or method to be called when the button is clicked.</td>
+<td>当按钮被单击时触发的函数或者方法</td>
 </tr>
 <tr>
 <td><code>cursor</code></td>
@@ -311,12 +311,12 @@
 <td>Foreground <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/colors.html">color</a> used when the button is disabled.</td>
 </tr>
 <tr>
-<td><code>fg</code> or <code>foreground</code></td>
+<td><code>fg</code> 或 <code>foreground</code></td>
 <td>Normal foreground (text) <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/colors.html">color</a>.</td>
 </tr>
 <tr>
 <td><code>font</code></td>
-<td>Text <a target="_blank" rel="noopener" href="https://tkdocs.com/shipman/fonts.html">font</a> to be used for the button’s label.</td>
+<td>按钮上显示的文字的字体</td>
 </tr>
 <tr>
 <td><code>height</code></td>
@@ -396,7 +396,7 @@
 </tr>
 </tbody></table>
 <p>下面新建一个按钮示例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> tkinter <span class="hljs-keyword">import</span> *  <span class="hljs-comment"># 引入了该模块</span><br><br>root = Tk()  <span class="hljs-comment"># 实例化Tk这个类</span><br>root.wm_title(<span class="hljs-string">&quot;OCR&quot;</span>)  <span class="hljs-comment"># 设置窗口标题</span><br>b = Button(root, text=<span class="hljs-string">&quot;这是按钮&quot;</span>)<br>b.pack()<br>root.mainloop()  <span class="hljs-comment"># 让窗口一直执行，事件循环</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> tkinter <span class="hljs-keyword">as</span> tk  <span class="hljs-comment"># 引入了该模块</span><br><br>root = tk.Tk()  <span class="hljs-comment"># 实例化Tk这个类</span><br>root.wm_title(<span class="hljs-string">&quot;OCR&quot;</span>)  <span class="hljs-comment"># 设置窗口标题</span><br>b = tk.Button(root, text=<span class="hljs-string">&quot;这是按钮&quot;</span>)<br>b.pack()<br>root.mainloop()  <span class="hljs-comment"># 让窗口一直执行，事件循环</span><br></code></pre></td></tr></table></figure>
 
 <p>运行结果如下：</p>
 <p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111191612509.png" srcset="/img/loading.gif" lazyload alt="新建按钮"></p>
@@ -411,7 +411,7 @@
 </tr>
 </thead>
 </table>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> tkinter <span class="hljs-keyword">import</span> *  <span class="hljs-comment"># 引入了该模块</span><br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add_Label</span>():</span><br>    <span class="hljs-keyword">global</span> root<br>    s = Label(root, text=<span class="hljs-string">&quot;新建的label&quot;</span>)<br>    s.pack()<br><br><br>root = Tk()  <span class="hljs-comment"># 实例化Tk这个类</span><br>root.wm_title(<span class="hljs-string">&quot;OCR&quot;</span>)  <span class="hljs-comment"># 设置窗口标题</span><br>root.wm_minsize(<span class="hljs-number">300</span>, <span class="hljs-number">300</span>)  <span class="hljs-comment"># 设置窗口最小尺寸</span><br>b = Button(root, text=<span class="hljs-string">&quot;这是按钮&quot;</span>, command=add_Label)<br>b.pack()<br>root.mainloop()  <span class="hljs-comment"># 让窗口一直执行，事件循环</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> tkinter <span class="hljs-keyword">as</span> tk  <span class="hljs-comment"># 引入了该模块</span><br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add_Label</span>():</span><br>    <span class="hljs-keyword">global</span> root<br>    s = tk.Label(root, text=<span class="hljs-string">&quot;新建的label&quot;</span>)<br>    s.pack()<br><br><br>root = tk.Tk()  <span class="hljs-comment"># 实例化Tk这个类</span><br>root.wm_title(<span class="hljs-string">&quot;OCR&quot;</span>)  <span class="hljs-comment"># 设置窗口标题</span><br>root.wm_minsize(<span class="hljs-number">300</span>, <span class="hljs-number">300</span>)  <span class="hljs-comment"># 设置窗口最小尺寸</span><br>b = tk.Button(root, text=<span class="hljs-string">&quot;这是按钮&quot;</span>, command=add_Label)<br>b.pack()<br>root.mainloop()  <span class="hljs-comment"># 让窗口一直执行，事件循环</span><br></code></pre></td></tr></table></figure>
 
 <p>这里我们新建了一个函数<code>add_Label</code>，里面是<strong>全局变量</strong><code>root</code>，作用是新建一个<code>Label</code>并增添到主窗口，然后我们在下面对其进行调用，将其赋给<code>Button b</code>的<code>command</code>属性上，我们每点击一次b，就会执行一次<code>command</code>后面的函数，效果如下：</p>
 <p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111191609477.png" srcset="/img/loading.gif" lazyload alt="点击4次按钮"></p>
@@ -435,7 +435,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bind</span>(<span class="hljs-params">self, sequence=<span class="hljs-literal">None</span>, func=<span class="hljs-literal">None</span>, add=<span class="hljs-literal">None</span></span>):</span><br>    <span class="hljs-string">&quot;&quot;&quot;Bind to this widget at event SEQUENCE a call to function FUNC.</span><br><span class="hljs-string"></span><br><span class="hljs-string">    SEQUENCE is a string of concatenated event</span><br><span class="hljs-string">    patterns. An event pattern is of the form</span><br><span class="hljs-string">    &lt;MODIFIER-MODIFIER-TYPE-DETAIL&gt; where MODIFIER is one</span><br><span class="hljs-string">    of Control, Mod2, M2, Shift, Mod3, M3, Lock, Mod4, M4,</span><br><span class="hljs-string">    Button1, B1, Mod5, M5 Button2, B2, Meta, M, Button3,</span><br><span class="hljs-string">    B3, Alt, Button4, B4, Double, Button5, B5 Triple,</span><br><span class="hljs-string">    Mod1, M1. TYPE is one of Activate, Enter, Map,</span><br><span class="hljs-string">    ButtonPress, Button, Expose, Motion, ButtonRelease</span><br><span class="hljs-string">    FocusIn, MouseWheel, Circulate, FocusOut, Property,</span><br><span class="hljs-string">    Colormap, Gravity Reparent, Configure, KeyPress, Key,</span><br><span class="hljs-string">    Unmap, Deactivate, KeyRelease Visibility, Destroy,</span><br><span class="hljs-string">    Leave and DETAIL is the button number for ButtonPress,</span><br><span class="hljs-string">    ButtonRelease and DETAIL is the Keysym for KeyPress and</span><br><span class="hljs-string">    KeyRelease. Examples are</span><br><span class="hljs-string">    &lt;Control-Button-1&gt; for pressing Control and mouse button 1 or</span><br><span class="hljs-string">    &lt;Alt-A&gt; for pressing A and the Alt key (KeyPress can be omitted).</span><br><span class="hljs-string">    An event pattern can also be a virtual event of the form</span><br><span class="hljs-string">    &lt;&lt;AString&gt;&gt; where AString can be arbitrary. This</span><br><span class="hljs-string">    event can be generated by event_generate.</span><br><span class="hljs-string">    If events are concatenated they must appear shortly</span><br><span class="hljs-string">    after each other.</span><br><span class="hljs-string"></span><br><span class="hljs-string">    FUNC will be called if the event sequence occurs with an</span><br><span class="hljs-string">    instance of Event as argument. If the return value of FUNC is</span><br><span class="hljs-string">    &quot;break&quot; no further bound function is invoked.</span><br><span class="hljs-string"></span><br><span class="hljs-string">    An additional boolean parameter ADD specifies whether FUNC will</span><br><span class="hljs-string">    be called additionally to the other bound function or whether</span><br><span class="hljs-string">    it will replace the previous function.</span><br><span class="hljs-string"></span><br><span class="hljs-string">    Bind will return an identifier to allow deletion of the bound function with</span><br><span class="hljs-string">    unbind without memory leak.</span><br><span class="hljs-string"></span><br><span class="hljs-string">    If FUNC or SEQUENCE is omitted the bound function or list</span><br><span class="hljs-string">    of bound events are returned.&quot;&quot;&quot;</span><br><br>    <span class="hljs-keyword">return</span> self._bind((<span class="hljs-string">&#x27;bind&#x27;</span>, self._w), sequence, func, add)<br></code></pre></td></tr></table></figure>
 
 <p>下面看一下<code>bind</code>函数使用示例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> tkinter <span class="hljs-keyword">import</span> *  <span class="hljs-comment"># 引入了该模块</span><br><br>root = Tk()  <span class="hljs-comment"># 实例化Tk这个类</span><br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add_Label</span>(<span class="hljs-params">event</span>):</span><br>    s = Label(root, text=<span class="hljs-string">&quot;新建的label&quot;</span>)<br>    s.pack()<br><br><br>root.wm_title(<span class="hljs-string">&quot;OCR&quot;</span>)  <span class="hljs-comment"># 设置窗口标题</span><br>root.wm_minsize(<span class="hljs-number">300</span>, <span class="hljs-number">300</span>)  <span class="hljs-comment"># 设置窗口最小尺寸</span><br>b = Button(root, text=<span class="hljs-string">&quot;这是按钮&quot;</span>)<br>b.bind(<span class="hljs-string">&quot;&lt;Button-1&gt;&quot;</span>, add_Label)<br>b.pack()<br>root.mainloop()  <span class="hljs-comment"># 让窗口一直执行，事件循环</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> tkinter <span class="hljs-keyword">as</span> tk  <span class="hljs-comment"># 引入了该模块</span><br><br>root = tk.Tk()  <span class="hljs-comment"># 实例化Tk这个类</span><br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add_Label</span>(<span class="hljs-params">event</span>):</span><br>    s = tk.Label(root, text=<span class="hljs-string">&quot;新建的label&quot;</span>)<br>    s.pack()<br><br><br>root.wm_title(<span class="hljs-string">&quot;OCR&quot;</span>)  <span class="hljs-comment"># 设置窗口标题</span><br>root.wm_minsize(<span class="hljs-number">300</span>, <span class="hljs-number">300</span>)  <span class="hljs-comment"># 设置窗口最小尺寸</span><br>b = tk.Button(root, text=<span class="hljs-string">&quot;这是按钮&quot;</span>)<br>b.bind(<span class="hljs-string">&quot;&lt;Button-1&gt;&quot;</span>, add_Label)<br>b.pack()<br>root.mainloop()  <span class="hljs-comment"># 让窗口一直执行，事件循环</span><br></code></pre></td></tr></table></figure>
 
 <p>注意这个时候我把<code>root = Tk()</code>写在了最前面，这里推荐这样做，当然也可以设置为<code>global</code></p>
 <p>上面的代码实现的功能和<code>command</code>一样，这里就不展示了</p>
@@ -446,7 +446,7 @@
 <p>你可以直接使用<code>ttk.Button()</code>，也可以用这种形式<code>tk.ttk.Button()</code></p>
 <p>效果图：</p>
 <p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111231631394.png" srcset="/img/loading.gif" lazyload alt="image-20211123163108235"></p>
-<p>可以看到，明显ttk的按钮更加美观。但是注意一点，<code>ttk</code>和<code>tkinter</code>还是有一些区别的。如 <code>tkinter</code> 中的<code>fg,bg</code>属性在<code>ttk</code>中并不被支持，<code>ttk</code>是通过<code>style</code>这个对象来实现的，后面再说。</p>
+<p>可以看到，明显ttk的按钮更加美观。但是注意一点，ttk和tkinter还是有一些区别的。如tkinter中的<code>fg,bg</code>属性在ttk中并不被支持，ttk是通过<code>style</code>这个对象来实现的，后面再说。</p>
 
             </div>
             <hr>
