@@ -32,8 +32,12 @@
 <meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202112071740829.png">
 <meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202112071751534.png">
 <meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202112071758634.png">
+<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202112072117671.png">
+<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202112072120454.png">
+<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202112072132036.png">
+<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202112072134132.png">
 <meta property="article:published_time" content="2021-12-07T08:50:57.000Z">
-<meta property="article:modified_time" content="2021-12-07T10:01:53.226Z">
+<meta property="article:modified_time" content="2021-12-07T13:35:27.094Z">
 <meta property="article:author" content="不想起名">
 <meta property="article:tag" content="计算机网络实验">
 <meta property="article:tag" content="微信公众号">
@@ -208,7 +212,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.9k 字
+      2.9k 字
     </span>
   
 
@@ -217,7 +221,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6 分钟
+      9 分钟
     </span>
   
 
@@ -293,9 +297,23 @@
 <p>然后安装werobot库</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pip3 install werobot<br></code></pre></td></tr></table></figure>
 
-<p>在Xshell中定位到wx文件夹，在80端口运行main.py</p>
+<p>在Xshell中定位到wx文件夹，使用下列命令在80端口运行main.py</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo python3 main.py 80<br></code></pre></td></tr></table></figure>
 
+<p>运行之后终端会出现：<code>http://0.0.0.0:80/</code>就证明成功了，然后向公众号随便发一条测试消息，目前还不会做出反应，但是终端会接收到你向服务器POST一个请求</p>
+<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202112072117671.png" srcset="/img/loading.gif" lazyload alt="公众号测试"></p>
+<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202112072120454.png" srcset="/img/loading.gif" lazyload alt="服务器应答"></p>
+<h1 id="自定义回复"><a href="#自定义回复" class="headerlink" title="自定义回复"></a>自定义回复</h1><p>在服务器端运行webserver.py，代码如下：文本信息回复代码在第7行到第10行，功能是将用户发送到公众号的消息发送给原用户，图片信息回复在第12行到第15行，功能是将用户发送到公众号的图片链接发送给原用户</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># coding=UTF-8</span><br><span class="hljs-comment">#webserver.py基于werobot开发框架的自定义回复功能</span><br><span class="hljs-keyword">import</span> werobot<br><br>robot = werobot.WeRoBot(token=<span class="hljs-string">&#x27;a1b2c3d4&#x27;</span>)<span class="hljs-comment">#这里需要替换成自己设置的Token,和handle.py文件中以及配置服务器的Token一致</span><br><br><span class="hljs-comment"># @robot.text 修饰的 Handler 只处理文本消息</span><br><span class="hljs-meta">@robot.text</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">echo</span>(<span class="hljs-params">message</span>):</span><br>    <span class="hljs-keyword">return</span> message.content<br><br><span class="hljs-comment"># @robot.image 修饰的 Handler 只处理图片消息</span><br><span class="hljs-meta">@robot.image</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">img</span>(<span class="hljs-params">message</span>):</span><br>    <span class="hljs-keyword">return</span> message.img<br><br><span class="hljs-meta">@robot.text</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">first</span>(<span class="hljs-params">message, session</span>):</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;first&#x27;</span> <span class="hljs-keyword">in</span> session:<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;你之前给我发过消息&#x27;</span><br>    session[<span class="hljs-string">&#x27;first&#x27;</span>] = <span class="hljs-literal">True</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;你之前没给我发过消息&#x27;</span><br><br><span class="hljs-comment"># 让服务器监听在 0.0.0.0:80</span><br>robot.config[<span class="hljs-string">&#x27;HOST&#x27;</span>] = <span class="hljs-string">&#x27;0.0.0.0&#x27;</span><br>robot.config[<span class="hljs-string">&#x27;PORT&#x27;</span>] = <span class="hljs-number">80</span><br>robot.run()<br></code></pre></td></tr></table></figure>
+
+<p>云服务器运行webserver.py</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo python3 webserver.py<br></code></pre></td></tr></table></figure>
+
+<p>然后向公众号发各种消息测试，服务器会监听到你的POST请求，并且会返回你的消息，如下两图</p>
+<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202112072132036.png" srcset="/img/loading.gif" lazyload alt="POST请求"></p>
+<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202112072134132.png" srcset="/img/loading.gif" lazyload alt="公众号回复"></p>
+<p>至此，公众号自动回复就完成了。</p>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>token一定要填写对，分别在handle.py和webserver.py中，一定要填写正确。</p>
 
             </div>
             <hr>
