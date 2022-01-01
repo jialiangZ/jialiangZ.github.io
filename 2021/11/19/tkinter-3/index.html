@@ -13,10 +13,10 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="编程记录成长点滴，有Python、前端、各种小知识">
   <meta name="author" content="不想起名">
   <meta name="keywords" content="编程">
-  <meta name="description" content="tk组件——按钮 按钮是非常重要的组件，可以响应点击事件来完成一些执行逻辑，按钮英文是“button”，它随处可见 tkinter中有一个专门的类Button负责它 ttk中的按钮和tkinter不一样  用法增加一个button，方法如下： 1B &#x3D; Button ( master, option, ... )  源代码中Button类及其参数： 123456789101112131415161">
+  
+    <meta name="description" content="tk组件——按钮 按钮是非常重要的组件，可以响应点击事件来完成一些执行逻辑，按钮英文是“button”，它随处可见 tkinter中有一个专门的类Button负责它 ttk中的按钮和tkinter不一样  用法增加一个button，方法如下： 1B &#x3D; Button ( master, option, ... )  源代码中Button类及其参数： 123456789101112131415161">
 <meta property="og:type" content="article">
 <meta property="og:title" content="三、tk组件——按钮">
 <meta property="og:url" content="http://www.gandz.top/2021/11/19/tkinter-3/index.html">
@@ -34,6 +34,7 @@
 <meta property="article:tag" content="GUI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111191612509.png">
+  
   
   <title>三、tk组件——按钮 - G-and-Z</title>
 
@@ -72,11 +73,11 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"www.gandz.top","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"m9Ckfw3lHgvWXKDzg3QrPPhW-gzGzoHsz","app_key":"hla1F0zLkSBfgfneXxzFV2Sk","server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"www.gandz.top","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"m9Ckfw3lHgvWXKDzg3QrPPhW-gzGzoHsz","app_key":"hla1F0zLkSBfgfneXxzFV2Sk","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 6.0.0"></head>
 
 
 <body>
@@ -211,7 +212,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      26 分钟
+      27 分钟
     </span>
   
 
@@ -257,7 +258,7 @@
 <li>ttk中的按钮和tkinter不一样</li>
 </ol>
 <h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><p>增加一个<code>button</code>，方法如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">B = Button ( master, option, ... )<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs python">B = Button ( master, option, ... )<br></code></pre></td></tr></table></figure>
 
 <p>源代码中Button类及其参数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Button</span>(<span class="hljs-params">Widget</span>):</span><br>    <span class="hljs-string">&quot;&quot;&quot;Button widget.&quot;&quot;&quot;</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, master=<span class="hljs-literal">None</span>, cnf=&#123;&#125;, **kw</span>):</span><br>        <span class="hljs-string">&quot;&quot;&quot;Construct a button widget with the parent MASTER.</span><br><span class="hljs-string"></span><br><span class="hljs-string">        STANDARD OPTIONS</span><br><span class="hljs-string"></span><br><span class="hljs-string">            activebackground, activeforeground, anchor,</span><br><span class="hljs-string">            background, bitmap, borderwidth, cursor,</span><br><span class="hljs-string">            disabledforeground, font, foreground</span><br><span class="hljs-string">            highlightbackground, highlightcolor,</span><br><span class="hljs-string">            highlightthickness, image, justify,</span><br><span class="hljs-string">            padx, pady, relief, repeatdelay,</span><br><span class="hljs-string">            repeatinterval, takefocus, text,</span><br><span class="hljs-string">            textvariable, underline, wraplength</span><br><span class="hljs-string"></span><br><span class="hljs-string">        WIDGET-SPECIFIC OPTIONS</span><br><span class="hljs-string"></span><br><span class="hljs-string">            command, compound, default, height,</span><br><span class="hljs-string">            overrelief, state, width</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        Widget.__init__(self, master, <span class="hljs-string">&#x27;button&#x27;</span>, cnf, kw)<br></code></pre></td></tr></table></figure>
@@ -699,7 +700,7 @@
       var typing = Fluid.plugins.typing;
       var title = document.getElementById('subtitle').title;
       
-      typing(title)
+        typing(title);
       
     })(window, document);
   </script>

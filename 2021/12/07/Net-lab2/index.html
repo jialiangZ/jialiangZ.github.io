@@ -13,10 +13,10 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="编程记录成长点滴，有Python、前端、各种小知识">
   <meta name="author" content="不想起名">
   <meta name="keywords" content="编程">
-  <meta name="description" content="准备首先去微信公众平台 (qq.com)注册一个订阅号    第一步的准备工作就完成了 公众号的相关配置修改名称在你登陆之后，会提示你修改你的公众号名称，一定要修改，不然三天之后就自动注销。其实在注册的时候就新建过一个，这里随意修改一个喜欢的  绑定开发者账号在左侧设置与开发-&gt;基本配置，成为开发者  然后点击设置与开发-&gt;开发者工具-&gt;web开发者工具-&gt;绑定开发者微信号">
+  
+    <meta name="description" content="准备首先去微信公众平台 (qq.com)注册一个订阅号    第一步的准备工作就完成了 公众号的相关配置修改名称在你登陆之后，会提示你修改你的公众号名称，一定要修改，不然三天之后就自动注销。其实在注册的时候就新建过一个，这里随意修改一个喜欢的  绑定开发者账号在左侧设置与开发-&gt;基本配置，成为开发者  然后点击设置与开发-&gt;开发者工具-&gt;web开发者工具-&gt;绑定开发者微信号">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二、微信公众号实现自动回复和天气查询">
 <meta property="og:url" content="http://www.gandz.top/2021/12/07/Net-lab2/index.html">
@@ -41,10 +41,11 @@
 <meta property="article:modified_time" content="2021-12-20T12:38:58.389Z">
 <meta property="article:author" content="不想起名">
 <meta property="article:tag" content="计算机网络实验">
-<meta property="article:tag" content="服务器">
 <meta property="article:tag" content="微信公众号">
+<meta property="article:tag" content="服务器">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202112071715919.png">
+  
   
   <title>二、微信公众号实现自动回复和天气查询 - G-and-Z</title>
 
@@ -83,11 +84,11 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"www.gandz.top","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"m9Ckfw3lHgvWXKDzg3QrPPhW-gzGzoHsz","app_key":"hla1F0zLkSBfgfneXxzFV2Sk","server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"www.gandz.top","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"m9Ckfw3lHgvWXKDzg3QrPPhW-gzGzoHsz","app_key":"hla1F0zLkSBfgfneXxzFV2Sk","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 6.0.0"></head>
 
 
 <body>
@@ -222,7 +223,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      14 分钟
+      15 分钟
     </span>
   
 
@@ -285,7 +286,7 @@
 <h1 id="配置云服务器"><a href="#配置云服务器" class="headerlink" title="配置云服务器"></a>配置云服务器</h1><p>使用Xshell7连接上你的云服务器，查看是否安装了python3，输入命令<code>python3 --version</code>查看当前python版本（若没出现版本号可将命令中的3删除再试，这里推荐使用python3），若有python3，则出现：</p>
 <p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202112071751534.png" srcset="/img/loading.gif" lazyload alt="python版本"></p>
 <p>没有的话安装即可，然后使用pip安装web库</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">使用python3</span><br>pip3 install web.py<br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">使用python3</span><br>pip3 install web.py<br></code></pre></td></tr></table></figure>
 
 <p>然后新建main.py文件，填入以下代码，main.py负责监听80端口返回给前端信息</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># coding=UTF-8</span><br><span class="hljs-keyword">import</span> web<br><span class="hljs-keyword">from</span> handle <span class="hljs-keyword">import</span> Handle<br><br>urls = (<br>    <span class="hljs-string">&#x27;/wx&#x27;</span>, <span class="hljs-string">&#x27;Handle&#x27;</span>,<br>)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    app = web.application(urls, <span class="hljs-built_in">globals</span>())<br>    app.run()<br></code></pre></td></tr></table></figure>
@@ -342,9 +343,9 @@
                     
                       <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C/">计算机网络实验</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
-                    
                       <a class="hover-with-bg" href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/">微信公众号</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
                     
                   </div>
                 
@@ -360,6 +361,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2021/12/20/Net-lab3/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">二、使用wireshark进行TCP抓包分析</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
@@ -569,7 +576,7 @@
       var typing = Fluid.plugins.typing;
       var title = document.getElementById('subtitle').title;
       
-      typing(title)
+        typing(title);
       
     })(window, document);
   </script>

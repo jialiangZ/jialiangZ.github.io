@@ -13,10 +13,10 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="编程记录成长点滴，有Python、前端、各种小知识">
   <meta name="author" content="不想起名">
   <meta name="keywords" content="编程">
-  <meta name="description" content="tkinter简介 提到 tkinter，不得不提一下 GUI，GUI 即 graphical user interface，即图形界面用户接口，是相对于我们学习绝大多数编程语所接触到的“控制台”的那个黑乎乎的命令行所区分的编程模式。 tkinter是tk的Python接口，而tk原本是Tcl的GUI库，后来实现了其Python接口，而且被官方采用。  tkinter优缺点优点：  相对于wxPy">
+  
+    <meta name="description" content="tkinter简介 提到 tkinter，不得不提一下 GUI，GUI 即 graphical user interface，即图形界面用户接口，是相对于我们学习绝大多数编程语所接触到的“控制台”的那个黑乎乎的命令行所区分的编程模式。 tkinter是tk的Python接口，而tk原本是Tcl的GUI库，后来实现了其Python接口，而且被官方采用。  tkinter优缺点优点：  相对于wxPy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一、Python的GUI编程——tkinter入门">
 <meta property="og:url" content="http://www.gandz.top/2021/11/18/tkinter-1/index.html">
@@ -34,6 +34,7 @@
 <meta property="article:tag" content="GUI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111182224550.png">
+  
   
   <title>一、Python的GUI编程——tkinter入门 - G-and-Z</title>
 
@@ -72,11 +73,11 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"www.gandz.top","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"m9Ckfw3lHgvWXKDzg3QrPPhW-gzGzoHsz","app_key":"hla1F0zLkSBfgfneXxzFV2Sk","server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"www.gandz.top","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"m9Ckfw3lHgvWXKDzg3QrPPhW-gzGzoHsz","app_key":"hla1F0zLkSBfgfneXxzFV2Sk","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 6.0.0"></head>
 
 
 <body>
@@ -272,7 +273,7 @@
 <p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111182224550.png" srcset="/img/loading.gif" lazyload alt="tkinter所在"></p>
 <p>打开这个目录下的init.py文件可以查看tkinter的具体函数实现</p>
 <p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111182227304.png" srcset="/img/loading.gif" lazyload alt="一些tk函数"></p>
-<h1 id="第一个tkinter程序"><a href="#第一个tkinter程序" class="headerlink" title="第一个tkinter程序"></a>第一个tkinter程序</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> tkinter <span class="hljs-keyword">as</span> tk  <span class="hljs-comment"># 引入了该模块</span><br><br>root = tk.Tk()  <span class="hljs-comment"># 实例化Tk这个类</span><br>root.wm_title(<span class="hljs-string">&quot;OCR&quot;</span>)  <span class="hljs-comment"># 设置窗口标题</span><br>root.mainloop()  <span class="hljs-comment"># 让窗口一直执行，事件循环</span><br></code></pre></td></tr></table></figure>
+<h1 id="第一个tkinter程序"><a href="#第一个tkinter程序" class="headerlink" title="第一个tkinter程序"></a>第一个tkinter程序</h1><figure class="highlight python"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> tkinter <span class="hljs-keyword">as</span> tk  <span class="hljs-comment"># 引入了该模块</span><br><br>root = tk.Tk()  <span class="hljs-comment"># 实例化Tk这个类</span><br>root.wm_title(<span class="hljs-string">&quot;OCR&quot;</span>)  <span class="hljs-comment"># 设置窗口标题</span><br>root.mainloop()  <span class="hljs-comment"># 让窗口一直执行，事件循环</span><br></code></pre></td></tr></table></figure>
 
 <p>执行效果如下：</p>
 <p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202111182232004.png" srcset="/img/loading.gif" lazyload alt="之前的代码运行"></p>
@@ -529,7 +530,7 @@
       var typing = Fluid.plugins.typing;
       var title = document.getElementById('subtitle').title;
       
-      typing(title)
+        typing(title);
       
     })(window, document);
   </script>
