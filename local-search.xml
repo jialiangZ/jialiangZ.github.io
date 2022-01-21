@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>Centos7使用visudo修改用户权限为root</title>
+    <link href="/2022/01/21/visudo/"/>
+    <url>/2022/01/21/visudo/</url>
+    
+    <content type="html"><![CDATA[<h1 id="当在Centos7中使用非root用户执行sudo命令"><a href="#当在Centos7中使用非root用户执行sudo命令" class="headerlink" title="当在Centos7中使用非root用户执行sudo命令"></a>当在Centos7中使用非root用户执行sudo命令</h1><p>会出现如下提示：</p><figure class="highlight shell"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs shell">不在 sudoers 文件中。此事将被报告<br></code></pre></td></tr></table></figure><p><code>sudo</code>命令的含义是：使用<code>sudo</code>命令的账号，将拥有root账户的权限来执行某项命令或者程序。但是<strong>不是所有的账号</strong>都可以使用<code>sudo</code>命令的。</p><p>对此debian系统采用了一个办法，利用一个专门的文件来管理某些账号是否能使用<code>sudo</code>命令。</p><p>显然，这个文件只有root账号才能修改和管理的。</p><p>这个sudoer文件目录是<code>/etc/sudoers</code>,你当然可以使用vim修改权限，但其实Centos自带命令<code>visudo</code>，意思就是调用vim来修改<code>/etc/sudoers</code>文件，从而达到增加账号权限的目的。</p><p>相比之下，这个命令应该会做些保护和隔离，所以更加安全。</p><p>现在我们使用<code>su</code>命令，切换到root账号</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">su root<br></code></pre></td></tr></table></figure><p>然后再调用<code>visudo</code>命令来添加账号。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">visudo<br></code></pre></td></tr></table></figure><p>在<code>visudo</code>命令调出的vim编辑窗口中，找到如下行：</p><p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201211216937.png" alt="找到"></p><p>在下面添加你自己的账号权限，例如上图中所示</p><p>保存退回到你自己的账号，重新尝试<code>sudo</code>吧！</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>ASC2022</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Centos7</tag>
+      
+      <tag>ASC2022</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Centos7安装deepMD-kit并运行example</title>
     <link href="/2022/01/20/deepMD-kit/"/>
     <url>/2022/01/20/deepMD-kit/</url>
@@ -24,9 +51,9 @@
       
       <tag>ASC2022</tag>
       
-      <tag>task4</tag>
-      
       <tag>deepMD-kit</tag>
+      
+      <tag>task4</tag>
       
     </tags>
     
@@ -82,13 +109,13 @@
     
     <tags>
       
-      <tag>anaconda3</tag>
-      
       <tag>Centos7</tag>
       
       <tag>ASC2022</tag>
       
       <tag>task4</tag>
+      
+      <tag>anaconda3</tag>
       
     </tags>
     

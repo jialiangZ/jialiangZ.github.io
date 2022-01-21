@@ -16,35 +16,24 @@
   <meta name="author" content="不想起名">
   <meta name="keywords" content="编程">
   
-    <meta name="description" content="前提首先确保已经在Centos7中安装了anaconda和pycharm，分类 - ASC2022 - G-and-Z (gandz.top)里面有这两个东西的安装教程。 官网教程create an environment that contains the CPU version of DeePMD-kit and LAMMPS: 1conda create -n deepmd deepmd-k">
+    <meta name="description" content="当在Centos7中使用非root用户执行sudo命令会出现如下提示： 1不在 sudoers 文件中。此事将被报告  sudo命令的含义是：使用sudo命令的账号，将拥有root账户的权限来执行某项命令或者程序。但是不是所有的账号都可以使用sudo命令的。 对此debian系统采用了一个办法，利用一个专门的文件来管理某些账号是否能使用sudo命令。 显然，这个文件只有root账号才能修改和管理的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Centos7安装deepMD-kit并运行example">
-<meta property="og:url" content="http://www.gandz.top/2022/01/20/deepMD-kit/index.html">
+<meta property="og:title" content="Centos7使用visudo修改用户权限为root">
+<meta property="og:url" content="http://www.gandz.top/2022/01/21/visudo/index.html">
 <meta property="og:site_name" content="G-and-Z">
-<meta property="og:description" content="前提首先确保已经在Centos7中安装了anaconda和pycharm，分类 - ASC2022 - G-and-Z (gandz.top)里面有这两个东西的安装教程。 官网教程create an environment that contains the CPU version of DeePMD-kit and LAMMPS: 1conda create -n deepmd deepmd-k">
+<meta property="og:description" content="当在Centos7中使用非root用户执行sudo命令会出现如下提示： 1不在 sudoers 文件中。此事将被报告  sudo命令的含义是：使用sudo命令的账号，将拥有root账户的权限来执行某项命令或者程序。但是不是所有的账号都可以使用sudo命令的。 对此debian系统采用了一个办法，利用一个专门的文件来管理某些账号是否能使用sudo命令。 显然，这个文件只有root账号才能修改和管理的">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202126085.png">
-<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202134434.png">
-<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202136331.png">
-<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202138145.png">
-<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202139238.png">
-<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202144038.png">
-<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202142034.png">
-<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202147338.png">
-<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202149037.png">
-<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202151168.png">
-<meta property="article:published_time" content="2022-01-20T06:25:15.000Z">
-<meta property="article:modified_time" content="2022-01-20T14:00:04.756Z">
+<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201211216937.png">
+<meta property="article:published_time" content="2022-01-21T04:05:09.000Z">
+<meta property="article:modified_time" content="2022-01-21T04:18:26.087Z">
 <meta property="article:author" content="不想起名">
 <meta property="article:tag" content="Centos7">
 <meta property="article:tag" content="ASC2022">
-<meta property="article:tag" content="deepMD-kit">
-<meta property="article:tag" content="task4">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202126085.png">
+<meta name="twitter:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201211216937.png">
   
   
-  <title>Centos7安装deepMD-kit并运行example - G-and-Z</title>
+  <title>Centos7使用visudo修改用户权限为root - G-and-Z</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -190,7 +179,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Centos7安装deepMD-kit并运行example">
+            <span class="h2" id="subtitle" title="Centos7使用visudo修改用户权限为root">
               
             </span>
 
@@ -200,8 +189,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-01-20 14:25" pubdate>
-        2022年1月20日 下午
+      <time datetime="2022-01-21 12:05" pubdate>
+        2022年1月21日 中午
       </time>
     </span>
   
@@ -211,7 +200,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.1k 字
+      446 字
     </span>
   
 
@@ -220,7 +209,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4 分钟
+      2 分钟
     </span>
   
 
@@ -257,58 +246,27 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Centos7安装deepMD-kit并运行example</h1>
+            <h1 style="display: none">Centos7使用visudo修改用户权限为root</h1>
             
             <div class="markdown-body">
-              <h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><p>首先确保已经在Centos7中安装了anaconda和pycharm，<a href="http://www.gandz.top/categories/ASC2022/">分类 - ASC2022 - G-and-Z (gandz.top)</a>里面有这两个东西的安装教程。</p>
-<h1 id="官网教程"><a href="#官网教程" class="headerlink" title="官网教程"></a>官网教程</h1><p>create an environment that contains the CPU version of DeePMD-kit and LAMMPS:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs shell">conda create -n deepmd deepmd-kit=*=*cpu libdeepmd=*=*cpu lammps-dp -c https://conda.deepmodeling.org<br></code></pre></td></tr></table></figure>
+              <h1 id="当在Centos7中使用非root用户执行sudo命令"><a href="#当在Centos7中使用非root用户执行sudo命令" class="headerlink" title="当在Centos7中使用非root用户执行sudo命令"></a>当在Centos7中使用非root用户执行sudo命令</h1><p>会出现如下提示：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs shell">不在 sudoers 文件中。此事将被报告<br></code></pre></td></tr></table></figure>
 
-<p>create a GPU environment containing CUDA Toolkit:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">conda create -n deepmd deepmd-kit=*=*gpu libdeepmd=*=*gpu lammps-dp cudatoolkit=11.3 horovod -c https://conda.deepmodeling.org<br></code></pre></td></tr></table></figure>
+<p><code>sudo</code>命令的含义是：使用<code>sudo</code>命令的账号，将拥有root账户的权限来执行某项命令或者程序。但是<strong>不是所有的账号</strong>都可以使用<code>sudo</code>命令的。</p>
+<p>对此debian系统采用了一个办法，利用一个专门的文件来管理某些账号是否能使用<code>sudo</code>命令。</p>
+<p>显然，这个文件只有root账号才能修改和管理的。</p>
+<p>这个sudoer文件目录是<code>/etc/sudoers</code>,你当然可以使用vim修改权限，但其实Centos自带命令<code>visudo</code>，意思就是调用vim来修改<code>/etc/sudoers</code>文件，从而达到增加账号权限的目的。</p>
+<p>相比之下，这个命令应该会做些保护和隔离，所以更加安全。</p>
+<p>现在我们使用<code>su</code>命令，切换到root账号</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">su root<br></code></pre></td></tr></table></figure>
 
-<p>可以将<code>cudatoolkit</code>改为<code>10.1</code>版本</p>
-<p>当你能在anaconda3目录下找到这个deepmd就算安装成功了：</p>
-<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202126085.png" srcset="/img/loading.gif" lazyload alt="envs"></p>
-<p>可以使用下面的命令激活这个环境：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">conda activate deepmd<br></code></pre></td></tr></table></figure>
+<p>然后再调用<code>visudo</code>命令来添加账号。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">visudo<br></code></pre></td></tr></table></figure>
 
-<h1 id="创建一个使用上述deepmd环境的pycharm项目"><a href="#创建一个使用上述deepmd环境的pycharm项目" class="headerlink" title="创建一个使用上述deepmd环境的pycharm项目"></a>创建一个使用上述deepmd环境的pycharm项目</h1><ol>
-<li><p>打开pycharm新建项目</p>
-<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202134434.png" srcset="/img/loading.gif" lazyload alt="新建项目"></p>
-</li>
-<li><p>新建一个conda环境，记住不要选择之前配置的deepmd环境，会被覆盖掉</p>
-<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202136331.png" srcset="/img/loading.gif" lazyload alt="新建conda环境"></p>
-</li>
-<li><p>左上角打开设置</p>
-<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202138145.png" srcset="/img/loading.gif" lazyload alt="设置"></p>
-</li>
-<li><p>选择全部显示conda环境</p>
-<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202139238.png" srcset="/img/loading.gif" lazyload alt="显示所有conda环境"></p>
-</li>
-<li><p>添加之前配置好的环境</p>
-<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202144038.png" srcset="/img/loading.gif" lazyload alt="新建选择之前的环境"></p>
-</li>
-<li><p>切换过去</p>
-<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202142034.png" srcset="/img/loading.gif" lazyload alt="切换到deepmd"></p>
-</li>
-<li><p>将deepmd-kit源码导入pycharm项目中，可以下载ZIP文件再解压到前面的项目中</p>
-<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202147338.png" srcset="/img/loading.gif" lazyload alt="image-20220120214749206"></p>
-</li>
-<li><p>最后得到的目录结构是下面这样的</p>
-<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202149037.png" srcset="/img/loading.gif" lazyload alt="目录结构"></p>
-</li>
-</ol>
-<p>到这里整个deepmd-kit的安装就结束了</p>
-<h1 id="运行一下demo"><a href="#运行一下demo" class="headerlink" title="运行一下demo"></a>运行一下demo</h1><p>进入到如下图所示目录，打开input.json文件，修改numb_steps为1000，先小试以下，待会儿再改回去</p>
-<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202151168.png" srcset="/img/loading.gif" lazyload alt="demo目录"></p>
-<p>然后在终端中进入这个se_e2_a目录并运行下列命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">dp train input.json<br></code></pre></td></tr></table></figure>
-
-<p>然后就会开始按照input.json开始训练了，并且可以在lcurve.out文件中得到如下图所示的结果：</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment">#  step      rmse_val    rmse_trn    rmse_e_val  rmse_e_trn    rmse_f_val  rmse_f_trn         lr</span><br>      <span class="hljs-attribute">0</span>      <span class="hljs-number">2</span>.<span class="hljs-number">65</span>e+<span class="hljs-number">01</span>    <span class="hljs-number">2</span>.<span class="hljs-number">76</span>e+<span class="hljs-number">01</span>      <span class="hljs-number">6</span>.<span class="hljs-number">77</span>e-<span class="hljs-number">01</span>    <span class="hljs-number">6</span>.<span class="hljs-number">79</span>e-<span class="hljs-number">01</span>      <span class="hljs-number">8</span>.<span class="hljs-number">38</span>e-<span class="hljs-number">01</span>    <span class="hljs-number">8</span>.<span class="hljs-number">71</span>e-<span class="hljs-number">01</span>    <span class="hljs-number">1</span>.<span class="hljs-number">0</span>e-<span class="hljs-number">03</span><br>    <span class="hljs-attribute">100</span>      <span class="hljs-number">9</span>.<span class="hljs-number">89</span>e+<span class="hljs-number">00</span>    <span class="hljs-number">9</span>.<span class="hljs-number">23</span>e+<span class="hljs-number">00</span>      <span class="hljs-number">5</span>.<span class="hljs-number">45</span>e-<span class="hljs-number">03</span>    <span class="hljs-number">7</span>.<span class="hljs-number">82</span>e-<span class="hljs-number">04</span>      <span class="hljs-number">5</span>.<span class="hljs-number">19</span>e-<span class="hljs-number">01</span>    <span class="hljs-number">4</span>.<span class="hljs-number">85</span>e-<span class="hljs-number">01</span>    <span class="hljs-number">3</span>.<span class="hljs-number">6</span>e-<span class="hljs-number">04</span><br>    <span class="hljs-attribute">200</span>      <span class="hljs-number">4</span>.<span class="hljs-number">10</span>e+<span class="hljs-number">00</span>    <span class="hljs-number">4</span>.<span class="hljs-number">15</span>e+<span class="hljs-number">00</span>      <span class="hljs-number">9</span>.<span class="hljs-number">88</span>e-<span class="hljs-number">03</span>    <span class="hljs-number">2</span>.<span class="hljs-number">46</span>e-<span class="hljs-number">03</span>      <span class="hljs-number">3</span>.<span class="hljs-number">56</span>e-<span class="hljs-number">01</span>    <span class="hljs-number">3</span>.<span class="hljs-number">61</span>e-<span class="hljs-number">01</span>    <span class="hljs-number">1</span>.<span class="hljs-number">3</span>e-<span class="hljs-number">04</span><br></code></pre></td></tr></table></figure>
-
-<p>到这里就完全结束了。</p>
+<p>在<code>visudo</code>命令调出的vim编辑窗口中，找到如下行：</p>
+<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201211216937.png" srcset="/img/loading.gif" lazyload alt="找到"></p>
+<p>在下面添加你自己的账号权限，例如上图中所示</p>
+<p>保存退回到你自己的账号，重新尝试<code>sudo</code>吧！</p>
 
             </div>
             <hr>
@@ -330,10 +288,6 @@
                     
                       <a class="hover-with-bg" href="/tags/ASC2022/">ASC2022</a>
                     
-                      <a class="hover-with-bg" href="/tags/deepMD-kit/">deepMD-kit</a>
-                    
-                      <a class="hover-with-bg" href="/tags/task4/">task4</a>
-                    
                   </div>
                 
               </div>
@@ -349,18 +303,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/01/21/visudo/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Centos7使用visudo修改用户权限为root</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/01/20/install-pycharm-Centos/">
-                        <span class="hidden-mobile">Centos7安装pycharm</span>
+                      <a href="/2022/01/20/deepMD-kit/">
+                        <span class="hidden-mobile">Centos7安装deepMD-kit并运行example</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
