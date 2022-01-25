@@ -97,7 +97,7 @@
     <link href="/2022/01/20/anaconda/"/>
     <url>/2022/01/20/anaconda/</url>
     
-    <content type="html"><![CDATA[<h1 id="下载安装Anaconda3"><a href="#下载安装Anaconda3" class="headerlink" title="下载安装Anaconda3"></a>下载安装Anaconda3</h1><p>可以去官网，推荐在清华镜像站下载<a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/?C=M&O=D">Anaconda</a></p><p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201201214301.png" alt="选择对应的版本和系统下载"></p><p>定位到下载文件所在的文件位置，然后执行下述命令：</p><figure class="highlight shell"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs shell">bash Anaconda3-2021.11-Linux-x86_64.sh<br></code></pre></td></tr></table></figure><p>安装过程中一直回车和输入Yes就行了</p><p><strong>笔者安装的新版本直接配置好了环境变量</strong>，如果使用老版本的Anaconda则需要配置环境变量</p><p>编辑下列文件：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">vi /etc/profile<br></code></pre></td></tr></table></figure><p>在整个文件的最后一行加入：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 这里PATH后面的路径是anaconda3所在的文件目录，按照自己安装的来</span><br>export PATH=$PATH:/home/zjl/anaconda3/bin<br></code></pre></td></tr></table></figure><p>然后保存退出</p><p>使用如下命令刷新重载环境变量</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">source /etc/profile<br>echo $PATH<br></code></pre></td></tr></table></figure><p>测试是否安装好了，打开终端显示如下，并且输入python显示版本为3以上为成功</p><p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201201236552.png" alt="安装成功"></p><p>注意前面显示了(base)，说明已经在anaconda里了</p><p>输入以下命令可退出</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">conda deactivate<br></code></pre></td></tr></table></figure><p>输入以下命令可重新进入anaconda环境</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">conda activate<br></code></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="下载安装Anaconda3"><a href="#下载安装Anaconda3" class="headerlink" title="下载安装Anaconda3"></a>下载安装Anaconda3</h1><p>可以去官网，推荐在清华镜像站下载<a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/?C=M&O=D">Anaconda</a></p><p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201201214301.png" alt="选择对应的版本和系统下载"></p><p>定位到下载文件所在的文件位置，然后执行下述命令：</p><figure class="highlight shell"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs shell">bash Anaconda3-2021.11-Linux-x86_64.sh<br></code></pre></td></tr></table></figure><p>安装过程中一直回车和输入Yes就行了</p><p><strong>笔者安装的新版本直接配置好了环境变量</strong>，如果使用老版本的Anaconda则需要配置环境变量</p><p>编辑下列文件：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">vi /etc/profile<br></code></pre></td></tr></table></figure><p>在整个文件的最后一行加入：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 这里PATH后面的路径是anaconda3所在的文件目录，按照自己安装的来</span><br>export PATH=$PATH:/home/zjl(改为你的用户名)/anaconda3/bin<br></code></pre></td></tr></table></figure><p>然后保存退出</p><p>使用如下命令刷新重载环境变量</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">source /etc/profile<br>echo $PATH<br></code></pre></td></tr></table></figure><p>测试是否安装好了，打开终端显示如下，并且输入python显示版本为3以上为成功</p><p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201201236552.png" alt="安装成功"></p><p>注意前面显示了(base)，说明已经在anaconda里了</p><p>输入以下命令可退出</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">conda deactivate<br></code></pre></td></tr></table></figure><p>输入以下命令可重新进入anaconda环境</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">conda activate<br></code></pre></td></tr></table></figure>]]></content>
     
     
     <categories>
@@ -142,9 +142,9 @@
       
       <tag>计算机网络实验</tag>
       
-      <tag>服务器</tag>
-      
       <tag>微信公众号</tag>
+      
+      <tag>服务器</tag>
       
     </tags>
     
@@ -171,11 +171,11 @@
       
       <tag>计算机网络实验</tag>
       
+      <tag>服务器</tag>
+      
       <tag>Xftp7</tag>
       
       <tag>Xshell7</tag>
-      
-      <tag>服务器</tag>
       
     </tags>
     
