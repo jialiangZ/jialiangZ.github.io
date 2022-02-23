@@ -41,13 +41,13 @@
     
     <tags>
       
+      <tag>CentOS 7</tag>
+      
       <tag>ASC2022</tag>
       
       <tag>task4</tag>
       
       <tag>deepMD-kit</tag>
-      
-      <tag>CentOS 7</tag>
       
     </tags>
     
@@ -56,7 +56,7 @@
   
   
   <entry>
-    <title>Centos7使用visudo修改用户权限为root</title>
+    <title>CentOS 7使用visudo修改用户权限为root</title>
     <link href="/2022/01/21/visudo/"/>
     <url>/2022/01/21/visudo/</url>
     
@@ -72,9 +72,9 @@
     
     <tags>
       
-      <tag>ASC2022</tag>
+      <tag>CentOS 7</tag>
       
-      <tag>Centos7</tag>
+      <tag>ASC2022</tag>
       
     </tags>
     
@@ -83,7 +83,7 @@
   
   
   <entry>
-    <title>CentOS7安装deepMD-kit并运行example</title>
+    <title>CentOS 7安装deepMD-kit并运行example</title>
     <link href="/2022/01/20/deepMD-kit/"/>
     <url>/2022/01/20/deepMD-kit/</url>
     
@@ -99,7 +99,7 @@
     
     <tags>
       
-      <tag>CentOS7</tag>
+      <tag>CentOS 7</tag>
       
       <tag>ASC2022</tag>
       
@@ -130,11 +130,11 @@
     
     <tags>
       
+      <tag>CentOS 7</tag>
+      
       <tag>ASC2022</tag>
       
       <tag>task4</tag>
-      
-      <tag>CentOS 7</tag>
       
       <tag>pycharm</tag>
       
@@ -145,7 +145,7 @@
   
   
   <entry>
-    <title>CentOS7安装Anaconda3</title>
+    <title>CentOS 7安装Anaconda3</title>
     <link href="/2022/01/20/anaconda/"/>
     <url>/2022/01/20/anaconda/</url>
     
@@ -163,7 +163,7 @@
       
       <tag>anaconda3</tag>
       
-      <tag>CentOS7</tag>
+      <tag>CentOS 7</tag>
       
       <tag>ASC2022</tag>
       
