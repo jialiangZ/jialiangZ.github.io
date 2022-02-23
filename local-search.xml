@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>将CentOS 8无缝更新到CentOS Stream 8</title>
+    <link href="/2022/02/23/update-to-CentosStream8/"/>
+    <url>/2022/02/23/update-to-CentosStream8/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近上我的云服务器搞点东西，结果发现<code>yum</code>没法用了，一直提示</p><figure class="highlight shell"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs shell">mirrorlist: No URLs in mirrorlist<br></code></pre></td></tr></table></figure><p>不查不知道，一查吓一跳，原来官方已经在<code>2021/12/31</code>停止了对<code>CentOS 8</code>的支持，那我就试着更新<code>yum</code>源试试，这里使用的是阿里的<code>yum</code>镜像源</p><ol><li>将源文件备份</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /etc/yum.repos.d/ &amp;&amp; mkdir backup &amp;&amp; mv *repo backup/ <br></code></pre></td></tr></table></figure><ol start="2"><li>下载阿里源文件</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-8.repo<br></code></pre></td></tr></table></figure><ol start="3"><li>更新源里面的地址</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">sed -i -e &quot;s|mirrors.cloud.aliyuncs.com|mirrors.aliyun.com|g &quot; /etc/yum.repos.d/CentOS-*<br><br><br><br>sed -i -e &quot;s|releasever|releasever-stream|g&quot; /etc/yum.repos.d/CentOS-*<br></code></pre></td></tr></table></figure><ol start="4"><li>生成缓存</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum clean all &amp;&amp; yum makecache<br></code></pre></td></tr></table></figure><p>到这里就能切换完成了，但是很不凑巧，当我执行<code>yum check-update</code>和<code>yum update</code>之后出现报错，并有下列提示</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">(try to add &#x27;--allowerasing&#x27; to command line to replace conflicting packages or &#x27;--skip-broken&#x27; to skip uninstallable packages or &#x27;--nobest&#x27; to use not only best candidate packages)<br></code></pre></td></tr></table></figure><p>总之老子再也不想用<code>CentOS 8</code>了，赶紧切换到<code>CentOS Stream</code></p><h1 id="从CentOS-8平滑升级至CentOS-Stream"><a href="#从CentOS-8平滑升级至CentOS-Stream" class="headerlink" title="从CentOS 8平滑升级至CentOS Stream"></a>从<code>CentOS 8</code>平滑升级至<code>CentOS Stream</code></h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 老方法 dnf install centos-release-stream 不再推荐使用</span><br>dnf swap centos-linux-repos centos-stream-repos<br>dnf distro-sync<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 查看当前版本</span><br>cat /etc/centos-release<br>CentOS Stream release 8<br></code></pre></td></tr></table></figure><p>建议更新后重启一下。</p><p><code>CentOS Stream</code>迁移后还原回<code>CentOS 8</code>：</p><p><a href="https://forums.rockylinux.org/t/centos-8-centos-stream-rocky-linux/2343/5">https://forums.rockylinux.org/t/centos-8-centos-stream-rocky-linux/2343/5</a></p><p><a href="https://unix.stackexchange.com/questions/624494/how-to-switch-to-centos-8-from-centos-stream">https://unix.stackexchange.com/questions/624494/how-to-switch-to-centos-8-from-centos-stream</a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+      <tag>CentOS Stream 8</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>在8张V100上安装测试deepmd-kit的GPU版本</title>
     <link href="/2022/02/11/deepmd-gpu/"/>
     <url>/2022/02/11/deepmd-gpu/</url>
@@ -20,13 +41,13 @@
     
     <tags>
       
-      <tag>Centos7</tag>
-      
       <tag>ASC2022</tag>
+      
+      <tag>task4</tag>
       
       <tag>deepMD-kit</tag>
       
-      <tag>task4</tag>
+      <tag>CentOS 7</tag>
       
     </tags>
     
@@ -51,9 +72,9 @@
     
     <tags>
       
-      <tag>Centos7</tag>
-      
       <tag>ASC2022</tag>
+      
+      <tag>Centos7</tag>
       
     </tags>
     
@@ -62,7 +83,7 @@
   
   
   <entry>
-    <title>Centos7安装deepMD-kit并运行example</title>
+    <title>CentOS7安装deepMD-kit并运行example</title>
     <link href="/2022/01/20/deepMD-kit/"/>
     <url>/2022/01/20/deepMD-kit/</url>
     
@@ -78,13 +99,13 @@
     
     <tags>
       
-      <tag>Centos7</tag>
+      <tag>CentOS7</tag>
       
       <tag>ASC2022</tag>
       
-      <tag>deepMD-kit</tag>
-      
       <tag>task4</tag>
+      
+      <tag>deepMD-kit</tag>
       
     </tags>
     
@@ -93,7 +114,7 @@
   
   
   <entry>
-    <title>Centos7安装pycharm</title>
+    <title>CentOS 7安装pycharm</title>
     <link href="/2022/01/20/install-pycharm-Centos/"/>
     <url>/2022/01/20/install-pycharm-Centos/</url>
     
@@ -109,11 +130,11 @@
     
     <tags>
       
-      <tag>Centos7</tag>
-      
       <tag>ASC2022</tag>
       
       <tag>task4</tag>
+      
+      <tag>CentOS 7</tag>
       
       <tag>pycharm</tag>
       
@@ -124,7 +145,7 @@
   
   
   <entry>
-    <title>Centos7安装Anaconda3</title>
+    <title>CentOS7安装Anaconda3</title>
     <link href="/2022/01/20/anaconda/"/>
     <url>/2022/01/20/anaconda/</url>
     
@@ -140,13 +161,13 @@
     
     <tags>
       
-      <tag>Centos7</tag>
+      <tag>anaconda3</tag>
+      
+      <tag>CentOS7</tag>
       
       <tag>ASC2022</tag>
       
       <tag>task4</tag>
-      
-      <tag>anaconda3</tag>
       
     </tags>
     
