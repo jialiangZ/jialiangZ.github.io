@@ -16,22 +16,23 @@
   <meta name="author" content="不想起名">
   <meta name="keywords" content="编程">
   
-    <meta name="description" content="前言最近上我的云服务器搞点东西，结果发现yum没法用了，一直提示 1mirrorlist: No URLs in mirrorlist  不查不知道，一查吓一跳，原来官方已经在2021&#x2F;12&#x2F;31停止了对CentOS 8的支持，那我就试着更新yum源试试，这里使用的是阿里的yum镜像源  将源文件备份  1cd &#x2F;etc&#x2F;yum.repos.d&#x2F; &amp;&amp; mkdir backup &amp;">
+    <meta name="description" content="前言备案的时候我提交的域名是http:&#x2F;&#x2F;gandz.top，所以想将这个域名重定向到这个地方http:&#x2F;&#x2F;www.gandz.top，也就意味着每次访问http:&#x2F;&#x2F;gandz.top都会跳到http:&#x2F;&#x2F;www.gandz.top，方便网站数据不会被搜索引擎重复记录两次。查到Nginx可以设置301重定向跳转。 具体操作找到Nginx.conf文件并修改： 1vim &#x2F;etc&#x2F;nginx&#x2F;ng">
 <meta property="og:type" content="article">
-<meta property="og:title" content="将CentOS 8无缝更新到CentOS Stream 8">
-<meta property="og:url" content="http://www.gandz.top/2022/02/23/update-to-CentosStream8/index.html">
+<meta property="og:title" content="CentOS Stream 8配置Nginx301重定向">
+<meta property="og:url" content="http://www.gandz.top/2022/03/01/nginx-301/index.html">
 <meta property="og:site_name" content="G-and-Z">
-<meta property="og:description" content="前言最近上我的云服务器搞点东西，结果发现yum没法用了，一直提示 1mirrorlist: No URLs in mirrorlist  不查不知道，一查吓一跳，原来官方已经在2021&#x2F;12&#x2F;31停止了对CentOS 8的支持，那我就试着更新yum源试试，这里使用的是阿里的yum镜像源  将源文件备份  1cd &#x2F;etc&#x2F;yum.repos.d&#x2F; &amp;&amp; mkdir backup &amp;">
+<meta property="og:description" content="前言备案的时候我提交的域名是http:&#x2F;&#x2F;gandz.top，所以想将这个域名重定向到这个地方http:&#x2F;&#x2F;www.gandz.top，也就意味着每次访问http:&#x2F;&#x2F;gandz.top都会跳到http:&#x2F;&#x2F;www.gandz.top，方便网站数据不会被搜索引擎重复记录两次。查到Nginx可以设置301重定向跳转。 具体操作找到Nginx.conf文件并修改： 1vim &#x2F;etc&#x2F;nginx&#x2F;ng">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-02-23T06:22:25.000Z">
-<meta property="article:modified_time" content="2022-02-23T06:42:11.985Z">
+<meta property="article:published_time" content="2022-03-01T11:45:42.000Z">
+<meta property="article:modified_time" content="2022-03-01T13:29:32.132Z">
 <meta property="article:author" content="不想起名">
 <meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Nginx">
 <meta property="article:tag" content="CentOS Stream 8">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>将CentOS 8无缝更新到CentOS Stream 8 - G-and-Z</title>
+  <title>CentOS Stream 8配置Nginx301重定向 - G-and-Z</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -177,7 +178,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="将CentOS 8无缝更新到CentOS Stream 8">
+            <span class="h2" id="subtitle" title="CentOS Stream 8配置Nginx301重定向">
               
             </span>
 
@@ -187,8 +188,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-02-23 14:22" pubdate>
-        2022年2月23日 下午
+      <time datetime="2022-03-01 19:45" pubdate>
+        2022年3月1日 晚上
       </time>
     </span>
   
@@ -198,7 +199,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.2k 字
+      847 字
     </span>
   
 
@@ -207,7 +208,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4 分钟
+      3 分钟
     </span>
   
 
@@ -244,43 +245,17 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">将CentOS 8无缝更新到CentOS Stream 8</h1>
+            <h1 style="display: none">CentOS Stream 8配置Nginx301重定向</h1>
             
             <div class="markdown-body">
-              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近上我的云服务器搞点东西，结果发现<code>yum</code>没法用了，一直提示</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs shell">mirrorlist: No URLs in mirrorlist<br></code></pre></td></tr></table></figure>
+              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>备案的时候我提交的域名是<a target="_blank" rel="noopener" href="http://gandz.top,所以想将这个域名重定向到这个地方http//www.gandz.top%EF%BC%8C%E4%B9%9F%E5%B0%B1%E6%84%8F%E5%91%B3%E7%9D%80%E6%AF%8F%E6%AC%A1%E8%AE%BF%E9%97%AEhttp://gandz.top%E9%83%BD%E4%BC%9A%E8%B7%B3%E5%88%B0http://www.gandz.top%EF%BC%8C%E6%96%B9%E4%BE%BF%E7%BD%91%E7%AB%99%E6%95%B0%E6%8D%AE%E4%B8%8D%E4%BC%9A%E8%A2%AB%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E9%87%8D%E5%A4%8D%E8%AE%B0%E5%BD%95%E4%B8%A4%E6%AC%A1%E3%80%82%E6%9F%A5%E5%88%B0Nginx%E5%8F%AF%E4%BB%A5%E8%AE%BE%E7%BD%AE301%E9%87%8D%E5%AE%9A%E5%90%91%E8%B7%B3%E8%BD%AC%E3%80%82">http://gandz.top，所以想将这个域名重定向到这个地方http://www.gandz.top，也就意味着每次访问http://gandz.top都会跳到http://www.gandz.top，方便网站数据不会被搜索引擎重复记录两次。查到Nginx可以设置301重定向跳转。</a></p>
+<h1 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h1><p>找到<code>Nginx.conf</code>文件并修改：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs shell">vim /etc/nginx/nginx.conf<br></code></pre></td></tr></table></figure>
 
-<p>不查不知道，一查吓一跳，原来官方已经在<code>2021/12/31</code>停止了对<code>CentOS 8</code>的支持，那我就试着更新<code>yum</code>源试试，这里使用的是阿里的<code>yum</code>镜像源</p>
-<ol>
-<li>将源文件备份</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /etc/yum.repos.d/ &amp;&amp; mkdir backup &amp;&amp; mv *repo backup/ <br></code></pre></td></tr></table></figure>
+<p>找到文件中的<code>server</code>部分并按照提示修改：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">server</span> &#123;<br>        <span class="hljs-attribute">listen</span>       <span class="hljs-number">80</span> default_server;<br>        <span class="hljs-attribute">listen</span>       [::]:<span class="hljs-number">80</span> default_server;<br>    <br>    <br>    <br>    <br>    	<span class="hljs-comment">#修改下面的部分</span><br>        <span class="hljs-attribute">server_name</span>  www.gandz.top gandz.top;<span class="hljs-comment"># 这里写你的域名</span><br>        <span class="hljs-attribute">if</span> ( $host != <span class="hljs-string">&#x27;www.gandz.top&#x27;</span> ) &#123;<span class="hljs-comment"># 这里一定记得在()里面的内容间留空格，nginx格式要求比较严格</span><br>                <span class="hljs-attribute">return</span> <span class="hljs-number">301</span> http://www.gandz.top;<span class="hljs-comment"># return效率比rewrite效率高一些</span><br>        &#125;<br>    	<span class="hljs-comment">##############</span><br>    <br>    <br>        <span class="hljs-attribute">root</span>         /example/example;<br><br>        <span class="hljs-comment"># Load configuration files for the default server block.</span><br>        <span class="hljs-attribute">include</span> /etc/nginx/default.d/<span class="hljs-regexp">*.conf</span>;<br><br>        <span class="hljs-attribute">location</span> / &#123;<br>        &#125;<br><br>        <span class="hljs-attribute">error_page</span> <span class="hljs-number">404</span> /<span class="hljs-number">404</span>.html;<br>            <span class="hljs-attribute">location</span> = /40x.html &#123;<br>        &#125;<br><br>        <span class="hljs-attribute">error_page</span> <span class="hljs-number">500</span> <span class="hljs-number">502</span> <span class="hljs-number">503</span> <span class="hljs-number">504</span> /50x.html;<br>            <span class="hljs-attribute">location</span> = /50x.html &#123;<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
 
-<ol start="2">
-<li>下载阿里源文件</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-8.repo<br></code></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>更新源里面的地址</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">sed -i -e &quot;s|mirrors.cloud.aliyuncs.com|mirrors.aliyun.com|g &quot; /etc/yum.repos.d/CentOS-*<br><br><br><br>sed -i -e &quot;s|releasever|releasever-stream|g&quot; /etc/yum.repos.d/CentOS-*<br></code></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>生成缓存</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum clean all &amp;&amp; yum makecache<br></code></pre></td></tr></table></figure>
-
-<p>到这里就能切换完成了，但是很不凑巧，当我执行<code>yum check-update</code>和<code>yum update</code>之后出现报错，并有下列提示</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">(try to add &#x27;--allowerasing&#x27; to command line to replace conflicting packages or &#x27;--skip-broken&#x27; to skip uninstallable packages or &#x27;--nobest&#x27; to use not only best candidate packages)<br></code></pre></td></tr></table></figure>
-
-<p>总之老子再也不想用<code>CentOS 8</code>了，赶紧切换到<code>CentOS Stream</code></p>
-<h1 id="从CentOS-8平滑升级至CentOS-Stream"><a href="#从CentOS-8平滑升级至CentOS-Stream" class="headerlink" title="从CentOS 8平滑升级至CentOS Stream"></a>从<code>CentOS 8</code>平滑升级至<code>CentOS Stream</code></h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 老方法 dnf install centos-release-stream 不再推荐使用</span><br>dnf swap centos-linux-repos centos-stream-repos<br>dnf distro-sync<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 查看当前版本</span><br>cat /etc/centos-release<br>CentOS Stream release 8<br></code></pre></td></tr></table></figure>
-
-<p>建议更新后重启一下。</p>
-<p><code>CentOS Stream</code>迁移后还原回<code>CentOS 8</code>：</p>
-<p><a target="_blank" rel="noopener" href="https://forums.rockylinux.org/t/centos-8-centos-stream-rocky-linux/2343/5">https://forums.rockylinux.org/t/centos-8-centos-stream-rocky-linux/2343/5</a></p>
-<p><a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/624494/how-to-switch-to-centos-8-from-centos-stream">https://unix.stackexchange.com/questions/624494/how-to-switch-to-centos-8-from-centos-stream</a></p>
+<p>修改完成保存退出即可，这时候再访问<a target="_blank" rel="noopener" href="http://gandz.top就会重定向到http//www.gandz.top%E4%BA%86%E3%80%82">http://gandz.top就会重定向到http://www.gandz.top了。</a></p>
 
             </div>
             <hr>
@@ -292,6 +267,8 @@
                     <i class="iconfont icon-tags"></i>
                     
                       <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Nginx/">Nginx</a>
                     
                       <a class="hover-with-bg" href="/tags/CentOS-Stream-8/">CentOS Stream 8</a>
                     
@@ -310,18 +287,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/01/nginx-301/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CentOS Stream 8配置Nginx301重定向</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/11/deepmd-gpu/">
-                        <span class="hidden-mobile">在8张V100上安装测试deepmd-kit的GPU版本</span>
+                      <a href="/2022/02/23/update-to-CentosStream8/">
+                        <span class="hidden-mobile">将CentOS 8无缝更新到CentOS Stream 8</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
