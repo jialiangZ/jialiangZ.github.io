@@ -72,7 +72,7 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 6.0.0"></head>
+<meta name="generator" content="Hexo 6.1.0"></head>
 
 
 <body>
@@ -275,7 +275,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">(try to add &#x27;--allowerasing&#x27; to command line to replace conflicting packages or &#x27;--skip-broken&#x27; to skip uninstallable packages or &#x27;--nobest&#x27; to use not only best candidate packages)<br></code></pre></td></tr></table></figure>
 
 <p>总之老子再也不想用<code>CentOS 8</code>了，赶紧切换到<code>CentOS Stream</code></p>
-<h1 id="从CentOS-8平滑升级至CentOS-Stream"><a href="#从CentOS-8平滑升级至CentOS-Stream" class="headerlink" title="从CentOS 8平滑升级至CentOS Stream"></a>从<code>CentOS 8</code>平滑升级至<code>CentOS Stream</code></h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 老方法 dnf install centos-release-stream 不再推荐使用</span><br>dnf swap centos-linux-repos centos-stream-repos<br>dnf distro-sync<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 查看当前版本</span><br>cat /etc/centos-release<br>CentOS Stream release 8<br></code></pre></td></tr></table></figure>
+<h1 id="从CentOS-8平滑升级至CentOS-Stream"><a href="#从CentOS-8平滑升级至CentOS-Stream" class="headerlink" title="从CentOS 8平滑升级至CentOS Stream"></a>从<code>CentOS 8</code>平滑升级至<code>CentOS Stream</code></h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">老方法 dnf install centos-release-stream 不再推荐使用</span><br>dnf swap centos-linux-repos centos-stream-repos<br>dnf distro-sync<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">查看当前版本</span><br>cat /etc/centos-release<br>CentOS Stream release 8<br></code></pre></td></tr></table></figure>
 
 <p>建议更新后重启一下。</p>
 <p><code>CentOS Stream</code>迁移后还原回<code>CentOS 8</code>：</p>
