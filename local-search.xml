@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>MCM2022</title>
+    <link href="/2022/05/07/MCM2022/"/>
+    <url>/2022/05/07/MCM2022/</url>
+    
+    <content type="html"><![CDATA[<h1 id="小声逼逼"><a href="#小声逼逼" class="headerlink" title="小声逼逼"></a>小声逼逼</h1><p>昨天呢，2022年的MCM/ICM比赛成绩出了，这是我第一次参加美赛，也是我第二次参加数学建模比赛。2021年国赛我获得了山东赛区的三等奖，比较垃圾，也是我第一次参加数学建模比赛，这次美赛我获得了H奖，也比较一般吧，主要这次的C题很戳我癖好，队友也喜欢，就选了C题。下面祭出获奖证书：</p><p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202205072038276.png"></p><p>下面给出一些参赛的经验吧，我自己总结的······</p><h1 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h1><ol><li>高等数学</li><li>Matlab基本知识</li><li>Excel</li><li>图表化法</li><li>英文写作</li><li>Internet</li></ol><p>基本的数学知识和物理知识是基本，对解题是大有裨益的。同时对matlab的使用也至少要熟练，对于矩阵运算和可视化，matlab使用体验很好，当然现在的python做的也不错。Excel有很多时候会用到。美赛对创意和美观、格式都有一定的要求，所以说漂亮的图表是很加分的。还有要使用好网络去查有用的知识，这点是很重要的。</p><h1 id="常用工具"><a href="#常用工具" class="headerlink" title="常用工具"></a>常用工具</h1><p>下面给出一些常用的画图、查询数据的工具和途径：</p><p>链接：<a href="https://www.zhixi.com/view/299f983b%E5%AF%86%E7%A0%81%EF%BC%9A1356">https://www.zhixi.com/view/299f983b密码：1356</a></p><p>这里还提到一点，写作可以用Word和LateX，往年优秀论文大多是LateX写的，当然Word也有，这里推荐你擅长哪个就用哪个，没必要一味追求LateX，毕竟Word也能写得很好看</p><h1 id="常用数学模型"><a href="#常用数学模型" class="headerlink" title="常用数学模型"></a>常用数学模型</h1><p>一定要了解各种模型都是干什么的</p><p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202205072254135.png"></p><p>这里推荐一本入门的数学建模书籍——《数学建模》（姜启源），可以在这本书里看到一些例子，有助于对模型的理解</p><h1 id="关于队友"><a href="#关于队友" class="headerlink" title="关于队友"></a>关于队友</h1><p>一定找靠谱的队友，要有一定的编程能力和数学建模能力，最好有一个计算机专业的，其他两个可以适当选择。但是这不意味着建模时大家各做各的，而是说每个人擅长一个部分，同时也很了解其他部分，只有这样才能完成一篇不错的论文。</p><p>我们当时分工是我们三个人一起讨论建模，决定使用什么方法和思路，然后我进行编程，同时和另一个建模手一起改进模型和程序，一步一步调优，同时第三个人一直在帮我们找资料、画图、写文章，到最后一天，我们都一起参与到写作中，一直到凌晨4点左右才完成初稿，然后审了一遍就交了。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>数学建模</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>MCM/ICM</tag>
+      
+      <tag>美赛</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>CentOS Stream 8配置Nginx301重定向</title>
     <link href="/2022/03/01/nginx-301/"/>
     <url>/2022/03/01/nginx-301/</url>
