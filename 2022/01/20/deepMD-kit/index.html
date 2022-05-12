@@ -23,25 +23,25 @@
 <meta property="og:site_name" content="G-and-Z">
 <meta property="og:description" content="前提首先确保已经在Centos7中安装了anaconda和pycharm，分类 - ASC2022 - G-and-Z (gandz.top)里面有这两个东西的安装教程。 官网教程create an environment that contains the CPU version of DeePMD-kit and LAMMPS: 1conda create -n deepmd deepmd-k">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202126085.png">
-<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202134434.png">
-<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202136331.png">
-<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202138145.png">
-<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202139238.png">
-<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202144038.png">
-<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202142034.png">
-<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202147338.png">
-<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202149037.png">
-<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202151168.png">
+<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202126085.png/">
+<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202134434.png/">
+<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202136331.png/">
+<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202138145.png/">
+<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202139238.png/">
+<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202144038.png/">
+<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202142034.png/">
+<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202147338.png/">
+<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202149037.png/">
+<meta property="og:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202151168.png/">
 <meta property="article:published_time" content="2022-01-20T06:25:15.000Z">
-<meta property="article:modified_time" content="2022-02-23T06:51:45.629Z">
+<meta property="article:modified_time" content="2022-05-12T06:26:38.910Z">
 <meta property="article:author" content="不想起名">
 <meta property="article:tag" content="CentOS 7">
 <meta property="article:tag" content="ASC2022">
-<meta property="article:tag" content="deepMD-kit">
 <meta property="article:tag" content="task4">
+<meta property="article:tag" content="deepMD-kit">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202126085.png">
+<meta name="twitter:image" content="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202126085.png/">
   
   
   <title>CentOS 7安装deepMD-kit并运行example - G-and-Z</title>
@@ -269,39 +269,39 @@
 
 <p>可以将<code>cudatoolkit</code>改为<code>10.1</code>版本</p>
 <p>当你能在anaconda3目录下找到这个deepmd就算安装成功了：</p>
-<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202126085.png" srcset="/img/loading.gif" lazyload alt="envs"></p>
+<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202126085.png/" srcset="/img/loading.gif" lazyload alt="envs"></p>
 <p>可以使用下面的命令激活这个环境：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">conda activate deepmd<br></code></pre></td></tr></table></figure>
 
 <h1 id="创建一个使用上述deepmd环境的pycharm项目"><a href="#创建一个使用上述deepmd环境的pycharm项目" class="headerlink" title="创建一个使用上述deepmd环境的pycharm项目"></a>创建一个使用上述deepmd环境的pycharm项目</h1><ol>
 <li><p>打开pycharm新建项目</p>
-<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202134434.png" srcset="/img/loading.gif" lazyload alt="新建项目"></p>
+<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202134434.png/" srcset="/img/loading.gif" lazyload alt="新建项目"></p>
 </li>
 <li><p>新建一个conda环境，记住不要选择之前配置的deepmd环境，会被覆盖掉</p>
-<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202136331.png" srcset="/img/loading.gif" lazyload alt="新建conda环境"></p>
+<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202136331.png/" srcset="/img/loading.gif" lazyload alt="新建conda环境"></p>
 </li>
 <li><p>左上角打开设置</p>
-<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202138145.png" srcset="/img/loading.gif" lazyload alt="设置"></p>
+<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202138145.png/" srcset="/img/loading.gif" lazyload alt="设置"></p>
 </li>
 <li><p>选择全部显示conda环境</p>
-<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202139238.png" srcset="/img/loading.gif" lazyload alt="显示所有conda环境"></p>
+<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202139238.png/" srcset="/img/loading.gif" lazyload alt="显示所有conda环境"></p>
 </li>
 <li><p>添加之前配置好的环境</p>
-<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202144038.png" srcset="/img/loading.gif" lazyload alt="新建选择之前的环境"></p>
+<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202144038.png/" srcset="/img/loading.gif" lazyload alt="新建选择之前的环境"></p>
 </li>
 <li><p>切换过去</p>
-<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202142034.png" srcset="/img/loading.gif" lazyload alt="切换到deepmd"></p>
+<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202142034.png/" srcset="/img/loading.gif" lazyload alt="切换到deepmd"></p>
 </li>
 <li><p>将deepmd-kit源码导入pycharm项目中，可以下载ZIP文件再解压到前面的项目中</p>
-<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202147338.png" srcset="/img/loading.gif" lazyload alt="image-20220120214749206"></p>
+<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202147338.png/" srcset="/img/loading.gif" lazyload alt="image-20220120214749206"></p>
 </li>
 <li><p>最后得到的目录结构是下面这样的</p>
-<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202149037.png" srcset="/img/loading.gif" lazyload alt="目录结构"></p>
+<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202149037.png/" srcset="/img/loading.gif" lazyload alt="目录结构"></p>
 </li>
 </ol>
 <p>到这里整个deepmd-kit的安装就结束了</p>
 <h1 id="运行一下demo"><a href="#运行一下demo" class="headerlink" title="运行一下demo"></a>运行一下demo</h1><p>进入到如下图所示目录，打开input.json文件，修改numb_steps为1000，先小试以下，待会儿再改回去</p>
-<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202151168.png" srcset="/img/loading.gif" lazyload alt="demo目录"></p>
+<p><img src="https://gitee.com/zhang-jia-liang12138/img_bed/raw/master/202201202151168.png/" srcset="/img/loading.gif" lazyload alt="demo目录"></p>
 <p>然后在终端中进入这个se_e2_a目录并运行下列命令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">dp train input.json<br></code></pre></td></tr></table></figure>
 
@@ -330,9 +330,9 @@
                     
                       <a class="hover-with-bg" href="/tags/ASC2022/">ASC2022</a>
                     
-                      <a class="hover-with-bg" href="/tags/deepMD-kit/">deepMD-kit</a>
-                    
                       <a class="hover-with-bg" href="/tags/task4/">task4</a>
+                    
+                      <a class="hover-with-bg" href="/tags/deepMD-kit/">deepMD-kit</a>
                     
                   </div>
                 
