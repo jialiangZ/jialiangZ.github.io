@@ -28,15 +28,19 @@
 <meta name="twitter:card" content="summary_large_image">
   
   
+  
   <title>G-and-Z</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
 
 
-<!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
 
 
 
@@ -45,21 +49,40 @@
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-<!-- 自定义样式保持在最底部 -->
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"www.gandz.top","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"m9Ckfw3lHgvWXKDzg3QrPPhW-gzGzoHsz","app_key":"hla1F0zLkSBfgfneXxzFV2Sk","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.gandz.top","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"m9Ckfw3lHgvWXKDzg3QrPPhW-gzGzoHsz","app_key":"hla1F0zLkSBfgfneXxzFV2Sk","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
+
+  
 <meta name="generator" content="Hexo 6.2.0"></head>
 
 
 <body>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
       <strong>G-and-Z</strong>
@@ -141,6 +164,7 @@
               &nbsp;<i class="iconfont icon-search"></i>&nbsp;
             </a>
           </li>
+          
         
         
           <li class="nav-item" id="color-toggle-btn">
@@ -153,29 +177,35 @@
   </div>
 </nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/img/bg/banner_home.jpg') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="加油呀！">
-              
-            </span>
+  
 
-            
-          </div>
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/banner_home.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="加油呀！"></span>
           
         </div>
+
+        
       </div>
+
+      
     </div>
+  </div>
+</div>
+
+</div>
+
   </header>
 
   <main>
     
       <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
+        <div id="board"
           >
           
           <div class="container">
@@ -195,12 +225,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/05/07/MCM2022/" target="_self">
+      <a class="index-excerpt" href="/2022/05/07/MCM2022/" target="_self">
+        <div>
           
           小声逼逼昨天呢，2022年的MCM&#x2F;ICM比赛成绩出了，这是我第一次参加美赛，也是我第二次参加数学建模比赛。2021年国赛我获得了山东赛区的三等奖，比较垃圾，也是我第一次参加数学建模比赛，这次美赛我获得了H奖，也比较一般吧，主要这次的C题很戳我癖好，队友也喜欢，就选了C题。下面祭出获奖证书：  下面给出一些参赛的经验吧，我自己总结的······ 预备知识 高等数学 Matlab基本知识 Excel
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -212,20 +242,34 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" class="category-chain-item">数学建模</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/MCM-ICM/">MCM/ICM</a>
+              <a href="/tags/MCM-ICM/">#MCM/ICM</a>
             
-              <a href="/tags/%E7%BE%8E%E8%B5%9B/">美赛</a>
+              <a href="/tags/%E7%BE%8E%E8%B5%9B/">#美赛</a>
             
           </div>
         
@@ -244,12 +288,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/03/01/nginx-301/" target="_self">
+      <a class="index-excerpt" href="/2022/03/01/nginx-301/" target="_self">
+        <div>
           
           前言备案的时候我提交的域名是 http:&#x2F;&#x2F;gandz.top ，所以想将这个域名重定向到这个地方 http:&#x2F;&#x2F;www.gandz.top ，也就意味着每次访问 http:&#x2F;&#x2F;gandz.top 都会跳到 http:&#x2F;&#x2F;www.gandz.top ，方便网站数据不会被搜索引擎重复记录两次。查到Nginx可以设置301重定向跳转。 具体操作找到Nginx.conf文件并修改： 1vim &#x2F;etc&#x2F;
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -261,22 +305,36 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/Linux/">Linux</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Linux/">Linux</a>
+              <a href="/tags/Linux/">#Linux</a>
             
-              <a href="/tags/Nginx/">Nginx</a>
+              <a href="/tags/Nginx/">#Nginx</a>
             
-              <a href="/tags/CentOS-Stream-8/">CentOS Stream 8</a>
+              <a href="/tags/CentOS-Stream-8/">#CentOS Stream 8</a>
             
           </div>
         
@@ -295,12 +353,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/02/23/update-to-CentosStream8/" target="_self">
+      <a class="index-excerpt" href="/2022/02/23/update-to-CentosStream8/" target="_self">
+        <div>
           
           前言最近上我的云服务器搞点东西，结果发现yum没法用了，一直提示 1mirrorlist: No URLs in mirrorlist  不查不知道，一查吓一跳，原来官方已经在2021&#x2F;12&#x2F;31停止了对CentOS 8的支持，那我就试着更新yum源试试，这里使用的是阿里的yum镜像源  将源文件备份  1cd &#x2F;etc&#x2F;yum.repos.d&#x2F; &amp;&amp; mkdir backup &amp;
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -312,20 +370,34 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/Linux/">Linux</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Linux/">Linux</a>
+              <a href="/tags/Linux/">#Linux</a>
             
-              <a href="/tags/CentOS-Stream-8/">CentOS Stream 8</a>
+              <a href="/tags/CentOS-Stream-8/">#CentOS Stream 8</a>
             
           </div>
         
@@ -344,12 +416,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/02/11/deepmd-gpu/" target="_self">
+      <a class="index-excerpt" href="/2022/02/11/deepmd-gpu/" target="_self">
+        <div>
           
           前言之前在自己的电脑上装了Centos9，然后我在里面配置好了deepmd-kit所需要的一切环境，然后在我的8核i5小笔记本上跑起来了，现在呢准备用学校提供的8张V100试试，并且之后的优化全部都在上面了。 准备工作安装anaconda之前已经出过教程，这里类比就行 创建自己的文件夹这里啊，我们很多人用的一个集群，所以得分好目录和使用时间，在根目录下创建一个只属于你的文件夹，这样对大家都好，就比
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -361,24 +433,38 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/ASC2022/">ASC2022</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/ASC2022/" class="category-chain-item">ASC2022</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/CentOS-7/">CentOS 7</a>
+              <a href="/tags/CentOS-7/">#CentOS 7</a>
             
-              <a href="/tags/ASC2022/">ASC2022</a>
+              <a href="/tags/ASC2022/">#ASC2022</a>
             
-              <a href="/tags/task4/">task4</a>
+              <a href="/tags/deepMD-kit/">#deepMD-kit</a>
             
-              <a href="/tags/deepMD-kit/">deepMD-kit</a>
+              <a href="/tags/task4/">#task4</a>
             
           </div>
         
@@ -397,12 +483,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/01/21/visudo/" target="_self">
+      <a class="index-excerpt" href="/2022/01/21/visudo/" target="_self">
+        <div>
           
           当在Centos7中使用非root用户执行sudo命令会出现如下提示： 1不在 sudoers 文件中。此事将被报告  sudo命令的含义是：使用sudo命令的账号，将拥有root账户的权限来执行某项命令或者程序。但是不是所有的账号都可以使用sudo命令的。 对此debian系统采用了一个办法，利用一个专门的文件来管理某些账号是否能使用sudo命令。 显然，这个文件只有root账号才能修改和管理的
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -414,22 +500,36 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/Linux/">Linux</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/CentOS-7/">CentOS 7</a>
+              <a href="/tags/CentOS-7/">#CentOS 7</a>
             
-              <a href="/tags/ASC2022/">ASC2022</a>
+              <a href="/tags/ASC2022/">#ASC2022</a>
             
-              <a href="/tags/Linux/">Linux</a>
+              <a href="/tags/Linux/">#Linux</a>
             
           </div>
         
@@ -448,12 +548,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/01/20/deepMD-kit/" target="_self">
+      <a class="index-excerpt" href="/2022/01/20/deepMD-kit/" target="_self">
+        <div>
           
           前提首先确保已经在Centos7中安装了anaconda和pycharm，分类 - ASC2022 - G-and-Z (gandz.top)里面有这两个东西的安装教程。 官网教程create an environment that contains the CPU version of DeePMD-kit and LAMMPS: 1conda create -n deepmd deepmd-k
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -465,24 +565,38 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/ASC2022/">ASC2022</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/ASC2022/" class="category-chain-item">ASC2022</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/CentOS-7/">CentOS 7</a>
+              <a href="/tags/CentOS-7/">#CentOS 7</a>
             
-              <a href="/tags/ASC2022/">ASC2022</a>
+              <a href="/tags/ASC2022/">#ASC2022</a>
             
-              <a href="/tags/task4/">task4</a>
+              <a href="/tags/deepMD-kit/">#deepMD-kit</a>
             
-              <a href="/tags/deepMD-kit/">deepMD-kit</a>
+              <a href="/tags/task4/">#task4</a>
             
           </div>
         
@@ -501,12 +615,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/01/20/install-pycharm-Centos/" target="_self">
+      <a class="index-excerpt" href="/2022/01/20/install-pycharm-Centos/" target="_self">
+        <div>
           
           官网下载pycharm下载链接 选择community版本不需要激活码，开箱即用  下载之后是一个压缩包的形式，提取出来，你提取的位置就是pycharm的根目录，也就是说解压之后就立马能用了。 这里我解压到主目录  双击pycharm安装目录，进入bin目录，找到pycharm.sh  这个pycharm.sh就类似于Windows下的exe文件，在这个目录下右键终端打开，然后输入下述命令即可打开
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -518,24 +632,38 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/ASC2022/">ASC2022</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/ASC2022/" class="category-chain-item">ASC2022</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/CentOS-7/">CentOS 7</a>
+              <a href="/tags/CentOS-7/">#CentOS 7</a>
             
-              <a href="/tags/ASC2022/">ASC2022</a>
+              <a href="/tags/ASC2022/">#ASC2022</a>
             
-              <a href="/tags/task4/">task4</a>
+              <a href="/tags/task4/">#task4</a>
             
-              <a href="/tags/pycharm/">pycharm</a>
+              <a href="/tags/pycharm/">#pycharm</a>
             
           </div>
         
@@ -554,12 +682,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/01/20/anaconda/" target="_self">
+      <a class="index-excerpt" href="/2022/01/20/anaconda/" target="_self">
+        <div>
           
           下载安装Anaconda3可以去官网，推荐在清华镜像站下载Anaconda  定位到下载文件所在的文件位置，然后执行下述命令： 1bash Anaconda3-2021.11-Linux-x86_64.sh  安装过程中一直回车和输入Yes就行了 笔者安装的新版本直接配置好了环境变量，如果使用老版本的Anaconda则需要配置环境变量 编辑下列文件： 1vi &#x2F;etc&#x2F;profile  在整个文件
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -571,24 +699,38 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/ASC2022/">ASC2022</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/ASC2022/" class="category-chain-item">ASC2022</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/anaconda3/">anaconda3</a>
+              <a href="/tags/CentOS-7/">#CentOS 7</a>
             
-              <a href="/tags/CentOS-7/">CentOS 7</a>
+              <a href="/tags/ASC2022/">#ASC2022</a>
             
-              <a href="/tags/ASC2022/">ASC2022</a>
+              <a href="/tags/task4/">#task4</a>
             
-              <a href="/tags/task4/">task4</a>
+              <a href="/tags/anaconda3/">#anaconda3</a>
             
           </div>
         
@@ -607,12 +749,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2021/12/07/Net-lab2/" target="_self">
+      <a class="index-excerpt" href="/2021/12/07/Net-lab2/" target="_self">
+        <div>
           
           准备首先去微信公众平台 (qq.com)注册一个订阅号    第一步的准备工作就完成了 公众号的相关配置修改名称在你登陆之后，会提示你修改你的公众号名称，一定要修改，不然三天之后就自动注销。其实在注册的时候就新建过一个，这里随意修改一个喜欢的  绑定开发者账号在左侧设置与开发-&gt;基本配置，成为开发者  然后点击设置与开发-&gt;开发者工具-&gt;web开发者工具-&gt;绑定开发者微信号
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -624,22 +766,36 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C/">计算机网络实验</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C/" class="category-chain-item">计算机网络实验</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C/">计算机网络实验</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C/">#计算机网络实验</a>
             
-              <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/">微信公众号</a>
+              <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">#服务器</a>
             
-              <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
+              <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/">#微信公众号</a>
             
           </div>
         
@@ -658,12 +814,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2021/12/05/Net-lab1/" target="_self">
+      <a class="index-excerpt" href="/2021/12/05/Net-lab1/" target="_self">
+        <div>
           
           前言由于这学期上了计算机网络的课程，学期中需要做一些小实验，与微信公众号有关。然后我们要求第一步拥有一个云服务器并使用Xftp7和Xshell7链接上这个服务器，下面是具体教程。 购买云服务器如果你有闲置的云服务器，可以跳过这一步，这里给出一些免费试用一个月的云服务器厂商地址，有的需要定点抢，一般都能抢到。这里老师要求使用Ubuntu系统，下面购买实例时选择系统Ubuntu，但是其实很多系统都可以
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -675,24 +831,38 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C/">计算机网络实验</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C/" class="category-chain-item">计算机网络实验</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C/">计算机网络实验</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C/">#计算机网络实验</a>
             
-              <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
+              <a href="/tags/Xftp7/">#Xftp7</a>
             
-              <a href="/tags/Xftp7/">Xftp7</a>
+              <a href="/tags/Xshell7/">#Xshell7</a>
             
-              <a href="/tags/Xshell7/">Xshell7</a>
+              <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">#服务器</a>
             
           </div>
         
@@ -737,67 +907,70 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
+
     
 
     
   </main>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
+  <footer>
+    <div class="footer-inner">
   
-  <div class="statistics">
-    
-    
-
-    
-      
-        <!-- LeanCloud 统计PV -->
-        <span id="leancloud-site-pv-container" style="display: none">
-            总访问量 
-            <span id="leancloud-site-pv"></span>
-             次
-          </span>
-      
-      
-        <!-- LeanCloud 统计UV -->
-        <span id="leancloud-site-uv-container" style="display: none">
-            总访客数 
-            <span id="leancloud-site-uv"></span>
-             人
-          </span>
-      
-
-    
-  </div>
-
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
 
   
-  <!-- 备案信息 -->
-  <div class="beian">
-    <span>
-      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
-        皖ICP备20012286号
-      </a>
-    </span>
     
-  </div>
-
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
 
   
-</footer>
+</div>
 
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      皖ICP备20012286号
+    </a>
+  </span>
+  
+</div>
 
-  <!-- SCRIPTS -->
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
   
   <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
@@ -816,10 +989,41 @@
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
-<!-- Plugins -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
 
 
-  <script  src="/js/local-search.js" ></script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
 
 
 
@@ -829,58 +1033,24 @@
 
 
 
-  
 
-
-
-
-
+  <script  src="/js/local-search.js" ></script>
 
   <script defer src="/js/leancloud.js" ></script>
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-        typing(title);
-      
-    })(window, document);
-  </script>
 
 
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
 
 
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

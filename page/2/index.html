@@ -28,15 +28,19 @@
 <meta name="twitter:card" content="summary_large_image">
   
   
+  
   <title>G-and-Z</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
 
 
-<!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
 
 
 
@@ -45,21 +49,40 @@
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-<!-- 自定义样式保持在最底部 -->
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"www.gandz.top","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"m9Ckfw3lHgvWXKDzg3QrPPhW-gzGzoHsz","app_key":"hla1F0zLkSBfgfneXxzFV2Sk","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.gandz.top","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"m9Ckfw3lHgvWXKDzg3QrPPhW-gzGzoHsz","app_key":"hla1F0zLkSBfgfneXxzFV2Sk","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
+
+  
 <meta name="generator" content="Hexo 6.2.0"></head>
 
 
 <body>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
       <strong>G-and-Z</strong>
@@ -141,6 +164,7 @@
               &nbsp;<i class="iconfont icon-search"></i>&nbsp;
             </a>
           </li>
+          
         
         
           <li class="nav-item" id="color-toggle-btn">
@@ -153,29 +177,35 @@
   </div>
 </nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/img/bg/banner_home.jpg') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="加油呀！">
-              
-            </span>
+  
 
-            
-          </div>
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/banner_home.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="加油呀！"></span>
           
         </div>
+
+        
       </div>
+
+      
     </div>
+  </div>
+</div>
+
+</div>
+
   </header>
 
   <main>
     
       <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
+        <div id="board"
           >
           
           <div class="container">
@@ -195,12 +225,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2021/11/26/domestic/" target="_self">
+      <a class="index-excerpt" href="/2021/11/26/domestic/" target="_self">
+        <div>
           
           我的家教经历我有三段家教经历：  大一结束的暑假，同时教4个孩子，每天上午两个高一，每天下午两个小学生  大二结束的暑假，同时教4个高二的理科数学和物理，每天上午4小时  大二下学期在学校附近教初中生物、地理，每周六一上午   收入做家教就是为了赚些零花钱，家教也确实收入很不错，这三段家教经历挣了不少钱，加起来一共40天加上10多个周末上午，总收入有16000元，这对一个大学生来说确实算不错了，这
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -212,18 +242,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%9D%82%E8%AE%B0/">杂记</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9D%82%E8%AE%B0/" class="category-chain-item">杂记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%AE%B6%E6%95%99/">家教</a>
+              <a href="/tags/%E5%AE%B6%E6%95%99/">#家教</a>
             
           </div>
         
@@ -242,12 +286,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2021/11/23/tkinter-4/" target="_self">
+      <a class="index-excerpt" href="/2021/11/23/tkinter-4/" target="_self">
+        <div>
           
           GUI编程必须有的布局（Layout）Java Swing、Qt等都有布局管理，tkinter也不例外，且一共有三种类型：    布局 描述    pack 相对布局   grid 网格布局   place 绝对布局    pack布局 默认将先使用的放在上面，然后依次向下排列，它自动给组件一个自认为合适的位置和大小，这是最简单的模式，可以直接使用pack()函数，不需要添加参数，但是不代表没有参
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -259,22 +303,36 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/tkinter/">tkinter</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/tkinter/" class="category-chain-item">tkinter</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/tkinter/">tkinter</a>
+              <a href="/tags/tkinter/">#tkinter</a>
             
-              <a href="/tags/Python/">Python</a>
+              <a href="/tags/Python/">#Python</a>
             
-              <a href="/tags/GUI/">GUI</a>
+              <a href="/tags/GUI/">#GUI</a>
             
           </div>
         
@@ -293,12 +351,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2021/11/19/tkinter-3/" target="_self">
+      <a class="index-excerpt" href="/2021/11/19/tkinter-3/" target="_self">
+        <div>
           
           tk组件——按钮 按钮是非常重要的组件，可以响应点击事件来完成一些执行逻辑，按钮英文是“button”，它随处可见 tkinter中有一个专门的类Button负责它 ttk中的按钮和tkinter不一样  用法增加一个button，方法如下： 1B &#x3D; Button ( master, option, ... )  源代码中Button类及其参数： 123456789101112131415161
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -310,22 +368,36 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/tkinter/">tkinter</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/tkinter/" class="category-chain-item">tkinter</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/tkinter/">tkinter</a>
+              <a href="/tags/tkinter/">#tkinter</a>
             
-              <a href="/tags/Python/">Python</a>
+              <a href="/tags/Python/">#Python</a>
             
-              <a href="/tags/GUI/">GUI</a>
+              <a href="/tags/GUI/">#GUI</a>
             
           </div>
         
@@ -344,12 +416,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2021/11/18/tkinter-2/" target="_self">
+      <a class="index-excerpt" href="/2021/11/18/tkinter-2/" target="_self">
+        <div>
           
           tk组件——标签 如果曾经学习过GUI编程，相信一定不会对组件陌生，组件就是widget，常见的比如标签、按钮、文本框、输入框······ 我们可以在一个窗口里增加若干个组件来美化窗口和增添新功能 标签就是在其他控件前面贴上一个简短的说明，标签内容是文字信息  tk核心组件tkinter使用频率比较高的核心组件有以下21个： Toplevel、Label、Button、Canvas、Checkbu
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -361,22 +433,36 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/tkinter/">tkinter</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/tkinter/" class="category-chain-item">tkinter</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/tkinter/">tkinter</a>
+              <a href="/tags/tkinter/">#tkinter</a>
             
-              <a href="/tags/Python/">Python</a>
+              <a href="/tags/Python/">#Python</a>
             
-              <a href="/tags/GUI/">GUI</a>
+              <a href="/tags/GUI/">#GUI</a>
             
           </div>
         
@@ -395,12 +481,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2021/11/18/tkinter-1/" target="_self">
+      <a class="index-excerpt" href="/2021/11/18/tkinter-1/" target="_self">
+        <div>
           
           tkinter简介 提到 tkinter，不得不提一下 GUI，GUI 即 graphical user interface，即图形界面用户接口，是相对于我们学习绝大多数编程语所接触到的“控制台”的那个黑乎乎的命令行所区分的编程模式。 tkinter是tk的Python接口，而tk原本是Tcl的GUI库，后来实现了其Python接口，而且被官方采用。  tkinter优缺点优点：  相对于wxPy
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -412,22 +498,36 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/tkinter/">tkinter</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/tkinter/" class="category-chain-item">tkinter</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/tkinter/">tkinter</a>
+              <a href="/tags/tkinter/">#tkinter</a>
             
-              <a href="/tags/Python/">Python</a>
+              <a href="/tags/Python/">#Python</a>
             
-              <a href="/tags/GUI/">GUI</a>
+              <a href="/tags/GUI/">#GUI</a>
             
           </div>
         
@@ -446,12 +546,12 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2021/11/17/Ty+Pi+Gi/" target="_self">
+      <a class="index-excerpt" href="/2021/11/17/Ty+Pi+Gi/" target="_self">
+        <div>
           
           背景自己一直在写博客和作业，使用Typora写MarkDown次数越来越多，就需要插入一些图片，本地可以，但是复制粘贴发表到博客就不行，于是我找了网上的一些工具，发现Typora+Pigo+Gitee很好用且简单，下面就分享一下实现过程。 环境 系统：Windows11  软件：  Typora PicGo   图床位置：Gitee   正文默认你已经安装好Typora和PicGo 进入Gitee
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -463,22 +563,36 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/">编程技巧</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/" class="category-chain-item">编程技巧</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Typora/">Typora</a>
+              <a href="/tags/Typora/">#Typora</a>
             
-              <a href="/tags/PicGo/">PicGo</a>
+              <a href="/tags/PicGo/">#PicGo</a>
             
-              <a href="/tags/Gitee/">Gitee</a>
+              <a href="/tags/Gitee/">#Gitee</a>
             
           </div>
         
@@ -523,67 +637,70 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
+
     
 
     
   </main>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
+  <footer>
+    <div class="footer-inner">
   
-  <div class="statistics">
-    
-    
-
-    
-      
-        <!-- LeanCloud 统计PV -->
-        <span id="leancloud-site-pv-container" style="display: none">
-            总访问量 
-            <span id="leancloud-site-pv"></span>
-             次
-          </span>
-      
-      
-        <!-- LeanCloud 统计UV -->
-        <span id="leancloud-site-uv-container" style="display: none">
-            总访客数 
-            <span id="leancloud-site-uv"></span>
-             人
-          </span>
-      
-
-    
-  </div>
-
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
 
   
-  <!-- 备案信息 -->
-  <div class="beian">
-    <span>
-      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
-        皖ICP备20012286号
-      </a>
-    </span>
     
-  </div>
-
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
 
   
-</footer>
+</div>
 
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      皖ICP备20012286号
+    </a>
+  </span>
+  
+</div>
 
-  <!-- SCRIPTS -->
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
   
   <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
@@ -602,10 +719,41 @@
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
-<!-- Plugins -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
 
 
-  <script  src="/js/local-search.js" ></script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
 
 
 
@@ -615,58 +763,24 @@
 
 
 
-  
 
-
-
-
-
+  <script  src="/js/local-search.js" ></script>
 
   <script defer src="/js/leancloud.js" ></script>
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-        typing(title);
-      
-    })(window, document);
-  </script>
 
 
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
 
 
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>
