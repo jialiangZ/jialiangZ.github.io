@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>大文件编辑的大杀器————PilotEdit</title>
+    <link href="/2022/05/25/PilotEdit/"/>
+    <url>/2022/05/25/PilotEdit/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近在做NLP相关的实验，有几个文本文件需要预处理一下，但是这几个txt文件大小上百M到一个G不止，根本打不开啊！于是在经过一番搜寻之后找到了一款特别有用的大文件编辑器——[PilotEdit](<a href="https://www.pilotedit.com/">PilotEdit - Edit and Compare Large Files</a>)</p><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202205262128721.png" alt="image-20220526212822528"></p><p>可以看到提供了三个选择，这里选择Lite版本即可，支持10GB的文件大小，够用了。</p><p>打开上百MB的txt文件只用了3秒左右，打开1GB的txt差不多10秒，编辑也不卡顿。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>实用教程</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>PilotEdit</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>2022年美赛记录</title>
     <link href="/2022/05/07/MCM2022/"/>
     <url>/2022/05/07/MCM2022/</url>
@@ -258,9 +283,9 @@
       
       <tag>计算机网络实验</tag>
       
-      <tag>服务器</tag>
-      
       <tag>微信公众号</tag>
+      
+      <tag>服务器</tag>
       
     </tags>
     
@@ -287,11 +312,11 @@
       
       <tag>计算机网络实验</tag>
       
+      <tag>服务器</tag>
+      
       <tag>Xftp7</tag>
       
       <tag>Xshell7</tag>
-      
-      <tag>服务器</tag>
       
     </tags>
     
@@ -450,7 +475,7 @@
     
     <categories>
       
-      <category>编程技巧</category>
+      <category>实用教程</category>
       
     </categories>
     
