@@ -16,12 +16,12 @@
   <meta name="author" content="不想起名">
   <meta name="keywords" content="Java">
   
-    <meta name="description" content="安装Centos7很容易，不解释，建议最小安装 创建Hadoop用户12su	#以root用户登录useradd -m hadoop -s &#x2F;bin&#x2F;bash	#创建用户hadoop  修改hadoop用户的密码： 1passwd hadoop  为hadoop用户增加管理员权限，方便部署，避免一些对新手来说比较棘手的权限问题，执行： 1visudo  找到下图处并修改为：  安装ssh和open">
+    <meta name="description" content="学   号 19020031106 姓   名 张家亮 专业班级 2019级计算机科学与技术    课程名称 大数据导论 学期 2022年秋季学期     任课教师 刘洁 刘艳艳 完成日期 2022&#x2F;9&#x2F;25 上机课时间 周一56节（双周）   实验名称 搭建Hadoop集群       安装Centos7很容易，不解释，建议最小安装 创建Hadoop用户12su	#以root用户登录use">
 <meta property="og:type" content="article">
-<meta property="og:title" content="大数据导论实验1">
+<meta property="og:title" content="大数据导论实验一——搭建Hadoop集群">
 <meta property="og:url" content="http://www.gandz.top/2022/09/25/first_hadoop/index.html">
 <meta property="og:site_name" content="G-and-Z">
-<meta property="og:description" content="安装Centos7很容易，不解释，建议最小安装 创建Hadoop用户12su	#以root用户登录useradd -m hadoop -s &#x2F;bin&#x2F;bash	#创建用户hadoop  修改hadoop用户的密码： 1passwd hadoop  为hadoop用户增加管理员权限，方便部署，避免一些对新手来说比较棘手的权限问题，执行： 1visudo  找到下图处并修改为：  安装ssh和open">
+<meta property="og:description" content="学   号 19020031106 姓   名 张家亮 专业班级 2019级计算机科学与技术    课程名称 大数据导论 学期 2022年秋季学期     任课教师 刘洁 刘艳艳 完成日期 2022&#x2F;9&#x2F;25 上机课时间 周一56节（双周）   实验名称 搭建Hadoop集群       安装Centos7很容易，不解释，建议最小安装 创建Hadoop用户12su	#以root用户登录use">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202209252035260.png">
 <meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202209252039581.png">
@@ -45,7 +45,7 @@
 <meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202209261444798.png">
 <meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202209262057070.png">
 <meta property="article:published_time" content="2022-09-25T12:25:05.000Z">
-<meta property="article:modified_time" content="2022-09-26T12:57:39.156Z">
+<meta property="article:modified_time" content="2022-09-29T11:18:56.497Z">
 <meta property="article:author" content="不想起名">
 <meta property="article:tag" content="CentOS 7">
 <meta property="article:tag" content="大数据导论实验">
@@ -54,7 +54,7 @@
   
   
   
-  <title>大数据导论实验1 - G-and-Z</title>
+  <title>大数据导论实验一——搭建Hadoop集群 - G-and-Z</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -236,7 +236,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="大数据导论实验1"></span>
+            <span id="subtitle" data-typed-text="大数据导论实验一——搭建Hadoop集群"></span>
           
         </div>
 
@@ -265,7 +265,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          7.6k 字
+          7.9k 字
         
       </span>
     
@@ -277,7 +277,7 @@
         
         
           <!-- compatible with older versions-->
-          24 分钟
+          25 分钟
         
       </span>
     
@@ -323,13 +323,13 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">大数据导论实验1</h1>
+            <h1 style="display: none">大数据导论实验一——搭建Hadoop集群</h1>
             
               <p class="note note-info">
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2022年9月26日 晚上
+                    本文最后更新于：2022年9月29日 晚上
                   
                 
               </p>
@@ -337,7 +337,43 @@
             
               <div class="markdown-body">
                 
-                <h1 id="安装Centos7"><a href="#安装Centos7" class="headerlink" title="安装Centos7"></a>安装Centos7</h1><p>很容易，不解释，建议最小安装</p>
+                <table>
+<thead>
+<tr>
+<th align="center">学   号</th>
+<th align="center">19020031106</th>
+<th align="center">姓   名</th>
+<th align="center">张家亮</th>
+<th align="center">专业班级</th>
+<th align="center">2019级计算机科学与技术</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">课程名称</td>
+<td align="center">大数据导论</td>
+<td align="center">学期</td>
+<td align="center">2022年秋季学期</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">任课教师</td>
+<td align="center">刘洁 刘艳艳</td>
+<td align="center">完成日期</td>
+<td align="center">2022/9/25</td>
+<td align="center">上机课时间</td>
+<td align="center">周一56节（双周）</td>
+</tr>
+<tr>
+<td align="center">实验名称</td>
+<td align="center">搭建Hadoop集群</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h1 id="安装Centos7"><a href="#安装Centos7" class="headerlink" title="安装Centos7"></a>安装Centos7</h1><p>很容易，不解释，建议最小安装</p>
 <h1 id="创建Hadoop用户"><a href="#创建Hadoop用户" class="headerlink" title="创建Hadoop用户"></a>创建Hadoop用户</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">su	#以root用户登录<br>useradd -m hadoop -s /bin/bash	#创建用户hadoop<br></code></pre></td></tr></table></figure>
 
 <p>修改hadoop用户的密码：</p>
@@ -573,6 +609,15 @@
 <p>Web端查看HDFS的namenode，浏览器输入：<a target="_blank" rel="noopener" href="http://192.168.10.100:9870/">http://192.168.10.100:9870</a></p>
 <p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202209262057070.png" srcset="/img/loading.gif" lazyload alt="image-20220926205726753"></p>
 <p>Web端查看YARN的ResourceManager，浏览器输入：<a target="_blank" rel="noopener" href="http://192.168.10.101:8088/">http://192.168.10.101:8088</a></p>
+<h1 id="遇到的困难和解决"><a href="#遇到的困难和解决" class="headerlink" title="遇到的困难和解决"></a>遇到的困难和解决</h1><ol>
+<li>Java版本和Hadoop版本的兼容性问题</li>
+</ol>
+<p>最开始安装的是Java11，但是最后启动集群的时候会报空指针错误，后来查明是Java版本的问题。</p>
+<ol start="2">
+<li>hadoop配置文件错误</li>
+</ol>
+<p>最开始给的实验指导是错的，耽误好长时间。</p>
+<h1 id="实验心得"><a href="#实验心得" class="headerlink" title="实验心得"></a>实验心得</h1><p>第一次接触hadoop，真的遇到了好多问题，虽然本人对Linux比较了解，但是实验指导里面确实有很多冗余，还需要进一步精简。这次试验中我新学到了虚拟机的克隆和集群的搭建，也知道了如何在Linux下查询当前的IP地址，总的来说，让三个主机工作在一起是相当有意义的。</p>
 
                 
               </div>
@@ -620,7 +665,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>大数据导论实验1</div>
+      <div>大数据导论实验一——搭建Hadoop集群</div>
       <div>http://www.gandz.top/2022/09/25/first_hadoop/</div>
     </div>
     <div class="license-meta">
