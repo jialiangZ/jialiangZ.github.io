@@ -1,0 +1,919 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="不想起名">
+  <meta name="keywords" content="Java">
+  
+    <meta name="description" content="常用的Linux命令cd命令：切换目录 切换到目录 &#x2F;usr&#x2F;local  12[root@namenode ~]# cd &#x2F;usr&#x2F;local[root@namenode local]#   去到目前的上层目录  12[root@namenode local]# cd ..[root@namenode usr]#   回到自己的主文件夹  12[root@namenode usr]# cd ~[">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大数据导论实验二——熟悉常用的Linux操作和Hadoop操作">
+<meta property="og:url" content="http://www.gandz.top/2022/10/10/Linux-instructs/index.html">
+<meta property="og:site_name" content="G-and-Z">
+<meta property="og:description" content="常用的Linux命令cd命令：切换目录 切换到目录 &#x2F;usr&#x2F;local  12[root@namenode ~]# cd &#x2F;usr&#x2F;local[root@namenode local]#   去到目前的上层目录  12[root@namenode local]# cd ..[root@namenode usr]#   回到自己的主文件夹  12[root@namenode usr]# cd ~[">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202210122327268.png">
+<meta property="article:published_time" content="2022-10-10T14:20:54.000Z">
+<meta property="article:modified_time" content="2022-10-12T16:09:09.183Z">
+<meta property="article:author" content="不想起名">
+<meta property="article:tag" content="大数据导论实验">
+<meta property="article:tag" content="CentOS 7">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202210122327268.png">
+  
+  
+  
+  <title>大数据导论实验二——熟悉常用的Linux操作和Hadoop操作 - G-and-Z</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.gandz.top","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"m9Ckfw3lHgvWXKDzg3QrPPhW-gzGzoHsz","app_key":"hla1F0zLkSBfgfneXxzFV2Sk","server_url":"https://m9ckfw3l.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>G-and-Z</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="大数据导论实验二——熟悉常用的Linux操作和Hadoop操作"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        不想起名
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-10-10 22:20" pubdate>
+          2022年10月10日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          12k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          38 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">大数据导论实验二——熟悉常用的Linux操作和Hadoop操作</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    <!-- compatible with older versions-->
+                    本文最后更新于：2022年10月13日 凌晨
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="常用的Linux命令"><a href="#常用的Linux命令" class="headerlink" title="常用的Linux命令"></a>常用的Linux命令</h1><h2 id="cd命令：切换目录"><a href="#cd命令：切换目录" class="headerlink" title="cd命令：切换目录"></a>cd命令：切换目录</h2><ol>
+<li>切换到目录 /usr/local</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode ~]# cd /usr/local<br>[root@namenode local]#<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>去到目前的上层目录</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode local]# cd ..<br>[root@namenode usr]#<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>回到自己的主文件夹</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode usr]# cd ~<br>[root@namenode ~]#<br></code></pre></td></tr></table></figure>
+
+<h2 id="ls命令：查看文件与目录"><a href="#ls命令：查看文件与目录" class="headerlink" title="ls命令：查看文件与目录"></a>ls命令：查看文件与目录</h2><ol>
+<li>查看目录/usr下所有的文件</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode usr]# ls<br>bin  etc  games  include  lib  lib64  libexec  local  sbin  share  src  tmp<br></code></pre></td></tr></table></figure>
+
+<h2 id="mkdir命令：创建新目录"><a href="#mkdir命令：创建新目录" class="headerlink" title="mkdir命令：创建新目录"></a>mkdir命令：创建新目录</h2><ol>
+<li>进入/tmp目录，创建一个名为a的目录,并查看有多少目录存在</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode tmp]# mkdir a<br>[root@namenode tmp]# ls<br>a<br>systemd-private-0768d62c548f4b8296f7e62593790560-chronyd.service-4H2xD9<br>systemd-private-1573f7d8aff84ed0bb0f9aa1c4b14a36-chronyd.service-VvmbQ4<br>systemd-private-3d511845be4c4201b741fc478381d9c1-chronyd.service-GnnDG0<br>systemd-private-8ae56dbf8a994af09519c68b3684a34e-chronyd.service-itar4T<br>systemd-private-a9a9ee4374394696a7bc32748d8cd35f-chronyd.service-gB22Dl<br>systemd-private-d36bc8a5a63f4d18b3f7799ae474b133-chronyd.service-JhSVbx<br>systemd-private-d589dba066b84a4789fd8f1ee44b641e-chronyd.service-tm8Yzj<br>systemd-private-e4d3c1988d024cc68ae268068ff8e1ec-chronyd.service-tbjdQJ<br>systemd-private-ffd2756e45434534a531e4686cbedeaa-chronyd.service-svUbx3<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>创建目录a1\a2\a3\a4</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode tmp]# mkdir a1<br>[root@namenode tmp]# mkdir a2<br>[root@namenode tmp]# mkdir a3<br>[root@namenode tmp]# mkdir a4<br>[root@namenode tmp]# ls<br>a<br>a1<br>a2<br>a3<br>a4<br>systemd-private-0768d62c548f4b8296f7e62593790560-chronyd.service-4H2xD9<br>systemd-private-1573f7d8aff84ed0bb0f9aa1c4b14a36-chronyd.service-VvmbQ4<br>systemd-private-3d511845be4c4201b741fc478381d9c1-chronyd.service-GnnDG0<br>systemd-private-8ae56dbf8a994af09519c68b3684a34e-chronyd.service-itar4T<br>systemd-private-a9a9ee4374394696a7bc32748d8cd35f-chronyd.service-gB22Dl<br>systemd-private-d36bc8a5a63f4d18b3f7799ae474b133-chronyd.service-JhSVbx<br>systemd-private-d589dba066b84a4789fd8f1ee44b641e-chronyd.service-tm8Yzj<br>systemd-private-e4d3c1988d024cc68ae268068ff8e1ec-chronyd.service-tbjdQJ<br>systemd-private-ffd2756e45434534a531e4686cbedeaa-chronyd.service-svUbx3<br></code></pre></td></tr></table></figure>
+
+<h2 id="rmdir命令：删除空的目录"><a href="#rmdir命令：删除空的目录" class="headerlink" title="rmdir命令：删除空的目录"></a>rmdir命令：删除空的目录</h2><ol>
+<li>将上例创建的目录a（/tmp下面）删除</li>
+<li>删除目录a1/a2/a3/a4，查看有多少目录存在</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode tmp]# rmdir a<br>[root@namenode tmp]# rmdir a1<br>[root@namenode tmp]# rmdir a2<br>[root@namenode tmp]# rmdir a3<br>[root@namenode tmp]# rmdir a4<br>[root@namenode tmp]# ls<br>systemd-private-0768d62c548f4b8296f7e62593790560-chronyd.service-4H2xD9<br>systemd-private-1573f7d8aff84ed0bb0f9aa1c4b14a36-chronyd.service-VvmbQ4<br>systemd-private-3d511845be4c4201b741fc478381d9c1-chronyd.service-GnnDG0<br>systemd-private-8ae56dbf8a994af09519c68b3684a34e-chronyd.service-itar4T<br>systemd-private-a9a9ee4374394696a7bc32748d8cd35f-chronyd.service-gB22Dl<br>systemd-private-d36bc8a5a63f4d18b3f7799ae474b133-chronyd.service-JhSVbx<br>systemd-private-d589dba066b84a4789fd8f1ee44b641e-chronyd.service-tm8Yzj<br>systemd-private-e4d3c1988d024cc68ae268068ff8e1ec-chronyd.service-tbjdQJ<br>systemd-private-ffd2756e45434534a531e4686cbedeaa-chronyd.service-svUbx3<br></code></pre></td></tr></table></figure>
+
+<h2 id="cp命令：复制文件或目录"><a href="#cp命令：复制文件或目录" class="headerlink" title="cp命令：复制文件或目录"></a>cp命令：复制文件或目录</h2><ol>
+<li>将主文件夹下的.bashrc复制到/usr下，命名为bashrc1</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode ~]# cp .bashrc /usr<br>[root@namenode ~]# cd /usr<br>[root@namenode usr]# mv .bashrc bashrc1<br>[root@namenode usr]# ls<br>bashrc1  bin  etc  games  include  lib  lib64  libexec  local  sbin  share  src  tmp<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>在/tmp下新建目录test，再复制这个目录内容到/usr</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode tmp]# mkdir test<br>[root@namenode tmp]# ls<br>hsperfdata_root<br>systemd-private-0768d62c548f4b8296f7e62593790560-chronyd.service-OwsMNA<br>systemd-private-ffd2756e45434534a531e4686cbedeaa-chronyd.service-XEVFxv<br>test<br>[root@namenode tmp]# cp -r test /usr<br>[root@namenode tmp]# cd /usr<br>[root@namenode usr]# ls<br>bashrc1  bin  etc  games  include  lib  lib64  libexec  local  sbin  share  src  test  tmp<br></code></pre></td></tr></table></figure>
+
+<h2 id="mv命令：移动文件与目录，或更名"><a href="#mv命令：移动文件与目录，或更名" class="headerlink" title="mv命令：移动文件与目录，或更名"></a>mv命令：移动文件与目录，或更名</h2><ol>
+<li>将上例文件bashrc1移动到目录/usr/test</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode usr]# ls<br>bashrc1  bin  etc  games  include  lib  lib64  libexec  local  sbin  share  src  test  tmp<br>[root@namenode usr]# mv bashrc1 /usr/test<br>[root@namenode usr]# ls<br>bin  etc  games  include  lib  lib64  libexec  local  sbin  share  src  test  tmp<br>[root@namenode usr]# cd test<br>[root@namenode test]# ls<br>bashrc1<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>将上例test目录重命名为test2</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode usr]# mv test test2<br>[root@namenode usr]# ls<br>bin  etc  games  include  lib  lib64  libexec  local  sbin  share  src  test2  tmp<br></code></pre></td></tr></table></figure>
+
+<h2 id="rm命令：移除文件或目录"><a href="#rm命令：移除文件或目录" class="headerlink" title="rm命令：移除文件或目录"></a>rm命令：移除文件或目录</h2><ol>
+<li>将上例复制的bashrc1文件删除</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode test2]# ls<br>bashrc1<br>[root@namenode test2]# rm bashrc1<br>rm：是否删除普通文件 &quot;bashrc1&quot;？y<br>[root@namenode test2]# ls<br>[root@namenode test2]#<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>将上例的test2目录删除</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode usr]# rm -r test2<br>rm：是否删除目录 &quot;test2&quot;？y<br>[root@namenode usr]#<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>我的主目录下的.bashrc文件指示在/etc/bashrc</p>
+</blockquote>
+<h2 id="cat命令：查看文件内容"><a href="#cat命令：查看文件内容" class="headerlink" title="cat命令：查看文件内容"></a>cat命令：查看文件内容</h2><ol>
+<li>查看主文件夹下的.bashrc文件内容</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode ~]# cat .bashrc<br><span class="hljs-meta prompt_"># </span><span class="language-bash">.bashrc</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">User specific aliases and <span class="hljs-built_in">functions</span></span><br><br>alias rm=&#x27;rm -i&#x27;<br>alias cp=&#x27;cp -i&#x27;<br>alias mv=&#x27;mv -i&#x27;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">Source global definitions</span><br>if [ -f /etc/bashrc ]; then<br>	. /etc/bashrc<br>fi<br></code></pre></td></tr></table></figure>
+
+<h2 id="tac命令：反向列示"><a href="#tac命令：反向列示" class="headerlink" title="tac命令：反向列示"></a>tac命令：反向列示</h2><ol>
+<li>反向查看主文件夹下.bashrc文件内容</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode ~]# tac .bashrc<br>fi<br>	. /etc/bashrc<br>if [ -f /etc/bashrc ]; then<br><span class="hljs-meta prompt_"># </span><span class="language-bash">Source global definitions</span><br><br>alias mv=&#x27;mv -i&#x27;<br>alias cp=&#x27;cp -i&#x27;<br>alias rm=&#x27;rm -i&#x27;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">User specific aliases and <span class="hljs-built_in">functions</span></span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">.bashrc</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="more命令：一页一页翻动查看"><a href="#more命令：一页一页翻动查看" class="headerlink" title="more命令：一页一页翻动查看"></a>more命令：一页一页翻动查看</h2><ol>
+<li>翻页查看主文件夹下.bashrc文件内容</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">/etc/bashrc</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">System wide <span class="hljs-built_in">functions</span> and aliases</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">Environment stuff goes <span class="hljs-keyword">in</span> /etc/profile</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">It<span class="hljs-string">&#x27;s NOT a good idea to change this file unless you know what you</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash"><span class="hljs-string">are doing. It&#x27;</span>s much better to create a custom.sh shell script <span class="hljs-keyword">in</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">/etc/profile.d/ to make custom changes to your environment, as this</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">will prevent the need <span class="hljs-keyword">for</span> merging <span class="hljs-keyword">in</span> future updates.</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">are we an interactive shell?</span><br>if [ &quot;$PS1&quot; ]; then<br>  if [ -z &quot;$PROMPT_COMMAND&quot; ]; then<br>    case $TERM in<br>    xterm*|vte*)<br>      if [ -e /etc/sysconfig/bash-prompt-xterm ]; then<br>          PROMPT_COMMAND=/etc/sysconfig/bash-prompt-xterm<br>      elif [ &quot;$&#123;VTE_VERSION:-0&#125;&quot; -ge 3405 ]; then<br>          PROMPT_COMMAND=&quot;__vte_prompt_command&quot;<br>      else<br>          PROMPT_COMMAND=&#x27;printf &quot;\033]0;%s@%s:%s\007&quot; &quot;$&#123;USER&#125;&quot; &quot;$&#123;HOSTNAME%%.*&#125;&quot; &quot;$&#123;PWD/#$HOME/~&#125;&quot;&#x27;<br>      fi<br>      ;;<br>    screen*)<br>      if [ -e /etc/sysconfig/bash-prompt-screen ]; then<br>          PROMPT_COMMAND=/etc/sysconfig/bash-prompt-screen<br>      else<br>          PROMPT_COMMAND=&#x27;printf &quot;\033k%s@%s:%s\033\\&quot; &quot;$&#123;USER&#125;&quot; &quot;$&#123;HOSTNAME%%.*&#125;&quot; &quot;$&#123;PWD/#$HOME/~&#125;&quot;&#x27;<br>      fi<br>      ;;<br>    *)<br>      [ -e /etc/sysconfig/bash-prompt-default ] &amp;&amp; PROMPT_COMMAND=/etc/sysconfig/bash-prompt-default<br>      ;;<br>    esac<br>  fi<br><span class="hljs-meta prompt_">  # </span><span class="language-bash">Turn on parallel <span class="hljs-built_in">history</span></span><br>  shopt -s histappend<br>  history -a<br><span class="hljs-meta prompt_">  # </span><span class="language-bash">Turn on checkwinsize</span><br>  shopt -s checkwinsize<br>  [ &quot;$PS1&quot; = &quot;\\s-\\v\\\$ &quot; ] &amp;&amp; PS1=&quot;[\u@\h \W]\\$ &quot;<br><span class="hljs-meta prompt_">  # </span><span class="language-bash">You might want to have e.g. <span class="hljs-built_in">tty</span> <span class="hljs-keyword">in</span> prompt (e.g. more virtual machines)</span><br><span class="hljs-meta prompt_">  # </span><span class="language-bash">and console windows</span><br><span class="hljs-meta prompt_">  # </span><span class="language-bash">If you want to <span class="hljs-keyword">do</span> so, just add e.g.</span><br><span class="hljs-meta prompt_">  # </span><span class="language-bash"><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$PS1</span>&quot;</span> ]; <span class="hljs-keyword">then</span></span><br><span class="hljs-meta prompt_">  # </span><span class="language-bash">  PS1=<span class="hljs-string">&quot;[\u@\h:\l \W]\\$ &quot;</span></span><br><span class="hljs-meta prompt_">  # </span><span class="language-bash"><span class="hljs-keyword">fi</span></span><br><span class="hljs-meta prompt_">  # </span><span class="language-bash">to your custom modification shell script <span class="hljs-keyword">in</span> /etc/profile.d/ directory</span><br>fi<br><br>if ! shopt -q login_shell ; then # We&#x27;re not a login shell<br>    # Need to redefine pathmunge, it get&#x27;s undefined at the end of /etc/profile<br>    pathmunge () &#123;<br>        case &quot;:$&#123;PATH&#125;:&quot; in<br>            *:&quot;$1&quot;:*)<br>                ;;<br>            *)<br>                if [ &quot;$2&quot; = &quot;after&quot; ] ; then<br>                    PATH=$PATH:$1<br>                else<br>                    PATH=$1:$PATH<br>                fi<br><span class="hljs-meta prompt_">--More--(71%</span><span class="language-bash">)</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="head命令：取出前面几行"><a href="#head命令：取出前面几行" class="headerlink" title="head命令：取出前面几行"></a>head命令：取出前面几行</h2><ol>
+<li>查看主文件夹下.bashrc文件内容前20行</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode ~]# head -n 20 /etc/bashrc<br><span class="hljs-meta prompt_"># </span><span class="language-bash">/etc/bashrc</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">System wide <span class="hljs-built_in">functions</span> and aliases</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">Environment stuff goes <span class="hljs-keyword">in</span> /etc/profile</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">It<span class="hljs-string">&#x27;s NOT a good idea to change this file unless you know what you</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash"><span class="hljs-string">are doing. It&#x27;</span>s much better to create a custom.sh shell script <span class="hljs-keyword">in</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">/etc/profile.d/ to make custom changes to your environment, as this</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">will prevent the need <span class="hljs-keyword">for</span> merging <span class="hljs-keyword">in</span> future updates.</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">are we an interactive shell?</span><br>if [ &quot;$PS1&quot; ]; then<br>  if [ -z &quot;$PROMPT_COMMAND&quot; ]; then<br>    case $TERM in<br>    xterm*|vte*)<br>      if [ -e /etc/sysconfig/bash-prompt-xterm ]; then<br>          PROMPT_COMMAND=/etc/sysconfig/bash-prompt-xterm<br>      elif [ &quot;$&#123;VTE_VERSION:-0&#125;&quot; -ge 3405 ]; then<br>          PROMPT_COMMAND=&quot;__vte_prompt_command&quot;<br>      else<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>查看主文件夹下.bashrc文件内容，后面50行不显示，只显示前面几行</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode ~]# head -n -50 /etc/bashrc<br><span class="hljs-meta prompt_"># </span><span class="language-bash">/etc/bashrc</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">System wide <span class="hljs-built_in">functions</span> and aliases</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">Environment stuff goes <span class="hljs-keyword">in</span> /etc/profile</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">It<span class="hljs-string">&#x27;s NOT a good idea to change this file unless you know what you</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash"><span class="hljs-string">are doing. It&#x27;</span>s much better to create a custom.sh shell script <span class="hljs-keyword">in</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">/etc/profile.d/ to make custom changes to your environment, as this</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">will prevent the need <span class="hljs-keyword">for</span> merging <span class="hljs-keyword">in</span> future updates.</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">are we an interactive shell?</span><br>if [ &quot;$PS1&quot; ]; then<br>  if [ -z &quot;$PROMPT_COMMAND&quot; ]; then<br>    case $TERM in<br>    xterm*|vte*)<br>      if [ -e /etc/sysconfig/bash-prompt-xterm ]; then<br>          PROMPT_COMMAND=/etc/sysconfig/bash-prompt-xterm<br>      elif [ &quot;$&#123;VTE_VERSION:-0&#125;&quot; -ge 3405 ]; then<br>          PROMPT_COMMAND=&quot;__vte_prompt_command&quot;<br>      else<br>          PROMPT_COMMAND=&#x27;printf &quot;\033]0;%s@%s:%s\007&quot; &quot;$&#123;USER&#125;&quot; &quot;$&#123;HOSTNAME%%.*&#125;&quot; &quot;$&#123;PWD/#$HOME/~&#125;&quot;&#x27;<br>      fi<br>      ;;<br>    screen*)<br>      if [ -e /etc/sysconfig/bash-prompt-screen ]; then<br>          PROMPT_COMMAND=/etc/sysconfig/bash-prompt-screen<br>      else<br>          PROMPT_COMMAND=&#x27;printf &quot;\033k%s@%s:%s\033\\&quot; &quot;$&#123;USER&#125;&quot; &quot;$&#123;HOSTNAME%%.*&#125;&quot; &quot;$&#123;PWD/#$HOME/~&#125;&quot;&#x27;<br>      fi<br>      ;;<br>    *)<br>      [ -e /etc/sysconfig/bash-prompt-default ] &amp;&amp; PROMPT_COMMAND=/etc/sysconfig/bash-prompt-default<br>      ;;<br>    esac<br>  fi<br><span class="hljs-meta prompt_">  # </span><span class="language-bash">Turn on parallel <span class="hljs-built_in">history</span></span><br>  shopt -s histappend<br>  history -a<br><span class="hljs-meta prompt_">  # </span><span class="language-bash">Turn on checkwinsize</span><br>  shopt -s checkwinsize<br>  [ &quot;$PS1&quot; = &quot;\\s-\\v\\\$ &quot; ] &amp;&amp; PS1=&quot;[\u@\h \W]\\$ &quot;<br><span class="hljs-meta prompt_">  # </span><span class="language-bash">You might want to have e.g. <span class="hljs-built_in">tty</span> <span class="hljs-keyword">in</span> prompt (e.g. more virtual machines)</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="tail命令：取出后面几行"><a href="#tail命令：取出后面几行" class="headerlink" title="tail命令：取出后面几行"></a>tail命令：取出后面几行</h2><ol>
+<li>查看主文件夹下.bashrc文件内容最后20行</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode ~]# tail -n -20 /etc/bashrc<br>       umask 022<br>    fi<br><br>    SHELL=/bin/bash<br>    # Only display echos from profile.d scripts if we are no login shell<br>    # and interactive - otherwise just process them to set envvars<br>    for i in /etc/profile.d/*.sh; do<br>        if [ -r &quot;$i&quot; ]; then<br>            if [ &quot;$PS1&quot; ]; then<br>                . &quot;$i&quot;<br>            else<br>                . &quot;$i&quot; &gt;/dev/null<br>            fi<br>        fi<br>    done<br><br>    unset i<br>    unset -f pathmunge<br>fi<br><span class="hljs-meta prompt_"># </span><span class="language-bash">vim:ts=4:sw=4</span><br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>查看主文件夹下.bashrc文件内容，只列出50行以后的数据</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode ~]# tail -n +50 /etc/bashrc<br><br>if ! shopt -q login_shell ; then # We&#x27;re not a login shell<br>    # Need to redefine pathmunge, it get&#x27;s undefined at the end of /etc/profile<br>    pathmunge () &#123;<br>        case &quot;:$&#123;PATH&#125;:&quot; in<br>            *:&quot;$1&quot;:*)<br>                ;;<br>            *)<br>                if [ &quot;$2&quot; = &quot;after&quot; ] ; then<br>                    PATH=$PATH:$1<br>                else<br>                    PATH=$1:$PATH<br>                fi<br>        esac<br>    &#125;<br><br>    # By default, we want umask to get set. This sets it for non-login shell.<br>    # Current threshold for system reserved uid/gids is 200<br>    # You could check uidgid reservation validity in<br>    # /usr/share/doc/setup-*/uidgid file<br>    if [ $UID -gt 199 ] &amp;&amp; [ &quot;`/usr/bin/id -gn`&quot; = &quot;`/usr/bin/id -un`&quot; ]; then<br>       umask 002<br>    else<br>       umask 022<br>    fi<br><br>    SHELL=/bin/bash<br>    # Only display echos from profile.d scripts if we are no login shell<br>    # and interactive - otherwise just process them to set envvars<br>    for i in /etc/profile.d/*.sh; do<br>        if [ -r &quot;$i&quot; ]; then<br>            if [ &quot;$PS1&quot; ]; then<br>                . &quot;$i&quot;<br>            else<br>                . &quot;$i&quot; &gt;/dev/null<br>            fi<br>        fi<br>    done<br><br>    unset i<br>    unset -f pathmunge<br>fi<br><span class="hljs-meta prompt_"># </span><span class="language-bash">vim:ts=4:sw=4</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="touch命令：修改文件时间或创建新文件"><a href="#touch命令：修改文件时间或创建新文件" class="headerlink" title="touch命令：修改文件时间或创建新文件"></a>touch命令：修改文件时间或创建新文件</h2><ol>
+<li>在/tmp下创建一个空文件hello并查看时间</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode ~]# cd /tmp <br>[root@namenode tmp]# touch hello<br>[root@namenode tmp]# ls -l hello<br>-rw-r--r--. 1 root root 0 10月 11 22:02 hello<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>修改hello文件，将日期调整为5天前</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode tmp]# touch -d&quot;5 days ago&quot; hello<br>[root@namenode tmp]# ls -l hello<br>-rw-r--r--. 1 root root 0 10月  6 22:03 hello<br></code></pre></td></tr></table></figure>
+
+<h2 id="chown命令：修改文件所有者权限"><a href="#chown命令：修改文件所有者权限" class="headerlink" title="chown命令：修改文件所有者权限"></a>chown命令：修改文件所有者权限</h2><ol>
+<li>将hello文件所有者改为root帐号，并查看属性</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode tmp]# sudo chown root hello<br>[root@namenode tmp]# ls -al hello<br>-rw-r--r--. 1 root root 0 10月  6 22:03 hello<br></code></pre></td></tr></table></figure>
+
+<h2 id="find命令：文件查找"><a href="#find命令：文件查找" class="headerlink" title="find命令：文件查找"></a>find命令：文件查找</h2><ol>
+<li>找出主文件夹下文件名为.bashrc的文件</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode tmp]# find ~/.bashrc<br>/root/.bashrc<br></code></pre></td></tr></table></figure>
+
+<h2 id="tar命令：压缩命令"><a href="#tar命令：压缩命令" class="headerlink" title="tar命令：压缩命令"></a>tar命令：压缩命令</h2><ol>
+<li>在/目录下新建文件夹test,然后在/目录下打包成test.tar.gz</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode /]# mkdir test<br>[root@namenode /]# tar -czvf test.tar.gz test<br>test/<br>[root@namenode /]# ls<br>bin   dev  home  lib64  mnt  proc  run   srv  test         tmp  var<br>boot  etc  lib   media  opt  root  sbin  sys  test.tar.gz  usr<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>解压缩到/tmp目录</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode /]# tar -zxvf test.tar.gz -C /tmp<br>test/<br></code></pre></td></tr></table></figure>
+
+<h2 id="grep命令：查找字符串"><a href="#grep命令：查找字符串" class="headerlink" title="grep命令：查找字符串"></a>grep命令：查找字符串</h2><ol>
+<li>从～/.bashrc文件中查找字符串’examples’</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@namenode /]# grep in /etc/bashrc<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202210122327268.png" srcset="/img/loading.gif" lazyload alt="image-20221012232710039"></p>
+<ol start="2">
+<li>配置Java环境变量，在～/.bashrc中设置</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[hadoop@namenode ~]$ vi ~/.bashrc<br>[hadoop@namenode ~]$ source .bashrc<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>查看JAVA_HOME变量的值</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">[hadoop@namenode ~]$ echo $JAVA_HOME<br>C:UsersAdministratorAppDataLocalAndroidSdk<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="熟悉常用的Hadoop操作"><a href="#熟悉常用的Hadoop操作" class="headerlink" title="熟悉常用的Hadoop操作"></a>熟悉常用的Hadoop操作</h1><ol>
+<li>启动hadoop，在HDFS中创建用户目录（现在已经在hadoop目录/usr/local/hadoop）</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[hadoop@namenode bin]$ cd /opt/module/hadoop-3.3.4<br>[hadoop@namenode hadoop-3.3.4]$ sbin/start-dfs.sh<br>[hadoop@namenode hadoop-3.3.4]$ bin/hdfs dfs -mkdir -p /user/hadoop<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>接着在此用户目录下创建text文件夹，并查看文件列表</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">[hadoop@namenode hadoop-3.3.4]$ bin/hdfs dfs -mkdir test<br>[hadoop@namenode hadoop-3.3.4]$ hadoop fs -ls /user/hadoop<br>Found 1 items<br>drwxr-xr-x   - hadoop supergroup          0 2022-10-12 23:57 /user/hadoop/test<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>将～/.bashrc文件上传到HDFS的test文件夹，并查看test</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">[hadoop@namenode hadoop-3.3.4]$ bin/hdfs dfs -put ~/.bashrc test<br>[hadoop@namenode hadoop-3.3.4]$ hadoop fs -ls /user/hadoop/test<br>Found 1 items<br>-rw-r--r--   3 hadoop supergroup        231 2022-10-13 00:06 /user/hadoop/test/.bashrc<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>将HDFS文件夹test拷到本机。</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">[hadoop@namenode hadoop-3.3.4]$ hadoop fs -get /user/hadoop/test ~/<br>[hadoop@namenode hadoop-3.3.4]$ cd ~<br>[hadoop@namenode ~]$ ls<br>test<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AF%BC%E8%AE%BA%E5%AE%9E%E9%AA%8C/" class="category-chain-item">大数据导论实验</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AF%BC%E8%AE%BA%E5%AE%9E%E9%AA%8C/">#大数据导论实验</a>
+      
+        <a href="/tags/CentOS-7/">#CentOS 7</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>大数据导论实验二——熟悉常用的Linux操作和Hadoop操作</div>
+      <div>http://www.gandz.top/2022/10/10/Linux-instructs/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>不想起名</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年10月10日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/25/first_hadoop/" title="大数据导论实验一——搭建Hadoop集群">
+                        <span class="hidden-mobile">大数据导论实验一——搭建Hadoop集群</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"m9Ckfw3lHgvWXKDzg3QrPPhW-gzGzoHsz","appKey":"hla1F0zLkSBfgfneXxzFV2Sk","path":"window.location.pathname","placeholder":"小帅哥，快来玩呀！小美女，你好呀！","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      皖ICP备20012286号
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
