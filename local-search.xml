@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>深度学习：算法到实战——绪论与神经网络基础</title>
+    <link href="/2023/01/26/DL-week2/"/>
+    <url>/2023/01/26/DL-week2/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>深度学习：算法到实战</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>DL</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>深度学习：算法到实战——绪论与神经网络基础</title>
+    <link href="/2023/01/26/DL-week1/"/>
+    <url>/2023/01/26/DL-week1/</url>
+    
+    <content type="html"><![CDATA[<h1 id="人工智能的定义："><a href="#人工智能的定义：" class="headerlink" title="人工智能的定义："></a>人工智能的定义：</h1><p>人工智能是研究、开发用于模拟、延伸和扩展人的智能的理论、方法、技术及应用系统的一门新的技术科学。<br>人工智能是计算机科学的一个分支，它企图了解智能的实质，并生产出一种新的能以人类智能相似的方式做出反应的智能机器，该领域的研究包括机器人、语言识别、图像识别、自然语言处理和专家系统等。人工智能从诞生以来，理论和技术日益成熟，应用领域也不断扩大，可以设想，未来人工智能带来的科技产品，将会是人类智慧的“容器”。人工智能可以对人的意识、思维的信息过程的模拟。人工智能不是人的智能，但能像人那样思考、也可能超过人的智能。<strong>但是人工智能的创造力是十分低下的。</strong></p><h1 id="机器学习的定义"><a href="#机器学习的定义" class="headerlink" title="机器学习的定义"></a>机器学习的定义</h1><ol><li>最常用定义：“计算机系统利用<strong>经验</strong>提高自身的性能”</li><li>可操作定义：“机器学习本质是一个基于<strong>经验数据</strong>的函数估计问题”</li><li>统计学定义：“<strong>提取</strong>重要模式、趋势，并<strong>理解数据</strong>，即从数据中学习”</li></ol><p>总而言之——从数据中自动提取知识。</p><h1 id="机器学习学什么？"><a href="#机器学习学什么？" class="headerlink" title="机器学习学什么？"></a>机器学习学什么？</h1><p>问题规模/准则复杂度/数据/对机器学习有意义的模式/是否有解析解</p><p>去找到一个有意义的模式，解决一个没有解析解的问题。</p><ol><li>模型——问题建模，确定假设空间</li><li>策略——确定目标函数</li><li>算法——求解模型参数</li></ol><h2 id="模型分类"><a href="#模型分类" class="headerlink" title="模型分类"></a>模型分类</h2><ol><li><p><strong>数据标记</strong>维度：监督学习VS无监督学习（半监督学习、强化学习）</p><p>监督和无监督是指是否有数据的标记</p><p>强化学习使用未标记的数据，但可以知道离目标越来越近还是越来越远（奖励反馈）</p></li><li><p><strong>数据分布</strong>维度：参数模型VS无参数模型</p><p>参数模型：对数据分布进行假设，待求解的数据模式/映射可以用一组有限且固定数目的参数进行刻画（线性回归/逻辑回归/K均值聚类）</p><p>非参数模型：不对数据分布进行假设，数据的所有统计特征都来源于数据本身（SVM/决策树/随机森林）</p></li><li><p><strong>建模对象</strong>维度：判别VS生成模型</p><p>生成模型：对输入X、Y的联合分布P（X，Y）建模</p><p>判别模型：对已知的输入X条件下输出Y的条件分布P（X，Y）建模</p></li></ol><p>人工智能——&gt;机器学习——&gt;深度学习</p><h1 id="传统机器学习VS深度学习"><a href="#传统机器学习VS深度学习" class="headerlink" title="传统机器学习VS深度学习"></a>传统机器学习VS深度学习</h1><p>传统的机器学习需要人去花时间标注数据并绞尽脑汁选择或设计一些特征（形状、纹理颜色等等），再用某种分类器训练和测试，若结果不好还需要找到更合适的特征。</p><p>深度学习需要花时间收集并标注特征，之后挑选一些深度模型，选几组模型超参数，交给机器绞尽脑汁优化学习模型中的数千万/数亿权重参数。</p><p>后深度学习时代，期望：花少量时间收集并标注少量数据，交给机器绞尽脑汁完成任务。</p><h1 id="神经网络结构的发展"><a href="#神经网络结构的发展" class="headerlink" title="神经网络结构的发展"></a>神经网络结构的发展</h1><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202301262258487.png" alt="51344A8DF42E0C93B56715E75EF359BC"></p><h1 id="深度学习的“不能”与解释性"><a href="#深度学习的“不能”与解释性" class="headerlink" title="深度学习的“不能”与解释性"></a>深度学习的“不能”与解释性</h1><ol><li>算法输出不稳定，容易被攻击</li><li>模型复杂度高，难以纠错和调试</li><li>模型层级复合度高，参数不透明</li><li>端到端的训练方式对数据依赖性强，模型增量性差</li><li>专注直观感知类问题，对开放性推理问题无能为力</li><li>人类知识无法有效引入进行监督，机器偏见难以避免</li></ol><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202301262338112.png" alt="image-20230126233835983"></p><h1 id="神经网络基础"><a href="#神经网络基础" class="headerlink" title="神经网络基础"></a>神经网络基础</h1><h2 id="神经元"><a href="#神经元" class="headerlink" title="神经元"></a>神经元</h2><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202301262345949.png" alt="image-20230126234558851"></p><p>多个输入，每个输入有权值和强度，输入和超过一个阈值时，神经元就会被激活，这模仿了生物学上的神经元。</p><h2 id="为什么需要激活函数f"><a href="#为什么需要激活函数f" class="headerlink" title="为什么需要激活函数f"></a>为什么需要激活函数f</h2><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202301262348917.png" alt="image-20230126234857831"></p><p>激活函数举例：</p><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202301262349244.png" alt="image-20230126234958169"></p><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202301262350227.png" alt="image-20230126235057131"></p><h2 id="感知器"><a href="#感知器" class="headerlink" title="感知器"></a>感知器</h2><p>感知器是生物<a href="https://baike.baidu.com/item/%E7%A5%9E%E7%BB%8F%E7%BB%86%E8%83%9E?fromModule=lemma_inlink">神经细胞</a>的简单抽象，神经细胞结构大致可分为：树突、突触、细胞体及轴突。单个神经细胞可被视为一种只有两种状态的机器——激动时为‘是’，而未激动时为‘否’。</p><p>神经细胞的状态取决于从其它的神经细胞收到的输入信号量，及突触的强度（抑制或加强）。当信号量总和超过了某个<a href="https://baike.baidu.com/item/%E9%98%88%E5%80%BC?fromModule=lemma_inlink">阈值</a>时，细胞体就会激动，产生电脉冲。电脉冲沿着轴突并通过突触传递到其它神经元。为了模拟神经细胞行为，与之对应的感知机基础概念被提出，如权量（突触）、偏置（阈值）及激活函数（细胞体）。</p><p>在<a href="https://baike.baidu.com/item/%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/382460?fromModule=lemma_inlink">人工神经网络</a>领域中，感知器也被指为单层的人工神经网络，以区别于较复杂的<a href="https://baike.baidu.com/item/%E5%A4%9A%E5%B1%82%E6%84%9F%E7%9F%A5%E5%99%A8/10885549?fromModule=lemma_inlink">多层感知器</a>。 作为一种线性分类器，（单层）感知器可说是最简单的前向人工神经网络形式。尽管结构简单，感知器能够学习并解决相当复杂的问题。感知器主要的本质缺陷是它不能处理线性不可分问题。</p><h2 id="万有逼近定理"><a href="#万有逼近定理" class="headerlink" title="万有逼近定理"></a>万有逼近定理</h2><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202301270003854.png" alt="image-20230127000354737"></p><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202301270004379.png" alt="image-20230127000409283"></p><p>看起来层数越多越好，但事实是如此吗？</p><h2 id="神经网络每一层的作用"><a href="#神经网络每一层的作用" class="headerlink" title="神经网络每一层的作用"></a>神经网络每一层的作用</h2><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202301270005581.png" alt="image-20230127000557491"></p><p>可以将复杂问题转化为简单问题，比如将非线性问题变换为线性问题</p><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202301270007934.png" alt="image-20230127000715856"></p><h2 id="更宽或更深？"><a href="#更宽或更深？" class="headerlink" title="更宽或更深？"></a>更宽或更深？</h2><p>深度的贡献是指数级的，而宽度是线性级的，所以网络的深度更重要。</p><p>但是有的时候层数加的多了之后，反而训练效果更差了，这是为什么？</p><h2 id="梯度消失问题"><a href="#梯度消失问题" class="headerlink" title="梯度消失问题"></a>梯度消失问题</h2><p>误差反向传播</p><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202301270016516.png" alt="image-20230127001624421"></p><p>梯度的定义：是一个向量，方向是最大方向导数的方向，模为方向导数的最大值。</p><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202301270017612.png" alt="image-20230127001744520"></p><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202301270023828.png" alt="image-20230127002346704"></p><p>若初始点选的不好，则有可能最终得到的是局部的最优解，而非全局的最优解。</p><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202301270033879.png" alt="image-20230127003316764"></p><p>梯度消失问题是因为误差通过梯度传播造成的，深度过高时，误差会无法传播，因为反向传播前面的乘项太多了。三层神经网络是主流。</p><h2 id="逐层预训练（Pre-training）"><a href="#逐层预训练（Pre-training）" class="headerlink" title="逐层预训练（Pre-training）"></a>逐层预训练（Pre-training）</h2><p>可以解决局部最小值和梯度消失问题</p><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202301270039250.png" alt="image-20230127003908153"></p><p>预训练是为了找到一个还不错的权重并作为初值</p><p>如何找到这个权值呢？</p><h2 id="受限玻耳兹曼机和自编码器"><a href="#受限玻耳兹曼机和自编码器" class="headerlink" title="受限玻耳兹曼机和自编码器"></a>受限玻耳兹曼机和自编码器</h2><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202301270043457.png" alt="image-20230127004314370"></p><h3 id="自编码器"><a href="#自编码器" class="headerlink" title="自编码器"></a>自编码器</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202301270045779.png" alt="image-20230127004500690"></p><p>假设<strong>输出与输入相同</strong></p><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202301270046420.png" alt="image-20230127004628332"></p><h3 id="受限玻耳兹曼机"><a href="#受限玻耳兹曼机" class="headerlink" title="受限玻耳兹曼机"></a>受限玻耳兹曼机</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202301270048633.png" alt="image-20230127004833545"></p><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202301270048064.png" alt="image-20230127004850968"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>深度学习：算法到实战</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>DL</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>exp_MapReduce</title>
     <link href="/2022/12/11/exp-MapReduce/"/>
     <url>/2022/12/11/exp-MapReduce/</url>
@@ -35,7 +85,7 @@
     <link href="/2022/12/05/huawei-MapReduce/"/>
     <url>/2022/12/05/huawei-MapReduce/</url>
     
-    <content type="html"><![CDATA[<table><thead><tr><th>姓名：张家亮</th><th>学号：19020031106</th><th>班级：2019级计算机科学与技术2班</th></tr></thead><tbody><tr><td>授课老师：刘洁、刘艳艳</td><td>实验名称：Redis和MongoDB的应用</td><td>完成日期：2022年12月5日</td></tr></tbody></table><h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052156604.png" alt="image-20221205215634490"></p><h2 id="3-3-2-使用组件管理"><a href="#3-3-2-使用组件管理" class="headerlink" title="3.3.2 使用组件管理"></a>3.3.2 使用组件管理</h2><p>这一步出现问题了，华为云手册已经过时了</p><p>组件管理标签里并没有MapReduce，而是要前往Manager登录之后才能看到</p><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052159072.png" alt="image-20221205215905954"></p><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052200627.png" alt="image-20221205220041561"></p><h2 id="资源清理释放"><a href="#资源清理释放" class="headerlink" title="资源清理释放"></a>资源清理释放</h2><h3 id="释放-MapReduce-服务"><a href="#释放-MapReduce-服务" class="headerlink" title="释放 MapReduce 服务"></a>释放 MapReduce 服务</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052203415.png" alt="image-20221205220326312"></p><h3 id="释放对象存储服务-OBS"><a href="#释放对象存储服务-OBS" class="headerlink" title="释放对象存储服务 OBS"></a>释放对象存储服务 OBS</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052204858.png" alt="image-20221205220459757"></p><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052205072.png" alt="image-20221205220528992"></p><h3 id="释放弹性公网-IP"><a href="#释放弹性公网-IP" class="headerlink" title="释放弹性公网 IP"></a>释放弹性公网 IP</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052206514.png" alt="image-20221205220627426"></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052156604.png" alt="image-20221205215634490"></p><h2 id="3-3-2-使用组件管理"><a href="#3-3-2-使用组件管理" class="headerlink" title="3.3.2 使用组件管理"></a>3.3.2 使用组件管理</h2><p>这一步出现问题了，华为云手册已经过时了</p><p>组件管理标签里并没有MapReduce，而是要前往Manager登录之后才能看到</p><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052159072.png" alt="image-20221205215905954"></p><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052200627.png" alt="image-20221205220041561"></p><h2 id="资源清理释放"><a href="#资源清理释放" class="headerlink" title="资源清理释放"></a>资源清理释放</h2><h3 id="释放-MapReduce-服务"><a href="#释放-MapReduce-服务" class="headerlink" title="释放 MapReduce 服务"></a>释放 MapReduce 服务</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052203415.png" alt="image-20221205220326312"></p><h3 id="释放对象存储服务-OBS"><a href="#释放对象存储服务-OBS" class="headerlink" title="释放对象存储服务 OBS"></a>释放对象存储服务 OBS</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052204858.png" alt="image-20221205220459757"></p><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052205072.png" alt="image-20221205220528992"></p><h3 id="释放弹性公网-IP"><a href="#释放弹性公网-IP" class="headerlink" title="释放弹性公网 IP"></a>释放弹性公网 IP</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052206514.png" alt="image-20221205220627426"></p><h2 id="Bigdata"><a href="#Bigdata" class="headerlink" title="Bigdata"></a>Bigdata</h2><h3 id="购买桶"><a href="#购买桶" class="headerlink" title="购买桶"></a>购买桶</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212191527341.png" alt="image-20221219152709210"></p><h3 id="购买ECS云服务器"><a href="#购买ECS云服务器" class="headerlink" title="购买ECS云服务器"></a>购买ECS云服务器</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212191527373.png" alt="image-20221219152729290"></p><p>中间的所有配置都是按照实验手册做的，这里就省略了</p><h3 id="spark"><a href="#spark" class="headerlink" title="spark"></a>spark</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212191527746.png" alt="image-20221219152741685"></p>]]></content>
     
     
     <categories>

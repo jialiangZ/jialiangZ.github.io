@@ -61,7 +61,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"www.gandz.top","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"m9Ckfw3lHgvWXKDzg3QrPPhW-gzGzoHsz","app_key":"hla1F0zLkSBfgfneXxzFV2Sk","server_url":"https://m9ckfw3l.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"www.gandz.top","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"m9Ckfw3lHgvWXKDzg3QrPPhW-gzGzoHsz","app_key":"hla1F0zLkSBfgfneXxzFV2Sk","server_url":"https://m9ckfw3l.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -124,7 +124,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                首页
+                <span>首页</span>
               </a>
             </li>
           
@@ -136,7 +136,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                归档
+                <span>归档</span>
               </a>
             </li>
           
@@ -148,7 +148,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                分类
+                <span>分类</span>
               </a>
             </li>
           
@@ -160,7 +160,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                标签
+                <span>标签</span>
               </a>
             </li>
           
@@ -172,7 +172,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                关于
+                <span>关于</span>
               </a>
             </li>
           
@@ -180,15 +180,16 @@
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+              <i class="iconfont icon-search"></i>
             </a>
           </li>
           
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
@@ -233,7 +234,7 @@
                 
 
 <div class="text-center tagcloud">
-  <a href="/tags/ASC2022/" style="font-size: 25px; color: #6090c9">ASC2022</a> <a href="/tags/CentOS-7/" style="font-size: 30px; color: #337ab7">CentOS 7</a> <a href="/tags/CentOS-Stream-8/" style="font-size: 17.5px; color: #a4b0e5">CentOS Stream 8</a> <a href="/tags/GUI/" style="font-size: 22.5px; color: #779bd3">GUI</a> <a href="/tags/Gitee/" style="font-size: 15px; color: #bbe">Gitee</a> <a href="/tags/Linux/" style="font-size: 20px; color: #8ea5dc">Linux</a> <a href="/tags/MCM-ICM/" style="font-size: 15px; color: #bbe">MCM/ICM</a> <a href="/tags/Nginx/" style="font-size: 15px; color: #bbe">Nginx</a> <a href="/tags/PicGo/" style="font-size: 15px; color: #bbe">PicGo</a> <a href="/tags/PilotEdit/" style="font-size: 15px; color: #bbe">PilotEdit</a> <a href="/tags/Python/" style="font-size: 22.5px; color: #779bd3">Python</a> <a href="/tags/Typora/" style="font-size: 15px; color: #bbe">Typora</a> <a href="/tags/Xftp7/" style="font-size: 15px; color: #bbe">Xftp7</a> <a href="/tags/Xshell7/" style="font-size: 15px; color: #bbe">Xshell7</a> <a href="/tags/anaconda3/" style="font-size: 15px; color: #bbe">anaconda3</a> <a href="/tags/deepMD-kit/" style="font-size: 17.5px; color: #a4b0e5">deepMD-kit</a> <a href="/tags/pycharm/" style="font-size: 15px; color: #bbe">pycharm</a> <a href="/tags/task4/" style="font-size: 22.5px; color: #779bd3">task4</a> <a href="/tags/tkinter/" style="font-size: 22.5px; color: #779bd3">tkinter</a> <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AF%BC%E8%AE%BA%E5%AE%9E%E9%AA%8C/" style="font-size: 27.5px; color: #4a85c0">大数据导论实验</a> <a href="/tags/%E5%AE%B6%E6%95%99/" style="font-size: 15px; color: #bbe">家教</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 15px; color: #bbe">微信公众号</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 17.5px; color: #a4b0e5">服务器</a> <a href="/tags/%E7%BE%8E%E8%B5%9B/" style="font-size: 15px; color: #bbe">美赛</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C/" style="font-size: 17.5px; color: #a4b0e5">计算机网络实验</a>
+  <a href="/tags/ASC2022/" style="font-size: 25px; color: #6090c9">ASC2022</a> <a href="/tags/CentOS-7/" style="font-size: 30px; color: #337ab7">CentOS 7</a> <a href="/tags/CentOS-Stream-8/" style="font-size: 17.5px; color: #a4b0e5">CentOS Stream 8</a> <a href="/tags/DL/" style="font-size: 17.5px; color: #a4b0e5">DL</a> <a href="/tags/GUI/" style="font-size: 22.5px; color: #779bd3">GUI</a> <a href="/tags/Gitee/" style="font-size: 15px; color: #bbe">Gitee</a> <a href="/tags/Linux/" style="font-size: 20px; color: #8ea5dc">Linux</a> <a href="/tags/MCM-ICM/" style="font-size: 15px; color: #bbe">MCM/ICM</a> <a href="/tags/Nginx/" style="font-size: 15px; color: #bbe">Nginx</a> <a href="/tags/PicGo/" style="font-size: 15px; color: #bbe">PicGo</a> <a href="/tags/PilotEdit/" style="font-size: 15px; color: #bbe">PilotEdit</a> <a href="/tags/Python/" style="font-size: 22.5px; color: #779bd3">Python</a> <a href="/tags/Typora/" style="font-size: 15px; color: #bbe">Typora</a> <a href="/tags/Xftp7/" style="font-size: 15px; color: #bbe">Xftp7</a> <a href="/tags/Xshell7/" style="font-size: 15px; color: #bbe">Xshell7</a> <a href="/tags/anaconda3/" style="font-size: 15px; color: #bbe">anaconda3</a> <a href="/tags/deepMD-kit/" style="font-size: 17.5px; color: #a4b0e5">deepMD-kit</a> <a href="/tags/pycharm/" style="font-size: 15px; color: #bbe">pycharm</a> <a href="/tags/task4/" style="font-size: 22.5px; color: #779bd3">task4</a> <a href="/tags/tkinter/" style="font-size: 22.5px; color: #779bd3">tkinter</a> <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AF%BC%E8%AE%BA%E5%AE%9E%E9%AA%8C/" style="font-size: 27.5px; color: #4a85c0">大数据导论实验</a> <a href="/tags/%E5%AE%B6%E6%95%99/" style="font-size: 15px; color: #bbe">家教</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 15px; color: #bbe">微信公众号</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 17.5px; color: #a4b0e5">服务器</a> <a href="/tags/%E7%BE%8E%E8%B5%9B/" style="font-size: 15px; color: #bbe">美赛</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C/" style="font-size: 17.5px; color: #a4b0e5">计算机网络实验</a>
 </div>
 
               </div>

@@ -16,12 +16,12 @@
   <meta name="author" content="不想起名">
   <meta name="keywords" content="Java">
   
-    <meta name="description" content="姓名：张家亮 学号：19020031106 班级：2019级计算机科学与技术2班    授课老师：刘洁、刘艳艳 实验名称：Redis和MongoDB的应用 完成日期：2022年12月5日   Output 3.3.2 使用组件管理这一步出现问题了，华为云手册已经过时了 组件管理标签里并没有MapReduce，而是要前往Manager登录之后才能看到   资源清理释放释放 MapReduce">
+    <meta name="description" content="Output 3.3.2 使用组件管理这一步出现问题了，华为云手册已经过时了 组件管理标签里并没有MapReduce，而是要前往Manager登录之后才能看到   资源清理释放释放 MapReduce 服务 释放对象存储服务 OBS  释放弹性公网 IP Bigdata购买桶 购买ECS云服务器 中间的所有配置都是按照实验手册做的，这里就省略了 spark">
 <meta property="og:type" content="article">
 <meta property="og:title" content="huawei_MapReduce">
 <meta property="og:url" content="http://www.gandz.top/2022/12/05/huawei-MapReduce/index.html">
 <meta property="og:site_name" content="G-and-Z">
-<meta property="og:description" content="姓名：张家亮 学号：19020031106 班级：2019级计算机科学与技术2班    授课老师：刘洁、刘艳艳 实验名称：Redis和MongoDB的应用 完成日期：2022年12月5日   Output 3.3.2 使用组件管理这一步出现问题了，华为云手册已经过时了 组件管理标签里并没有MapReduce，而是要前往Manager登录之后才能看到   资源清理释放释放 MapReduce">
+<meta property="og:description" content="Output 3.3.2 使用组件管理这一步出现问题了，华为云手册已经过时了 组件管理标签里并没有MapReduce，而是要前往Manager登录之后才能看到   资源清理释放释放 MapReduce 服务 释放对象存储服务 OBS  释放弹性公网 IP Bigdata购买桶 购买ECS云服务器 中间的所有配置都是按照实验手册做的，这里就省略了 spark">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052156604.png">
 <meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052159072.png">
@@ -30,8 +30,11 @@
 <meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052204858.png">
 <meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052205072.png">
 <meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052206514.png">
+<meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212191527341.png">
+<meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212191527373.png">
+<meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212191527746.png">
 <meta property="article:published_time" content="2022-12-05T13:55:46.000Z">
-<meta property="article:modified_time" content="2022-12-05T14:07:44.732Z">
+<meta property="article:modified_time" content="2023-01-16T11:30:14.151Z">
 <meta property="article:author" content="不想起名">
 <meta property="article:tag" content="大数据导论实验">
 <meta property="article:tag" content="CentOS 7">
@@ -78,7 +81,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"www.gandz.top","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"m9Ckfw3lHgvWXKDzg3QrPPhW-gzGzoHsz","app_key":"hla1F0zLkSBfgfneXxzFV2Sk","server_url":"https://m9ckfw3l.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"www.gandz.top","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"m9Ckfw3lHgvWXKDzg3QrPPhW-gzGzoHsz","app_key":"hla1F0zLkSBfgfneXxzFV2Sk","server_url":"https://m9ckfw3l.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -141,7 +144,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                首页
+                <span>首页</span>
               </a>
             </li>
           
@@ -153,7 +156,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                归档
+                <span>归档</span>
               </a>
             </li>
           
@@ -165,7 +168,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                分类
+                <span>分类</span>
               </a>
             </li>
           
@@ -177,7 +180,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                标签
+                <span>标签</span>
               </a>
             </li>
           
@@ -189,7 +192,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                关于
+                <span>关于</span>
               </a>
             </li>
           
@@ -197,15 +200,16 @@
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+              <i class="iconfont icon-search"></i>
             </a>
           </li>
           
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
@@ -251,7 +255,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          199 字
+          162 字
         
       </span>
     
@@ -315,7 +319,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2022年12月5日 晚上
+                    本文最后更新于：2023年1月16日 晚上
                   
                 
               </p>
@@ -323,21 +327,7 @@
             
               <div class="markdown-body">
                 
-                <table>
-<thead>
-<tr>
-<th>姓名：张家亮</th>
-<th>学号：19020031106</th>
-<th>班级：2019级计算机科学与技术2班</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>授课老师：刘洁、刘艳艳</td>
-<td>实验名称：Redis和MongoDB的应用</td>
-<td>完成日期：2022年12月5日</td>
-</tr>
-</tbody></table>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052156604.png" srcset="/img/loading.gif" lazyload alt="image-20221205215634490"></p>
+                <h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052156604.png" srcset="/img/loading.gif" lazyload alt="image-20221205215634490"></p>
 <h2 id="3-3-2-使用组件管理"><a href="#3-3-2-使用组件管理" class="headerlink" title="3.3.2 使用组件管理"></a>3.3.2 使用组件管理</h2><p>这一步出现问题了，华为云手册已经过时了</p>
 <p>组件管理标签里并没有MapReduce，而是要前往Manager登录之后才能看到</p>
 <p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052159072.png" srcset="/img/loading.gif" lazyload alt="image-20221205215905954"></p>
@@ -346,6 +336,10 @@
 <h3 id="释放对象存储服务-OBS"><a href="#释放对象存储服务-OBS" class="headerlink" title="释放对象存储服务 OBS"></a>释放对象存储服务 OBS</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052204858.png" srcset="/img/loading.gif" lazyload alt="image-20221205220459757"></p>
 <p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052205072.png" srcset="/img/loading.gif" lazyload alt="image-20221205220528992"></p>
 <h3 id="释放弹性公网-IP"><a href="#释放弹性公网-IP" class="headerlink" title="释放弹性公网 IP"></a>释放弹性公网 IP</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212052206514.png" srcset="/img/loading.gif" lazyload alt="image-20221205220627426"></p>
+<h2 id="Bigdata"><a href="#Bigdata" class="headerlink" title="Bigdata"></a>Bigdata</h2><h3 id="购买桶"><a href="#购买桶" class="headerlink" title="购买桶"></a>购买桶</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212191527341.png" srcset="/img/loading.gif" lazyload alt="image-20221219152709210"></p>
+<h3 id="购买ECS云服务器"><a href="#购买ECS云服务器" class="headerlink" title="购买ECS云服务器"></a>购买ECS云服务器</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212191527373.png" srcset="/img/loading.gif" lazyload alt="image-20221219152729290"></p>
+<p>中间的所有配置都是按照实验手册做的，这里就省略了</p>
+<h3 id="spark"><a href="#spark" class="headerlink" title="spark"></a>spark</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202212191527746.png" srcset="/img/loading.gif" lazyload alt="image-20221219152741685"></p>
 
                 
               </div>
@@ -460,8 +454,10 @@
             </div>
 
             
-  <article id="comments" lazyload>
-    
+  
+  
+    <article id="comments" lazyload>
+      
   <div id="valine"></div>
   <script type="text/javascript">
     Fluid.utils.loadComments('#valine', function() {
@@ -485,7 +481,8 @@
   <noscript>Please enable JavaScript to view the comments</noscript>
 
 
-  </article>
+    </article>
+  
 
 
           </article>
@@ -497,7 +494,10 @@
       
   <aside class="sidebar" style="margin-left: -1rem">
     <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
