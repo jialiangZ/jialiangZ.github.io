@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title>深度学习：算法到实战——</title>
+    <title>深度学习：算法到实战——卷积神经网络和循环神经网络</title>
     <link href="/2023/01/26/DL-week2/"/>
     <url>/2023/01/26/DL-week2/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h1 id="卷积神经网络的应用"><a href="#卷积神经网络的应用" class="headerlink" title="卷积神经网络的应用"></a>卷积神经网络的应用</h1><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202302082030795.png" alt="image-20230208203030646"></p><p><img src="C:/Users/16906/AppData/Roaming/Typora/typora-user-images/image-20230208203143849.png" alt="image-20230208203143849"></p><p>还有人脸识别、自动驾驶、风格转化等等</p><h1 id="深度学习三部曲"><a href="#深度学习三部曲" class="headerlink" title="深度学习三部曲"></a>深度学习三部曲</h1><p><img src="C:/Users/16906/AppData/Roaming/Typora/typora-user-images/image-20230208204211874.png" alt="image-20230208204211874"></p><h1 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h1><p><img src="C:/Users/16906/AppData/Roaming/Typora/typora-user-images/image-20230208205343167.png" alt="image-20230208205343167"></p><p>首先将图片表示成向量形式x，再通过函数f得到输出，然后将输出与真实标签对比，用损失函数衡量结果的吻合度，再调整参数和权重使输出和实际吻合。</p><h1 id="卷积神经网络的结构"><a href="#卷积神经网络的结构" class="headerlink" title="卷积神经网络的结构"></a>卷积神经网络的结构</h1><h2 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h2><p><img src="C:/Users/16906/AppData/Roaming/Typora/typora-user-images/image-20230208210343866.png" alt="image-20230208210343866"></p><p>卷积核</p>]]></content>
     
     
     <categories>
@@ -495,9 +495,9 @@
       
       <tag>计算机网络实验</tag>
       
-      <tag>服务器</tag>
-      
       <tag>微信公众号</tag>
+      
+      <tag>服务器</tag>
       
     </tags>
     
@@ -524,11 +524,11 @@
       
       <tag>计算机网络实验</tag>
       
+      <tag>服务器</tag>
+      
       <tag>Xftp7</tag>
       
       <tag>Xshell7</tag>
-      
-      <tag>服务器</tag>
       
     </tags>
     
