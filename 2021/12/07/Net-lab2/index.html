@@ -7,7 +7,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon/favicon.png">
   <link rel="icon" href="/img/favicon/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -19,7 +19,7 @@
     <meta name="description" content="准备首先去微信公众平台 (qq.com)注册一个订阅号    第一步的准备工作就完成了 公众号的相关配置修改名称在你登陆之后，会提示你修改你的公众号名称，一定要修改，不然三天之后就自动注销。其实在注册的时候就新建过一个，这里随意修改一个喜欢的  绑定开发者账号在左侧设置与开发-&gt;基本配置，成为开发者  然后点击设置与开发-&gt;开发者工具-&gt;web开发者工具-&gt;绑定开发者微信号">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二、微信公众号实现自动回复和天气查询">
-<meta property="og:url" content="http://www.gandz.top/2021/12/07/Net-lab2/index.html">
+<meta property="og:url" content="https://jialiangz.github.io/2021/12/07/Net-lab2/index.html">
 <meta property="og:site_name" content="爱吃菠萝">
 <meta property="og:description" content="准备首先去微信公众平台 (qq.com)注册一个订阅号    第一步的准备工作就完成了 公众号的相关配置修改名称在你登陆之后，会提示你修改你的公众号名称，一定要修改，不然三天之后就自动注销。其实在注册的时候就新建过一个，这里随意修改一个喜欢的  绑定开发者账号在左侧设置与开发-&gt;基本配置，成为开发者  然后点击设置与开发-&gt;开发者工具-&gt;web开发者工具-&gt;绑定开发者微信号">
 <meta property="og:locale" content="zh_CN">
@@ -86,7 +86,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"www.gandz.top","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"m9Ckfw3lHgvWXKDzg3QrPPhW-gzGzoHsz","app_key":"hla1F0zLkSBfgfneXxzFV2Sk","server_url":"https://m9ckfw3l.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"jialiangz.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"m9Ckfw3lHgvWXKDzg3QrPPhW-gzGzoHsz","app_key":"hla1F0zLkSBfgfneXxzFV2Sk","server_url":"https://m9ckfw3l.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -344,7 +344,7 @@
 <p>然后点击设置与开发-&gt;开发者工具-&gt;web开发者工具-&gt;绑定开发者微信号。</p>
 <p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202112071734403.png" srcset="/img/loading.gif" lazyload alt="绑定微信号"></p>
 <p>到这里就基本完成设置了。</p>
-<h2 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h2><p>这里默认你已经看过之前的博客<a href="http://www.gandz.top/2021/12/05/Net_lab1/">使用Xftp7和Xshell7链接服务器 - G-and-Z (gandz.top)</a>，已经拥有你的云服务器了。</p>
+<h2 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h2><p>这里默认你已经看过之前的博客<a target="_blank" rel="noopener" href="http://www.gandz.top/2021/12/05/Net_lab1/">使用Xftp7和Xshell7链接服务器 - G-and-Z (gandz.top)</a>，已经拥有你的云服务器了。</p>
 <p>进入设置与开发-&gt;基本配置</p>
 <p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202112071740829.png" srcset="/img/loading.gif" lazyload alt="服务器配置"></p>
 <p>这里的服务器URL填写<strong>http(<del>https</del>)://云服务器公网IP/wx</strong>，一般没有证书都是http</p>
@@ -443,7 +443,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>二、微信公众号实现自动回复和天气查询</div>
-      <div>http://www.gandz.top/2021/12/07/Net-lab2/</div>
+      <div>https://jialiangz.github.io/2021/12/07/Net-lab2/</div>
     </div>
     <div class="license-meta">
       
