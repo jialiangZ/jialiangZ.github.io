@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/clipboard_20230127_125827.png">
 <meta property="article:published_time" content="2023-07-18T12:57:24.000Z">
-<meta property="article:modified_time" content="2023-07-19T03:15:55.294Z">
+<meta property="article:modified_time" content="2023-07-19T03:22:45.039Z">
 <meta property="article:author" content="爱吃菠萝">
 <meta property="article:tag" content="DL">
 <meta name="twitter:card" content="summary_large_image">
@@ -473,7 +473,7 @@
 <li>数据增强（Data augmentation）：如果在transform中设置了数据增强，当取不同值时，每次训练过程中数据集中的图像会被进行一些修改，例如随机翻转、旋转、缩放等。这可以大大增加模型的泛化能力，因为它能够让模型看到更多的变化模式。然而，如果增强操作过于剧烈，可能会导致模型失去对原始图像的记忆，从而影响准确性。</li>
 <li>归一化（Normalization）：如果在transform中设置了归一化操作，当取不同值时，数据集中的特征值会被映射到不同的范围内。这可以帮助模型更快地收敛并提高训练的稳定性。然而，如果归一化的范围过大或过小，可能会导致模型无法正确学习到数据的分布特征，从而影响准确性。</li>
 </ol>
-<h1 id="3-epoch-和-batch-的区别？"><a href="#3-epoch-和-batch-的区别？" class="headerlink" title="3. epoch 和 batch 的区别？"></a>3. epoch 和 batch 的区别？</h1><p>在深度学习中，epoch和batch是两个重要的概念，它们都与模型的训练过程相关，但具有不同的含义和作用。</p>
+<h2 id="3-epoch-和-batch-的区别？"><a href="#3-epoch-和-batch-的区别？" class="headerlink" title="3. epoch 和 batch 的区别？"></a>3. epoch 和 batch 的区别？</h2><p>在深度学习中，epoch和batch是两个重要的概念，它们都与模型的训练过程相关，但具有不同的含义和作用。</p>
 <ol>
 <li>epoch：epoch指的是一个完整的训练过程，即使用整个训练集进行一次完整的训练。在每个epoch中，模型将从训练集的起始点开始，依次遍历每个样本，并对其进行前向传播和反向传播，以更新模型的参数。一个epoch结束后，模型将重新开始遍历整个训练集，重复这个过程，直到达到预设的迭代次数或满足收敛条件。</li>
 <li>batch：batch指的是将整个训练集分成若干个小块（即批量），每次训练时只使用其中一个批量数据进行训练。在每个batch中，模型将使用当前批量数据进行一次前向传播和反向传播，并更新模型的参数。然后，模型将移动到下一个batch，继续进行训练。在每个epoch中，模型通常会使用多个batch进行训练，以提高训练效率。</li>
