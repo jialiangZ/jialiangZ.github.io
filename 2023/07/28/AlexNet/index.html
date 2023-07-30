@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/Understanding-Alexnet.jpg">
 <meta property="article:published_time" content="2023-07-28T12:07:57.000Z">
-<meta property="article:modified_time" content="2023-07-30T12:40:39.717Z">
+<meta property="article:modified_time" content="2023-07-30T15:13:37.494Z">
 <meta property="article:author" content="爱吃菠萝">
 <meta property="article:tag" content="DL">
 <meta property="article:tag" content="经典论文">
@@ -246,7 +246,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          2.1k 字
         
       </span>
     
@@ -257,7 +257,7 @@
         
         
         
-          12 分钟
+          18 分钟
         
       </span>
     
@@ -337,6 +337,13 @@
 <p>全连接层F8：最后一层全连接层的输出是1000维softmax的输入，softmax会产生1000个类别预测的值。</p>
 <img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202307291110892.jpg" srcset="/img/loading.gif" lazyload alt="AlexNet" style="zoom:150%;" />
 
+<h1 id="创新点"><a href="#创新点" class="headerlink" title="创新点"></a>创新点</h1><h2 id="更深的神经网络结构"><a href="#更深的神经网络结构" class="headerlink" title="更深的神经网络结构"></a>更深的神经网络结构</h2><p>AlexNet 是首个真正意义上的深度卷积神经网络，它的深度达到了当时先前神经网络的数倍。通过增加网络深度，AlexNet 能够更好地学习数据集的特征，从而提高了图像分类的精度。</p>
+<h2 id="ReLU激活函数的使用"><a href="#ReLU激活函数的使用" class="headerlink" title="ReLU激活函数的使用"></a>ReLU激活函数的使用</h2><p>AlexNet 首次使用了修正线性单元（ReLU）这一非线性激活函数。相比于传统的 sigmoid 和 tanh 函数，ReLU 能够在保持计算速度的同时，有效地解决了梯度消失问题，从而使得训练更加高效。</p>
+<h2 id="局部响应归一化（LRN）的使用"><a href="#局部响应归一化（LRN）的使用" class="headerlink" title="局部响应归一化（LRN）的使用"></a>局部响应归一化（LRN）的使用</h2><p>LRN是在卷积层和池化层之间添加的一种归一化操作。在卷积层中，每个卷积核都对应一个特征图（feature map），LRN就是对这些特征图进行归一化。具体来说，对于每个特征图上的每个位置，计算该位置周围的像素的平方和，然后将当前位置的像素值除以这个和。</p>
+<p>LRN本质是抑制邻近神经元的响应，从而增强了神经元的较大响应。这种技术在一定程度上能够避免过拟合，并提高网络的泛化能力。</p>
+<h2 id="数据增强和Dropout"><a href="#数据增强和Dropout" class="headerlink" title="数据增强和Dropout"></a>数据增强和Dropout</h2><p>为了防止过拟合，AlexNet 引入了数据增强和 Dropout 技术。<strong>数据增强</strong>可以通过对图像进行<strong>旋转、翻转、裁剪</strong>等变换，增加训练数据的多样性，提高模型的泛化能力。<strong>Dropout 则是在训练过程中随机删除一定比例的神经元</strong>，强制网络学习多个互不相同的子网络，从而提高网络的泛化能力。Dropout简单来说就是在前向传播的时候，让某个神经元的激活值以一定的概率p停止工作，这样可以使模型泛化性更强，因为它不会太依赖某些局部的特征。</p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202307302235632.webp" srcset="/img/loading.gif" lazyload alt="DropOut"></p>
+<h2 id="大规模分布式训练"><a href="#大规模分布式训练" class="headerlink" title="大规模分布式训练"></a>大规模分布式训练</h2><p>AlexNet在使用GPU进行训练时，可将卷积层和全连接层分别放到不同的GPU上进行并行计算，从而大大加快了训练速度。像这种大规模 GPU 集群进行分布式训练的方法在后来的深度学习中也得到了广泛的应用。</p>
 
                 
               </div>
