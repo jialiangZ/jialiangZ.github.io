@@ -16,16 +16,16 @@
   <meta name="author" content="爱吃菠萝">
   <meta name="keywords" content="Java">
   
-    <meta name="description" content="MobileNet V1MobileNet V2MobileNet V3ShuffleNetSENetHybridSN通常，HybridSN是频谱空间3-D CNN，然后是空间2-D-CNN。  论文中提到，仅使用2-D-CNN或3-D-CNN有一些缺点，例如缺少频道 关系信息或模型非常复杂。这也阻止了这些方法在HSI空间上获得更高的准确性。主要原因是由于HSI是体积数据，也有光谱维度。  单独的">
+    <meta name="description" content="MobileNet V1MobileNet网络是由google团队在2017年提出的，专注于移动端或者嵌入式设备中的轻量级CNN网络。相比传统卷积神经网络，在准确率小幅降低的前提下大大减少模型参数与运算量。(相比VGG16准确率减少了0.9%，但模型参数只有VGG的1&#x2F;32) MobileNet_v1的亮点：  Depthwise Convolution( 大大减少运算量和参数数量) 增加超参数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="23暑假深度学习week4">
 <meta property="og:url" content="https://jialiangz.github.io/2023/08/04/23%E6%9A%91%E5%81%87%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0week4/index.html">
 <meta property="og:site_name" content="爱吃菠萝">
-<meta property="og:description" content="MobileNet V1MobileNet V2MobileNet V3ShuffleNetSENetHybridSN通常，HybridSN是频谱空间3-D CNN，然后是空间2-D-CNN。  论文中提到，仅使用2-D-CNN或3-D-CNN有一些缺点，例如缺少频道 关系信息或模型非常复杂。这也阻止了这些方法在HSI空间上获得更高的准确性。主要原因是由于HSI是体积数据，也有光谱维度。  单独的">
+<meta property="og:description" content="MobileNet V1MobileNet网络是由google团队在2017年提出的，专注于移动端或者嵌入式设备中的轻量级CNN网络。相比传统卷积神经网络，在准确率小幅降低的前提下大大减少模型参数与运算量。(相比VGG16准确率减少了0.9%，但模型参数只有VGG的1&#x2F;32) MobileNet_v1的亮点：  Depthwise Convolution( 大大减少运算量和参数数量) 增加超参数">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/clipboard_20230127_125827.png">
 <meta property="article:published_time" content="2023-08-04T02:03:37.000Z">
-<meta property="article:modified_time" content="2023-08-04T04:09:27.929Z">
+<meta property="article:modified_time" content="2023-08-05T04:29:34.965Z">
 <meta property="article:author" content="爱吃菠萝">
 <meta property="article:tag" content="DL">
 <meta property="article:tag" content="残差">
@@ -251,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.1k 字
+          8.9k 字
         
       </span>
     
@@ -262,7 +262,7 @@
         
         
         
-          35 分钟
+          75 分钟
         
       </span>
     
@@ -313,7 +313,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年8月4日 中午
+                    本文最后更新于：2023年8月5日 中午
                   
                 
               </p>
@@ -321,7 +321,103 @@
             
               <div class="markdown-body">
                 
-                <h1 id="MobileNet-V1"><a href="#MobileNet-V1" class="headerlink" title="MobileNet V1"></a>MobileNet V1</h1><h1 id="MobileNet-V2"><a href="#MobileNet-V2" class="headerlink" title="MobileNet V2"></a>MobileNet V2</h1><h1 id="MobileNet-V3"><a href="#MobileNet-V3" class="headerlink" title="MobileNet V3"></a>MobileNet V3</h1><h1 id="ShuffleNet"><a href="#ShuffleNet" class="headerlink" title="ShuffleNet"></a>ShuffleNet</h1><h1 id="SENet"><a href="#SENet" class="headerlink" title="SENet"></a>SENet</h1><h1 id="HybridSN"><a href="#HybridSN" class="headerlink" title="HybridSN"></a>HybridSN</h1><p>通常，HybridSN是频谱空间3-D CNN，然后是空间2-D-CNN。<br>  论文中提到，仅使用2-D-CNN或3-D-CNN有一些缺点，例如缺少频道 关系信息或模型非常复杂。这也阻止了这些方法在HSI空间上获得更高的准确性。主要原因是由于HSI是体积数据，也有光谱维度。<br>  单独的2-D-CNN无法从光谱维度上提取良好的区分特征，同样，深 3-D-CNN的计算更加复杂，而论文中提出的HybridSN模型，克服了先前模型的这些缺点。3-D-CNN和2-D-CNN层以推荐的模型组装成合适的网络，充分利用光谱图和空间特征图，最大限度地提高精度。</p>
+                <h1 id="MobileNet-V1"><a href="#MobileNet-V1" class="headerlink" title="MobileNet V1"></a>MobileNet V1</h1><p>MobileNet网络是由google团队在2017年提出的，专注于移动端或者嵌入式设备中的轻量级CNN网络。相比传统卷积神经网络，在准确率小幅降低的前提下大大减少模型参数与运算量。(相比VGG16准确率减少了0.9%，但模型参数只有VGG的1/32)</p>
+<p>MobileNet_v1的亮点：</p>
+<ol>
+<li>Depthwise Convolution( 大大减少运算量和参数数量)</li>
+<li>增加超参数 增加超参数α 、β（其中α是控制卷积层<strong>卷积核个数</strong>的超参数，β是控制<strong>输入图像的大小</strong>）</li>
+</ol>
+<h2 id="传统卷积："><a href="#传统卷积：" class="headerlink" title="传统卷积："></a>传统卷积：</h2><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308042239553.png" srcset="/img/loading.gif" lazyload alt="传统卷积"></p>
+<ul>
+<li>卷积核channel=输入特征矩阵channel（图中为3）</li>
+<li>输出特征矩阵channel=卷积核个数（图中为4）</li>
+</ul>
+<h2 id="DW卷积（Depthwise-Conv）"><a href="#DW卷积（Depthwise-Conv）" class="headerlink" title="DW卷积（Depthwise Conv）"></a>DW卷积（Depthwise Conv）</h2><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308042241490.png" srcset="/img/loading.gif" lazyload alt="DWConv"></p>
+<ul>
+<li>卷积核channel=1</li>
+<li>输入特征矩阵channel=卷积核个数=输出特征矩阵channel（图中为3）</li>
+</ul>
+<p>DW卷积中的每一个卷积核，只会和输入特征矩阵的一个channel进行卷积计算，所以输出的特征矩阵就等于输入的特征矩阵。</p>
+<h2 id="PW卷积（Pointwise-Conv）"><a href="#PW卷积（Pointwise-Conv）" class="headerlink" title="PW卷积（Pointwise Conv）"></a>PW卷积（Pointwise Conv）</h2><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308042242836.png" srcset="/img/loading.gif" lazyload alt="PWConv"></p>
+<p>PW卷积和普通的卷积类似，只是采用了1x1的卷积核，输出的特征矩阵channel的个数与使用的卷积核数相等，而输入特征矩阵的channel的个数与卷积核的channel数相等。所以其就是一个普通的卷积。</p>
+<p>一般来说，以上的PW卷积与DW卷积是放在一起操作的，共同组成深度可分卷积操作。</p>
+<h2 id="深度可分卷积操作（Depthwise-Separable-Conv）"><a href="#深度可分卷积操作（Depthwise-Separable-Conv）" class="headerlink" title="深度可分卷积操作（Depthwise Separable Conv）"></a>深度可分卷积操作（Depthwise Separable Conv）</h2><p>深度可分卷积操作是有两步分组成，一部分是DW卷积（Depthwise Conv），另外一部分是PW卷积（Pointwise Conv）</p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308042244285.png" srcset="/img/loading.gif" lazyload alt="DSConv"></p>
+<p>两者的计算量对比：</p>
+<ul>
+<li>DSConv：$D_k * D_k * M * D_f * D_f + M * N * D_f * D_f$</li>
+<li>普通：$D_k * D_k * M * N * D_f * D_f$<br>理论上普通卷积计算量是 DW+PW 的8到9倍</li>
+</ul>
+<h1 id="MobileNet-V2"><a href="#MobileNet-V2" class="headerlink" title="MobileNet V2"></a>MobileNet V2</h1><h2 id="MobileNet-v1-的不足"><a href="#MobileNet-v1-的不足" class="headerlink" title="MobileNet v1 的不足"></a>MobileNet v1 的不足</h2><h3 id="ReLU-和数据坍缩"><a href="#ReLU-和数据坍缩" class="headerlink" title="ReLU 和数据坍缩"></a>ReLU 和数据坍缩</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308051046872.png" srcset="/img/loading.gif" lazyload></p>
+<p>如图所示，Input是一个2维数据，其中兴趣流形是其中的蓝色螺旋线。本例使用矩阵$T$将数据嵌入到n维空间中，后接<strong>ReLU</strong>，再使用$T^{-1}$将其投影回2D平面。</p>
+<p>可以看到设置n=2,3时信息丢失严重，中心点坍塌掉了。当n=15..30之间，恢复的信息明显多了。</p>
+<p>实验发现当n很小的时候，后面接ReLU非线性变换的话会导致很多信息的丢失，而维度越高还原的图片和原图越相似。</p>
+<h3 id="ResNet-、ReLU-和神经元死亡"><a href="#ResNet-、ReLU-和神经元死亡" class="headerlink" title="ResNet 、ReLU 和神经元死亡"></a>ResNet 、ReLU 和神经元死亡</h3><p>在神经网络训练中如果节点的值变为0就会“死掉”。因为ReLU对0值的梯度是0，后续无论怎么迭代这个节点的值都不会恢复了。<strong>而通过ResNet结构的特征复用，可以很大程度上缓解这种特征退化问题</strong>（这也从一个侧面说明ResNet为何好于VGG）。另外，一般情况训练网络使用的是float32浮点数；当使用低精度的float16时，这种特征复用可以更加有效的减缓退化。</p>
+<h2 id="Linear-Bottleneck"><a href="#Linear-Bottleneck" class="headerlink" title="Linear Bottleneck"></a>Linear Bottleneck</h2><h3 id="降维的问题"><a href="#降维的问题" class="headerlink" title="降维的问题"></a>降维的问题</h3><p>论文中称网络层中的激活特征为兴趣流形（mainfold of interest），我们认为深度神经网络是由n个$L_i$层构成，每层经过激活输出的张量为$h_i<em>w_i</em>d_i$。我们认为<strong>一连串的卷积和激活层形成一个兴趣流形</strong>(manifold of interest，这就是我们感兴趣的数据内容)，现阶段还无法定量的描述这种流行，这里以经验为主的研究这些流行性质。</p>
+<p>长期以来我们认为：在神经网络中兴趣流行可以<strong>嵌入到低维子空间</strong>，通俗点说，我们查看的卷积层中所有单个d通道像素时，这些值中存在多种编码信息，兴趣流行位于其中的。我们可以通过变换，进一步嵌入到下一个低维子空间中(例如通过 1×1 卷积变换维数，转换兴趣流行所在空间维度)。</p>
+<p>乍一看，这样的想法比较容易验证，可通过<strong>减少层维度从而降低激活空间的维度</strong>。MobileNetv1是通过宽度因子(width factor)在计算量和精度之间取折中。用上面的理论来说，宽度因子控制激活空间的维度，直到兴趣流形横跨整个空间。</p>
+<p>然而，由于深度卷积神经网络的层是具有非线性激活函数的。以ReLU变换为例，会出现上面说到的<strong>数据坍塌问题</strong>。</p>
+<p>我们设计网络结构的时候，想要减少运算量，就需要尽可能将网络维度设计的低一些但是维度如果低的话，激活变换ReLU函数可能会滤除很多有用信息。然后我们就想到了，反正ReLU另外一部分就是一个线性映射。那么如果我们全用线性分类器，会不会就不会丢失一些维度信息，同时可以设计出维度较低的层呢？</p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>论文针对这个问题使用linear bottleneck(即不使用ReLU激活，<strong>做了线性变换</strong>)的来代替原本的非线性激活变换。到此，优化网络架构的思路也出来了：通过<strong>在卷积模块中后插入linear bottleneck来捕获兴趣流形</strong>。 实验证明，使用linear bottleneck可以防止非线性破坏太多信息。</p>
+<p>具体思想如下图：</p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308051059327.png" srcset="/img/loading.gif" lazyload></p>
+<ol>
+<li><p>相比于MobileNetV1，先进行了1x1的卷积进行<strong>升维</strong>，目的在于获得更多特征，然后用3x3的空间卷积，最后再用1x1<strong>降维</strong>。核心思想是<strong>升维再降维</strong>，参数量更少。</p>
+</li>
+<li><p>为了<strong>避免ReLU对特征的破坏</strong>，在3x3网络结构后，再利用1x1卷积降维后，<strong>不再进行ReLU6层</strong>，直接进行残差网络的加法。</p>
+</li>
+</ol>
+<p>从linear bottleneck到深度卷积之间的的维度比称为<strong>Expansion factor(扩展系数),该系数控制了整个block的通道数。</strong>下一部分介绍就要用到这个Expansion了。</p>
+<h2 id="Inverted-residuals"><a href="#Inverted-residuals" class="headerlink" title="Inverted residuals"></a>Inverted residuals</h2><p>MobileNetV2的网络模块样子是这样的：</p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308051106504.webp" srcset="/img/loading.gif" lazyload></p>
+<p>MobileNetV1网络主要思路就是<strong>深度可分离卷积</strong>的堆叠。在V2的网络设计中，我们除了继续使用深度可分离（中间那个）结构之外，还使用了<strong>Expansion layer</strong>和 <strong>Projection layer</strong>。</p>
+<ul>
+<li><p>Projection layer也是使用 1×1 的网络结构，他的目的是希望把<strong>高维特征映射到低维空间</strong>去。另外说一句，使用 1×1 的网络结构将高维空间映射到低纬空间的设计有的时候我们也称之为<strong>Bottleneck layer。</strong></p>
+</li>
+<li><p>Expansion layer的功能正相反，使用 1×1 的网络结构，目的是将<strong>低维空间映射到高维空间</strong>。这里Expansion有一个超参数是维度扩展几倍。可以根据实际情况来做调整的，默认值是6，也就是扩展6倍。</p>
+</li>
+</ul>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308051109966.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>上图更详细的展示了整个模块的结构。我们输入是24维，最后输出也是24维。但这个过程中，我们扩展了6倍，然后应用深度可分离卷积进行处理。</p>
+<p>bottleneck residual block（ResNet论文中的）是中间窄两头胖，在MobileNetV2中正好反了过来，所以，在MobileNetV2的论文中我们称这样的网络结构为Inverted residuals。需要注意的是residual connection是在输入和输出的部分进行连接。另外，我们之前已经花了很大篇幅来讲Linear Bottleneck，因为从高维向低维转换，使用ReLU激活函数可能会造成信息丢失或破坏（不使用非线性激活数数）。所以在Projection convolution这一部分，我们不再使用ReLU激活函数而是使用线性激活函数。</p>
+<h1 id="MobileNet-V3"><a href="#MobileNet-V3" class="headerlink" title="MobileNet V3"></a>MobileNet V3</h1><h2 id="主要特点"><a href="#主要特点" class="headerlink" title="主要特点"></a>主要特点</h2><ol>
+<li>论文推出两个版本：Large 和 Small，分别适用于不同的场景;</li>
+<li>使用NetAdapt算法获得卷积核和通道的最佳数量;</li>
+<li>继承V1的深度可分离卷积;</li>
+<li>继承V2的具有线性瓶颈的残差结构;</li>
+<li>引入SE通道注意力结构;</li>
+<li>使用了一种新的激活函数h-swish(x)代替ReLU6，h的意思表示hard;</li>
+<li>使用了$\frac{\operatorname{ReLU} 6(x+3)}{6}$来近似SE模块中的sigmoid;</li>
+<li>修改了MobileNetV2后端输出head;</li>
+</ol>
+<h2 id="整体结构"><a href="#整体结构" class="headerlink" title="整体结构"></a>整体结构</h2><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308051220706.webp" srcset="/img/loading.gif" lazyload></p>
+<p>large和small的整体结构一致，区别就是基本单元bneck的个数以及内部参数上，主要是通道数目。</p>
+<h2 id="通道可分离卷积"><a href="#通道可分离卷积" class="headerlink" title="通道可分离卷积"></a>通道可分离卷积</h2><p>通道分离卷积是MobileNet系列的主要特点，也是其发挥轻量级作用的主要因素。如下图，通道可分离卷积分为两个过程：1.channel方向通道可分离卷积；2.正常的1X1卷积输出指定的channel个数。</p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308051221249.webp" srcset="/img/loading.gif" lazyload></p>
+<h2 id="SE模块"><a href="#SE模块" class="headerlink" title="SE模块"></a>SE模块</h2><p>SE通道注意力机制，老生常谈的话题。值得注意的是，这里利用1X1卷积实现的FC操作，本质上和FC是一样的。这里利用hsigmoid模拟sigmoid操作。</p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308051222500.webp" srcset="/img/loading.gif" lazyload></p>
+<p>代码实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">SeModule</span>(nn.Module):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, in_size, reduction=<span class="hljs-number">4</span></span>):<br>        <span class="hljs-built_in">super</span>(SeModule, self).__init__()<br>        self.se = nn.Sequential(<br>            nn.AdaptiveAvgPool2d(<span class="hljs-number">1</span>),<br>            nn.Conv2d(in_size, in_size // reduction, kernel_size=<span class="hljs-number">1</span>, stride=<span class="hljs-number">1</span>, padding=<span class="hljs-number">0</span>, bias=<span class="hljs-literal">False</span>),<br>            nn.BatchNorm2d(in_size // reduction),<br>            nn.ReLU(inplace=<span class="hljs-literal">True</span>),<br>            nn.Conv2d(in_size // reduction, in_size, kernel_size=<span class="hljs-number">1</span>, stride=<span class="hljs-number">1</span>, padding=<span class="hljs-number">0</span>, bias=<span class="hljs-literal">False</span>),<br>            nn.BatchNorm2d(in_size),<br>            hsigmoid())<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, x</span>):<br>        <span class="hljs-keyword">return</span> x * self.se(x)<br></code></pre></td></tr></table></figure>
+
+<h2 id="h-swish-和-h-sigmoid"><a href="#h-swish-和-h-sigmoid" class="headerlink" title="h-swish 和 h-sigmoid"></a>h-swish 和 h-sigmoid</h2><p>利用近似操作模拟swish和relu，公式如下：</p>
+<p>$\text { h-swish }[x]=x \frac{\operatorname{ReLU} 6(x+3)}{6}$</p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308051224407.webp" srcset="/img/loading.gif" lazyload></p>
+<p><strong>代码实现</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">hswish</span>(nn.Module):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, x</span>):<br>        out = x * F.relu6(x + <span class="hljs-number">3</span>, inplace=<span class="hljs-literal">True</span>) / <span class="hljs-number">6</span><br>        <span class="hljs-keyword">return</span> out<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">hsigmoid</span>(nn.Module):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, x</span>):<br>        out = F.relu6(x + <span class="hljs-number">3</span>, inplace=<span class="hljs-literal">True</span>) / <span class="hljs-number">6</span><br>        <span class="hljs-keyword">return</span> out<br></code></pre></td></tr></table></figure>
+
+<h2 id="bneck"><a href="#bneck" class="headerlink" title="bneck"></a>bneck</h2><p>核心模块，也是网络的基本模块。主要实现了通道可分离卷积+SE通道注意力机制+残差连接。结构图如下：</p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308051227586.webp" srcset="/img/loading.gif" lazyload></p>
+<p><strong>代码实现</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, x</span>):<br>    out = self.nolinear1(self.bn1(self.conv1(x))) <span class="hljs-comment"># 降维</span><br>    out = self.nolinear2(self.bn2(self.conv2(out))) <span class="hljs-comment"># 通道可分离卷积</span><br>    out = self.bn3(self.conv3(out)) <span class="hljs-comment"># 1X1卷积聚合特征</span><br>    <span class="hljs-keyword">if</span> self.se != <span class="hljs-literal">None</span>: <br>        out = self.se(out) <span class="hljs-comment"># 通道注意力机制</span><br>    out = out + self.shortcut(x) <span class="hljs-keyword">if</span> self.stride == <span class="hljs-number">1</span> <span class="hljs-keyword">else</span> out <span class="hljs-comment"># 残差连接</span><br>    <span class="hljs-keyword">return</span> out<br></code></pre></td></tr></table></figure>
+
+<h2 id="网络输出"><a href="#网络输出" class="headerlink" title="网络输出"></a>网络输出</h2><p>移除之前的瓶颈层连接，进一步降低网络参数。可以有效降低11%的推理耗时，而性能几乎没有损失。修改结构如下：</p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308051228562.webp" srcset="/img/loading.gif" lazyload></p>
+<p><strong>代码实现</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">out = F.avg_pool2d(out, <span class="hljs-number">7</span>)<br>out = out.view(out.size(<span class="hljs-number">0</span>), -<span class="hljs-number">1</span>)<br>out = self.hs3(self.bn3(self.linear3(out)))<br>out = self.linear4(out)<br><span class="hljs-keyword">return</span> out<br></code></pre></td></tr></table></figure>
+
+<h1 id="ShuffleNet"><a href="#ShuffleNet" class="headerlink" title="ShuffleNet"></a>ShuffleNet</h1><p>ShuffleNet是旷视科技最近提出的一种计算高效的CNN模型，其和MobileNet和SqueezeNet等一样主要是想应用在移动端。所以，ShuffleNet的设计目标也是如何利用有限的计算资源来达到最好的模型精度，这需要很好地在速度和精度之间做平衡。</p>
+<p>ShuffleNet的核心是采用了两种操作：pointwise group convolution和channel shuffle，这在保持精度的同时大大降低了模型的计算量。</p>
+<h1 id="SENet"><a href="#SENet" class="headerlink" title="SENet"></a>SENet</h1><h1 id="HybridSN"><a href="#HybridSN" class="headerlink" title="HybridSN"></a>HybridSN</h1><p>通常，HybridSN是频谱空间3-D CNN，然后是空间2-D-CNN。<br>  论文中提到，仅使用2-D-CNN或3-D-CNN有一些缺点，例如缺少频道 关系信息或模型非常复杂。这也阻止了这些方法在HSI空间上获得更高的准确性。主要原因是由于HSI是体积数据，也有光谱维度。<br>  单独的2-D-CNN无法从光谱维度上提取良好的区分特征，同样，深 3-D-CNN的计算更加复杂，而论文中提出的HybridSN模型，克服了先前模型的这些缺点。3-D-CNN和2-D-CNN层以推荐的模型组装成合适的网络，充分利用光谱图和空间特征图，最大限度地提高精度。</p>
 <p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308041007821.jpg" srcset="/img/loading.gif" lazyload alt="网络结构"></p>
 <p>在论文中使用的高光谱图像数据集有一个是Indian Pines，它是最早的用于高光谱图像分类的测试数据。<br>  该数据集总共有21025个像素，但是其中只有10249个像素是地物像素，其余10776个像素均为背景像素，我们需要剔除。最后，我们对着10249个像素进行16分类。</p>
 <h2 id="定义-HybridSN-类"><a href="#定义-HybridSN-类" class="headerlink" title="定义 HybridSN 类"></a>定义 HybridSN 类</h2><p>根据Fig. 1. 可以写出HybridSN类的代码如下：</p>
@@ -432,7 +528,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年8月4日</div>
+          <div>2023年8月5日</div>
         </div>
       
       
