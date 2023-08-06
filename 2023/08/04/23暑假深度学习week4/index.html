@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/clipboard_20230127_125827.png">
 <meta property="article:published_time" content="2023-08-04T02:03:37.000Z">
-<meta property="article:modified_time" content="2023-08-05T04:29:34.965Z">
+<meta property="article:modified_time" content="2023-08-06T14:32:37.905Z">
 <meta property="article:author" content="爱吃菠萝">
 <meta property="article:tag" content="DL">
 <meta property="article:tag" content="残差">
@@ -251,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.9k 字
+          11k 字
         
       </span>
     
@@ -262,7 +262,7 @@
         
         
         
-          75 分钟
+          94 分钟
         
       </span>
     
@@ -313,7 +313,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年8月5日 中午
+                    本文最后更新于：2023年8月6日 晚上
                   
                 
               </p>
@@ -417,7 +417,24 @@
 
 <h1 id="ShuffleNet"><a href="#ShuffleNet" class="headerlink" title="ShuffleNet"></a>ShuffleNet</h1><p>ShuffleNet是旷视科技最近提出的一种计算高效的CNN模型，其和MobileNet和SqueezeNet等一样主要是想应用在移动端。所以，ShuffleNet的设计目标也是如何利用有限的计算资源来达到最好的模型精度，这需要很好地在速度和精度之间做平衡。</p>
 <p>ShuffleNet的核心是采用了两种操作：pointwise group convolution和channel shuffle，这在保持精度的同时大大降低了模型的计算量。</p>
-<h1 id="SENet"><a href="#SENet" class="headerlink" title="SENet"></a>SENet</h1><h1 id="HybridSN"><a href="#HybridSN" class="headerlink" title="HybridSN"></a>HybridSN</h1><p>通常，HybridSN是频谱空间3-D CNN，然后是空间2-D-CNN。<br>  论文中提到，仅使用2-D-CNN或3-D-CNN有一些缺点，例如缺少频道 关系信息或模型非常复杂。这也阻止了这些方法在HSI空间上获得更高的准确性。主要原因是由于HSI是体积数据，也有光谱维度。<br>  单独的2-D-CNN无法从光谱维度上提取良好的区分特征，同样，深 3-D-CNN的计算更加复杂，而论文中提出的HybridSN模型，克服了先前模型的这些缺点。3-D-CNN和2-D-CNN层以推荐的模型组装成合适的网络，充分利用光谱图和空间特征图，最大限度地提高精度。</p>
+<h2 id="设计理念"><a href="#设计理念" class="headerlink" title="设计理念"></a>设计理念</h2><p>ShuffleNet的核心设计理念是<strong>对不同的channels进行shuffle</strong>来解决group convolution带来的弊端。Group convolution是将输入层的不同特征图进行分组，然后采用不同的卷积核再对各个组进行卷积，这样会降低卷积的计算量。因为一般的卷积都是在所有的输入特征图上做卷积，可以说是全通道卷积，这是一种通道密集连接方式（channel dense connection）。而group convolution相比则是一种通道稀疏连接方式（channel sparse connection）。</p>
+<p>使用group convolution的网络如Xception，MobileNet，ResNeXt等。Xception和MobileNet采用了depthwise convolution，这其实是一种比较特殊的group convolution，此时分组数恰好等于通道数，意味着每个组只有一个特征图。但是这些网络存在一个很大的弊端是采用了密集的1x1卷积，或者说是dense pointwise convolution，这里说的密集指的是卷积是在所有通道上进行的。所以，实际上比如ResNeXt模型中1x1卷积基本上占据了93.4%的乘加运算。</p>
+<p>那么不如也对1x1卷积采用channel sparse connection，那样计算量就可以降下来了。但是group convolution存在另外一个弊端，如下图(a)所示，其中GConv是group convolution，这里分组数是3。可以看到当堆积GConv层后一个问题是<strong>不同组之间的特征图是不通信</strong>的，这就好像分了三个互不相干的路，大家各走各的，这目测会<strong>降低网络的特征提取能力</strong>。这样你也可以理解为什么Xception，MobileNet等网络采用密集的1x1卷积，因为要保证group convolution之后不同组的特征图之间的信息交流。</p>
+<p>但是达到上面那个目的，我们不一定非要采用dense pointwise convolution。如下图(b)所示，你可以对group convolution之后的特征图进行“重组”，这样可以保证接下了采用的group convolution其输入来自不同的组，因此信息可以在不同组之间流转。这个操作等价于下图(c)，即group convolution之后对channels进行shuffle，但并<strong>不是随机</strong>的，其实是“均匀地打乱”。</p>
+<p>在程序上实现channel shuffle是非常容易的：假定将输入层分为$g$组，总通道数为$g*n$，首先你将通道那个维度拆分为$(g,n)$两个维度，然后将这两个维度转置变成$(n,g)$，最后重新reshape成一个维度。仅需要<strong>简单的维度操作和转置</strong>就可以实现均匀的shuffle。利用channel shuffle就可以充分发挥group convolution的优点，而避免其缺点。</p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308062042272.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308062118328.jpg" srcset="/img/loading.gif" lazyload alt="ShuffleNet基本单元"></p>
+<h1 id="SENet"><a href="#SENet" class="headerlink" title="SENet"></a>SENet</h1><p>Squeeze-and-Excitation Networks（简称 SENet）是 Momenta 胡杰团队（WMW）提出的新的网络结构，利用SENet，一举取得最后一届 ImageNet 2017 竞赛 Image Classification 任务的冠军，在ImageNet数据集上将top-5 error降低到2.251%，原先的最好成绩是2.991%。</p>
+<p>   作者在文中将SENet block插入到现有的多种分类网络中，都取得了不错的效果。作者的动机是希望显式地建模<strong>特征通道之间的相互依赖关系</strong>。另外，作者并未引入新的空间维度来进行特征通道间的融合，而是采用了一种全新的「特征重标定」策略。具体来说，就是通过学习的方式来自动获取到<strong>每个特征通道的重要程度</strong>，然后依照这个重要程度去提升有用的特征并抑制对当前任务用处不大的特征。</p>
+<p>   通俗的来说<strong>SENet的核心思想在于通过网络根据loss去学习特征权重，使得有效的feature map权重大，无效或效果小的feature map权重小的方式训练模型达到更好的结果</strong>。SE block嵌在原有的一些分类网络中不可避免地增加了一些参数和计算量，但是在效果面前还是可以接受的 。<strong>Sequeeze-and-Excitation(SE) block并不是一个完整的网络结构，而是一个子结构，可以嵌到其他分类或检测模型中。</strong></p>
+<p>听起来像是注意力机制</p>
+<h2 id="SENet-结构"><a href="#SENet-结构" class="headerlink" title="SENet 结构"></a>SENet 结构</h2><p>上述结构中，Squeeze 和 Excitation 是两个非常关键的操作，下面进行详细说明。</p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308062231103.png" srcset="/img/loading.gif" lazyload></p>
+<p>上图是SE 模块的示意图。给定一个输入 $x$，其特征通道数为 $c_1$，通过一系列卷积等一般变换后得到一个特征通道数为$c_2$ 的特征。与传统的 CNN 不一样的是，接下来通过三个操作来重标定前面得到的特征。</p>
+<p>  首先是 Squeeze 操作，顺着空间维度来进行特征压缩，将每个二维的特征通道变成一个实数，这个实数某种程度上具有全局的感受野，并且输出的维度和输入的特征通道数相匹配。它表征着在特征通道上响应的全局分布，而且使得靠近输入的层也可以获得全局的感受野，这一点在很多任务中都是非常有用的。</p>
+<p>  其次是 Excitation 操作，它是一个类似于循环神经网络中门的机制。通过参数$w$来为每个特征通道生成权重，其中参数$ w $被学习用来显式地建模特征通道间的相关性。</p>
+<p>  最后是一个 Reweight 的操作，将 Excitation 的输出的权重看做是进过特征选择后的每个特征通道的重要性，然后通过乘法逐通道加权到先前的特征上，完成在通道维度上的对原始特征的重标定。</p>
+<h1 id="HybridSN"><a href="#HybridSN" class="headerlink" title="HybridSN"></a>HybridSN</h1><p>通常，HybridSN是频谱空间3-D CNN，然后是空间2-D-CNN。<br>  论文中提到，仅使用2-D-CNN或3-D-CNN有一些缺点，例如缺少频道 关系信息或模型非常复杂。这也阻止了这些方法在HSI空间上获得更高的准确性。主要原因是由于HSI是体积数据，也有光谱维度。<br>  单独的2-D-CNN无法从光谱维度上提取良好的区分特征，同样，深 3-D-CNN的计算更加复杂，而论文中提出的HybridSN模型，克服了先前模型的这些缺点。3-D-CNN和2-D-CNN层以推荐的模型组装成合适的网络，充分利用光谱图和空间特征图，最大限度地提高精度。</p>
 <p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308041007821.jpg" srcset="/img/loading.gif" lazyload alt="网络结构"></p>
 <p>在论文中使用的高光谱图像数据集有一个是Indian Pines，它是最早的用于高光谱图像分类的测试数据。<br>  该数据集总共有21025个像素，但是其中只有10249个像素是地物像素，其余10776个像素均为背景像素，我们需要剔除。最后，我们对着10249个像素进行16分类。</p>
 <h2 id="定义-HybridSN-类"><a href="#定义-HybridSN-类" class="headerlink" title="定义 HybridSN 类"></a>定义 HybridSN 类</h2><p>根据Fig. 1. 可以写出HybridSN类的代码如下：</p>
@@ -528,7 +545,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年8月5日</div>
+          <div>2023年8月6日</div>
         </div>
       
       
