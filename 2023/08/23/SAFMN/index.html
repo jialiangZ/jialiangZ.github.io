@@ -16,29 +16,26 @@
   <meta name="author" content="爱吃菠萝">
   <meta name="keywords" content="Java">
   
-    <meta name="description" content="PMDRnet：AMSR2北极海冰图像多图像超分辨率的渐进多尺度可变形残差网络背景研究领域DL-SR方法：基于DL的单图像SR（DL-SISR）和基于DL的多图像SR（DL-MISR） DL-MISR算法包括对齐、融合和重建 利用的多帧图像之间的互补信息，通过在更高分辨的网格中进行信息融合，从而得到细节更多、分辨率更高的图像  存在的问题对齐：局部空间信息难以利用，难以估计细微运动 融合：输入图像">
+    <meta name="description" content="基于空间自适应特征调制的高效图像超分辨率导读本文聚焦于Efficient SR。虽然目前已经提出了许多用于图像超分辨率的解决方案，但这些算法通常需要很高的功耗和内存占用。本文们提出了一个简单而有效的深度网络来有效地解决图像超分辨率问题。具体来说，作者们在ViT块上提出了一种空间自适应特征调制 (SAFM) 机制。首先在输入特征上应用 SAFM 块来动态选择具有代表性的特征表示。由于SAFM块从远程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PMDRnet: A Progressive Multiscale Deformable Residual Network for Multi-Image Super-Resolution of AMSR2 Arctic Sea Ice Images">
-<meta property="og:url" content="https://jialiangz.github.io/2023/05/25/PMDRnet/index.html">
+<meta property="og:title" content="Spatially-Adaptive Feature Modulation for Efficient Image Super-Resolution">
+<meta property="og:url" content="https://jialiangz.github.io/2023/08/23/SAFMN/index.html">
 <meta property="og:site_name" content="爱吃菠萝">
-<meta property="og:description" content="PMDRnet：AMSR2北极海冰图像多图像超分辨率的渐进多尺度可变形残差网络背景研究领域DL-SR方法：基于DL的单图像SR（DL-SISR）和基于DL的多图像SR（DL-MISR） DL-MISR算法包括对齐、融合和重建 利用的多帧图像之间的互补信息，通过在更高分辨的网格中进行信息融合，从而得到细节更多、分辨率更高的图像  存在的问题对齐：局部空间信息难以利用，难以估计细微运动 融合：输入图像">
+<meta property="og:description" content="基于空间自适应特征调制的高效图像超分辨率导读本文聚焦于Efficient SR。虽然目前已经提出了许多用于图像超分辨率的解决方案，但这些算法通常需要很高的功耗和内存占用。本文们提出了一个简单而有效的深度网络来有效地解决图像超分辨率问题。具体来说，作者们在ViT块上提出了一种空间自适应特征调制 (SAFM) 机制。首先在输入特征上应用 SAFM 块来动态选择具有代表性的特征表示。由于SAFM块从远程">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202305251951201.png">
-<meta property="article:published_time" content="2023-05-25T11:42:19.000Z">
-<meta property="article:modified_time" content="2023-08-23T11:36:15.586Z">
+<meta property="article:published_time" content="2023-08-23T10:26:35.000Z">
+<meta property="article:modified_time" content="2023-08-24T08:10:52.144Z">
 <meta property="article:author" content="爱吃菠萝">
 <meta property="article:tag" content="DL">
-<meta property="article:tag" content="DConv">
 <meta property="article:tag" content="超分辨率">
-<meta property="article:tag" content="时间注意力">
-<meta property="article:tag" content="遥感">
-<meta property="article:tag" content="TGRS">
+<meta property="article:tag" content="SR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202305251951201.png">
   
   
   
-  <title>PMDRnet: A Progressive Multiscale Deformable Residual Network for Multi-Image Super-Resolution of AMSR2 Arctic Sea Ice Images - 爱吃菠萝</title>
+  <title>Spatially-Adaptive Feature Modulation for Efficient Image Super-Resolution - 爱吃菠萝</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -221,7 +218,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="PMDRnet: A Progressive Multiscale Deformable Residual Network for Multi-Image Super-Resolution of AMSR2 Arctic Sea Ice Images"></span>
+            <span id="subtitle" data-typed-text="Spatially-Adaptive Feature Modulation for Efficient Image Super-Resolution"></span>
           
         </div>
 
@@ -237,8 +234,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-05-25 19:42" pubdate>
-          2023年5月25日 晚上
+        <time datetime="2023-08-23 18:26" pubdate>
+          2023年8月23日 晚上
         </time>
       </span>
     
@@ -249,7 +246,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          3.2k 字
         
       </span>
     
@@ -260,7 +257,7 @@
         
         
         
-          16 分钟
+          27 分钟
         
       </span>
     
@@ -306,12 +303,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">PMDRnet: A Progressive Multiscale Deformable Residual Network for Multi-Image Super-Resolution of AMSR2 Arctic Sea Ice Images</h1>
+            <h1 style="display: none">Spatially-Adaptive Feature Modulation for Efficient Image Super-Resolution</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年8月23日 晚上
+                    本文最后更新于：2023年8月24日 下午
                   
                 
               </p>
@@ -319,64 +316,63 @@
             
               <div class="markdown-body">
                 
-                <h1 id="PMDRnet：AMSR2北极海冰图像多图像超分辨率的渐进多尺度可变形残差网络"><a href="#PMDRnet：AMSR2北极海冰图像多图像超分辨率的渐进多尺度可变形残差网络" class="headerlink" title="PMDRnet：AMSR2北极海冰图像多图像超分辨率的渐进多尺度可变形残差网络"></a>PMDRnet：AMSR2北极海冰图像多图像超分辨率的渐进多尺度可变形残差网络</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><h3 id="研究领域"><a href="#研究领域" class="headerlink" title="研究领域"></a>研究领域</h3><p>DL-SR方法：基于DL的单图像SR（DL-SISR）和基于DL的多图像SR（DL-MISR）</p>
-<p>DL-MISR算法包括<strong>对齐</strong>、<strong>融合</strong>和<strong>重建</strong></p>
-<p>利用的多帧图像之间的互补信息，通过在更高分辨的网格中进行信息融合，从而得到细节更多、分辨率更高的图像</p>
-<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202305251955516.png" srcset="/img/loading.gif" lazyload alt="DL-MISR过程"></p>
-<h3 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h3><p>对齐：局部空间信息难以利用，难以估计细微运动</p>
-<p>融合：输入图像序列的时空特性存在差异</p>
-<h2 id="本文贡献"><a href="#本文贡献" class="headerlink" title="本文贡献"></a>本文贡献</h2><p>设计了一种基于深度残差卷积网络的渐进式多尺度可变形残差网络（PMDRnet）</p>
-<p>针对北极海冰运动复杂、规模大的特点，设计了一种<strong>渐进式对齐策略</strong>和<strong>多尺度可变形卷积（DConv）对齐单元</strong></p>
-<p>在融合模块中使用<strong>时间注意力机制</strong>实现自适应融合</p>
-<p>根据多通道AMSR2图像亮温的偏振差异，设计了<strong>海冰相关损失函数</strong></p>
-<h2 id="本文方法"><a href="#本文方法" class="headerlink" title="本文方法"></a>本文方法</h2><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202305251958853.png" srcset="/img/loading.gif" lazyload alt="本文方法"></p>
-<p>主要的贡献就在于运用了一种<strong>渐进式的对齐策略</strong>和<strong>多尺度可变形的对齐单元</strong>，然后使用了时间注意力机制来计算不同时序下的图像特征的权重</p>
-<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202305251951201.png" srcset="/img/loading.gif" lazyload alt="DL-MISR框架，在该框架中，我们采取五个图像作为一个图像序列（n = 2），网络的输入和输出是双通道数据，包括89-GHz通道的水平偏振图像（具有蓝色边界的图像）和垂直偏振图像（具有红色边界的图像）"></p>
-<h3 id="渐进多尺度可变形对齐网络"><a href="#渐进多尺度可变形对齐网络" class="headerlink" title="渐进多尺度可变形对齐网络"></a>渐进多尺度可变形对齐网络</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202305252001572.png" srcset="/img/loading.gif" lazyload alt="渐进多尺度可变形对齐网络"></p>
-<h4 id="渐进式对齐策略"><a href="#渐进式对齐策略" class="headerlink" title="渐进式对齐策略"></a>渐进式对齐策略</h4><p>采用动态参考图像和级联操作实现渐进对齐，首先<strong>特征提取</strong>，由一个<strong>卷积层</strong>和<strong>级联残差块（SR重建网络里提到）</strong>组成，其输出记为$F_{[t-n:t+n]}^0$，由对齐单元对齐的<strong>待对齐的图像作为下一个待对齐的相邻图像的参考图像</strong>，每个级联对齐操作的参考图像从中间图像开始</p>
-<p><strong>逐步对齐</strong>，并生成细化的对齐结果$F_{[t-n:t+n]}^a$，其中$a$表示级联的大小</p>
-<p>渐进对齐策略等价于将序列中的复杂运动分解为每个级联的每两个相邻图像，所有图像实际上间接对齐到中间目标图像特征$F_t^a$</p>
-<h4 id="DConv对齐单元"><a href="#DConv对齐单元" class="headerlink" title="DConv对齐单元"></a>DConv对齐单元</h4><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202305252007718.png" srcset="/img/loading.gif" lazyload alt="DConv对齐单元"></p>
-<h4 id="多尺度DConv对齐单元"><a href="#多尺度DConv对齐单元" class="headerlink" title="多尺度DConv对齐单元"></a>多尺度DConv对齐单元</h4><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202305252008822.png" srcset="/img/loading.gif" lazyload alt="多尺度DConv对齐单元"></p>
-<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202305252009611.png" srcset="/img/loading.gif" lazyload alt="多尺度DConv对齐单元"></p>
-<h3 id="自适应融合模块"><a href="#自适应融合模块" class="headerlink" title="自适应融合模块"></a>自适应融合模块</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202305252254894.png" srcset="/img/loading.gif" lazyload alt="自适应融合模块"></p>
-<p>就是获取各个已对齐图像的权重，然后再进行加权融合</p>
-<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202305252256659.png" srcset="/img/loading.gif" lazyload alt="自适应融合模块"></p>
+                <h1 id="基于空间自适应特征调制的高效图像超分辨率"><a href="#基于空间自适应特征调制的高效图像超分辨率" class="headerlink" title="基于空间自适应特征调制的高效图像超分辨率"></a>基于空间自适应特征调制的高效图像超分辨率</h1><h2 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h2><p>本文聚焦于Efficient SR。虽然目前已经提出了许多用于图像超分辨率的解决方案，但这些算法通常需要很高的功耗和内存占用。本文们提出了一个简单而有效的深度网络来有效地解决图像超分辨率问题。具体来说，作者们在ViT块上提出了一种空间自适应特征调制 (SAFM) 机制。首先在输入特征上应用 SAFM 块来动态选择具有代表性的特征表示。由于SAFM块从远程角度处理输入特征，作者进一步引入卷积通道混合器 (CCM) 来同时提取局部上下文信息并执行通道混合。大量的实验结果表明，本文方法在网络参数方面比最先进的高效SR方法(如IMDN)小3倍，计算成本更低，同时实现相当的性能。</p>
+<p>为了减少沉重的计算负担，各种方法，包括有效的模块设计，知识蒸馏，神经架构搜索和结构重新参数化等都试图提高SR算法的效率。在这些有效的SR模型中，主要有两个优化方向：</p>
 <ul>
-<li>首先，在每幅对齐图像$F_{t+i}^a$上加一个3×3卷积层和一个Leaky ReLU，然后在序列中的<strong>每个图像与目标图像之间执行融合操作</strong>。在点积运算后，利用Tanh函数计算沿着时间轴跨图像序列的每个位置的信息相似度</li>
+<li>一个方向是减少模型参数或复杂度（FLOPs）。采用轻量级策略，如递归方式，参数共享和备用卷积。虽然这些方法确实减小了模型大小，但它们通常通过增加模型的深度或宽度来补偿由共享递归模块或稀疏卷积引起的性能下降，这在执行SR重构时影响推理效率。</li>
+<li>另一个方向是加快推理时间。后上采样是预定义输入的重要替代，这显著加快了运行时间。模型量化有效地加速了延迟并降低了能耗，特别是在边缘设备中部署算法时。结构重新参数化提高了推理阶段训练有素的模型的速度。这些方法运行速度快，但重建性能差。</li>
 </ul>
-<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202305252257886.png" srcset="/img/loading.gif" lazyload alt="image-20230525225717857"></p>
-<ul>
-<li>然后，将<strong>时间注意力图</strong>与对应的<strong>已对齐的特征</strong>相乘来计算每个图像的注意力加权特征</li>
-</ul>
-<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202305252301556.png" srcset="/img/loading.gif" lazyload alt="image-20230525230110506"></p>
-<ul>
-<li>最后一步是通过3 × 3卷积层后跟Leaky ReLU来充分融合每个图像的注意力加权特征，以获得融合特征$F_{fused}$</li>
-</ul>
-<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202305252301952.png" srcset="/img/loading.gif" lazyload alt="image-20230525230149914"></p>
-<h3 id="超分辨率重建网络"><a href="#超分辨率重建网络" class="headerlink" title="超分辨率重建网络"></a>超分辨率重建网络</h3><p>使用Lim等人提出的<strong>没有</strong>批量归一化（BN）的残差块，由两个2D卷积层和中间的ReLU激活函数组成，并通过快捷连接实现</p>
-<p>子像素卷积层（<strong>Sub-pixel</strong>）用于上采样（<strong>Upsampling</strong>），是一种端到端可学习的上采样层，其利用对LR特征的卷积运算获得多个特征，然后通过周期滤波完成HR图像的重建。另外，将上采样层置于网络模型的末尾，避免在高维空间进行大量计算</p>
-<blockquote>
-<p>Sub-pixel convolution（子像素卷积层）是一种巧妙的图像及特征图upscale的方法，又叫做<strong>pixel shuffle</strong>（像素洗牌）。如果我想对原图放大3倍，那么我需要生成出3^2=9个same size的特征图。将九个same size的特征图拼成一个X3的大图，这就是sub-pixel convolution的操作了。</p>
-</blockquote>
-<h3 id="海冰相关损失函数"><a href="#海冰相关损失函数" class="headerlink" title="海冰相关损失函数"></a>海冰相关损失函数</h3><ul>
-<li>多重组合损失函数</li>
-</ul>
-<p>本文所用的损失函数是两个损失函数的线性组合，这两个损失函数分别是$L_{ice}$和$L_{sr}$。其中$L_{ice}$计算预测极化差与目标极化差之间的误差，增强了网络中的海冰信息；$L_{sr}$用于评估预测图像与目标图像的像素级重建误差。</p>
-<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202305252312944.png" srcset="/img/loading.gif" lazyload alt="组合损失函数"></p>
-<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202305252312350.png" srcset="/img/loading.gif" lazyload alt="海冰相关损失项"></p>
-<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202305252313289.png" srcset="/img/loading.gif" lazyload alt="SR损失项"></p>
-<p>其中$r$为训练样本数量，$h$和$w$分别是待计算图像的高度和宽度，而$ε$是数值稳定性的常数（例如，10^−3^）</p>
-<ul>
-<li>贝叶斯优化方法</li>
-</ul>
-<p>如何求得上式中最佳的$λ$？采用贝叶斯优化（BO）算法确认，BO方法假设超参数$λ$和我们必须优化的目标函数$g$之间存在函数关系，用下式找到最优超参数值$λ*$</p>
-<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202305252317778.png" srcset="/img/loading.gif" lazyload alt="λ*"></p>
-<p>$g$是使用测试集上的超参数$λ$对模型的重建误差（这个误差采用均方误差（MSE）），测试集包括89-GHz通道的水平极化和垂直极化亮温图像</p>
-<p>基于上一个数据集，$D$由${(λ_1，y_1)，(λ_2，y_2)，…，(λ_k，y_k)}$表示的数组组成，其中$y$是MSE的值，$k$是迭代次数</p>
-<p>通过高斯回归$g$建立了后验概率分布$p$，得到了$λ$值的均值和方差</p>
-<p>构造具有均值和方差的捕获函数$F$，选择下一个超参数值$λ_{k+1}$，其中采用上置信限(UCB)方法作为捕获函数</p>
-<p>最后，通过增加新的$(λ_{k+1},y_{k+1})$来更新数据集$D(λ，y)$，并继续迭代直到收敛</p>
+<p>作者开发了一种基于多尺度表示的特征调制机制来动态选择具有代表性的特征。由于调制机制从长远的角度处理输入特征，因此需要补充上下文信息。为此，作者提出了一种基于FMBConv的卷积信道混合器，该混频器可以同时对局部特征进行编码和混频。SAFMN网络能够在SR性能和模型复杂性之间实现更好的平衡。</p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308241223541.png" srcset="/img/loading.gif" lazyload alt="性能-效率对比图，圆圈大小表示参数的数量，PSNR是峰值信噪比"></p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308241224959.png" srcset="/img/loading.gif" lazyload alt="LAM结果表示在超分用红色框标记的patch时，输入的LR图像中每个像素的重要性。DI值反映了所涉及的像素的范围。DI值越大，关注范围越广。"></p>
+<h2 id="本文方法"><a href="#本文方法" class="headerlink" title="本文方法"></a>本文方法</h2><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308241229595.png" srcset="/img/loading.gif" lazyload alt="SAFMN"></p>
+<p>如上图所示，该网络由以下部分组成:特征混合模块(FMM)的堆叠层和上采样层。具体来说，作者首先应用一个3 × 3的卷积层，提取输入的LR图像的特征，生成浅层特征$F_0$。然后，利用多个堆叠的FMM从$F_0$中生成更精细的深度特征，用于HR图像重建，其中每个FMM层有一个空间自适应特征调制(SAFM)子层和一个卷积通道混合器(CCM)。为了恢复HR目标图像，作者引入了一个全局残差连接来学习高频细节，并采用一个轻量级的上采样层来快速重建，该上采样层只包含一个3×3卷积和一个亚像素卷积。</p>
+<p>我们的网络可以被定义为：</p>
+<p>$F_0 = C_ω(I_{LR}),$</p>
+<p>$I_{SR} = U_γ(M_θ(F_0) + F_0),$</p>
+<p>可以看到，与经典的注意力模块相比，本文主要是做了两点改进。其一是把多头注意力替换成了所提出的SAFM,其二是把MLP替换成了所提出的CCM。下面将对这两个方面的改进详细梳理。</p>
+<h3 id="空间自适应特征调制"><a href="#空间自适应特征调制" class="headerlink" title="空间自适应特征调制"></a>空间自适应特征调制</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308241255893.png" srcset="/img/loading.gif" lazyload alt="SAFM"></p>
+<p>这一模块是本文的核心。这个模块的主要目的是实现像注意力机制中的那种全局交互，同时不会带来太大的计算代价。作者实现这一目标的方法很是新颖，通过利用多尺度特征的融合来考虑远距离的交互。</p>
+<p>这个模块的具体流程是这样的：</p>
+<p>首先把输入特征$X$按照通道维度进行拆分（torch.chunk）,这样就得到了多个具有与$X$相同空间大小但是通道大小缩减的子特征图，在上图中就是蓝色、绿色、黄色、橙色的四个块。</p>
+<p>$[X0,X1,X2,X3] = Split(X),$</p>
+<p>下一步就是对这4个特征图进行不同的空间下采样-上采样处理。选择一个特征图不做处理（图中的橙色），选择其他的三个特征图分别进行x2、x4、x8倍率的下采样操作。</p>
+<p>通过上述操作，我们手头上就有了4中不同尺度的特征图，之后把它们均经过深度可分离（DW）卷积，就是上图中的深蓝色方块。由于说更小的特征图（比如x8的特征图）有着更大的感受野，因此通过相同卷积核大小的卷积后，不同尺度的特征图中的每个像素的感受野都是不同的。x8倍率的感受野最大。之后为了方便后续的通道维度拼接，作者把之前经过下采样的特征通过最近邻插值再依次上采样回来。</p>
+<p>$\hat{X}<em>{0} = DW-Conv</em>{3×3}(X_0),$</p>
+<p>$\hat{X}<em>{i} =\uparrow</em>{p} (DW-Conv_{3×3}(\downarrow_{\frac{p}{2^{i}}} (Xi))), 1 ≤ i ≤ 3,$</p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308241503084.png" srcset="/img/loading.gif" lazyload alt="从SAFM学习到的不同尺度的深层特征"></p>
+<p>这样便可以把具有相同HW大小的特征图进行拼接了。最后跟一个1x1卷积（因为刚才4个子特征并未在通道上交互，才加上这个1x1卷积的）完成最后处理。</p>
+<p>$\hat{X} = Conv_{1×1}(Concat([\hat{X}_0,\hat{X}_1,\hat{X}_2,\hat{X}_3])),$</p>
+<p>到这里还没有结束，上面这个结果并不是作为SAFM的输出，而是作为一个调制器，还需要与原始输入特征相乘。就是把这个$\hat{X}$经过GELU激活，之后再和输入$X$相乘就完事了，公式如下：</p>
+<p>$\bar{X} = \phi (\hat{X} )\odot X,$</p>
+<p>做像SR这样的Low-Level任务，在空间上的信息缩减应该是需要避免的，而本文作者在得到多尺度特征的时候用到了下采样，而下采样操作会丢失一些细节，因此作者只是把这个$\hat{X}$作为一个门控机制的权值而没有作为模块的最终输出。</p>
+<h3 id="卷积通道混合器"><a href="#卷积通道混合器" class="headerlink" title="卷积通道混合器"></a>卷积通道混合器</h3><p>SAFM子块专注于探索全局信息，而局部上下文信息也有助于高分辨率图像重建。我们提出了一种基于FMBConv的卷积信道混频器(CCM)来增强局部空间建模能力和进行信道混合。提出的CCM包含一个3 × 3卷积和一个1×1卷积。其中，第一个3×3卷积对空间局部上下文进行编码，并将混合信道的输入特征的信道数量加倍;之后的1 × 1卷积将通道减小到原来的输入维数。GELU激活函数应用于隐藏层进行非线性映射。</p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308241423823.png" srcset="/img/loading.gif" lazyload alt="CCM"></p>
+<p>相比原始注意力机制中的MLP，这里主要是替换成了3x3卷积，同时把RELU换成了GELU。</p>
+<p>与原始的FMBConv相比，我们进行了以下修改，使其与我们的架构更兼容：（1）移除squeeze-and-excitation（SE）块;（2）用LayerNorm 替换BatchNorm ，并将其移动到卷积之前。排除SE块主要是因为SAFM还具有对信道维度的动态效用，并且在没有SE block的情况下重建性能不会下降。此外，使用LayerNorm可以更好地稳定模型训练和获得更好的结果。</p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308241428328.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>结合平均绝对误差(mean absolute error, MAE)损失和基于FFT（快速傅里叶变换）的频率损失函数对这些参数进行优化，其定义为:</p>
+<p>$\mathcal{L}=\left|I_{S R}-I_{H R}\right|<em>{1}+\lambda\left|\mathcal{F}\left(I</em>{S R}\right)-\mathcal{F}\left(I_{H R}\right)\right|_{1},$</p>
+<p>其中$\mathcal{F}$表示快速傅里叶变换，$\lambda$设置为0.05</p>
+<h3 id="FMM"><a href="#FMM" class="headerlink" title="FMM"></a>FMM</h3><p>基于ViT的网络设计，包括全局特征聚合的自关注模块和细化特征的前馈网络，我们将提出的SAFM和CCM形成一个统一的特征混合模块来选择具有代表性的特征。特征混合模块可以表示为:</p>
+<p>$Y = SAFM(LN(X)) +X, $</p>
+<p>$Z = CCM(LN(Y)) +Y，$</p>
+<p>其中，$LN(·)$为LayerNorm层，$X、Y、Z$为中间特征。</p>
+<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><h3 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a>评价指标</h3><p>我们使用PSNR (Peak Signal-to-Noise Ratio) 峰值信噪比和SSIM (Structural SIMilarity) 结构相似性来评估恢复图像的质量。所有PSNR和SSIM值都是在变换到YCbCr颜色空间的图像的Y通道上计算的。</p>
+<p>彩色图像通常有三种方法来计算PSNR：</p>
+<ol>
+<li><p>分别计算 RGB 三个通道的 PSNR，然后取平均值。</p>
+</li>
+<li><p>计算 RGB 三通道的 MSE ，然后再除以 3 。</p>
+</li>
+<li><p>将图片转化为 YCbCr 格式，然后只计算 Y 分量也就是亮度分量的 PSNR。</p>
+</li>
+</ol>
+<h3 id="定量比较"><a href="#定量比较" class="headerlink" title="定量比较"></a>定量比较</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308241508682.png" srcset="/img/loading.gif" lazyload alt="对比试验"></p>
+<h3 id="定性比较"><a href="#定性比较" class="headerlink" title="定性比较"></a>定性比较</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308241510996.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308241511756.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="内存和运行时间比较"><a href="#内存和运行时间比较" class="headerlink" title="内存和运行时间比较"></a>内存和运行时间比较</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308241513667.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="消融实验"><a href="#消融实验" class="headerlink" title="消融实验"></a>消融实验</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308241608512.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -412,15 +408,9 @@
       
         <a href="/tags/DL/">#DL</a>
       
-        <a href="/tags/DConv/">#DConv</a>
-      
         <a href="/tags/%E8%B6%85%E5%88%86%E8%BE%A8%E7%8E%87/">#超分辨率</a>
       
-        <a href="/tags/%E6%97%B6%E9%97%B4%E6%B3%A8%E6%84%8F%E5%8A%9B/">#时间注意力</a>
-      
-        <a href="/tags/%E9%81%A5%E6%84%9F/">#遥感</a>
-      
-        <a href="/tags/TGRS/">#TGRS</a>
+        <a href="/tags/SR/">#SR</a>
       
     </div>
   
@@ -432,8 +422,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>PMDRnet: A Progressive Multiscale Deformable Residual Network for Multi-Image Super-Resolution of AMSR2 Arctic Sea Ice Images</div>
-      <div>https://jialiangz.github.io/2023/05/25/PMDRnet/</div>
+      <div>Spatially-Adaptive Feature Modulation for Efficient Image Super-Resolution</div>
+      <div>https://jialiangz.github.io/2023/08/23/SAFMN/</div>
     </div>
     <div class="license-meta">
       
@@ -445,13 +435,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年5月25日</div>
+          <div>2023年8月23日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年8月23日</div>
+          <div>2023年8月24日</div>
         </div>
       
       
@@ -482,18 +472,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/07/12/23%E6%9A%91%E5%81%87%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0week1/" title="23暑假深度学习week1">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">23暑假深度学习week1</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/01/26/DL-week2/" title="深度学习：算法到实战——卷积神经网络和循环神经网络">
-                        <span class="hidden-mobile">深度学习：算法到实战——卷积神经网络和循环神经网络</span>
+                      <a href="/2023/08/04/23%E6%9A%91%E5%81%87%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0week4/" title="23暑假深度学习week4">
+                        <span class="hidden-mobile">23暑假深度学习week4</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
