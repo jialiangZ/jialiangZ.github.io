@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308241229595.png">
 <meta property="article:published_time" content="2023-08-23T10:26:35.000Z">
-<meta property="article:modified_time" content="2023-09-06T03:02:26.022Z">
+<meta property="article:modified_time" content="2023-09-06T03:16:49.463Z">
 <meta property="article:author" content="爱吃菠萝">
 <meta property="article:tag" content="DL">
 <meta property="article:tag" content="超分辨率">
@@ -353,7 +353,7 @@
 <p>与原始的FMBConv相比，作者进行了以下修改，使其与作者的架构更兼容：（1）移除squeeze-and-excitation（SE）块;（2）用LayerNorm 替换BatchNorm ，并将其移动到卷积之前。排除SE块主要是因为SAFM还具有对信道维度的动态效用，并且在没有SE block的情况下重建性能不会下降。此外，使用LayerNorm可以更好地稳定模型训练和获得更好的结果。</p>
 <p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308241428328.jpg" srcset="/img/loading.gif" lazyload></p>
 <h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>结合平均绝对误差(mean absolute error, MAE)损失和基于FFT（快速傅里叶变换）的频率损失函数对这些参数进行优化，其定义为:</p>
-<p>$\mathcal{L}=||I_{SR}-I_{HR}||<em>{1}+\lambda||\mathcal{F}(I</em>{SR})-\mathcal{F}(I_{HR})||_{1},$</p>
+<p>$\mathcal{L} =|| I_{SR} - I_{HR} || <em>{1}+ \lambda || \mathcal{F}(I</em>{SR})- \mathcal{F}(I_{HR}) | | _ {1} $</p>
 <p>其中$\mathcal{F}$表示快速傅里叶变换，$\lambda$设置为0.05</p>
 <h3 id="FMM"><a href="#FMM" class="headerlink" title="FMM"></a>FMM</h3><p>基于ViT的网络设计，包括全局特征聚合的自关注模块和细化特征的前馈网络，作者将提出的SAFM和CCM形成一个统一的特征混合模块来选择具有代表性的特征。特征混合模块可以表示为:</p>
 <p>$Y = SAFM(LN(X)) +X, $</p>
