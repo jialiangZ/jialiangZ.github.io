@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308241229595.png">
 <meta property="article:published_time" content="2023-08-23T10:26:35.000Z">
-<meta property="article:modified_time" content="2023-08-25T04:19:12.466Z">
+<meta property="article:modified_time" content="2023-09-06T02:46:17.765Z">
 <meta property="article:author" content="爱吃菠萝">
 <meta property="article:tag" content="DL">
 <meta property="article:tag" content="超分辨率">
@@ -308,7 +308,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年8月25日 中午
+                    本文最后更新于：2023年9月6日 上午
                   
                 
               </p>
@@ -325,7 +325,8 @@
 <p>作者开发了一种基于多尺度表示的特征调制机制来动态选择具有代表性的特征。由于调制机制从长远的角度处理输入特征，因此需要补充上下文信息。为此，作者提出了一种基于FMBConv的卷积信道混合器，该混频器可以同时对局部特征进行编码和混频。SAFMN网络能够在SR性能和模型复杂性之间实现更好的平衡。</p>
 <p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308241223541.png" srcset="/img/loading.gif" lazyload alt="性能-效率对比图，圆圈大小表示参数的数量，PSNR是峰值信噪比"></p>
 <p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308241224959.png" srcset="/img/loading.gif" lazyload alt="LAM结果表示在超分用红色框标记的patch时，输入的LR图像中每个像素的重要性。DI值反映了所涉及的像素的范围。DI值越大，关注范围越广。"></p>
-<h2 id="本文方法"><a href="#本文方法" class="headerlink" title="本文方法"></a>本文方法</h2><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308241229595.png" srcset="/img/loading.gif" lazyload alt="SAFMN"></p>
+<h2 id="本文方法"><a href="#本文方法" class="headerlink" title="本文方法"></a>本文方法</h2><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309061046377.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202308241229595.png" srcset="/img/loading.gif" lazyload alt="SAFMN"></p>
 <p>如上图所示，该网络由以下部分组成:特征混合模块(FMM)的堆叠层和上采样层。具体来说，作者首先应用一个3 × 3的卷积层，提取输入的LR图像的特征，生成浅层特征$F_0$。然后，利用多个堆叠的FMM从$F_0$中生成更精细的深度特征，用于HR图像重建，其中每个FMM层有一个空间自适应特征调制(SAFM)子层和一个卷积通道混合器(CCM)。为了恢复HR目标图像，作者引入了一个全局残差连接来学习高频细节，并采用一个轻量级的上采样层来快速重建，该上采样层只包含一个3×3卷积和一个亚像素卷积。</p>
 <p>作者的网络可以被定义为：</p>
 <p>$F_0 = C_ω(I_{LR}),$</p>
@@ -335,7 +336,7 @@
 <p>这一模块是本文的核心。这个模块的主要目的是实现像注意力机制中的那种全局交互，同时不会带来太大的计算代价。作者实现这一目标的方法很是新颖，通过利用多尺度特征的融合来考虑远距离的交互。</p>
 <p>这个模块的具体流程是这样的：</p>
 <p>首先把输入特征$X$按照通道维度进行拆分（torch.chunk）,这样就得到了多个具有与$X$相同空间大小但是通道大小缩减的子特征图，在上图中就是蓝色、绿色、黄色、橙色的四个块。</p>
-<p>$[X0,X1,X2,X3] = Split(X),$</p>
+<p>$[X_0,X_1,X_2,X_3] = Split(X),$</p>
 <p>下一步就是对这4个特征图进行不同的空间下采样-上采样处理。选择一个特征图不做处理（图中的橙色），选择其他的三个特征图分别进行x2、x4、x8倍率的下采样操作。</p>
 <p>通过上述操作，作者手头上就有了4中不同尺度的特征图，之后把它们均经过深度可分离（DW）卷积，就是上图中的深蓝色方块。由于说更小的特征图（比如x8的特征图）有着更大的感受野，因此通过相同卷积核大小的卷积后，不同尺度的特征图中的每个像素的感受野都是不同的。x8倍率的感受野最大。之后为了方便后续的通道维度拼接，作者把之前经过下采样的特征通过最近邻插值再依次上采样回来。</p>
 <p>$\hat{X_0} = DW-Conv_{3×3}(X_0),$</p>
@@ -441,7 +442,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年8月25日</div>
+          <div>2023年9月6日</div>
         </div>
       
       
