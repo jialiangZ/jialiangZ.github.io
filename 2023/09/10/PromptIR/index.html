@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309121906192.png">
 <meta property="article:published_time" content="2023-09-10T07:20:15.000Z">
-<meta property="article:modified_time" content="2023-09-12T11:12:57.899Z">
+<meta property="article:modified_time" content="2023-09-12T11:16:17.410Z">
 <meta property="article:author" content="爱吃菠萝">
 <meta property="article:tag" content="DL">
 <meta property="article:tag" content="DConv">
@@ -247,7 +247,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.3k 字
+          5.2k 字
         
       </span>
     
@@ -338,12 +338,12 @@
 <p>$\hat{\mathbf{F}}_l = \mathbf{PIM}(\mathbf{PGM}(\mathbf{P_c,\mathbf{F}_l}),\mathbf{F_l})$</p>
 <h3 id="提示生成模块（PGM）"><a href="#提示生成模块（PGM）" class="headerlink" title="提示生成模块（PGM）"></a>提示生成模块（PGM）</h3><p>提示组件$\mathbf{P_c}$是一组可学习的参数，与输入特征交互，嵌入了退化信息。一种直接的特征-提示交互方法是直接使用学习到的提示来校准特征。然而，这种静态方法可能会产生次优结果，因为它对输入内容是无知的。因此，本文提出了提示生成模块（PGM），它从输入特征中动态预测基于注意力的权重，并将这些权重应用于提示组件，生成与输入条件相关的提示 $\mathbf{P}$。此外，PGM创建了一个共享空间，促进了提示组件之间的相关知识共享。</p>
 <p>为了从输入特征$\mathbf{F}_l$生成提示权重，PGM首先对空间维度进行全局平均池化（GAP），生成特征向量$v \in \mathbb{R}^{\hat{C}}$。接下来将$v$通过通道缩减的卷积层，得到一个紧凑的特征向量，然后进行softmax操作，从而得到提示权重$w \in \mathbb{R}^N$。最后使用这些权重对提示组件进行调整，接着应用一个$3 \times3$的卷积层。总体而言，PGM的过程可以概括为：</p>
-<p>$ \mathbf{P}=\operatorname{Conv}<em>{3 \times 3}\left(\sum</em>{c=1}^{N} w_{i} \mathbf{P}<em>{c}\right), \quad w</em>{i}=\operatorname{Softmax}\left(\operatorname{Conv}<em>{1 \times 1}\left(\operatorname{GAP}\left(\mathbf{F}</em>{l}\right)\right)\right)$</p>
+<p>$ \mathbf{P}={Conv}<em>{3 \times 3}\left(\sum</em>{c=1}^{N} w_{i} \mathbf{P}<em>{c}\right), \quad w</em>{i}=\operatorname{Softmax}\left({Conv}<em>{1 \times 1}\left(\operatorname{GAP}\left(\mathbf{F}</em>{l}\right)\right)\right)$</p>
 <p>由于在推理阶段，恢复网络需要能够处理不同分辨率的图像，不能使用具有固定尺寸的提示组件$\mathbf{P}_c$。因此，作者对提示组件进行双线性插值操作，将其放大到与输入特征相同的尺寸。</p>
 <h3 id="提示交互模块（PIM）"><a href="#提示交互模块（PIM）" class="headerlink" title="提示交互模块（PIM）"></a>提示交互模块（PIM）</h3><p>PIM的主要目标是实现输入特征$\mathbf{F}_l$和提示$\mathbf{P}$之间的交互，以实现有指导的恢复过程。</p>
 <p>在PIM中，沿着通道维度将生成的提示与输入特征进行拼接。接下来将拼接后的表示通过一个Transformer块进行处理，该块利用提示中编码的退化信息来转换输入特征。</p>
 <p>本文的主要贡献是提示块，它是一个插件模块，与具体的架构无关。因此，在提出的PromptIR框架中，作者使用了现有的Transformer块，而不是开发一个新的块。Transformer块由两个顺序连接的子模块组成：多转置卷积头转置注意力（MDTA）和门控转置卷积前馈网络（GDFN）。MDTA在通道而不是空间维度上应用自注意操作，并具有线性复杂度。GDFN的目标是以可控的方式转换特征，即抑制信息较少的特征，只允许有用的特征在网络中传播。PIM的整体过程为：</p>
-<p>$\hat{\mathbf{F}}<em>l = \operatorname{Conv</em>{3\times3}}(\mathbf{GDFN}(\mathbf{MDTA}[\mathbf{F_l};\mathbf{P}]))$</p>
+<p>$\hat{\mathbf{F}}<em>l = {Conv</em>{3\times3}}(\mathbf{GDFN}(\mathbf{MDTA}[\mathbf{F_l};\mathbf{P}]))$</p>
 <p>其中$[;]$表示拼接操作。MDTA的公式为$\mathbf{Y}=W_p\mathbf{V} \cdot \mathbf{Softmax}(\mathbf{K}\cdot\mathbf{Q}/\alpha)+\mathbf{X} $，其中$\mathbf{X}$和$\mathbf{Y}$分别表示输入和输出特征。$\mathbf{Q}$、$\mathbf{K}$和$\mathbf{V}$分别表示通过应用$1\times1$PW卷积后跟随$3\times3$DW卷积在层归一化的输入特征图上获得的查询、键和值的投影。 $W_p$是PW卷积，$\alpha$是可学习的缩放参数，$(\cdot)$表示点积交互。GDFN的过程定义为$\mathbf{Z}=W_p^0\left(\phi(W_d^1W_p^1(\mathbf{LN}(\mathbf{Y})))\odot W_d^2W_p^2(\mathbf{LN}(\mathbf{Y}))\right)$。其中，$W_d^{( \dot )}$是 3×3 的DW卷积， $\odot$表示逐元素乘法， $\phi$是GELU非线性激活函数，$\mathbf{LN}$是层归一化。</p>
 <p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309121907828.png" srcset="/img/loading.gif" lazyload alt="Transformer block"></p>
 <p>上图详细阐述了PromptIR框架中所使用的Transformer模块的细节。首先，输入特性$\mathbf{X} \in \mathbb{R}^{H_l×W_l×C_l}$是通过MDTA模块传递的。在这个模块中，特性最初是使用Layer规范化的。然后，结合$1\times 1$卷积和$3 \times 3$深度卷积，将特征投射到$Query (Q)$、$Key (K)$和$Value (V)$张量中。MDTA模块的一个基本特征是它计算的注意力跨越通道维度，而不是空间维度。这有效地减少了计算开销。为了实现这种通道式的注意计算，在计算点积之前，将$Q$投影和$K$投影分别从$H_l \times W_l \times C_l$变换为$H_l W_l \times C_l$和$C_l \times H_l W_l$，从而得到与形状为$C_l×C_l$变换后的注意图。在这个子模块中使用了无偏差卷积。此外，注意力以多头并行方式计算。MDTA模块之后，通过GDFN模块处理特征。在GDFN模块中，输入特征通过$1 \times 1$卷积的因子$\gamma$扩展，然后通过$3 \times 3$卷积。这些操作通过两条并行路径执行，其中一条路径的输出使用GeLU非线性激活。然后直接相加将这个激活的特征图与其他路径的输出结合起来。</p>
