@@ -1,0 +1,854 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon/favicon.png">
+  <link rel="icon" href="/img/favicon/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="爱吃菠萝">
+  <meta name="keywords" content="Java">
+  
+    <meta name="description" content="PromptIR: Prompting for All-in-One Blind Image Restoration导读图像恢复是从其受损版本中恢复高质量清晰图像的过程。基于深度学习的方法显著提升了图像恢复性能，然而，它们在不同类型和级别的退化上的泛化能力有限。这限制了它们在实际应用中的使用，因为需要针对每种具体的退化进行单独训练模型，并了解输入图像的退化类型才能应用相应的模型。本文介绍了一种基于">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PromptIR: Prompting for All-in-One Blind Image Restoration">
+<meta property="og:url" content="https://jialiangz.github.io/2023/09/10/PromptIR/index.html">
+<meta property="og:site_name" content="爱吃菠萝">
+<meta property="og:description" content="PromptIR: Prompting for All-in-One Blind Image Restoration导读图像恢复是从其受损版本中恢复高质量清晰图像的过程。基于深度学习的方法显著提升了图像恢复性能，然而，它们在不同类型和级别的退化上的泛化能力有限。这限制了它们在实际应用中的使用，因为需要针对每种具体的退化进行单独训练模型，并了解输入图像的退化类型才能应用相应的模型。本文介绍了一种基于">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309121117035.png">
+<meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309110909656.png">
+<meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309110942243.png">
+<meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309111623049.png">
+<meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309111651509.png">
+<meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309111653957.png">
+<meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309111654486.png">
+<meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309111655471.png">
+<meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309111658817.png">
+<meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309111702736.png">
+<meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309111702335.png">
+<meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309121047377.png">
+<meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309121050570.png">
+<meta property="article:published_time" content="2023-09-10T07:20:15.000Z">
+<meta property="article:modified_time" content="2023-09-12T10:56:01.347Z">
+<meta property="article:author" content="爱吃菠萝">
+<meta property="article:tag" content="DL">
+<meta property="article:tag" content="DConv">
+<meta property="article:tag" content="去噪">
+<meta property="article:tag" content="通道注意力">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309121117035.png">
+  
+  
+  
+  <title>PromptIR: Prompting for All-in-One Blind Image Restoration - 爱吃菠萝</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jialiangz.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"kmeBKs0JTn3fzukz8ktTQEDg-gzGzoHsz","app_key":"aHupWL3SC1TRzG0nq8jAKM8h","server_url":"https://kmebks0j.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>爱吃菠萝</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="PromptIR: Prompting for All-in-One Blind Image Restoration"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        爱吃菠萝
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-09-10 15:20" pubdate>
+          2023年9月10日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          44 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">PromptIR: Prompting for All-in-One Blind Image Restoration</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2023年9月12日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="PromptIR-Prompting-for-All-in-One-Blind-Image-Restoration"><a href="#PromptIR-Prompting-for-All-in-One-Blind-Image-Restoration" class="headerlink" title="PromptIR: Prompting for All-in-One Blind Image Restoration"></a>PromptIR: Prompting for All-in-One Blind Image Restoration</h1><h2 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h2><p>图像恢复是从其受损版本中恢复高质量清晰图像的过程。基于深度学习的方法显著提升了图像恢复性能，然而，它们在不同类型和级别的退化上的泛化能力有限。这限制了它们在实际应用中的使用，因为需要针对每种具体的退化进行单独训练模型，并了解输入图像的退化类型才能应用相应的模型。本文介绍了一种基于提示的学习方法，称为PromptIR，用于全能图像恢复，可以有效地从各种类型和级别的退化中恢复图像。具体而言，<strong>本文方法使用提示（Prompt）来编码退化特定信息，并动态引导恢复网络。</strong> 这使得本文的方法能够推广到不同类型和级别的退化，并在图像去噪、去雨和去雾方面取得了最先进的结果。总的来说，PromptIR提供了一个通用且高效的插件模块，只需少量轻量级提示即可用于恢复各种类型和级别的受损图像，无需事先了解图像中存在的损坏信息。</p>
+<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>最近的一种方法AirNet，采用了基于对比学习的方法来提取特征，其中同一张退化图片中截取出来的patch作为正样本（退化相同），而不同的退化图片中的patch作为负样本（退化不同），通过对比学习的方法学习表示，这样学得的表示就能包含图像的退化信息。这涉及训练一个额外的编码器来区分各种类型的图像退化。尽管AirNet取得了最先进的结果，但它在建模不同污染类型的完全解耦表示方面存在困难。此外，使用附加的编码器进行对比学习会导致更高的训练负担，因为需要两阶段的训练方法。</p>
+<p>PromptIR提出了一个即插即用的提示模块，该模块隐式预测与退化条件相关的提示，以指导未知退化的输入图像的恢复过程。来自提示的引导被注入到网络的多个解码阶段，具有少量的可学习参数。这样可以学习一个一体化的统一模型，该模型可以很好地执行多个图像恢复任务(例如，排水、去雾和去噪)。</p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309121117035.png" srcset="/img/loading.gif" lazyload alt="即插即用的提示模块"></p>
+<p>下图中显示了PromptIR和最先进的AirNet中使用的退化嵌入的tSNE图。不同的颜色表示不同的退化类型。在PromptIR的例子中，每个任务的嵌入被更好地聚在一起，显示了提示标记学习具有区分退化上下文的有效性，从而有助于恢复过程。</p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309110909656.png" srcset="/img/loading.gif" lazyload alt="tSNE"></p>
+<p>本文的主要工作：</p>
+<ul>
+<li>本文提出了一个基于提示的一体化（blind）恢复框架PromptIR，它仅依赖输入图像来恢复一个清晰的图像，而不需要对图像中出现的退化有任何先验知识。</li>
+<li>本文的提示块是一个插件模块，可以很容易地集成到任何现有的恢复网络。它包括提示生成模块PGM (prompt generation module)和提示交互模块PIM (prompt interaction module)。提示块的目标是生成具有输入条件的提示(通过PGM)，这些提示配备了有用的上下文信息，以指导恢复网络(使用PIM)有效地从输入图像中删除损坏。</li>
+<li>本文的综合实验展示了PromptIR的动态适应行为，通过在各种图像恢复任务中实现最先进的性能，包括使用统一的PromptIR模型进行图像去噪、去雾。</li>
+</ul>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>在“All-in-one”图像恢复中，本文的目标是学习单个模型，从退化的图像恢复到清晰的图像，同时没有关于退化的先验信息。通过提供关于退化类型的隐含上下文信息，可以增强其恢复清晰图像的性能。本文提出了基于提示学习的图像恢复框架PromptIR，如下图所示。PromptIR的关键元素是提示块（Prompt Block），这些提示块首先生成可学习的提示参数，然后在恢复过程中使用这些提示来指导模型。接下来详细描述PromptIR框架及其组件的总体流程。</p>
+<h3 id="PromptIR方法概述"><a href="#PromptIR方法概述" class="headerlink" title="PromptIR方法概述"></a>PromptIR方法概述</h3><p>本文使用U-Net风格的网络，在编码和解码阶段使用Transformer块。该框架的主要组件，即提示块，由两个模块组成，提示生成模块(PGM)和提示交互模块(PIM)。提示生成模块使用输入特性$F_l$和提示组件生成具有输入条件的提示符$P$。然后，提示交互模块通过Transformer块使用生成的提示符动态地调整输入特性。提示与解码器特征在多个级别交互，以丰富特定于退化的上下文信息。</p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309110942243.png" srcset="/img/loading.gif" lazyload alt="PromptIR"></p>
+<p>对于给定的退化输入图像$\mathbf{I} \in \mathbb{R}^{H \times W \times 3}$, PromptIR首先通过卷积运算提取底层特征$\mathbf{F}_0 \in \mathbb{R}^{H \times W \times C}$；式中，$H \times W$为空间分辨率，$C$为通道数。接下来，特征嵌入$F_0$经过4级分级编解码，转化为深层特征$\mathbf{F}_r \in \mathbb{R}^{H \times W \times 2C}$。编码器-解码器的每一层都使用几个Transformer块，块的数量从顶层逐渐增加到底层，以保持计算效率。从高分辨率输入开始，编码器的目标是在增加信道容量的同时逐步降低空间分辨率，从而产生低分辨率的潜在表示$\mathbf{F}_l \in \mathbb{R}^{\frac{H}{8} \times \frac{W}{8} \times 8C}$。解码器的目标是从低分辨率的潜在特征$F_l$逐步恢复高分辨率的清晰输出。为了帮助解码过程，本文在PromptIR框架中加入了提示块。提示块是适配器模块，按顺序连接解码器的每两级。在每个解码器级别上，提示块隐式地用退化类型的信息丰富输入特征，以进行引导恢复。接下来，本文详细描述了提出的提示模块及其核心构建模块。</p>
+<h3 id="Prompt-Block"><a href="#Prompt-Block" class="headerlink" title="Prompt Block"></a>Prompt Block</h3><p>本文提出的PromptIR方法借鉴了在自然语言处理和计算机视觉任务中使用的基于提示的技术。在这些任务中，基于提示的技术已经被用于对在源任务上训练的大型固定模型进行参数高效微调，以适应目标任务。基于提示的技术之所以有效，是因为它们能够有效地将任务特定的上下文信息编码到提示组件中。在PromptIR中，提示组件是可学习的参数，与输入特征进行交互，以丰富它们的退化类型信息。提示块由两个关键组件组成：提示生成模块（PGM）和提示交互模块（PIM）。</p>
+<p>给定N个提示组件$\mathbf{P}_c \in \mathbb{R}^{N \times \hat{H} \times \hat{W} \times \hat{C} }$，输入特性$\mathbf{F}_l \in \mathbb{R}^{\hat{H} \times \hat{W} \times \hat{C} }$，提示块的整体过程定义为:</p>
+<p>$\hat{\mathbf{F}}_l = \mathbf{PIM}(\mathbf{PGM}(\mathbf{P_c,\mathbf{F}_l}),\mathbf{F_l})$</p>
+<h3 id="提示生成模块（PGM）"><a href="#提示生成模块（PGM）" class="headerlink" title="提示生成模块（PGM）"></a>提示生成模块（PGM）</h3><p>提示组件$\mathbf{P_c}$是一组可学习的参数，与输入特征交互，嵌入了退化信息。一种直接的特征-提示交互方法是直接使用学习到的提示来校准特征。然而，这种静态方法可能会产生次优结果，因为它对输入内容是无知的。因此，本文提出了提示生成模块（PGM），它从输入特征中动态预测基于注意力的权重，并将这些权重应用于提示组件，生成与输入条件相关的提示 $\mathbf{P}$。此外，PGM创建了一个共享空间，促进了提示组件之间的相关知识共享。</p>
+<p>为了从输入特征$\mathbf{F}_l$生成提示权重，PGM首先对空间维度进行全局平均池化（GAP），生成特征向量$v \in \mathbb{R}^{\hat{C}}$。接下来将$v$通过通道缩减的卷积层，得到一个紧凑的特征向量，然后进行softmax操作，从而得到提示权重$w \in \mathbb{R}^N$。最后使用这些权重对提示组件进行调整，接着应用一个$3 \times3$的卷积层。总体而言，PGM的过程可以概括为：</p>
+<p>$\mathbf{P}=\operatorname{Conv}<em>{3 \times 3}\left(\sum</em>{c=1}^{N} w_{i} \mathbf{P}<em>{c}\right), \quad w</em>{i}=\operatorname{Softmax}\left(\operatorname{Conv}<em>{1 \times 1}\left(\operatorname{GAP}\left(\mathbf{F}</em>{l}\right)\right)\right)$</p>
+<p>由于在推理阶段，恢复网络需要能够处理不同分辨率的图像，不能使用具有固定尺寸的提示组件$\mathbf{P}_c$。因此，作者对提示组件进行双线性插值操作，将其放大到与输入特征相同的尺寸。</p>
+<h3 id="提示交互模块（PIM）"><a href="#提示交互模块（PIM）" class="headerlink" title="提示交互模块（PIM）"></a>提示交互模块（PIM）</h3><p>PIM的主要目标是实现输入特征$\mathbf{F}_l$和提示$\mathbf{P}$之间的交互，以实现有指导的恢复过程。</p>
+<p>在PIM中，沿着通道维度将生成的提示与输入特征进行拼接。接下来将拼接后的表示通过一个Transformer块进行处理，该块利用提示中编码的退化信息来转换输入特征。</p>
+<p>本文的主要贡献是提示块，它是一个插件模块，与具体的架构无关。因此，在提出的PromptIR框架中，作者使用了现有的Transformer块，而不是开发一个新的块。Transformer块由两个顺序连接的子模块组成：多转置卷积头转置注意力（MDTA）和门控转置卷积前馈网络（GDFN）。MDTA在通道而不是空间维度上应用自注意操作，并具有线性复杂度。GDFN的目标是以可控的方式转换特征，即抑制信息较少的特征，只允许有用的特征在网络中传播。PIM的整体过程为：</p>
+<p>$\hat{\mathbf{F}}<em>l = \operatorname{Conv</em>{3\times3}}(\mathbf{GDFN}(\mathbf{MDTA}[\mathbf{F_l};\mathbf{P}]))$</p>
+<p>其中$[;]$表示拼接操作。MDTA的公式为$\mathbf{Y}=W_p\mathbf{V} \cdot \mathbf{Softmax}(\mathbf{K}\cdot\mathbf{Q}/\alpha)+\mathbf{X} $，其中$\mathbf{X}$和$\mathbf{Y}$分别表示输入和输出特征。$\mathbf{Q}$、$\mathbf{K}$和$\mathbf{V}$分别表示通过应用$1\times1$PW卷积后跟随$3\times3$DW卷积在层归一化的输入特征图上获得的查询、键和值的投影。 $W_p$是PW卷积，$\alpha$是可学习的缩放参数，$(\cdot)$表示点积交互。GDFN的过程定义为$\mathbf{Z}=W_p^0\left(\phi(W_d^1W_p^1(\mathbf{LN}(\mathbf{Y})))\odot W_d^2W_p^2(\mathbf{LN}(\mathbf{Y}))\right)$。其中，$W_d^{( \dot )}$是 3×3 的DW卷积， $\odot$表示逐元素乘法， $\phi$是GELU非线性激活函数，$\mathbf{LN}$是层归一化。</p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309111623049.png" srcset="/img/loading.gif" lazyload alt="Transformer block"></p>
+<p>上图详细阐述了PromptIR框架中所使用的Transformer模块的细节。首先，输入特性$\mathbf{X} \in \mathbb{R}^{H_l×W_l×C_l}$是通过MDTA模块传递的。在这个模块中，特性最初是使用Layer规范化的。然后，结合$1\times 1$卷积和$3 \times 3$深度卷积，将特征投射到$Query (Q)$、$Key (K)$和$Value (V)$张量中。MDTA模块的一个基本特征是它计算的注意力跨越通道维度，而不是空间维度。这有效地减少了计算开销。为了实现这种通道式的注意计算，在计算点积之前，将$Q$投影和$K$投影分别从$H_l \times W_l \times C_l$变换为$H_l W_l \times C_l$和$C_l \times H_l W_l$，从而得到与形状为$C_l×C_l$变换后的注意图。在这个子模块中使用了无偏差卷积。此外，注意力以多头并行方式计算。MDTA模块之后，通过GDFN模块处理特征。在GDFN模块中，输入特征通过$1 \times 1$卷积的因子$\gamma$扩展，然后通过$3 \times 3$卷积。这些操作通过两条并行路径执行，其中一条路径的输出使用GeLU非线性激活。然后直接相加将这个激活的特征图与其他路径的输出结合起来。</p>
+<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><p>为了证明所提出的PromptIR的有效性，我们对三个代表性的图像恢复任务进行了评估:图像去雾、图像去雾和图像去噪。我们在两种不同的实验设置下进行实验:(a) All-in-One， (b) Single-task。</p>
+<h3 id="All-in-one-Results"><a href="#All-in-one-Results" class="headerlink" title="All-in-one Results"></a>All-in-one Results</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309111651509.png" srcset="/img/loading.gif" lazyload alt="对比实验"></p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309111653957.png" srcset="/img/loading.gif" lazyload alt="对来自SOTS数据集的图像上的一体化方法进行脱雾比较。由我们的PromptIR产生的结果的图像质量在视觉上比以前的最先进的方法AirNet更好。"></p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309111654486.png" srcset="/img/loading.gif" lazyload alt="对来自Rain100L数据集的图像进行一体化方法的图像删除比较。我们的方法可以有效地去除有雨的条纹，从而生成无雨的图像。"></p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309111655471.png" srcset="/img/loading.gif" lazyload alt="对一体化方法的去噪结果。"></p>
+<h3 id="Single-task-Results"><a href="#Single-task-Results" class="headerlink" title="Single-task Results"></a>Single-task Results</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309111658817.png" srcset="/img/loading.gif" lazyload alt="去雾结果会导致SOTS基准数据集上的单任务设置。我们的提示IR比AirNet显著提高了8.13 dB。"></p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309111702736.png" srcset="/img/loading.gif" lazyload alt="在Rain100L上进行单任务设置。与AirNet算法相比，该方法提高了2.13 dB的PSNR。"></p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309111702335.png" srcset="/img/loading.gif" lazyload alt="在BSD68和Urban100数据集上进行单任务设置的去噪比较。对于Urban100上σ = 50具有挑战性的噪声水平，我们与AirNet相比，mritIR获得0.51 dB增益。"></p>
+<h3 id="消融实验"><a href="#消融实验" class="headerlink" title="消融实验"></a>消融实验</h3><p>表9显示随着退化类型的增加，网络恢复图像变得越来越困难，从而导致性能下降。具体来说，在合并数据集中出现模糊图像似乎会对模型产生负面影响。有趣的是，结合雨和噪声图像训练的模型获得了很好的性能，表明去噪和去噪任务之间存在正相关关系。这种现象在AirNet工作中也可以观察到。</p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309121047377.png" srcset="/img/loading.gif" lazyload alt="消融实验"></p>
+<p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309121050570.png" srcset="/img/loading.gif" lazyload alt="消融实验"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" class="category-chain-item">论文阅读</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/DL/">#DL</a>
+      
+        <a href="/tags/DConv/">#DConv</a>
+      
+        <a href="/tags/%E5%8E%BB%E5%99%AA/">#去噪</a>
+      
+        <a href="/tags/%E9%80%9A%E9%81%93%E6%B3%A8%E6%84%8F%E5%8A%9B/">#通道注意力</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>PromptIR: Prompting for All-in-One Blind Image Restoration</div>
+      <div>https://jialiangz.github.io/2023/09/10/PromptIR/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>爱吃菠萝</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年9月10日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2023年9月12日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/08/23/SAFMN/" title="Spatially-Adaptive Feature Modulation for Efficient Image Super-Resolution">
+                        <span class="hidden-mobile">Spatially-Adaptive Feature Modulation for Efficient Image Super-Resolution</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"kmeBKs0JTn3fzukz8ktTQEDg-gzGzoHsz","appKey":"aHupWL3SC1TRzG0nq8jAKM8h","path":"window.location.pathname","placeholder":"小帅哥，快来玩呀！小美女，你好呀！","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
