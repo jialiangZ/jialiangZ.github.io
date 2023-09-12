@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309121906192.png">
 <meta property="article:published_time" content="2023-09-10T07:20:15.000Z">
-<meta property="article:modified_time" content="2023-09-12T11:21:48.990Z">
+<meta property="article:modified_time" content="2023-09-12T11:27:00.802Z">
 <meta property="article:author" content="爱吃菠萝">
 <meta property="article:tag" content="DL">
 <meta property="article:tag" content="DConv">
@@ -247,7 +247,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.2k 字
+          4.8k 字
         
       </span>
     
@@ -258,7 +258,7 @@
         
         
         
-          43 分钟
+          40 分钟
         
       </span>
     
@@ -332,21 +332,21 @@
 <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>在“All-in-one”图像恢复中，本文的目标是学习单个模型，从退化的图像恢复到清晰的图像，同时没有关于退化的先验信息。通过提供关于退化类型的隐含上下文信息，可以增强其恢复清晰图像的性能。本文提出了基于提示学习的图像恢复框架PromptIR，如下图所示。PromptIR的关键元素是提示块（Prompt Block），这些提示块首先生成可学习的提示参数，然后在恢复过程中使用这些提示来指导模型。接下来详细描述PromptIR框架及其组件的总体流程。</p>
 <h3 id="PromptIR方法概述"><a href="#PromptIR方法概述" class="headerlink" title="PromptIR方法概述"></a>PromptIR方法概述</h3><p>本文使用U-Net风格的网络，在编码和解码阶段使用Transformer块。该框架的主要组件，即提示块，由两个模块组成，提示生成模块(PGM)和提示交互模块(PIM)。提示生成模块使用输入特性$F_l$和提示组件生成具有输入条件的提示符$P$。然后，提示交互模块通过Transformer块使用生成的提示符动态地调整输入特性。提示与解码器特征在多个级别交互，以丰富特定于退化的上下文信息。</p>
 <p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309121906192.png" srcset="/img/loading.gif" lazyload alt="PromptIR"></p>
-<p>对于给定的退化输入图像$\mathbf{I} \in \mathbb{R}^{H \times W \times 3}$, PromptIR首先通过卷积运算提取底层特征$\mathbf{F}_0 \in \mathbb{R}^{H \times W \times C}$；式中，$H \times W$为空间分辨率，$C$为通道数。接下来，特征嵌入$F_0$经过4级分级编解码，转化为深层特征$\mathbf{F}_r \in \mathbb{R}^{H \times W \times 2C}$。编码器-解码器的每一层都使用几个Transformer块，块的数量从顶层逐渐增加到底层，以保持计算效率。从高分辨率输入开始，编码器的目标是在增加信道容量的同时逐步降低空间分辨率，从而产生低分辨率的潜在表示$\mathbf{F}_l \in \mathbb{R}^{\frac{H}{8} \times \frac{W}{8} \times 8C}$。解码器的目标是从低分辨率的潜在特征$F_l$逐步恢复高分辨率的清晰输出。为了帮助解码过程，本文在PromptIR框架中加入了提示块。提示块是适配器模块，按顺序连接解码器的每两级。在每个解码器级别上，提示块隐式地用退化类型的信息丰富输入特征，以进行引导恢复。接下来，本文详细描述了提出的提示模块及其核心构建模块。</p>
+<p>对于给定的退化输入图像${I} \in {R}^{H \times W \times 3}$, PromptIR首先通过卷积运算提取底层特征${F}_0 \in {R}^{H \times W \times C}$；式中，$H \times W$为空间分辨率，$C$为通道数。接下来，特征嵌入$F_0$经过4级分级编解码，转化为深层特征${F}_r \in {R}^{H \times W \times 2C}$。编码器-解码器的每一层都使用几个Transformer块，块的数量从顶层逐渐增加到底层，以保持计算效率。从高分辨率输入开始，编码器的目标是在增加信道容量的同时逐步降低空间分辨率，从而产生低分辨率的潜在表示${F}_l \in {R}^{\frac{H}{8} \times \frac{W}{8} \times 8C}$。解码器的目标是从低分辨率的潜在特征$F_l$逐步恢复高分辨率的清晰输出。为了帮助解码过程，本文在PromptIR框架中加入了提示块。提示块是适配器模块，按顺序连接解码器的每两级。在每个解码器级别上，提示块隐式地用退化类型的信息丰富输入特征，以进行引导恢复。接下来，本文详细描述了提出的提示模块及其核心构建模块。</p>
 <h3 id="Prompt-Block"><a href="#Prompt-Block" class="headerlink" title="Prompt Block"></a>Prompt Block</h3><p>本文提出的PromptIR方法借鉴了在自然语言处理和计算机视觉任务中使用的基于提示的技术。在这些任务中，基于提示的技术已经被用于对在源任务上训练的大型固定模型进行参数高效微调，以适应目标任务。基于提示的技术之所以有效，是因为它们能够有效地将任务特定的上下文信息编码到提示组件中。在PromptIR中，提示组件是可学习的参数，与输入特征进行交互，以丰富它们的退化类型信息。提示块由两个关键组件组成：提示生成模块（PGM）和提示交互模块（PIM）。</p>
-<p>给定N个提示组件$\mathbf{P}_c \in \mathbb{R}^{N \times \hat{H} \times \hat{W} \times \hat{C} }$，输入特性$\mathbf{F}_l \in \mathbb{R}^{\hat{H} \times \hat{W} \times \hat{C} }$，提示块的整体过程定义为:</p>
-<p>$\hat{\mathbf{F}}_l = \mathbf{PIM}(\mathbf{PGM}(\mathbf{P_c,\mathbf{F}_l}),\mathbf{F_l})$</p>
-<h3 id="提示生成模块（PGM）"><a href="#提示生成模块（PGM）" class="headerlink" title="提示生成模块（PGM）"></a>提示生成模块（PGM）</h3><p>提示组件$\mathbf{P_c}$是一组可学习的参数，与输入特征交互，嵌入了退化信息。一种直接的特征-提示交互方法是直接使用学习到的提示来校准特征。然而，这种静态方法可能会产生次优结果，因为它对输入内容是无知的。因此，本文提出了提示生成模块（PGM），它从输入特征中动态预测基于注意力的权重，并将这些权重应用于提示组件，生成与输入条件相关的提示 $\mathbf{P}$。此外，PGM创建了一个共享空间，促进了提示组件之间的相关知识共享。</p>
-<p>为了从输入特征$\mathbf{F}_l$生成提示权重，PGM首先对空间维度进行全局平均池化（GAP），生成特征向量$v \in \mathbb{R}^{\hat{C}}$。接下来将$v$通过通道缩减的卷积层，得到一个紧凑的特征向量，然后进行softmax操作，从而得到提示权重$w \in \mathbb{R}^N$。最后使用这些权重对提示组件进行调整，接着应用一个$3 \times3$的卷积层。总体而言，PGM的过程可以概括为：</p>
-<p>$ \mathbf{P}={Conv}<em>{3 \times 3}(\sum</em>{c=1}^{N} w_{i} \mathbf{P}<em>{c}), \quad w</em>{i}={Softmax}({Conv}<em>{1 \times 1}({GAP}(\mathbf{F}</em>{l})))$</p>
-<p>由于在推理阶段，恢复网络需要能够处理不同分辨率的图像，不能使用具有固定尺寸的提示组件$\mathbf{P}_c$。因此，作者对提示组件进行双线性插值操作，将其放大到与输入特征相同的尺寸。</p>
-<h3 id="提示交互模块（PIM）"><a href="#提示交互模块（PIM）" class="headerlink" title="提示交互模块（PIM）"></a>提示交互模块（PIM）</h3><p>PIM的主要目标是实现输入特征$\mathbf{F}_l$和提示$\mathbf{P}$之间的交互，以实现有指导的恢复过程。</p>
+<p>给定N个提示组件${P}_c \in {R}^{N \times \hat{H} \times \hat{W} \times \hat{C} }$，输入特性${F}_l \in {R}^{\hat{H} \times \hat{W} \times \hat{C} }$，提示块的整体过程定义为:</p>
+<p>$\hat_l = {PIM}({PGM}({P_c,{F}_l}),{F_l})$</p>
+<h3 id="提示生成模块（PGM）"><a href="#提示生成模块（PGM）" class="headerlink" title="提示生成模块（PGM）"></a>提示生成模块（PGM）</h3><p>提示组件${P_c}$是一组可学习的参数，与输入特征交互，嵌入了退化信息。一种直接的特征-提示交互方法是直接使用学习到的提示来校准特征。然而，这种静态方法可能会产生次优结果，因为它对输入内容是无知的。因此，本文提出了提示生成模块（PGM），它从输入特征中动态预测基于注意力的权重，并将这些权重应用于提示组件，生成与输入条件相关的提示 ${P}$。此外，PGM创建了一个共享空间，促进了提示组件之间的相关知识共享。</p>
+<p>为了从输入特征${F}_l$生成提示权重，PGM首先对空间维度进行全局平均池化（GAP），生成特征向量$v \in {R}^{\hat{C}}$。接下来将$v$通过通道缩减的卷积层，得到一个紧凑的特征向量，然后进行softmax操作，从而得到提示权重$w \in {R}^N$。最后使用这些权重对提示组件进行调整，接着应用一个$3 \times3$的卷积层。总体而言，PGM的过程可以概括为：</p>
+<p>$ {P}={Conv}<em>{3 \times 3}(\sum</em>{c=1}^{N} w_{i} {P}<em>{c}), \quad w</em>{i}={Softmax}({Conv}<em>{1 \times 1}({GAP}({F}</em>{l})))$</p>
+<p>由于在推理阶段，恢复网络需要能够处理不同分辨率的图像，不能使用具有固定尺寸的提示组件${P}_c$。因此，作者对提示组件进行双线性插值操作，将其放大到与输入特征相同的尺寸。</p>
+<h3 id="提示交互模块（PIM）"><a href="#提示交互模块（PIM）" class="headerlink" title="提示交互模块（PIM）"></a>提示交互模块（PIM）</h3><p>PIM的主要目标是实现输入特征${F}_l$和提示${P}$之间的交互，以实现有指导的恢复过程。</p>
 <p>在PIM中，沿着通道维度将生成的提示与输入特征进行拼接。接下来将拼接后的表示通过一个Transformer块进行处理，该块利用提示中编码的退化信息来转换输入特征。</p>
 <p>本文的主要贡献是提示块，它是一个插件模块，与具体的架构无关。因此，在提出的PromptIR框架中，作者使用了现有的Transformer块，而不是开发一个新的块。Transformer块由两个顺序连接的子模块组成：多转置卷积头转置注意力（MDTA）和门控转置卷积前馈网络（GDFN）。MDTA在通道而不是空间维度上应用自注意操作，并具有线性复杂度。GDFN的目标是以可控的方式转换特征，即抑制信息较少的特征，只允许有用的特征在网络中传播。PIM的整体过程为：</p>
-<p>$\hat{\mathbf{F}}<em>l = {Conv</em>{3\times3}}(\mathbf{GDFN}(\mathbf{MDTA}[\mathbf{F_l};\mathbf{P}]))$</p>
-<p>其中$[;]$表示拼接操作。MDTA的公式为$\mathbf{Y}=W_p\mathbf{V} \cdot \mathbf{Softmax}(\mathbf{K}\cdot\mathbf{Q}/\alpha)+\mathbf{X} $，其中$\mathbf{X}$和$\mathbf{Y}$分别表示输入和输出特征。$\mathbf{Q}$、$\mathbf{K}$和$\mathbf{V}$分别表示通过应用$1\times1$PW卷积后跟随$3\times3$DW卷积在层归一化的输入特征图上获得的查询、键和值的投影。 $W_p$是PW卷积，$\alpha$是可学习的缩放参数，$(\cdot)$表示点积交互。GDFN的过程定义为$\mathbf{Z}=W_p^0\left(\phi(W_d^1W_p^1(\mathbf{LN}(\mathbf{Y})))\odot W_d^2W_p^2(\mathbf{LN}(\mathbf{Y}))\right)$。其中，$W_d^{( \dot )}$是 3×3 的DW卷积， $\odot$表示逐元素乘法， $\phi$是GELU非线性激活函数，$\mathbf{LN}$是层归一化。</p>
+<p>$\hat<em>l = {Conv</em>{3\times3}}({GDFN}({MDTA}[{F_l};{P}]))$</p>
+<p>其中$[;]$表示拼接操作。MDTA的公式为${Y}=W_p{V} \cdot {Softmax}({K}\cdot{Q}/\alpha)+{X} $，其中${X}$和${Y}$分别表示输入和输出特征。${Q}$、${K}$和${V}$分别表示通过应用$1\times1$PW卷积后跟随$3\times3$DW卷积在层归一化的输入特征图上获得的查询、键和值的投影。 $W_p$是PW卷积，$\alpha$是可学习的缩放参数，$(\cdot)$表示点积交互。GDFN的过程定义为${Z}=W_p^0\left(\phi(W_d^1W_p^1({LN}({Y})))\odot W_d^2W_p^2({LN}({Y}))\right)$。其中，$W_d^{( \dot )}$是 3×3 的DW卷积， $\odot$表示逐元素乘法， $\phi$是GELU非线性激活函数，${LN}$是层归一化。</p>
 <p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309121907828.png" srcset="/img/loading.gif" lazyload alt="Transformer block"></p>
-<p>上图详细阐述了PromptIR框架中所使用的Transformer模块的细节。首先，输入特性$\mathbf{X} \in \mathbb{R}^{H_l×W_l×C_l}$是通过MDTA模块传递的。在这个模块中，特性最初是使用Layer规范化的。然后，结合$1\times 1$卷积和$3 \times 3$深度卷积，将特征投射到$Query (Q)$、$Key (K)$和$Value (V)$张量中。MDTA模块的一个基本特征是它计算的注意力跨越通道维度，而不是空间维度。这有效地减少了计算开销。为了实现这种通道式的注意计算，在计算点积之前，将$Q$投影和$K$投影分别从$H_l \times W_l \times C_l$变换为$H_l W_l \times C_l$和$C_l \times H_l W_l$，从而得到与形状为$C_l×C_l$变换后的注意图。在这个子模块中使用了无偏差卷积。此外，注意力以多头并行方式计算。MDTA模块之后，通过GDFN模块处理特征。在GDFN模块中，输入特征通过$1 \times 1$卷积的因子$\gamma$扩展，然后通过$3 \times 3$卷积。这些操作通过两条并行路径执行，其中一条路径的输出使用GeLU非线性激活。然后直接相加将这个激活的特征图与其他路径的输出结合起来。</p>
+<p>上图详细阐述了PromptIR框架中所使用的Transformer模块的细节。首先，输入特性${X} \in {R}^{H_l×W_l×C_l}$是通过MDTA模块传递的。在这个模块中，特性最初是使用Layer规范化的。然后，结合$1\times 1$卷积和$3 \times 3$深度卷积，将特征投射到$Query (Q)$、$Key (K)$和$Value (V)$张量中。MDTA模块的一个基本特征是它计算的注意力跨越通道维度，而不是空间维度。这有效地减少了计算开销。为了实现这种通道式的注意计算，在计算点积之前，将$Q$投影和$K$投影分别从$H_l \times W_l \times C_l$变换为$H_l W_l \times C_l$和$C_l \times H_l W_l$，从而得到与形状为$C_l×C_l$变换后的注意图。在这个子模块中使用了无偏差卷积。此外，注意力以多头并行方式计算。MDTA模块之后，通过GDFN模块处理特征。在GDFN模块中，输入特征通过$1 \times 1$卷积的因子$\gamma$扩展，然后通过$3 \times 3$卷积。这些操作通过两条并行路径执行，其中一条路径的输出使用GeLU非线性激活。然后直接相加将这个激活的特征图与其他路径的输出结合起来。</p>
 <h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><p>为了证明所提出的PromptIR的有效性，我们对三个代表性的图像恢复任务进行了评估:图像去雾、图像去雾和图像去噪。我们在两种不同的实验设置下进行实验:(a) All-in-One， (b) Single-task。</p>
 <h3 id="All-in-one-Results"><a href="#All-in-one-Results" class="headerlink" title="All-in-one Results"></a>All-in-one Results</h3><p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309111651509.png" srcset="/img/loading.gif" lazyload alt="对比实验"></p>
 <p><img src="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309111653957.png" srcset="/img/loading.gif" lazyload alt="对来自SOTS数据集的图像上的一体化方法进行脱雾比较。由我们的PromptIR产生的结果的图像质量在视觉上比以前的最先进的方法AirNet更好。"></p>
