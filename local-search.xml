@@ -82,8 +82,6 @@
       
       <tag>DL</tag>
       
-      <tag>残差</tag>
-      
       <tag>MobileNet V1</tag>
       
       <tag>MobileNet V2</tag>
@@ -95,6 +93,8 @@
       <tag>SENet</tag>
       
       <tag>HybridSN</tag>
+      
+      <tag>残差</tag>
       
     </tags>
     
@@ -150,13 +150,13 @@
       
       <tag>DL</tag>
       
+      <tag>残差</tag>
+      
       <tag>LeNet</tag>
       
       <tag>ResNet</tag>
       
       <tag>ResNeXt</tag>
-      
-      <tag>残差</tag>
       
     </tags>
     
