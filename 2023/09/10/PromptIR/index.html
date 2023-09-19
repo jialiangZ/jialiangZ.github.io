@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-bed-1300198689.cos.ap-nanjing.myqcloud.com/images/202309121906192.png">
 <meta property="article:published_time" content="2023-09-10T07:20:15.000Z">
-<meta property="article:modified_time" content="2023-09-12T11:27:00.802Z">
+<meta property="article:modified_time" content="2023-09-19T13:59:11.624Z">
 <meta property="article:author" content="爱吃菠萝">
 <meta property="article:tag" content="DL">
 <meta property="article:tag" content="DConv">
@@ -309,7 +309,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年9月12日 晚上
+                    本文最后更新于：2023年9月19日 晚上
                   
                 
               </p>
@@ -335,7 +335,7 @@
 <p>对于给定的退化输入图像${I} \in {R}^{H \times W \times 3}$, PromptIR首先通过卷积运算提取底层特征${F}_0 \in {R}^{H \times W \times C}$；式中，$H \times W$为空间分辨率，$C$为通道数。接下来，特征嵌入$F_0$经过4级分级编解码，转化为深层特征${F}_r \in {R}^{H \times W \times 2C}$。编码器-解码器的每一层都使用几个Transformer块，块的数量从顶层逐渐增加到底层，以保持计算效率。从高分辨率输入开始，编码器的目标是在增加信道容量的同时逐步降低空间分辨率，从而产生低分辨率的潜在表示${F}_l \in {R}^{\frac{H}{8} \times \frac{W}{8} \times 8C}$。解码器的目标是从低分辨率的潜在特征$F_l$逐步恢复高分辨率的清晰输出。为了帮助解码过程，本文在PromptIR框架中加入了提示块。提示块是适配器模块，按顺序连接解码器的每两级。在每个解码器级别上，提示块隐式地用退化类型的信息丰富输入特征，以进行引导恢复。接下来，本文详细描述了提出的提示模块及其核心构建模块。</p>
 <h3 id="Prompt-Block"><a href="#Prompt-Block" class="headerlink" title="Prompt Block"></a>Prompt Block</h3><p>本文提出的PromptIR方法借鉴了在自然语言处理和计算机视觉任务中使用的基于提示的技术。在这些任务中，基于提示的技术已经被用于对在源任务上训练的大型固定模型进行参数高效微调，以适应目标任务。基于提示的技术之所以有效，是因为它们能够有效地将任务特定的上下文信息编码到提示组件中。在PromptIR中，提示组件是可学习的参数，与输入特征进行交互，以丰富它们的退化类型信息。提示块由两个关键组件组成：提示生成模块（PGM）和提示交互模块（PIM）。</p>
 <p>给定N个提示组件${P}_c \in {R}^{N \times \hat{H} \times \hat{W} \times \hat{C} }$，输入特性${F}_l \in {R}^{\hat{H} \times \hat{W} \times \hat{C} }$，提示块的整体过程定义为:</p>
-<p>$\hat_l = {PIM}({PGM}({P_c,{F}_l}),{F_l})$</p>
+<p>$\hat{F}_l = {PIM}({PGM}({P_c,{F}_l}),{F_l})$</p>
 <h3 id="提示生成模块（PGM）"><a href="#提示生成模块（PGM）" class="headerlink" title="提示生成模块（PGM）"></a>提示生成模块（PGM）</h3><p>提示组件${P_c}$是一组可学习的参数，与输入特征交互，嵌入了退化信息。一种直接的特征-提示交互方法是直接使用学习到的提示来校准特征。然而，这种静态方法可能会产生次优结果，因为它对输入内容是无知的。因此，本文提出了提示生成模块（PGM），它从输入特征中动态预测基于注意力的权重，并将这些权重应用于提示组件，生成与输入条件相关的提示 ${P}$。此外，PGM创建了一个共享空间，促进了提示组件之间的相关知识共享。</p>
 <p>为了从输入特征${F}_l$生成提示权重，PGM首先对空间维度进行全局平均池化（GAP），生成特征向量$v \in {R}^{\hat{C}}$。接下来将$v$通过通道缩减的卷积层，得到一个紧凑的特征向量，然后进行softmax操作，从而得到提示权重$w \in {R}^N$。最后使用这些权重对提示组件进行调整，接着应用一个$3 \times3$的卷积层。总体而言，PGM的过程可以概括为：</p>
 <p>$ {P}={Conv}<em>{3 \times 3}(\sum</em>{c=1}^{N} w_{i} {P}<em>{c}), \quad w</em>{i}={Softmax}({Conv}<em>{1 \times 1}({GAP}({F}</em>{l})))$</p>
@@ -428,7 +428,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年9月12日</div>
+          <div>2023年9月19日</div>
         </div>
       
       
