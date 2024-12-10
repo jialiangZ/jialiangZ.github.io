@@ -44,19 +44,16 @@ My research interest includes data-driven ocean prediction and computer vision. 
 
 # 🎖 Honors and Awards
 
-- _2021.10_ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet.
-- _2021.09_ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet.
+- _2024.12_ The 2nd Greater Bay Area AI For Science Technology Competition, Second Class Prize.
+- _2024.09_ Outstanding Graduate Student Cadre of Ocean University of China.
+- _2022_ ASC Student Supercomputer Challenge, Second Class Prize.
+- _2022.11_ Outstanding Students of Ocean University of China.
+- _2022.05_ Mathematical Contest In Modeling & Interdisciplinary Contest In Modeling(MCM/ICM) Honorable Mention.
+- _2022.05_ Ocean University of China Third Class Scholarship.
+- _2021.05_ Ocean University of China Third Class Scholarship.
+- _2020.05_ Outstanding Youth League Member of Ocean University of China.
 
 # 📖 Educations
 
 - _2023.08 - (now)_, College of Computer Science and Technology, Ocean University of China, majoring in Computer Science and Technology.
 - _2019.08 - 2023.06_, College of Computer Science and Technology, Ocean University of China, majoring in Software Engineering.
-
-# 💬 Invited Talks
-
-- _2021.06_, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet.
-- _2021.03_, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. \| [\[video\]](https://github.com/)
-
-# 💻 Internships
-
-- _2019.05 - 2020.02_, [Lorem](https://github.com/), China.
