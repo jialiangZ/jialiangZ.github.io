@@ -4,6 +4,7 @@ from datetime import datetime
 import os
 from scholarly._proxy_generator import MaxTriesExceededException
 
+
 try:
     print("正在查找作者信息...")
     author: dict = scholarly.search_author_id(os.environ["GOOGLE_SCHOLAR_ID"])
