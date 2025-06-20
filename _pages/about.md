@@ -28,10 +28,10 @@ My research interests encompass a diverse and interdisciplinary range of topics,
 # 📝 Publications 
 
 <div class='paper-box'>
-  <div class='paper-box-image'>
+  <!-- <div class='paper-box-image'>
     <div class="badge">TGRS 2025</div>
     <img src='images/SICFN.png' width="100%">
-  </div>
+  </div> -->
 
   <div class='paper-box-text' markdown="1">
 
