@@ -17,21 +17,24 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-I am currently studying at the School of Computer Science, Ocean University of China (OUC), where my supervisor is [Gao Feng](https://kmrvyozrlx.k.topthink.com/@oucaigroup/fenggao.html), and I am part of the [OUC AI Group](https://kmrvyozrlx.k.topthink.com/@oucaigroup/readme.html).
+I am currently studying at the School of Computer Science, Ocean University of China (OUC), where my supervisor is [Gao Feng](https://oucai.club/fenggao), and I am part of the [OUC AI Lab](https://oucai.club/). Since June 2025, I have been conducting academic research as a visiting scholar at Eastern Institute of Technology, Ningbo (EIT), under the supervision of [Xiaoyu Shen](https://person.eitech.edu.cn/xxkxyjsxb/sxy/main.htm), focusing on Streaming Multimodal Large Models for video understanding.
 
-My research interests encompass a diverse and interdisciplinary range of topics, including data-driven ocean prediction, computer vision, video generation, and diffusion models. I have published some papers with total google scholar citations <a href='https://scholar.google.com/citations?user=zk2uLXoAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>.
+My research interests encompass a diverse and interdisciplinary range of topics, including data-driven ocean prediction, computer vision, video generation, diffusion models, and streaming multimodal large models. I have published some papers with total google scholar citations <a href='https://scholar.google.com/citations?user=zk2uLXoAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>.
 
 
 # 🔥 News
+- _2025.06_: &nbsp;🎉🎉 Started academic visit at EIT
 - _2025.04_: &nbsp;🎉🎉 A paper was published in TGRS
 
 # 📝 Publications 
 
 <div class='paper-box'>
-  <!-- <div class='paper-box-image'>
+  <div class='paper-box-image'>
     <div class="badge">TGRS 2025</div>
-    <img src='images/SICFN.png' width="100%">
-  </div> -->
+    <div class="badge">CCF B</div>
+    <div class="badge">SCI Region I papers</div>
+    <!-- <img src='images/SICFN.png' width="100%"> -->
+  </div>
 
   <div class='paper-box-text' markdown="1">
 
@@ -55,5 +58,6 @@ My research interests encompass a diverse and interdisciplinary range of topics,
 
 # 📖 Educations
 
+- _2025.06 - (now)_, Visiting Scholar, Eastern Institute of Technology, Ningbo (EIT), supervised by Prof. Xiaoyu Shen, focusing on Streaming Multimodal Large Models for video understanding.
 - _2023.08 - (now)_, College of Computer Science and Technology, Ocean University of China, majoring in Computer Science and Technology.
 - _2019.08 - 2023.06_, College of Computer Science and Technology, Ocean University of China, majoring in Software Engineering.
