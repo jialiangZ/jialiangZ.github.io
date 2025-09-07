@@ -32,18 +32,22 @@ My research interests encompass a diverse and interdisciplinary range of topics,
   <!-- <div class='paper-box-image'>
     <div class="badge">TGRS 2025</div>
     <div class="badge">CCF B</div>
-    <div class="badge">SCI Region I papers</div>
+    <div class="badge">SCI Region I</div>
     <img src='images/SICFN.png' width="100%">
   </div> -->
 
   <div class='paper-box-text' markdown="1">
-  <div class="badge">TGRS 2025</div>
-  <div class="badge">CCF B</div>
-  <div class="badge">SCI Region I papers</div>
-  [Frequency-Compensated Network for Daily Arctic Sea Ice Concentration Prediction](https://ieeexplore.ieee.org/document/10976656) <span class='show_paper_citations' data='zk2uLXoAAAAJ:qjMakFHDy7sC'></span>
-
+  
+  **[Frequency-Compensated Network for Daily Arctic Sea Ice Concentration Prediction](https://ieeexplore.ieee.org/document/10976656)**
+  
+  *IEEE Transactions on Geoscience and Remote Sensing (TGRS), 2025*
+  
   **Jialiang Zhang**, Feng Gao, Yanhai Gan, Junyu Dong, Qian Du
-
+  
+  <span class='show_paper_citations' data='zk2uLXoAAAAJ:qjMakFHDy7sC'></span>
+  
+  ![CCF B](https://img.shields.io/badge/CCF-B-blue) ![SCI Q1](https://img.shields.io/badge/SCI-Q1-red) ![Impact Factor](https://img.shields.io/badge/IF-8.2-green)
+  
   </div>
 </div>
 
