@@ -10,6 +10,15 @@ title                    : "Jialiang Zhang"
 description              : "Research on artificial intelligence and the intersection of remote sensing and oceanography."
 repository               : "jialiangZ/jialiangZ.github.io"
 google_scholar_stats_use_cdn : true
+url                      : "https://jialiangz.github.io" # 添加网站URL
+baseurl                  : "" # 子路径，如果有的话
+
+# 性能优化配置
+future                   : false
+show_drafts              : false
+limit_posts              : 0
+highlighter              : rouge
+incremental              : false
 
 # google analytics
 google_analytics_id      :  # get google_analytics_id from https://analytics.google.com/analytics/
@@ -18,6 +27,16 @@ google_analytics_id      :  # get google_analytics_id from https://analytics.goo
 google_site_verification :  # get google_site_verification from https://search.google.com/search-console/about
 bing_site_verification   :  # get bing_site_verification from https://www.bing.com/webmasters/about
 baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.baidu.com/login/index?u=/site/index
+
+# 添加结构化数据
+social:
+  type                   : Person
+  name                   : Jialiang Zhang
+  links:
+    - "https://scholar.google.com/citations?user=zk2uLXoAAAAJ"
+    - "https://github.com/jialiangZ"
+    - "https://www.researchgate.net/profile/Jialiang-Zhang-22"
+    - "https://orcid.org/0009-0009-2047-3693"
 
 # Site Author
 author:
@@ -58,7 +77,6 @@ author:
   youtube          :
   wikipedia        :
 
-
 # Reading Files
 include:
   - .htaccess
@@ -91,12 +109,12 @@ exclude:
   - package.json
   - tmp
   - vendor
+  - "*.log"
 keep_files:
   - .git
   - .svn
 encoding: "utf-8"
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
-
 
 # Conversion
 markdown: kramdown
@@ -104,7 +122,6 @@ highlighter: rouge
 lsi: false
 excerpt_separator: "\n\n"
 incremental: false
-
 
 # Markdown Processing
 kramdown:
@@ -116,6 +133,13 @@ kramdown:
   toc_levels: 1..6
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   enable_coderay: false
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
 
 # Defaults
 defaults:
@@ -126,18 +150,19 @@ defaults:
     values:
       layout: default
       author_profile: true
-
+      read_time: false
+      comments: false
+      share: false
+      related: false
 
 # Sass/SCSS
 sass:
   sass_dir: _sass
   style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
 
-
 # Outputting
 permalink: /:categories/:title/
 timezone: Asia/Shanghai # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-
 
 # Plugins
 plugins:
@@ -146,6 +171,9 @@ plugins:
   - jekyll-gist
   - jekyll-feed
   - jekyll-redirect-from
+  - jekyll-seo-tag
+  - jekyll-include-cache
+
 # mimic GitHub Pages with --safe
 whitelist:
   - jekyll-paginate
@@ -153,11 +181,27 @@ whitelist:
   - jekyll-gist
   - jekyll-feed
   - jemoji
-
+  - jekyll-seo-tag
+  - jekyll-include-cache
 
 # HTML Compression
 # - http://jch.penibelst.de/
 compress_html:
   clippings: all
+  comments: all
+  endings: all
+  startings: [html, head, body]
+  blanklines: false
+  profile: false
   ignore:
     envs: development
+
+# 添加站点地图配置
+sitemap:
+  changefreq: weekly
+  priority: 0.7
+  lastmod: site.time
+
+# 添加Feed配置
+feed:
+  path: atom.xml

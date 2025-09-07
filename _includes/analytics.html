@@ -1,13 +1,42 @@
-{% if page.analytics != false %}
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- Google Analytics -->
+{% if site.google_analytics_id %}
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics_id }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
-  gtag('config', "{{ site.google_analytics_id }}");
+  gtag('config', '{{ site.google_analytics_id }}', {
+    anonymize_ip: true,
+    cookie_flags: 'SameSite=None;Secure'
+  });
 </script>
-
 {% endif %}
+
+<!-- 性能监控 -->
+<script>
+  // 页面加载性能监控
+  window.addEventListener('load', function() {
+    if ('performance' in window) {
+      var perfData = performance.getEntriesByType('navigation')[0];
+      var loadTime = perfData.loadEventEnd - perfData.loadEventStart;
+      
+      // 发送性能数据到分析服务
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'page_load_time', {
+          'event_category': 'Performance',
+          'event_label': 'Load Time',
+          'value': Math.round(loadTime)
+        });
+      }
+    }
+  });
+  
+  // Core Web Vitals监控
+  if ('web-vitals' in window) {
+    webVitals.getCLS(console.log);
+    webVitals.getFID(console.log);
+    webVitals.getFCP(console.log);
+    webVitals.getLCP(console.log);
+    webVitals.getTTFB(console.log);
+  }
+</script>

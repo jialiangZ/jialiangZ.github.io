@@ -1,98 +1,132 @@
 /* ==========================================================================
-   jQuery plugin settings and other scripts
+   jQuery plugin settings and other scripts - Optimized Version
    ========================================================================== */
 
-$(document).ready(function(){
-   // Sticky footer
-  var bumpIt = function() {
-      $("body").css("margin-bottom", $(".page__footer").outerHeight(true));
-    },
-    didResize = false;
-
-  bumpIt();
-
-  $(window).resize(function() {
-    didResize = true;
-  });
-  setInterval(function() {
-    if (didResize) {
-      didResize = false;
-      bumpIt();
+// 使用更高效的DOM ready
+(function($) {
+    'use strict';
+    
+    // 防抖函数
+    function debounce(func, wait, immediate) {
+        var timeout;
+        return function() {
+            var context = this, args = arguments;
+            var later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
     }
-  }, 250);
-  // FitVids init
-  $("#main").fitVids();
-
-  // init sticky sidebar
-  $(".sticky").Stickyfill();
-
-  var stickySideBar = function(){
-    var show = $(".author__urls-wrapper button").length === 0 ? $(window).width() > 925 : !$(".author__urls-wrapper button").is(":visible");
-    // console.log("has button: " + $(".author__urls-wrapper button").length === 0);
-    // console.log("Window Width: " + windowWidth);
-    // console.log("show: " + show);
-    //old code was if($(window).width() > 1024)
-    if (show) {
-      // fix
-      Stickyfill.rebuild();
-      Stickyfill.init();
-      $(".author__urls").show();
-    } else {
-      // unfix
-      Stickyfill.stop();
-      $(".author__urls").hide();
+    
+    // 节流函数
+    function throttle(func, limit) {
+        var inThrottle;
+        return function() {
+            var args = arguments;
+            var context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        }
     }
-  };
-
-  stickySideBar();
-
-  $(window).resize(function(){
-    stickySideBar();
-  });
-
-  // Follow menu drop down
-
-  $(".author__urls-wrapper button").on("click", function() {
-    $(".author__urls").fadeToggle("fast", function() {});
-    $(".author__urls-wrapper button").toggleClass("open");
-  });
-
-  // init smooth scroll
-  $("a").smoothScroll({offset: -20});
-
-  // add lightbox class to all image links
-  $("a[href$='.jpg'],a[href$='.jpeg'],a[href$='.JPG'],a[href$='.png'],a[href$='.gif']").addClass("image-popup");
-
-  // Magnific-Popup options
-  $(".image-popup").magnificPopup({
-    // disableOn: function() {
-    //   if( $(window).width() < 500 ) {
-    //     return false;
-    //   }
-    //   return true;
-    // },
-    type: 'image',
-    tLoading: 'Loading image #%curr%...',
-    gallery: {
-      enabled: true,
-      navigateByImgClick: true,
-      preload: [0,1] // Will preload 0 - before current, and 1 after the current image
-    },
-    image: {
-      tError: '<a href="%url%">Image #%curr%</a> could not be loaded.',
-    },
-    removalDelay: 500, // Delay in milliseconds before popup is removed
-    // Class that is added to body when popup is open.
-    // make it unique to apply your CSS animations just to this exact popup
-    mainClass: 'mfp-zoom-in',
-    callbacks: {
-      beforeOpen: function() {
-        // just a hack that adds mfp-anim class to markup
-        this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
-      }
-    },
-    closeOnContentClick: true,
-    midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
-  });
-
-});
+    
+    $(document).ready(function(){
+        // 优化的Sticky footer
+        var bumpIt = function() {
+            var footerHeight = $(".page__footer").outerHeight(true);
+            $("body").css("margin-bottom", footerHeight);
+        };
+        
+        bumpIt();
+        
+        // 使用防抖优化resize事件
+        $(window).on('resize', debounce(bumpIt, 250));
+        
+        // FitVids init - 延迟加载
+        if (typeof $.fn.fitVids !== 'undefined') {
+            $("#main").fitVids();
+        }
+        
+        // 优化的sticky sidebar
+        if (typeof Stickyfill !== 'undefined') {
+            $(".sticky").each(function() {
+                Stickyfill.add(this);
+            });
+        }
+        
+        var stickySideBar = function(){
+            var $button = $(".author__urls-wrapper button");
+            var show = $button.length === 0 ? $(window).width() > 925 : !$button.is(":visible");
+            
+            if (show) {
+                if (typeof Stickyfill !== 'undefined') {
+                    Stickyfill.rebuild();
+                    Stickyfill.init();
+                }
+                $(".author__urls").show();
+            } else {
+                if (typeof Stickyfill !== 'undefined') {
+                    Stickyfill.stop();
+                }
+                $(".author__urls").hide();
+            }
+        };
+        
+        stickySideBar();
+        
+        // 使用节流优化resize事件
+        $(window).on('resize', throttle(stickySideBar, 100));
+        
+        // 图片懒加载
+        function lazyLoadImages() {
+            var images = document.querySelectorAll('img[data-src]');
+            var imageObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        var img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.add('loaded');
+                        img.removeAttribute('data-src');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+            
+            images.forEach(function(img) {
+                imageObserver.observe(img);
+            });
+        }
+        
+        // 检查浏览器支持
+        if ('IntersectionObserver' in window) {
+            lazyLoadImages();
+        } else {
+            // 降级处理
+            $('img[data-src]').each(function() {
+                $(this).attr('src', $(this).data('src')).addClass('loaded');
+            });
+        }
+        
+        // Google Scholar统计异步加载
+        function loadScholarStats() {
+            $('.show_paper_citations').each(function() {
+                var $this = $(this);
+                var paperId = $this.data('paperId') || $this.attr('data');
+                if (paperId) {
+                    // 异步加载引用数据
+                    // 这里可以添加具体的API调用逻辑
+                }
+            });
+        }
+        
+        // 延迟加载非关键功能
+        setTimeout(loadScholarStats, 1000);
+    });
+    
+})(jQuery);

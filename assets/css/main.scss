@@ -2,7 +2,7 @@
 ---
 
 /*
- *    Minimal Mistakes Jekyll Theme
+ *    Minimal Mistakes Jekyll Theme - Optimized Version
  *
  *  - Michael Rose
  *  - mademistakes.com
@@ -10,81 +10,115 @@
  *
 */
 
-@import "vendor/breakpoint/breakpoint"; // media query mixins
+// 关键CSS优先加载
 @import "variables";
 @import "mixins";
-@import "vendor/susy/susy";
-
 @import "reset";
 @import "base";
 
+// 布局相关
 @import "utilities";
-@import "animations";
-@import "tables";
-@import "buttons";
-@import "notices";
 @import "masthead";
 @import "navigation";
-@import "footer";
-@import "syntax";
-
-@import "forms";
-
-@import "page";
-@import "archive";
 @import "sidebar";
+@import "page";
 
+// 功能组件
+@import "buttons";
+@import "forms";
+@import "tables";
+@import "notices";
+
+// 第三方库
+@import "vendor/breakpoint/breakpoint";
+@import "vendor/susy/susy";
 @import "vendor/font-awesome/fontawesome";
 @import "vendor/font-awesome/solid";
 @import "vendor/font-awesome/brands";
 @import "vendor/magnific-popup/magnific-popup";
+
+// 动画和特效（延迟加载）
+@import "animations";
+@import "syntax";
+@import "footer";
+@import "archive";
 @import "print";
 
+// 学术页面专用样式优化
 .paper-box {
     display: flex;
-    justify-content: left;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
     border-bottom: 1px #efefef solid;
-    padding: 2em 0 2em 0;
+    padding: 2em 0;
+    gap: 1rem;
     
-
-    .paper-box-image{
-        justify-content: center;
-        display: flex;
-        width: 100%;
-        order: 2;
-        img {
-            max-width: 400px;
-            box-shadow: 3px 3px 6px #888;
-            object-fit: cover;
-        }
+    // 响应式优化
+    @media (max-width: 768px) {
+        flex-direction: column;
+        padding: 1em 0;
     }
     
-    .paper-box-text{
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.paper-box-image {
+    flex: 0 0 200px;
+    
+    @media (max-width: 768px) {
+        flex: 1 1 100%;
         max-width: 100%;
-        order: 1;
     }
     
-    @include breakpoint($medium) {
-        .paper-box-image{
-            justify-content: left;
-            min-width: 200px;
-            max-width: 40%;
-            order: 1;
-        }
-        
-        .paper-box-text{
-            justify-content: left;
-            padding-left: 2em;
-            max-width: 60%;
-            order: 2;
-        }
-
+    .badge {
+        display: inline-block;
+        padding: 0.25em 0.5em;
+        margin: 0.25em 0.25em 0.25em 0;
+        font-size: 0.75em;
+        font-weight: bold;
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: 0.25rem;
+        background-color: #007bff;
+        color: white;
     }
+}
 
+.paper-box-text {
+    flex: 1 1 auto;
+    min-width: 0; // 防止flex项目溢出
+}
 
+// 性能优化：减少重绘
+.show_paper_citations {
+    will-change: contents;
+}
+
+// 图片懒加载支持
+img[data-src] {
+    opacity: 0;
+    transition: opacity 0.3s;
+    
+    &.loaded {
+        opacity: 1;
+    }
+}
+
+// 关键渲染路径优化
+.above-fold {
+    contain: layout style paint;
+}
+
+// 滚动性能优化
+.scroll-container {
+    will-change: scroll-position;
+    -webkit-overflow-scrolling: touch;
 }
 
 $scroll_offset : 2em;
