@@ -38,7 +38,7 @@ My research interests encompass a diverse and interdisciplinary range of topics,
 
   <div class='paper-box-text' markdown="1">
   
-  **[Frequency-Compensated Network for Daily Arctic Sea Ice Concentration Prediction](https://ieeexplore.ieee.org/document/10976656)**![CCF B](https://img.shields.io/badge/CCF-B-blue) ![SCI Q1](https://img.shields.io/badge/SCI-Q1-red) ![Impact Factor](https://img.shields.io/badge/IF-8.2-green)
+  **[Frequency-Compensated Network for Daily Arctic Sea Ice Concentration Prediction](https://ieeexplore.ieee.org/document/10976656)**![CCF B](https://img.shields.io/badge/CCF-B-blue) ![SCI Q1](https://img.shields.io/badge/SCI-Q1-red) ![Impact Factor](https://img.shields.io/badge/IF-8.6-green)
   
   *IEEE Transactions on Geoscience and Remote Sensing (TGRS), 2025*
   
