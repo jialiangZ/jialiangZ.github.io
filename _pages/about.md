@@ -24,7 +24,7 @@ My research interests encompass a diverse and interdisciplinary range of topics,
 <span class='anchor' id='-news'></span>
 
 # 🔥 News
-- _2025.10_: &nbsp;🏆 China Graduate AI Innovation Competition, Second Class Prize.
+- _2025.10_: &nbsp;🏆 China Graduate AI Innovation Competition, Third Class Prize.
 - _2025.06_: &nbsp;👨‍💻 Started academic visit at EIT
 - _2025.04_: &nbsp;🎉 A paper was published in TGRS
 
@@ -67,7 +67,7 @@ My research interests encompass a diverse and interdisciplinary range of topics,
 <span class='anchor' id='-honors-and-awards'></span>
 
 # 🎖️ Honors and Awards
-- _2025.10_ China Graduate AI Innovation Competition, Second Class Prize.
+- _2025.10_ China Graduate AI Innovation Competition, Third Class Prize.
 - _2024.12_ The 2nd Greater Bay Area AI For Science Technology Competition, Second Class Prize.
 - _2024.09_ Outstanding Graduate Student Cadre of Ocean University of China.
 - _2022_ ASC Student Supercomputer Challenge, Second Class Prize.
