@@ -23,22 +23,34 @@ My research interests encompass a diverse and interdisciplinary range of topics,
 
 
 # 🔥 News
-- _2025.06_: &nbsp;🎉🎉 Started academic visit at EIT
-- _2025.04_: &nbsp;🎉🎉 A paper was published in TGRS
+- _2025.10_: &nbsp;🏆 China Graduate AI Innovation Competition, Second Class Prize.
+- _2025.06_: &nbsp;👨‍💻 Started academic visit at EIT
+- _2025.04_: &nbsp;🎉 A paper was published in TGRS
 
 # 📝 Publications 
-
 <div class='paper-box'>
   <!-- <div class='paper-box-image'>
-    <div class="badge">TGRS 2025</div>
-    <div class="badge">CCF B</div>
-    <div class="badge">SCI Region I</div>
     <img src='images/SICFN.png' width="100%">
   </div> -->
 
   <div class='paper-box-text' markdown="1">
   
-  **[Frequency-Compensated Network for Daily Arctic Sea Ice Concentration Prediction](https://arxiv.org/abs/2504.16745)**![CCF B](https://img.shields.io/badge/CCF-B-blue) ![SCI Q1](https://img.shields.io/badge/SCI-Q1-red) ![Impact Factor](https://img.shields.io/badge/IF-8.6-green)
+  **[Probing the Difficulty Perception Mechanism of Large Language Models](https://arxiv.org/abs/2510.05969)** ![arXiv](https://img.shields.io/badge/arXiv-red)
+  
+  Sunbowen Lee, Qingyu Yin, Chak Tou Leong, **Jialiang Zhang**, Yicheng Gong, Xiaoyu Shen
+  
+  </div>
+</div>
+
+<div class='paper-box'>
+  <!-- <div class='paper-box-image'>
+    <div class="badge">TGRS 2025</div>
+    <img src='images/SICFN.png' width="100%">
+  </div> -->
+
+  <div class='paper-box-text' markdown="1">
+  
+  **[Frequency-Compensated Network for Daily Arctic Sea Ice Concentration Prediction](https://arxiv.org/abs/2504.16745)** ![CCF B](https://img.shields.io/badge/CCF-B-blue) ![SCI Q1](https://img.shields.io/badge/SCI-Q1-red) ![Impact Factor](https://img.shields.io/badge/IF-8.6-green)
   
   *IEEE Transactions on Geoscience and Remote Sensing (TGRS), 2025*
   
@@ -49,8 +61,9 @@ My research interests encompass a diverse and interdisciplinary range of topics,
   </div>
 </div>
 
-# 🎖 Honors and Awards
+# 🎖️ Honors and Awards
 
+- _2025.10_ China Graduate AI Innovation Competition, Second Class Prize.
 - _2024.12_ The 2nd Greater Bay Area AI For Science Technology Competition, Second Class Prize.
 - _2024.09_ Outstanding Graduate Student Cadre of Ocean University of China.
 - _2022_ ASC Student Supercomputer Challenge, Second Class Prize.
