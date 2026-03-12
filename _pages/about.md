@@ -1,3 +1,13 @@
+<!--
+ * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
+ * @Date: 2025-11-30 00:40:19
+ * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
+ * @LastEditTime: 2026-03-12 23:48:10
+ * @FilePath: \jialiangZ.github.io\_pages\about.md
+ * @Description: 
+ * 
+ * Copyright (c) 2026 by ${git_name_email}, All Rights Reserved. 
+-->
 ---
 permalink: /
 title: ""
@@ -32,9 +42,27 @@ My research interests encompass a diverse and interdisciplinary range of topics,
 
 # 📝 Publications 
 <div class='paper-box'>
-  <!-- <div class='paper-box-image'>
-    <img src='images/SICFN.png' width="100%">
-  </div> -->
+  <div class='paper-box-image'>
+    <img src='images/TaYS.png' width="100%">
+  </div>
+
+  <div class='paper-box-text' markdown="1">
+  
+  **[Think-as-You-See: Streaming Chain-of-Thought Reasoning for Large Vision-Language Models](https://arxiv.org/abs/2603.02872)** ![CCF A](https://img.shields.io/badge/CCF-A-blue)
+  
+  *CVPR, 2026*
+  
+  **Jialiang Zhang**, Feng Gao, Yanhai Gan, Junyu Dong, Qian Du
+  
+  <span class='show_paper_citations' data='zk2uLXoAAAAJ:qjMakFHDy7sC'></span>
+  
+  </div>
+</div>
+
+<div class='paper-box'>
+  <div class='paper-box-image'>
+    <img src='images/PDPM.png' width="100%">
+  </div>
 
   <div class='paper-box-text' markdown="1">
   
@@ -46,10 +74,9 @@ My research interests encompass a diverse and interdisciplinary range of topics,
 </div>
 
 <div class='paper-box'>
-  <!-- <div class='paper-box-image'>
-    <div class="badge">TGRS 2025</div>
+  <div class='paper-box-image'>
     <img src='images/SICFN.png' width="100%">
-  </div> -->
+  </div>
 
   <div class='paper-box-text' markdown="1">
   
