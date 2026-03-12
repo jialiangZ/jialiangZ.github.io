@@ -4,9 +4,7 @@ permalink: /
 title: ""
 excerpt: ""
 author_profile: true
-redirect_from: 
-  - /about/
-  - /about.html
+
 ---
 
 {% if site.google_scholar_stats_use_cdn %}
@@ -43,7 +41,7 @@ My research interests encompass a diverse and interdisciplinary range of topics,
   
   *CVPR, 2026*
   
-  **Jialiang Zhang**, Feng Gao, Yanhai Gan, Junyu Dong, Qian Du
+  **Jialiang Zhang**, Junlong Tong, Junyan Lin, Hao Wu, Yirong Sun, Yunpu Ma, Xiaoyu Shen
   
   <span class='show_paper_citations' data='zk2uLXoAAAAJ:qjMakFHDy7sC'></span>
   
