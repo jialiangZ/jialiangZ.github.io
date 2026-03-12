@@ -29,22 +29,22 @@ My research interests encompass a diverse and interdisciplinary range of topics,
 
 <span class='anchor' id='-publications'></span>
 
-# 📝 Publications 
+# 📝 Publications
 <div class='paper-box'>
   <div class='paper-box-image'>
     <img src='images/TaYS.png' width="100%">
   </div>
 
   <div class='paper-box-text' markdown="1">
-  
+
   **[Think-as-You-See: Streaming Chain-of-Thought Reasoning for Large Vision-Language Models](https://arxiv.org/abs/2603.02872)** ![CCF A](https://img.shields.io/badge/CCF-A-blue)
-  
+
   *CVPR, 2026*
-  
+
   **Jialiang Zhang**, Junlong Tong, Junyan Lin, Hao Wu, Yirong Sun, Yunpu Ma, Xiaoyu Shen
-  
+
   <span class='show_paper_citations' data='zk2uLXoAAAAJ:qjMakFHDy7sC'></span>
-  
+
   </div>
 </div>
 
@@ -54,11 +54,11 @@ My research interests encompass a diverse and interdisciplinary range of topics,
   </div>
 
   <div class='paper-box-text' markdown="1">
-  
+
   **[Probing the Difficulty Perception Mechanism of Large Language Models](https://arxiv.org/abs/2510.05969)** ![arXiv](https://img.shields.io/badge/arXiv-red)
-  
+
   Sunbowen Lee, Qingyu Yin, Chak Tou Leong, **Jialiang Zhang**, Yicheng Gong, Xiaoyu Shen
-  
+
   </div>
 </div>
 
@@ -68,15 +68,15 @@ My research interests encompass a diverse and interdisciplinary range of topics,
   </div>
 
   <div class='paper-box-text' markdown="1">
-  
+
   **[Frequency-Compensated Network for Daily Arctic Sea Ice Concentration Prediction](https://arxiv.org/abs/2504.16745)** ![CCF B](https://img.shields.io/badge/CCF-B-blue) ![SCI Q1](https://img.shields.io/badge/SCI-Q1-red) ![Impact Factor](https://img.shields.io/badge/IF-8.6-green)
-  
+
   *IEEE Transactions on Geoscience and Remote Sensing (TGRS), 2025*
-  
+
   **Jialiang Zhang**, Feng Gao, Yanhai Gan, Junyu Dong, Qian Du
-  
+
   <span class='show_paper_citations' data='zk2uLXoAAAAJ:qjMakFHDy7sC'></span>
-  
+
   </div>
 </div>
 
@@ -99,3 +99,8 @@ My research interests encompass a diverse and interdisciplinary range of topics,
 - _2025.06 - (now)_, Visiting Scholar, Eastern Institute of Technology, Ningbo (EIT), supervised by Prof. Xiaoyu Shen, focusing on Streaming Multimodal Large Models for video understanding.
 - _2023.08 - (now)_, College of Computer Science and Technology, Ocean University of China, majoring in Computer Science and Technology.
 - _2019.08 - 2023.06_, College of Computer Science and Technology, Ocean University of China, majoring in Software Engineering.
+
+<span class='anchor' id='-visitor-map'></span>
+
+# 🌍 Visitor Map
+<script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=fAGJh9Up1UPSiblnPJBg7R7jqlCuM1doR3NuOMtJrGY"></script>
