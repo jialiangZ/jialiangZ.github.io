@@ -103,4 +103,7 @@ My research interests encompass a diverse and interdisciplinary range of topics,
 <span class='anchor' id='-visitor-map'></span>
 
 # 🌍 Visitor Map
-<script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=fAGJh9Up1UPSiblnPJBg7R7jqlCuM1doR3NuOMtJrGY"></script>
+
+<div style="text-align: center; margin-top: 1em;">
+  <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=fAGJh9Up1UPSiblnPJBg7R7jqlCuM1doR3NuOMtJrGY"></script>
+</div>
