@@ -1,6 +1,103 @@
 ---
 layout: default
+permalink: /
+title: ""
+excerpt: ""
 author_profile: true
+redirect_from: 
+  - /about/
+  - /about.html
 ---
 
-{% include_relative _pages/about.md %}
+{% if site.google_scholar_stats_use_cdn %}
+{% assign gsDataBaseUrl = "https://cdn.jsdelivr.net/gh/" | append: site.repository | append: "@" %}
+{% else %}
+{% assign gsDataBaseUrl = "https://raw.githubusercontent.com/" | append: site.repository | append: "/" %}
+{% endif %}
+{% assign url = gsDataBaseUrl | append: "google-scholar-stats/gs_data_shieldsio.json" %}
+
+<span class='anchor' id='about-me'></span>
+
+I am currently studying at the School of Computer Science, Ocean University of China (OUC), where my supervisor is [Gao Feng](https://oucai.club/fenggao), and I am part of the [OUC AI Lab](https://oucai.club/). Since June 2025, I have been conducting academic research as a visiting scholar at Eastern Institute of Technology, Ningbo (EIT), under the supervision of [Xiaoyu Shen](https://person.eitech.edu.cn/xxkxyjsxb/sxy/main.htm), focusing on Streaming Multimodal Large Models for video understanding.
+
+My research interests encompass a diverse and interdisciplinary range of topics, including data-driven ocean prediction, computer vision, video generation, diffusion models, and streaming multimodal large models. I have published some papers with total google scholar citations <a href='https://scholar.google.com/citations?user=zk2uLXoAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>.
+
+<span class='anchor' id='-news'></span>
+
+# 🔥 News
+- _2025.10_: &nbsp;🏆 China Graduate AI Innovation Competition, Third Class Prize.
+- _2025.06_: &nbsp;👨‍💻 Started academic visit at EIT
+- _2025.04_: &nbsp;🎉 A paper was published in TGRS
+
+<span class='anchor' id='-publications'></span>
+
+# 📝 Publications 
+<div class='paper-box'>
+  <div class='paper-box-image'>
+    <img src='images/TaYS.png' width="100%">
+  </div>
+
+  <div class='paper-box-text' markdown="1">
+  
+  **[Think-as-You-See: Streaming Chain-of-Thought Reasoning for Large Vision-Language Models](https://arxiv.org/abs/2603.02872)** ![CCF A](https://img.shields.io/badge/CCF-A-blue)
+  
+  *CVPR, 2026*
+  
+  **Jialiang Zhang**, Feng Gao, Yanhai Gan, Junyu Dong, Qian Du
+  
+  <span class='show_paper_citations' data='zk2uLXoAAAAJ:qjMakFHDy7sC'></span>
+  
+  </div>
+</div>
+
+<div class='paper-box'>
+  <div class='paper-box-image'>
+    <img src='images/PDPM.png' width="100%">
+  </div>
+
+  <div class='paper-box-text' markdown="1">
+  
+  **[Probing the Difficulty Perception Mechanism of Large Language Models](https://arxiv.org/abs/2510.05969)** ![arXiv](https://img.shields.io/badge/arXiv-red)
+  
+  Sunbowen Lee, Qingyu Yin, Chak Tou Leong, **Jialiang Zhang**, Yicheng Gong, Xiaoyu Shen
+  
+  </div>
+</div>
+
+<div class='paper-box'>
+  <div class='paper-box-image'>
+    <img src='images/SICFN.png' width="100%">
+  </div>
+
+  <div class='paper-box-text' markdown="1">
+  
+  **[Frequency-Compensated Network for Daily Arctic Sea Ice Concentration Prediction](https://arxiv.org/abs/2504.16745)** ![CCF B](https://img.shields.io/badge/CCF-B-blue) ![SCI Q1](https://img.shields.io/badge/SCI-Q1-red) ![Impact Factor](https://img.shields.io/badge/IF-8.6-green)
+  
+  *IEEE Transactions on Geoscience and Remote Sensing (TGRS), 2025*
+  
+  **Jialiang Zhang**, Feng Gao, Yanhai Gan, Junyu Dong, Qian Du
+  
+  <span class='show_paper_citations' data='zk2uLXoAAAAJ:qjMakFHDy7sC'></span>
+  
+  </div>
+</div>
+
+<span class='anchor' id='-honors-and-awards'></span>
+
+# 🎖️ Honors and Awards
+- _2025.10_ China Graduate AI Innovation Competition, Third Class Prize.
+- _2024.12_ The 2nd Greater Bay Area AI For Science Technology Competition, Second Class Prize.
+- _2024.09_ Outstanding Graduate Student Cadre of Ocean University of China.
+- _2022_ ASC Student Supercomputer Challenge, Second Class Prize.
+- _2022.11_ Outstanding Students of Ocean University of China.
+- _2022.05_ Mathematical Contest In Modeling & Interdisciplinary Contest In Modeling(MCM/ICM) Honorable Mention.
+- _2022.05_ Ocean University of China Third Class Scholarship.
+- _2021.05_ Ocean University of China Third Class Scholarship.
+- _2020.05_ Outstanding Youth League Member of Ocean University of China.
+
+<span class='anchor' id='-educations'></span>
+
+# 📖 Educations
+- _2025.06 - (now)_, Visiting Scholar, Eastern Institute of Technology, Ningbo (EIT), supervised by Prof. Xiaoyu Shen, focusing on Streaming Multimodal Large Models for video understanding.
+- _2023.08 - (now)_, College of Computer Science and Technology, Ocean University of China, majoring in Computer Science and Technology.
+- _2019.08 - 2023.06_, College of Computer Science and Technology, Ocean University of China, majoring in Software Engineering.
