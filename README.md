@@ -8,7 +8,7 @@ AcadHomepage
 [![](https://img.shields.io/github/stars/RayeRen/acad-homepage.github.io)](https://github.com/RayeRen/acad-homepage.github.io)
 [![](https://img.shields.io/github/forks/RayeRen/acad-homepage.github.io)](https://github.com/RayeRen/acad-homepage.github.io)
 [![](https://img.shields.io/github/issues/RayeRen/acad-homepage.github.io)](https://github.com/RayeRen/acad-homepage.github.io)
-[![](https://img.shields.io/github/license/RayeRen/acad-homepage.github.io)](https://github.com/RayeRen/acad-homepage.github.io/blob/main/LICENSE)  | [中文文档](./docs/README-zh.md) 
+[![](https://img.shields.io/github/license/RayeRen/acad-homepage.github.io)](https://github.com/RayeRen/acad-homepage.github.io/blob/main/LICENSE)  | [中文文档](./docs/README-zh.md)
 </div>
 
 <p align="center">A Modern and Responsive Academic Personal Homepage</p>
@@ -26,6 +26,7 @@ Some examples:
 ## Key Features
 - **Automatically update google scholar citations**: using the google scholar crawler and github action, this REPO can update the author citations and publication citations automatically.
 - **Support Google analytics**: you can trace the traffics of your homepage by easy configuration.
+- **Visitor Map**: integrated ClustrMaps to visualize visitor geographic distribution.
 - **Responsive**: this homepage automatically adjust for different screen sizes and viewports.
 - **Beautiful and Simple Design**: this homepage is beautiful and simple, which is very suitable for academic personal homepage.
 - **SEO**: search Engine Optimization (SEO) helps search engines find the information you publish on your homepage easily, then rank it against similar websites.
@@ -33,27 +34,46 @@ Some examples:
 ## Quick Start
 
 1. Fork this REPO and rename to `USERNAME.github.io`, where `USERNAME` is your github USERNAME.
+
 1. Configure the google scholar citation crawler:
     1. Find your google scholar ID in the url of your google scholar page (e.g., https://scholar.google.com/citations?user=SCHOLAR_ID), where `SCHOLAR_ID` is your google scholar ID.
     1. On the github repository page, in `Settings -> Secrets and variables -> Actions -> New repository secret`, add the `GOOGLE_SCHOLAR_ID` variable, with `GOOGLE_SCHOLAR_ID` in the Name field and fill in your `SCHOLAR_ID` in the Secret field.
     1. Click the `Action` of the REPO website and enable the workflows by clicking *"I understand my workflows, go ahead and enable them"*. This github action will generate google scholar citation stats data `gs_data.json` in `google-scholar-stats` branch of your REPO. When you update your main branch, this action will be triggered. This action will also be trigger 08:00 UTC everyday.
+
 1. Generate favicon using [favicon-generator](https://redketchup.io/favicon-generator) and download all generated files to `REPO/images`.
+
 1. Modify the configuration of your homepage `_config.yml`:
     1. `title`: the title of your homepage
     1. `description`: the description of your homepage
-    1. `repository`: USER_NAME/REPO_NAME  
+    1. `repository`: USER_NAME/REPO_NAME
     1. `google_analytics_id` (optional): google analytics ID
     1. SEO Related keys (optional): get these keys from search engine consoles (e.g. Google, Bing and Baidu) and paste here.
     1. `author`: the author information of this homepage, including some other websites, emails, city and univeristy.
     1. More configuration details are described in the comments.
-1. Add your homepage content in `_pages/about.md`.
+
+1. Add your homepage content in `index.md` (previously `_pages/about.md`).
     1. You can use html+markdown syntax just same as jekyll.
     1. You can use a `<span>` tag with class `show_paper_citations` and attribute `data` to display the citations of your paper. Set the data to the google scholar paper ID. For
         ```html
         <span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span>
-        ``` 
-        > Q: How to get the google scholar paper ID?   
+        ```
+        > Q: How to get the google scholar paper ID?
         > A: Enter your google scholar homepage and click the paper name. Then you can see the paper ID from `citation_for_view=XXXX`, where `XXXX` is the required paper ID.
+
+1. (Optional) Add Visitor Map with ClustrMaps:
+    1. Visit [ClustrMaps](https://clustrmaps.com/)
+    1. Enter your website URL (e.g., `https://USERNAME.github.io`)
+    1. Click "Get Code" and select your preferred map style (Globe or Flat Map)
+    1. Copy the generated HTML script tag
+    1. Paste it into `index.md` where you want the map to appear (e.g., at the bottom of the page)
+    1. Example:
+        ```html
+        <div style="text-align: center; margin-top: 1em;">
+          <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=YOUR_ID&cl=ffffff&w=a"></script>
+        </div>
+        ```
+    1. Note: Some ad blockers may block ClustrMaps. This is normal and expected behavior.
+
 1. Your page will be published at `https://USERNAME.github.io`.
 
 ## Debug Locally
