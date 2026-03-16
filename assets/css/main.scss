@@ -39,12 +39,12 @@
 .paper-box {
     display: flex;
     justify-content: left;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
-    border-bottom: 1px #efefef solid;
-    padding: 2em 0 2em 0;
-
+    border-bottom: 1px solid #e8e8e8;
+    padding: 2em 0;
+    margin-bottom: 1em;
 
     .paper-box-image {
         justify-content: center;
@@ -54,34 +54,98 @@
 
         img {
             max-width: 400px;
-            box-shadow: 3px 3px 6px #888;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             object-fit: cover;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            }
         }
     }
 
     .paper-box-text {
         max-width: 100%;
         order: 1;
+
+        .paper-title {
+            font-size: 1.15em;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 0.6em;
+
+            a {
+                color: #2c3e50;
+                text-decoration: none;
+                border-bottom: 1px solid transparent;
+                transition: color 0.2s ease, border-bottom-color 0.2s ease;
+
+                &:hover {
+                    color: #0066cc;
+                    border-bottom-color: #0066cc;
+                }
+            }
+        }
+
+        .paper-badges {
+            margin-bottom: 0.5em;
+
+            img {
+                margin-right: 0.4em;
+                margin-bottom: 0.3em;
+                vertical-align: middle;
+            }
+        }
+
+        .paper-venue {
+            font-style: italic;
+            color: #555;
+            font-size: 0.95em;
+            margin-bottom: 0.5em;
+            font-weight: 500;
+        }
+
+        .paper-authors {
+            color: #444;
+            font-size: 0.9em;
+            line-height: 1.5;
+            margin-bottom: 0.5em;
+
+            strong {
+                color: #2c3e50;
+                font-weight: 600;
+            }
+        }
+
+        .paper-citations {
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 500;
+        }
     }
 
     @include breakpoint($medium) {
         .paper-box-image {
             justify-content: left;
             min-width: 200px;
-            max-width: 40%;
+            max-width: 35%;
             order: 1;
+
+            img {
+                max-width: 100%;
+            }
         }
 
         .paper-box-text {
             justify-content: left;
             padding-left: 2em;
-            max-width: 60%;
+            max-width: 65%;
             order: 2;
         }
-
     }
-
-
 }
 
 $scroll_offset : 2em;

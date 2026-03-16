@@ -31,73 +31,90 @@ My research interests encompass a diverse and interdisciplinary range of topics,
 <span class='anchor' id='-publications'></span>
 
 # 📝 Publications
+
 <div class='paper-box'>
   <div class='paper-box-image'>
-    <img src='images/TaYS.png' width="100%">
+    <img src='images/TaYS.png' alt="Think-as-You-See">
   </div>
-
   <div class='paper-box-text' markdown="1">
-
-  **[Think-as-You-See: Streaming Chain-of-Thought Reasoning for Large Vision-Language Models](https://arxiv.org/abs/2603.02872)** ![CCF A](https://img.shields.io/badge/CCF-A-blue)
-
-  *CVPR, 2026*
-
-  **Jialiang Zhang**, Junlong Tong, Junyan Lin, Hao Wu, Yirong Sun, Yunpu Ma, Xiaoyu Shen
-
-  <span class='show_paper_citations' data='zk2uLXoAAAAJ:UeHWp8X0CEIC'></span>
-
+    <div class="paper-title">
+      <a href="https://arxiv.org/abs/2603.02872">Think-as-You-See: Streaming Chain-of-Thought Reasoning for Large Vision-Language Models</a>
+    </div>
+    <div class="paper-badges">
+      <img src="https://img.shields.io/badge/CCF-A-blue" alt="CCF A">
+    </div>
+    <div class="paper-venue">CVPR, 2026</div>
+    <div class="paper-authors">
+      <strong>Jialiang Zhang</strong>, Junlong Tong, Junyan Lin, Hao Wu, Yirong Sun, Yunpu Ma, Xiaoyu Shen
+    </div>
+    <div class="paper-citations">
+      <span class='show_paper_citations' data='zk2uLXoAAAAJ:UeHWp8X0CEIC'></span>
+    </div>
   </div>
 </div>
 
 <div class='paper-box'>
   <div class='paper-box-image'>
-    <img src='images/UTPTrack.png' width="100%">
+    <img src='images/UTPTrack.png' alt="UTPTrack">
   </div>
-
   <div class='paper-box-text' markdown="1">
-
-  **[UTPTrack: Towards Simple and Unified Token Pruning for Visual Tracking](https://arxiv.org/abs/2602.23734v1)** ![CCF A](https://img.shields.io/badge/CCF-A-blue)
-
-  *CVPR, 2026*
-
-  Hao Wu, Xudong Wang, **Jialiang Zhang**, Junlong Tong, Xinghao Chen, Junyan Lin, Yunpu Ma, Xiaoyu Shen
-
-  <span class='show_paper_citations' data='zk2uLXoAAAAJ:IjCSPb-OGe4C'></span>
-
+    <div class="paper-title">
+      <a href="https://arxiv.org/abs/2602.23734v1">UTPTrack: Towards Simple and Unified Token Pruning for Visual Tracking</a>
+    </div>
+    <div class="paper-badges">
+      <img src="https://img.shields.io/badge/CCF-A-blue" alt="CCF A">
+    </div>
+    <div class="paper-venue">CVPR, 2026</div>
+    <div class="paper-authors">
+      Hao Wu, Xudong Wang, <strong>Jialiang Zhang</strong>, Junlong Tong, Xinghao Chen, Junyan Lin, Yunpu Ma, Xiaoyu Shen
+    </div>
+    <div class="paper-citations">
+      <span class='show_paper_citations' data='zk2uLXoAAAAJ:IjCSPb-OGe4C'></span>
+    </div>
   </div>
 </div>
 
 <div class='paper-box'>
   <div class='paper-box-image'>
-    <img src='images/PDPM.png' width="100%">
+    <img src='images/PDPM.png' alt="PDPM">
   </div>
-
   <div class='paper-box-text' markdown="1">
-
-  **[Probing the Difficulty Perception Mechanism of Large Language Models](https://arxiv.org/abs/2510.05969)** ![arXiv](https://img.shields.io/badge/arXiv-red)
-
-  Sunbowen Lee, Qingyu Yin, Chak Tou Leong, **Jialiang Zhang**, Yicheng Gong, Xiaoyu Shen
-
-  <span class='show_paper_citations' data='zk2uLXoAAAAJ:zYLM7Y9cAGgC'></span>
-
+    <div class="paper-title">
+      <a href="https://arxiv.org/abs/2510.05969">Probing the Difficulty Perception Mechanism of Large Language Models</a>
+    </div>
+    <div class="paper-badges">
+      <img src="https://img.shields.io/badge/arXiv-red" alt="arXiv">
+    </div>
+    <div class="paper-venue">arXiv Preprint</div>
+    <div class="paper-authors">
+      Sunbowen Lee, Qingyu Yin, Chak Tou Leong, <strong>Jialiang Zhang</strong>, Yicheng Gong, Xiaoyu Shen
+    </div>
+    <div class="paper-citations">
+      <span class='show_paper_citations' data='zk2uLXoAAAAJ:zYLM7Y9cAGgC'></span>
+    </div>
   </div>
 </div>
 
 <div class='paper-box'>
   <div class='paper-box-image'>
-    <img src='images/SICFN.png' width="100%">
+    <img src='images/SICFN.png' alt="SICFN">
   </div>
-
   <div class='paper-box-text' markdown="1">
-
-  **[Frequency-Compensated Network for Daily Arctic Sea Ice Concentration Prediction](https://arxiv.org/abs/2504.16745)** ![CCF B](https://img.shields.io/badge/CCF-B-blue) ![SCI Q1](https://img.shields.io/badge/SCI-Q1-red) ![Impact Factor](https://img.shields.io/badge/IF-8.6-green)
-
-  *IEEE Transactions on Geoscience and Remote Sensing (TGRS), 2025*
-
-  **Jialiang Zhang**, Feng Gao, Yanhai Gan, Junyu Dong, Qian Du
-
-  <span class='show_paper_citations' data='zk2uLXoAAAAJ:qjMakFHDy7sC'></span>
-
+    <div class="paper-title">
+      <a href="https://arxiv.org/abs/2504.16745">Frequency-Compensated Network for Daily Arctic Sea Ice Concentration Prediction</a>
+    </div>
+    <div class="paper-badges">
+      <img src="https://img.shields.io/badge/CCF-B-blue" alt="CCF B">
+      <img src="https://img.shields.io/badge/SCI-Q1-red" alt="SCI Q1">
+      <img src="https://img.shields.io/badge/IF-8.6-green" alt="IF 8.6">
+    </div>
+    <div class="paper-venue">IEEE Transactions on Geoscience and Remote Sensing (TGRS), 2025</div>
+    <div class="paper-authors">
+      <strong>Jialiang Zhang</strong>, Feng Gao, Yanhai Gan, Junyu Dong, Qian Du
+    </div>
+    <div class="paper-citations">
+      <span class='show_paper_citations' data='zk2uLXoAAAAJ:qjMakFHDy7sC'></span>
+    </div>
   </div>
 </div>
 
