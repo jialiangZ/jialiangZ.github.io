@@ -71,6 +71,10 @@
         max-width: 100%;
         order: 1;
 
+        p {
+            margin: 0 0 0.5em 0;
+        }
+
         .paper-title {
             font-size: 1.15em;
             font-weight: 600;
@@ -124,6 +128,7 @@
             font-size: 0.9em;
             color: #666;
             font-weight: 500;
+            margin-bottom: 0;
         }
     }
 
