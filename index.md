@@ -38,7 +38,7 @@ My research interests encompass a diverse and interdisciplinary range of topics,
   </div>
   <div class="paper-box-text">
     <p class="paper-title"><a href="https://arxiv.org/abs/2603.02872">Think-as-You-See: Streaming Chain-of-Thought Reasoning for Large Vision-Language Models</a></p>
-    <p class="paper-badges"><img src="https://img.shields.io/badge/CCF-A-blue" alt="CCF A"></p>
+    <!-- <p class="paper-badges"><img src="https://img.shields.io/badge/CCF-A-blue" alt="CCF A"></p> -->
     <p class="paper-venue">CVPR, 2026</p>
     <p class="paper-authors"><strong>Jialiang Zhang</strong>, Junlong Tong, Junyan Lin, Hao Wu, Yirong Sun, Yunpu Ma, Xiaoyu Shen</p>
     <p class="paper-citations"><span class="show_paper_citations" data="zk2uLXoAAAAJ:UeHWp8X0CEIC"></span></p>
@@ -51,7 +51,7 @@ My research interests encompass a diverse and interdisciplinary range of topics,
   </div>
   <div class="paper-box-text">
     <p class="paper-title"><a href="https://arxiv.org/abs/2602.23734v1">UTPTrack: Towards Simple and Unified Token Pruning for Visual Tracking</a></p>
-    <p class="paper-badges"><img src="https://img.shields.io/badge/CCF-A-blue" alt="CCF A"></p>
+    <!-- <p class="paper-badges"><img src="https://img.shields.io/badge/CCF-A-blue" alt="CCF A"></p> -->
     <p class="paper-venue">CVPR, 2026</p>
     <p class="paper-authors">Hao Wu, Xudong Wang, <strong>Jialiang Zhang</strong>, Junlong Tong, Xinghao Chen, Junyan Lin, Yunpu Ma, Xiaoyu Shen</p>
     <p class="paper-citations"><span class="show_paper_citations" data="zk2uLXoAAAAJ:IjCSPb-OGe4C"></span></p>
@@ -64,7 +64,7 @@ My research interests encompass a diverse and interdisciplinary range of topics,
   </div>
   <div class="paper-box-text">
     <p class="paper-title"><a href="https://arxiv.org/abs/2510.05969">Probing the Difficulty Perception Mechanism of Large Language Models</a></p>
-    <p class="paper-badges"><img src="https://img.shields.io/badge/arXiv-red" alt="arXiv"></p>
+    <!-- <p class="paper-badges"><img src="https://img.shields.io/badge/arXiv-red" alt="arXiv"></p> -->
     <p class="paper-venue">arXiv Preprint</p>
     <p class="paper-authors">Sunbowen Lee, Qingyu Yin, Chak Tou Leong, <strong>Jialiang Zhang</strong>, Yicheng Gong, Xiaoyu Shen</p>
     <p class="paper-citations"><span class="show_paper_citations" data="zk2uLXoAAAAJ:zYLM7Y9cAGgC"></span></p>
@@ -77,7 +77,7 @@ My research interests encompass a diverse and interdisciplinary range of topics,
   </div>
   <div class="paper-box-text">
     <p class="paper-title"><a href="https://arxiv.org/abs/2504.16745">Frequency-Compensated Network for Daily Arctic Sea Ice Concentration Prediction</a></p>
-    <p class="paper-badges"><img src="https://img.shields.io/badge/CCF-B-blue" alt="CCF B"> <img src="https://img.shields.io/badge/SCI-Q1-red" alt="SCI Q1"> <img src="https://img.shields.io/badge/IF-8.6-green" alt="IF 8.6"></p>
+    <!-- <p class="paper-badges"><img src="https://img.shields.io/badge/CCF-B-blue" alt="CCF B"> <img src="https://img.shields.io/badge/SCI-Q1-red" alt="SCI Q1"> <img src="https://img.shields.io/badge/IF-8.6-green" alt="IF 8.6"></p> -->
     <p class="paper-venue">IEEE Transactions on Geoscience and Remote Sensing (TGRS), 2025</p>
     <p class="paper-authors"><strong>Jialiang Zhang</strong>, Feng Gao, Yanhai Gan, Junyu Dong, Qian Du</p>
     <p class="paper-citations"><span class="show_paper_citations" data="zk2uLXoAAAAJ:qjMakFHDy7sC"></span></p>
