@@ -16,15 +16,16 @@ author_profile: true
 
 <span class='anchor' id='about-me'></span>
 
-I am currently studying at the School of Computer Science, Ocean University of China (OUC), where my supervisor is [Gao Feng](https://oucai.club/fenggao), and I am part of the [OUC AI Lab](https://oucai.club/). Since June 2025, I have been conducting academic research as a visiting scholar at Eastern Institute of Technology, Ningbo (EIT), under the supervision of [Xiaoyu Shen](https://faculty.eitech.edu.cn/cist/sxy/main.htm), focusing on Streaming Multimodal Large Models for video understanding.
+I am currently studying at the School of Computer Science, Ocean University of China (OUC), where my supervisor is [Gao Feng](https://oucai.club/fenggao), and I am part of the [OUC AI Lab](https://oucai.club/). From June to December 2025, I was a visiting scholar at Eastern Institute of Technology, Ningbo (EIT), under the supervision of [Xiaoyu Shen](https://faculty.eitech.edu.cn/cist/sxy/main.htm), focusing on Streaming Multimodal Large Models for video understanding. I am currently applying for a PhD at the University of Hong Kong (HKU).
 
-My research interests encompass a diverse and interdisciplinary range of topics, including data-driven ocean prediction, computer vision, video generation, diffusion models, and streaming multimodal large models. I have published some papers with total google scholar citations <a href='https://scholar.google.com/citations?user=zk2uLXoAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>.
+My research interests encompass multimodal large models, embodied intelligence, and AI4Climate. I have published some papers with total google scholar citations <a href='https://scholar.google.com/citations?user=zk2uLXoAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>.
 
 <span class='anchor' id='-news'></span>
 
 # 🔥 News
 - _2026.02_: &nbsp;🎉 Two papers were accepted in CVPR2026
 - _2025.10_: &nbsp;🏆 China Graduate AI Innovation Competition, Third Class Prize
+- _2025.12_: &nbsp;📅 Ended academic visit at EIT
 - _2025.06_: &nbsp;👨‍💻 Started academic visit at EIT
 - _2025.04_: &nbsp;🎉 A paper was published in TGRS
 
@@ -87,6 +88,9 @@ My research interests encompass a diverse and interdisciplinary range of topics,
 <span class='anchor' id='-honors-and-awards'></span>
 
 # 🎖️ Honors and Awards
+- _2026.04_ Graduate Science and Technology Innovation Scholarship.
+- _2026.01_ Outstanding Graduate.
+- _2025.10_ BYD Scholarship.
 - _2025.10_ China Graduate AI Innovation Competition, Third Class Prize.
 - _2024.12_ The 2nd Greater Bay Area AI For Science Technology Competition, Second Class Prize.
 - _2024.09_ Outstanding Graduate Student Cadre of Ocean University of China.
@@ -100,7 +104,7 @@ My research interests encompass a diverse and interdisciplinary range of topics,
 <span class='anchor' id='-educations'></span>
 
 # 📖 Educations
-- _2025.06 - 2025.11_, Visiting Scholar, Eastern Institute of Technology, Ningbo (EIT), supervised by Prof. Xiaoyu Shen, focusing on Streaming Multimodal Large Models for video understanding.
+- _2025.06 - 2025.12_, Visiting Scholar, Eastern Institute of Technology, Ningbo (EIT), supervised by Prof. Xiaoyu Shen, focusing on Streaming Multimodal Large Models for video understanding.
 - _2023.08 - (now)_, College of Computer Science and Technology, Ocean University of China, majoring in Computer Science and Technology.
 - _2019.08 - 2023.06_, College of Computer Science and Technology, Ocean University of China, majoring in Software Engineering.
 
