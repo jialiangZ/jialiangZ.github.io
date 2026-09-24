@@ -16,13 +16,14 @@ author_profile: true
 
 <span class='anchor' id='about-me'></span>
 
-I am currently studying at the School of Computer Science, Ocean University of China (OUC), where my supervisor is [Gao Feng](https://oucai.club/fenggao), and I am part of the [OUC AI Lab](https://oucai.club/). From June to December 2025, I was a visiting scholar at Eastern Institute of Technology, Ningbo (EIT), under the supervision of [Xiaoyu Shen](https://faculty.eitech.edu.cn/cist/sxy/main.htm), focusing on Streaming Multimodal Large Models for video understanding. I am currently applying for a PhD at the University of Hong Kong (HKU).
+I am currently a Ph.D. student in Computing and Data Science at the School of Computing and Data Science, The University of Hong Kong (HKU), supervised by Prof. Y. Cao, continuing my research on AI for climate science and scientific forecasting. I received my M.S. degree in Software Engineering (Jul 2026) from Ocean University of China (OUC), where I worked with [Gao Feng](https://oucai.club/fenggao) in the [OUC AI Lab](https://oucai.club/), and my B.S. degree in Computer Science and Technology (Jun 2023) from OUC. From June to December 2025, I was a visiting scholar at Eastern Institute of Technology, Ningbo (EIT), under the supervision of [Xiaoyu Shen](https://faculty.eitech.edu.cn/cist/sxy/main.htm), focusing on Streaming Multimodal Large Models for video understanding.
 
-My research interests encompass multimodal large models, embodied intelligence, and AI4Climate. I have published some papers with total google scholar citations <a href='https://scholar.google.com/citations?user=zk2uLXoAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>.
+My research interests encompass AI for Climate Science, Arctic sea ice prediction, scientific forecasting, and multimodal large language models (MLLMs), including streaming video reasoning and generative models. I have published some papers with total google scholar citations <a href='https://scholar.google.com/citations?user=zk2uLXoAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>.
 
 <span class='anchor' id='-news'></span>
 
 # 🔥 News
+- _2026.09_: &nbsp;🎓 Started my Ph.D. at The University of Hong Kong (HKU)
 - _2026.02_: &nbsp;🎉 Two papers were accepted in CVPR2026
 - _2025.10_: &nbsp;🏆 China Graduate AI Innovation Competition, Third Class Prize
 - _2025.12_: &nbsp;📅 Ended academic visit at EIT
@@ -88,6 +89,7 @@ My research interests encompass multimodal large models, embodied intelligence, 
 <span class='anchor' id='-honors-and-awards'></span>
 
 # 🎖️ Honors and Awards
+- _2026_ SH Scholarship, The University of Hong Kong.
 - _2026.04_ Graduate Science and Technology Innovation Scholarship.
 - _2026.01_ Outstanding Graduate.
 - _2025.10_ BYD Scholarship.
@@ -104,9 +106,10 @@ My research interests encompass multimodal large models, embodied intelligence, 
 <span class='anchor' id='-educations'></span>
 
 # 📖 Educations
+- _2026.09 - (now)_, Ph.D. in Computing and Data Science, School of Computing and Data Science, The University of Hong Kong (HKU), supervised by Prof. Y. Cao, focusing on Machine Learning Fundamentals and AI for Climate Science.
 - _2025.06 - 2025.12_, Visiting Scholar, Eastern Institute of Technology, Ningbo (EIT), supervised by Prof. Xiaoyu Shen, focusing on Streaming Multimodal Large Models for video understanding.
-- _2023.08 - (now)_, College of Computer Science and Technology, Ocean University of China, majoring in Computer Science and Technology.
-- _2019.08 - 2023.06_, College of Computer Science and Technology, Ocean University of China, majoring in Software Engineering.
+- _2023.08 - 2026.07_, M.S. in Software Engineering, Ocean University of China (OUC), supervised by Prof. Feng Gao, thesis on Arctic sea ice concentration prediction.
+- _2019.09 - 2023.06_, B.S. in Computer Science and Technology, Ocean University of China (OUC).
 
 <span class='anchor' id='-visitor-map'></span>
 
