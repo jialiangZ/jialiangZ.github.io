@@ -146,9 +146,9 @@
     ctrl.autoRotateSpeed = 0.45;
     ctrl.enableZoom = true;
     ctrl.minDistance = 150;
-    ctrl.maxDistance = 520;
+    ctrl.maxDistance = 580;
     ctrl.addEventListener("start", pauseRotate);
-    world.pointOfView({ lat: 22, lng: 114, altitude: 2.4 }, 0);
+    world.pointOfView({ lat: 22, lng: 114, altitude: 2.6 }, 0);
 
     window.addEventListener("resize", function () {
       if (resizeT) clearTimeout(resizeT);

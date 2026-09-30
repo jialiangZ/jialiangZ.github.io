@@ -116,7 +116,7 @@ My research interests encompass AI for Climate Science, Arctic sea ice predictio
 # 🌍 Visitor Map
 
 <div id="visitor-map" style="text-align: center; margin-top: 1em;">
-  <div id="visitor-map-box" style="position: relative; display: inline-block; width: 100%; max-width: 540px; aspect-ratio: 1 / 1; cursor: grab;"></div>
+  <div id="visitor-map-box" style="position: relative; width: 100%; height: clamp(300px, 42vw, 480px); cursor: grab;"></div>
   <p id="visitor-map-counter" style="color: #57606a; font-size: 0.9em; margin: 0.4em 0 0;"></p>
   <p id="visitor-map-hint" style="color: #8b949e; font-size: 0.78em; margin: 0.2em 0 0; transition: opacity 0.6s;">Drag to rotate &nbsp;·&nbsp; Scroll / pinch to zoom &nbsp;·&nbsp; Hover dots for details</p>
 </div>
