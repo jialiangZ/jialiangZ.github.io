@@ -175,7 +175,7 @@ h1:before,
     font-size: .8em;
 }
 
-// Google Scholar citation badge, shields.io "flat" style (self-hosted, no CDN)
+// Google Scholar citation badge (img.shields.io, data endpoint = same-origin JSON)
 a.gs-badge-link,
 .page__content a.gs-badge-link {
     text-decoration: none;
@@ -187,44 +187,6 @@ a.gs-badge-link,
 
     img {
         box-shadow: none;
-    }
-}
-
-.shields-badge {
-    display: inline-flex;
-    vertical-align: middle;
-    align-items: stretch;
-    font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
-    font-size: 11px;
-    line-height: 1;
-    border-radius: 2px;
-    overflow: hidden;
-    white-space: nowrap;
-    margin: 0 4px;
-
-    .sb-label {
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-        background: #f6f6f6;
-        color: #24292f;
-        padding: 4px 6px;
-
-        img {
-            width: 14px;
-            height: 14px;
-            display: block;
-        }
-    }
-
-    .sb-value {
-        display: inline-flex;
-        align-items: center;
-        background: #99ccff;
-        color: #24292f;
-        padding: 4px 6px;
-        min-width: 18px;
-        justify-content: center;
     }
 }
 
