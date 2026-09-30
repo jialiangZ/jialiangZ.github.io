@@ -67,6 +67,7 @@ include:
 exclude:
   - docs
   - google_scholar_crawler
+  - visitor-map-worker
   - "*.sublime-project"
   - "*.sublime-workspace"
   - .asset-cache

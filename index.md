@@ -115,6 +115,22 @@ My research interests encompass AI for Climate Science, Arctic sea ice predictio
 
 # 🌍 Visitor Map
 
-<div style="text-align: center; margin-top: 1em;">
-  <script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?d=gWJeMbOIZO5jXHHjyGN7GISF8ekBkQq-nwt_exdLiKI&cl=ffffff&w=a"></script>
+<style>
+  .visitor-map-dot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: rgba(9, 105, 218, 0.75);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8);
+    pointer-events: none;
+  }
+</style>
+
+<div id="visitor-map" style="text-align: center; margin-top: 1em;">
+  <div id="visitor-map-box" style="position: relative; display: inline-block; width: 100%; max-width: 720px;">
+    <img src="images/world-map.svg" alt="World map of visitor distribution" style="display: block; width: 100%; height: auto; border-radius: 6px;">
+    <div id="visitor-map-dots" style="position: absolute; inset: 0;"></div>
+  </div>
+  <p id="visitor-map-counter" style="color: #6e7781; font-size: 0.85em; margin: 0.5em 0 0;"></p>
 </div>
+<script src="assets/js/visitor-map.js" defer></script>

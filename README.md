@@ -26,7 +26,7 @@ Some examples:
 ## Key Features
 - **Automatically update google scholar citations**: using the google scholar crawler and github action, this REPO can update the author citations and publication citations automatically.
 - **Support Google analytics**: you can trace the traffics of your homepage by easy configuration.
-- **Visitor Map**: integrated MapMyVisitors (formerly ClustrMaps) to visualize visitor geographic distribution.
+- **Visitor Map**: self-hosted visitor map (Cloudflare Worker + D1, see `visitor-map-worker/`); daily stats snapshots are committed to `data/visitor-map.json` so the history lives in this repo.
 - **Responsive**: this homepage automatically adjust for different screen sizes and viewports.
 - **Beautiful and Simple Design**: this homepage is beautiful and simple, which is very suitable for academic personal homepage.
 - **SEO**: search Engine Optimization (SEO) helps search engines find the information you publish on your homepage easily, then rank it against similar websites.
@@ -60,19 +60,10 @@ Some examples:
         > Q: How to get the google scholar paper ID?
         > A: Enter your google scholar homepage and click the paper name. Then you can see the paper ID from `citation_for_view=XXXX`, where `XXXX` is the required paper ID.
 
-1. (Optional) Add Visitor Map with MapMyVisitors (formerly ClustrMaps, which has migrated to [mapmyvisitors.com](https://www.mapmyvisitors.com/)):
-    1. Visit [MapMyVisitors](https://www.mapmyvisitors.com/)
-    1. Enter your website URL (e.g., `https://USERNAME.github.io`)
-    1. Click "Get Code" and select your preferred map style (Globe or Flat Map)
-    1. Copy the generated HTML script tag
-    1. Paste it into `index.md` where you want the map to appear (e.g., at the bottom of the page)
-    1. Example:
-        ```html
-        <div style="text-align: center; margin-top: 1em;">
-          <script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?d=YOUR_ID&cl=ffffff&w=a"></script>
-        </div>
-        ```
-    1. Note: Some ad blockers may block the visitor map. This is normal and expected behavior.
+1. (Optional) Visitor Map is self-hosted via a Cloudflare Worker; visit data is aggregated per country in D1 and a daily snapshot is committed to `data/visitor-map.json`:
+    1. Follow the one-time setup in [`visitor-map-worker/README.md`](visitor-map-worker/README.md)
+    1. After deploying, put your `*.workers.dev` URL into `WORKER_URL` at the top of `assets/js/visitor-map.js`
+    1. The widget renders on the homepage (`index.md`) over the `images/world-map.svg` basemap, and falls back to the committed snapshot when the Worker is unreachable
 
 1. Your page will be published at `https://USERNAME.github.io`.
 
