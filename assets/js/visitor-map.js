@@ -225,12 +225,23 @@
   function pingVisit() {
     var done = false;
     try { done = sessionStorage.getItem("visitor-map-pinged") === "1"; } catch (e) { /* private mode */ }
-    if (done) return Promise.resolve(null);
+    if (done || navigator.webdriver) return Promise.resolve(null); // webdriver = headless/test browser
     try { sessionStorage.setItem("visitor-map-pinged", "1"); } catch (e) { /* ignore */ }
-    return fetch(WORKER_URL + "/visit", { method: "POST", mode: "cors", keepalive: true })
+
+    // send only the hostname of the referrer, never the full URL (query strings may contain sensitive data)
+    var ref = "direct";
+    try {
+      if (document.referrer) {
+        ref = new URL(document.referrer).hostname.toLowerCase().replace(/^www\./, "");
+        if (ref === location.hostname.toLowerCase()) ref = "direct";
+      }
+    } catch (e) { /* ignore */ }
+
+    var payload = JSON.stringify({ referrer: ref }); // text/plain body => simple request, no CORS preflight
+    return fetch(WORKER_URL + "/visit", { method: "POST", mode: "cors", keepalive: true, body: payload })
       .then(function (r) { return r.ok ? r.json() : null; })
       .catch(function () {
-        try { navigator.sendBeacon(WORKER_URL + "/visit"); } catch (e2) { /* ignore */ }
+        try { navigator.sendBeacon(WORKER_URL + "/visit", payload); } catch (e2) { /* ignore */ }
         return null;
       });
   }
@@ -253,8 +264,8 @@
       loadStats().then(function (res) {
         var counts = res.stats.counts || {};
         var total = res.stats.total || 0;
-        // count the current visit immediately when the ping response was readable
-        if (hit && hit.ok && hit.country) {
+        // count the current visit immediately when the ping response was readable and counted
+        if (hit && hit.counted && hit.country) {
           counts[hit.country] = (counts[hit.country] || 0) + 1;
           total += 1;
         }

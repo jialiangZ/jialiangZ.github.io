@@ -3,7 +3,8 @@
 访客地图的自建实现：Cloudflare Worker 记录分国家访问量（D1），前端在 `images/world-map.svg`
 底图上画点，每天定时把聚合数据 commit 回本仓库 `data/visitor-map.json` —— **数据永久保存在你自己的 git 历史里**。
 
-隐私：只记录国家代码聚合计数，不存 IP、不存任何个人标识。
+隐私：只记录国家代码聚合计数、UTC 日期、referrer 域名（粗粒度 host，不含完整 URL），
+不存 IP、不存 User-Agent、不存任何个人标识；已知爬虫（Googlebot/GPTBot 等）不计数。
 
 ## 一次性部署（约 10 分钟）
 
@@ -37,6 +38,8 @@ wrangler secret put SNAPSHOT_SECRET   # 可选：手动触发 /snapshot 用的�
 ## 数据落盘到仓库
 
 - Worker 每天定时（cron，UTC 20:00 ≈ 北京时间凌晨 4 点）把聚合快照 commit 成 `data/visitor-map.json`
+- 快照包含：终身累计（`counts`）、近 180 天每日分国家明细（`daily`）、每日 referrer 分布（`referrers`）；
+  180 天以上的历史由每日 git 快照天然留存
 - 手动触发：`curl -X POST -H "X-Snapshot-Secret: <口令>" https://visitor-map.<子域>.workers.dev/snapshot`
 - Worker 挂了也不怕：前端自动降级读取仓库里的 `data/visitor-map.json`（标注 "cached"）；
   重建时用 `wrangler d1 execute visitor-map --remote --command="..."` 把 JSON 灌回 D1 即可恢复
