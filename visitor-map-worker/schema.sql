@@ -21,3 +21,14 @@ CREATE TABLE IF NOT EXISTS referrers_daily (
   count INTEGER NOT NULL DEFAULT 0,
   PRIMARY KEY (day, host)
 );
+
+-- City-level aggregates (from Cloudflare edge IP geolocation; no IPs stored)
+CREATE TABLE IF NOT EXISTS city_visits (
+  country    TEXT NOT NULL,
+  city       TEXT NOT NULL,
+  lat        REAL NOT NULL,
+  lon        REAL NOT NULL,
+  count      INTEGER NOT NULL DEFAULT 0,
+  updated_at INTEGER,
+  PRIMARY KEY (country, city)
+);

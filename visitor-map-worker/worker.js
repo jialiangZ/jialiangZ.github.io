@@ -1,12 +1,13 @@
 // Self-hosted visitor map worker.
-// Records per-country pageviews in D1, serves aggregated stats,
+// Records per-country and per-city pageviews in D1, serves aggregated stats,
 // and commits a daily snapshot to the GitHub repo (data lives in your git history).
 //
 // Recorded fields (aggregates only, no personal data):
 //   visits(country, count)              lifetime totals per country
 //   visits_daily(day, country, count)   UTC daily breakdown
 //   referrers_daily(day, host, count)   UTC daily breakdown of coarse referrer hosts
-// Known bots/crawlers are not counted.
+//   city_visits(country, city, lat, lon, count)  city-level aggregates from edge IP geolocation
+// Known bots/crawlers are not counted. No IPs / UAs / identifiers are stored.
 
 const CORS = {
   "Access-Control-Allow-Origin": "*",
@@ -32,6 +33,24 @@ function sanitizeHost(raw) {
   return parts.slice(-take).join(".");
 }
 
+function sanitizeCity(raw) {
+  if (typeof raw !== "string") return null;
+  const c = raw.trim().replace(/[^\w .,'\-()]/g, "").slice(0, 60);
+  return c || null;
+}
+
+// City-level geo from the edge; returns null when unusable (missing, invalid, or 0/0 middle-of-nowhere).
+function edgeGeo(cf) {
+  if (!cf) return null;
+  const lat = Number(cf.latitude);
+  const lon = Number(cf.longitude);
+  if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null;
+  if (Math.abs(lat) > 90 || Math.abs(lon) > 180) return null;
+  if (lat === 0 && lon === 0) return null;
+  const city = sanitizeCity(cf.city) || sanitizeCity(cf.region) || "Unknown";
+  return { city, lat, lon };
+}
+
 function jsonResponse(obj, status = 200) {
   return new Response(JSON.stringify(obj), {
     status,
@@ -39,26 +58,28 @@ function jsonResponse(obj, status = 200) {
   });
 }
 
-// Light payload for the frontend widget.
+// Light payload for the frontend globe.
 async function getStats(env) {
-  const { results } = await env.DB.prepare(
-    "SELECT country, SUM(count) AS c FROM visits GROUP BY country"
-  ).all();
+  const [countryRes, cityRes] = await env.DB.batch([
+    env.DB.prepare("SELECT country, SUM(count) AS c FROM visits GROUP BY country"),
+    env.DB.prepare("SELECT country, city, lat, lon, count FROM city_visits ORDER BY count DESC LIMIT 1000"),
+  ]);
   const counts = {};
   let total = 0;
-  for (const row of results) {
-    counts[row.country] = row.c;
-    total += row.c;
+  for (const r of countryRes.results) {
+    counts[r.country] = r.c;
+    total += r.c;
   }
-  return { total, counts, updated: new Date().toISOString() };
+  return { total, counts, cities: cityRes.results, updated: new Date().toISOString() };
 }
 
-// Rich payload for repo snapshots (last 180 days; older history lives in git).
+// Rich payload for repo snapshots (last 180 days of time series; older history lives in git).
 async function getFullStats(env) {
-  const [countryRes, dailyRes, refRes] = await env.DB.batch([
+  const [countryRes, dailyRes, refRes, cityRes] = await env.DB.batch([
     env.DB.prepare("SELECT country, SUM(count) AS c FROM visits GROUP BY country"),
     env.DB.prepare("SELECT day, country, count AS c FROM visits_daily WHERE day >= date('now','-180 day')"),
     env.DB.prepare("SELECT day, host, count AS c FROM referrers_daily WHERE day >= date('now','-180 day')"),
+    env.DB.prepare("SELECT country, city, lat, lon, count FROM city_visits ORDER BY count DESC LIMIT 2000"),
   ]);
 
   const counts = {};
@@ -75,12 +96,12 @@ async function getFullStats(env) {
   for (const r of refRes.results) {
     (referrers[r.day] = referrers[r.day] || {})[r.host] = r.c;
   }
-  return { total, counts, daily, referrers, updated: new Date().toISOString() };
+  return { total, counts, daily, referrers, cities: cityRes.results, updated: new Date().toISOString() };
 }
 
-async function recordVisit(env, country, refHost) {
+async function recordVisit(env, country, refHost, geo) {
   const day = new Date().toISOString().slice(0, 10); // UTC YYYY-MM-DD
-  await env.DB.batch([
+  const stmts = [
     env.DB.prepare(
       `INSERT INTO visits (country, count, updated_at) VALUES (?1, 1, strftime('%s','now'))
        ON CONFLICT(country) DO UPDATE SET count = count + 1, updated_at = strftime('%s','now')`
@@ -93,7 +114,17 @@ async function recordVisit(env, country, refHost) {
       `INSERT INTO referrers_daily (day, host, count) VALUES (?1, ?2, 1)
        ON CONFLICT(day, host) DO UPDATE SET count = count + 1`
     ).bind(day, refHost),
-  ]);
+  ];
+  if (geo) {
+    stmts.push(
+      env.DB.prepare(
+        `INSERT INTO city_visits (country, city, lat, lon, count, updated_at)
+         VALUES (?1, ?2, ?3, ?4, 1, strftime('%s','now'))
+         ON CONFLICT(country, city) DO UPDATE SET count = count + 1, updated_at = strftime('%s','now')`
+      ).bind(country, geo.city, geo.lat, geo.lon)
+    );
+  }
+  await env.DB.batch(stmts);
 }
 
 async function commitSnapshotToGitHub(env) {
@@ -161,8 +192,9 @@ export default {
         // empty/invalid body is fine -> direct
       }
 
-      await recordVisit(env, country, refHost);
-      return jsonResponse({ ok: true, counted: true, country, referrer: refHost });
+      const geo = edgeGeo(request.cf);
+      await recordVisit(env, country, refHost, geo);
+      return jsonResponse({ ok: true, counted: true, country, city: geo ? geo.city : null });
     }
 
     if (url.pathname === "/stats" || url.pathname === "/") {

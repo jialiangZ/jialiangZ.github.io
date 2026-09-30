@@ -26,7 +26,7 @@ Some examples:
 ## Key Features
 - **Automatically update google scholar citations**: using the google scholar crawler and github action, this REPO can update the author citations and publication citations automatically.
 - **Support Google analytics**: you can trace the traffics of your homepage by easy configuration.
-- **Visitor Map**: self-hosted visitor map (Cloudflare Worker + D1, see `visitor-map-worker/`); daily stats snapshots are committed to `data/visitor-map.json` so the history lives in this repo.
+- **Visitor Map**: self-hosted interactive 3D visitor globe (Cloudflare Worker + D1, see `visitor-map-worker/`); city-level aggregates, daily snapshots committed to `data/visitor-map.json` so the history lives in this repo.
 - **Responsive**: this homepage automatically adjust for different screen sizes and viewports.
 - **Beautiful and Simple Design**: this homepage is beautiful and simple, which is very suitable for academic personal homepage.
 - **SEO**: search Engine Optimization (SEO) helps search engines find the information you publish on your homepage easily, then rank it against similar websites.
@@ -63,7 +63,7 @@ Some examples:
 1. (Optional) Visitor Map is self-hosted via a Cloudflare Worker; visit data is aggregated per country in D1 and a daily snapshot is committed to `data/visitor-map.json`:
     1. Follow the one-time setup in [`visitor-map-worker/README.md`](visitor-map-worker/README.md)
     1. After deploying, put your `*.workers.dev` URL into `WORKER_URL` at the top of `assets/js/visitor-map.js`
-    1. The widget renders on the homepage (`index.md`) over the `images/world-map.svg` basemap, and falls back to the committed snapshot when the Worker is unreachable
+    1. The widget renders on the homepage (`index.md`) as an interactive 3D globe (drag to rotate, scroll/pinch to zoom), and falls back to the committed snapshot when the Worker is unreachable
 
 1. Your page will be published at `https://USERNAME.github.io`.
 

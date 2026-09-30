@@ -1,10 +1,12 @@
 # Self-hosted Visitor Map
 
-访客地图的自建实现：Cloudflare Worker 记录分国家访问量（D1），前端在 `images/world-map.svg`
-底图上画点，每天定时把聚合数据 commit 回本仓库 `data/visitor-map.json` —— **数据永久保存在你自己的 git 历史里**。
+访客地图的自建实现：Cloudflare Worker 记录分国家/城市访问量（D1），前端为无第三方依赖的
+Canvas 3D 地球（拖拽旋转、滚轮/双指缩放、悬停查看详情），每天定时把聚合数据 commit 回本仓库
+`data/visitor-map.json` —— **数据永久保存在你自己的 git 历史里**。
 
-隐私：只记录国家代码聚合计数、UTC 日期、referrer 域名（粗粒度 host，不含完整 URL），
-不存 IP、不存 User-Agent、不存任何个人标识；已知爬虫（Googlebot/GPTBot 等）不计数。
+隐私：只记录国家/城市级聚合计数（来自边缘节点 IP 归属地）、UTC 日期、referrer 域名
+（粗粒度 host，不含完整 URL），不存 IP、不存 User-Agent、不存任何个人标识；
+已知爬虫（Googlebot/GPTBot 等）不计数。
 
 ## 一次性部署（约 10 分钟）
 
