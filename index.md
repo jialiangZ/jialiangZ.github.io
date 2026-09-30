@@ -116,10 +116,7 @@ My research interests encompass AI for Climate Science, Arctic sea ice predictio
 # 🌍 Visitor Map
 
 <div id="visitor-map" style="text-align: center; margin-top: 1em;">
-  <div id="visitor-map-box" style="position: relative; display: inline-block; width: 100%; max-width: 540px; aspect-ratio: 1 / 1; cursor: grab; touch-action: none;">
-    <canvas id="visitor-map-globe" style="display: block; width: 100%; height: 100%;"></canvas>
-    <div id="visitor-map-tip" style="position: absolute; left: 0; top: 0; transform: translate(-50%, -135%); background: rgba(27, 31, 38, 0.92); color: #fff; font-size: 12px; line-height: 1.4; padding: 4px 9px; border-radius: 6px; pointer-events: none; opacity: 0; transition: opacity 0.15s; white-space: nowrap; z-index: 2;"></div>
-  </div>
+  <div id="visitor-map-box" style="position: relative; display: inline-block; width: 100%; max-width: 540px; aspect-ratio: 1 / 1; cursor: grab;"></div>
   <p id="visitor-map-counter" style="color: #57606a; font-size: 0.9em; margin: 0.4em 0 0;"></p>
   <p id="visitor-map-hint" style="color: #8b949e; font-size: 0.78em; margin: 0.2em 0 0; transition: opacity 0.6s;">Drag to rotate &nbsp;·&nbsp; Scroll / pinch to zoom &nbsp;·&nbsp; Hover dots for details</p>
 </div>
