@@ -181,32 +181,50 @@ h1:before,
     font-size: .8em;
 }
 
-// Google Scholar citation badge (replaces the shields.io image)
+// Google Scholar citation badge, shields.io "flat" style (self-hosted, no CDN)
 .gs-badge-link {
     text-decoration: none;
 }
 
-.gs-badge {
-    display: inline-block;
+.shields-badge {
+    display: inline-flex;
     vertical-align: middle;
-    background: #f6f8fa;
-    color: #24292f;
-    border: 1px solid #d0d7de;
-    border-radius: 6px;
-    padding: 2px 8px;
-    font-size: 0.85em;
-    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-    line-height: 1.5;
+    align-items: stretch;
+    font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+    font-size: 11px;
+    line-height: 1;
+    border-radius: 2px;
+    overflow: hidden;
     white-space: nowrap;
+    margin: 0 4px;
 
-    img {
-        vertical-align: -2px;
-        margin-right: 5px;
+    .sb-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background: #f6f6f6;
+        color: #24292f;
+        padding: 4px 6px;
+
+        img {
+            width: 14px;
+            height: 14px;
+            display: block;
+        }
+    }
+
+    .sb-value {
+        display: inline-flex;
+        align-items: center;
+        background: #99ccff;
+        color: #24292f;
+        padding: 4px 6px;
+        min-width: 18px;
+        justify-content: center;
     }
 }
 
 .gs-updated {
     color: #8b949e;
-    font-size: 0.88em;
-    margin-left: 2px;
+    font-size: 0.8em;
 }

@@ -24,7 +24,7 @@
             if (badge) badge.innerHTML = totalCitation;
             var updated = document.getElementById('gs-updated');
             if (updated && data['updated']) {
-                updated.innerHTML = ' &middot; as of ' + String(data['updated']).slice(0, 10);
+                updated.innerHTML = ' (as of ' + String(data['updated']).slice(0, 10) + ')';
             }
             var citationEles = document.getElementsByClassName('show_paper_citations');
             Array.prototype.forEach.call(citationEles, function (element) {
