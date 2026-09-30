@@ -1,18 +1,18 @@
 {
-  "total": 11,
+  "total": 15,
   "counts": {
-    "HK": 10,
+    "HK": 14,
     "SG": 1
   },
   "daily": {
     "2026-09-30": {
-      "HK": 8,
+      "HK": 12,
       "SG": 1
     }
   },
   "referrers": {
     "2026-09-30": {
-      "direct": 6,
+      "direct": 10,
       "github.com": 3
     }
   },
@@ -22,7 +22,7 @@
       "city": "Hong Kong",
       "lat": 22.27832,
       "lon": 114.17469,
-      "count": 7
+      "count": 11
     },
     {
       "country": "SG",
@@ -32,5 +32,5 @@
       "count": 1
     }
   ],
-  "updated": "2026-09-30T17:34:19.300Z"
+  "updated": "2026-09-30T20:00:45.227Z"
 }
