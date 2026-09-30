@@ -116,5 +116,5 @@ My research interests encompass AI for Climate Science, Arctic sea ice predictio
 # 🌍 Visitor Map
 
 <div style="text-align: center; margin-top: 1em;">
-  <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=fAGJh9Up1UPSiblnPJBg7R7jqlCuM1doR3NuOMtJrGY&cl=ffffff&w=a"></script>
+  <script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?d=gWJeMbOIZO5jXHHjyGN7GISF8ekBkQq-nwt_exdLiKI&cl=ffffff&w=a"></script>
 </div>
