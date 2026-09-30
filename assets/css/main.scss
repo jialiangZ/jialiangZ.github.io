@@ -36,6 +36,11 @@
 @import "vendor/magnific-popup/magnific-popup";
 @import "print";
 
+// Self-hosted Font Awesome 5 (fonts served from assets/fonts/*.woff2)
+@import "vendor/font-awesome/fontawesome";
+@import "vendor/font-awesome/solid";
+@import "vendor/font-awesome/brands";
+
 .paper-box {
     display: flex;
     justify-content: left;
@@ -174,4 +179,33 @@ h1:before,
     color: white;
     background-color: #00369f;
     font-size: .8em;
+}
+
+// Google Scholar citation badge (replaces the shields.io image)
+.gs-badge-link {
+    text-decoration: none;
+}
+
+.gs-badge {
+    display: inline-block;
+    vertical-align: middle;
+    background: #f6f8fa;
+    color: #24292f;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 0.85em;
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    white-space: nowrap;
+
+    img {
+        vertical-align: -2px;
+        margin-right: 4px;
+    }
+}
+
+.gs-updated {
+    color: #8b949e;
+    font-size: 0.8em;
 }

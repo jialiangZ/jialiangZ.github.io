@@ -1,9 +1,16 @@
 name: Get Citation Data
 
-on: 
- page_build: 
- schedule:
-  - cron:  '0 17 * * 1,4,0'
+on:
+  workflow_dispatch:
+  schedule:
+    # Mon & Thu 17:00 UTC — twice a week is plenty; crawling more often
+    # gets the repo's crawlers rate-limited by Google Scholar.
+    - cron: '0 17 * * 1,4'
+
+# Pushes to main only trigger a Pages rebuild (page_build does NOT re-trigger
+# this workflow anymore), so there is no loop risk.
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -31,5 +38,20 @@ jobs:
         else
           echo "results directory does not exist, skipping commit and push"
         fi
-      env: 
+      env:
         GOOGLE_SCHOLAR_ID: ${{ secrets.GOOGLE_SCHOLAR_ID }}
+    - name: Sync stats into main (same-origin serving)
+      if: success()
+      run: |
+        if [ ! -d google_scholar_crawler/results ]; then echo "no results, skip"; exit 0; fi
+        mkdir -p data/scholar-stats
+        cp google_scholar_crawler/results/*.json data/scholar-stats/
+        git config --local user.name "${GITHUB_ACTOR}"
+        git config --local user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+        git add data/scholar-stats
+        if git diff --cached --quiet; then
+          echo "Scholar stats unchanged"
+        else
+          git commit -m "chore: sync scholar stats"
+          git push origin HEAD:main
+        fi

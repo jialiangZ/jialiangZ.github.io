@@ -58,7 +58,7 @@ function jsonResponse(obj, status = 200) {
   });
 }
 
-// Light payload for the frontend globe.
+// Light payload for the frontend globe (cached at the edge for 5 min).
 async function getStats(env) {
   const [countryRes, cityRes] = await env.DB.batch([
     env.DB.prepare("SELECT country, SUM(count) AS c FROM visits GROUP BY country"),
@@ -71,6 +71,42 @@ async function getStats(env) {
     total += r.c;
   }
   return { total, counts, cities: cityRes.results, updated: new Date().toISOString() };
+}
+
+// base64 for arbitrarily large payloads: btoa(String.fromCharCode(...bytes))
+// throws RangeError once the spread exceeds the call-stack limit, so chunk it.
+function toBase64(bytes) {
+  let bin = "";
+  const CHUNK = 0x8000;
+  for (let i = 0; i < bytes.length; i += CHUNK) {
+    bin += String.fromCharCode.apply(null, bytes.subarray(i, i + CHUNK));
+  }
+  return btoa(bin);
+}
+
+// Constant-time-ish string compare (avoids early-exit timing leaks).
+function safeEqual(a, b) {
+  if (typeof a !== "string" || typeof b !== "string" || a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
+}
+
+// Cheap per-isolate rate limit: cap writes per country per minute. Not a hard
+// guarantee across isolates, but stops trivial scripts from inflating counts.
+const RATE_LIMIT_PER_MIN = 60;
+const rateBuckets = new Map(); // country -> { minute, count }
+function rateLimited(country) {
+  const now = Date.now();
+  const minute = Math.floor(now / 60000);
+  const b = rateBuckets.get(country);
+  if (!b || b.minute !== minute) {
+    rateBuckets.set(country, { minute, count: 1 });
+    if (rateBuckets.size > 500) rateBuckets.clear(); // crude memory bound
+    return false;
+  }
+  b.count += 1;
+  return b.count > RATE_LIMIT_PER_MIN;
 }
 
 // Rich payload for repo snapshots (last 180 days of time series; older history lives in git).
@@ -148,9 +184,7 @@ async function commitSnapshotToGitHub(env) {
     throw new Error(`GitHub GET ${path} failed: ${current.status}`);
   }
 
-  const content = btoa(
-    String.fromCharCode(...new TextEncoder().encode(JSON.stringify(stats, null, 2) + "\n"))
-  );
+  const content = toBase64(new TextEncoder().encode(JSON.stringify(stats, null, 2) + "\n"));
 
   const put = await fetch(api, {
     method: "PUT",
@@ -183,6 +217,9 @@ export default {
       if (!country) {
         return jsonResponse({ ok: false, reason: "country unavailable" });
       }
+      if (rateLimited(country)) {
+        return jsonResponse({ ok: true, counted: false, reason: "rate limited" }); // pretend success, don't record
+      }
 
       let refHost = "direct";
       try {
@@ -198,12 +235,20 @@ export default {
     }
 
     if (url.pathname === "/stats" || url.pathname === "/") {
-      return jsonResponse(await getStats(env));
+      const body = JSON.stringify(await getStats(env));
+      return new Response(body, {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          "Cache-Control": "public, max-age=300", // spare D1 a read on every page view
+          ...CORS,
+        },
+      });
     }
 
     if (url.pathname === "/snapshot" && request.method === "POST") {
       // Manual trigger, protected by a shared secret (cron calls run regardless)
-      if (env.SNAPSHOT_SECRET && request.headers.get("X-Snapshot-Secret") !== env.SNAPSHOT_SECRET) {
+      if (env.SNAPSHOT_SECRET && !safeEqual(request.headers.get("X-Snapshot-Secret") || "", env.SNAPSHOT_SECRET)) {
         return jsonResponse({ ok: false, reason: "unauthorized" }, 401);
       }
       await commitSnapshotToGitHub(env);

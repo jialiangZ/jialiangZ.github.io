@@ -1,4 +1,8 @@
 -- Aggregates only; no IP / UA / identifiers are ever stored.
+--
+-- NOTE: `visits_daily`, `referrers_daily` and `city_visits` were added on
+-- 2026-09-30; visits recorded before that date only exist in the `visits`
+-- lifetime totals, so daily/city series intentionally start at that date.
 
 CREATE TABLE IF NOT EXISTS visits (
   country   TEXT PRIMARY KEY,   -- ISO 3166-1 alpha-2

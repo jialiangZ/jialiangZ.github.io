@@ -1,4 +1,4 @@
-# Welcome to Jekyll!
+﻿# Welcome to Jekyll!
 #
 # This config file is meant for settings that affect your entire site, values
 # which you are expected to set up once and rarely need to edit after that.
@@ -7,7 +7,9 @@
 
 # Site Settings
 title                    : "Jialiang Zhang"
-description              : "Research on multimodal large models, embodied intelligence, and AI4Climate."
+url                      : "https://jialiangz.github.io"
+og_image                 : "https://jialiangz.github.io/images/og-card.png"
+description              : "Ph.D. student at HKU. AI for climate science, Arctic sea ice prediction, scientific forecasting, and streaming multimodal models."
 repository               : "jialiangZ/jialiangZ.github.io"
 google_scholar_stats_use_cdn : true
 
@@ -22,13 +24,13 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 # Site Author
 author:
   name             : "Jialiang Zhang"
-  avatar           : "images/android-chrome-512x512.png"
-  bio              : "Ocean University of China"
-  location         : "Tsingtao, China"
+  avatar           : "images/avatar.webp"
+  bio              : "Ph.D. student, The University of Hong Kong"
+  location         : "Hong Kong, China"
   employer         :
   pubmed           : 
   googlescholar    : "https://scholar.google.com/citations?user=zk2uLXoAAAAJ"
-  email            : "zhangjia_liang@foxmial.com"
+  email            : "zhangjia_liang@foxmail.com"
   researchgate     : "https://www.researchgate.net/profile/Jialiang-Zhang-22"
   uri              :
   bitbucket        :
@@ -147,18 +149,3 @@ plugins:
   - jekyll-gist
   - jekyll-feed
   - jekyll-redirect-from
-# mimic GitHub Pages with --safe
-whitelist:
-  - jekyll-paginate
-  - jekyll-sitemap
-  - jekyll-gist
-  - jekyll-feed
-  - jemoji
-
-
-# HTML Compression
-# - http://jch.penibelst.de/
-compress_html:
-  clippings: all
-  ignore:
-    envs: development

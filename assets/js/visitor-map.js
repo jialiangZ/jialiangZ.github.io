@@ -1,4 +1,4 @@
-﻿/* Self-hosted visitor map: interactive 3D globe powered by globe.gl (vendored, no CDN).
+/* Self-hosted visitor map: interactive 3D globe powered by globe.gl (vendored, no CDN).
  * Textures: NASA Blue Marble (compressed WebP) in images/globe/.
  * Stats: your Cloudflare Worker, with the repo snapshot as fallback.
  * The 1.9MB engine is lazy-loaded only when the globe scrolls near the viewport.
@@ -22,12 +22,14 @@
     });
   }
 
-  function loadStats() {
-    return fetchJSON(WORKER_URL + "/stats")
-      .then(function (s) { return { s: s, live: true }; })
-      .catch(function () {
-        return fetchJSON("data/visitor-map.json").then(function (s) { return { s: s, live: false }; });
-      });
+  // Two independent sources: the repo snapshot (same-origin, fast, CDN-cached)
+  // and the live Worker (authoritative). Render with whichever is ready first,
+  // then hot-swap in the live numbers.
+  function fetchRepo() {
+    return fetchJSON("data/visitor-map.json").then(function (s) { return { s: s, live: false }; });
+  }
+  function fetchLive() {
+    return fetchJSON(WORKER_URL + "/stats").then(function (s) { return { s: s, live: true }; });
   }
 
   function pingVisit() {
@@ -106,6 +108,10 @@
     var nCountries = Object.keys(stats.counts || {}).length;
     counterEl.textContent = (stats.total || 0).toLocaleString() + " page views \u00b7 " +
       nCities + " cities \u00b7 " + nCountries + " countries" + (live ? "" : " (cached)");
+    if (box) {
+      box.setAttribute("aria-label", "Visitor globe: " + (stats.total || 0).toLocaleString() +
+        " page views from " + nCountries + " countries and " + nCities + " cities");
+    }
   }
 
   function hideHint() {
@@ -148,6 +154,20 @@
     ctrl.minDistance = 150;
     ctrl.maxDistance = 620;
     ctrl.addEventListener("start", pauseRotate);
+
+    // Touch devices: one-finger drag on the canvas would trap page scrolling,
+    // so disable gestures entirely (the globe keeps auto-rotating) and let
+    // touches fall through to normal page scroll.
+    var coarse = !!(window.matchMedia && window.matchMedia("(hover: none) and (pointer: coarse)").matches);
+    if (coarse) {
+      ctrl.enableRotate = false;
+      ctrl.enableZoom = false;
+      ctrl.enablePan = false;
+      var cv = box.querySelector("canvas");
+      if (cv) cv.style.touchAction = "auto";
+      if (hintEl) hintEl.textContent = "Auto-rotating \u00b7 fully interactive on desktop";
+    }
+
     fitInitialView();
 
     window.addEventListener("resize", function () {
@@ -174,13 +194,35 @@
     world.pointOfView({ lat: 22, lng: 114, altitude: altitude }, 0);
   }
 
+  // Progressive loading: render immediately from the same-origin repo snapshot,
+  // then hot-swap in live Worker stats when they arrive. Visitors behind slow
+  // or blocked routes to *.workers.dev still get a globe right away.
   function startGlobe() {
+    var repoP = fetchRepo().catch(function () { return null; });
+    var liveP = fetchLive().catch(function () { return null; });
+
     loadVendor()
-      .then(function () { return loadStats(); })
-      .then(render)
+      .then(function () {
+        return repoP.then(function (repo) {
+          if (repo) render(repo);
+          return liveP;
+        }).then(function (live) {
+          if (!live) return;
+          if (world) {
+            world.pointsData(buildPoints(live.s));
+            setCounter(live.s, true);
+          } else {
+            render(live); // repo snapshot unavailable, live arrived
+          }
+        });
+      })
       .catch(function () {
-        if (box) box.style.display = "none";
-        if (counterEl) counterEl.textContent = "";
+        // Engine failed to load: the counter still works without WebGL.
+        Promise.all([repoP, liveP]).then(function (r) {
+          if (r[1]) setCounter(r[1].s, true);
+          else if (r[0]) setCounter(r[0].s, false);
+          if (box) box.style.display = "none";
+        });
       });
   }
 

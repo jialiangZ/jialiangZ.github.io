@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: JS syntax check
+        run: |
+          node --check assets/js/visitor-map.js
+          node --check assets/js/main.min.js || true
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Jekyll build (catch Liquid/SCSS errors before Pages does)
+        run: |
+          bundle exec jekyll build --future
+          test -f _site/index.html
+          test -f _site/assets/css/main.css
+          grep -q "gs-badge" _site/index.html
+          grep -q "visitor-map-box" _site/index.html
