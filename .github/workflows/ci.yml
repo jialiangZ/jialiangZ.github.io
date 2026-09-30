@@ -19,9 +19,11 @@ jobs:
           node --check assets/js/main.min.js || true
       - uses: ruby/setup-ruby@v1
         with:
-          bundler-cache: true
+          ruby-version: '3.3'
       - name: Jekyll build (catch Liquid/SCSS errors before Pages does)
         run: |
+          bundle lock --add-platform x86_64-linux
+          bundle install --jobs 4
           bundle exec jekyll build --future
           test -f _site/index.html
           test -f _site/assets/css/main.css
