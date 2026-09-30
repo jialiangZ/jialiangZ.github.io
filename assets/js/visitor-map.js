@@ -146,18 +146,32 @@
     ctrl.autoRotateSpeed = 0.45;
     ctrl.enableZoom = true;
     ctrl.minDistance = 150;
-    ctrl.maxDistance = 580;
+    ctrl.maxDistance = 620;
     ctrl.addEventListener("start", pauseRotate);
-    world.pointOfView({ lat: 22, lng: 114, altitude: 2.6 }, 0);
+    fitInitialView();
 
     window.addEventListener("resize", function () {
       if (resizeT) clearTimeout(resizeT);
       resizeT = setTimeout(function () {
-        if (world && box) world.width(box.clientWidth).height(box.clientHeight);
+        if (world && box) {
+          world.width(box.clientWidth).height(box.clientHeight);
+          fitInitialView();
+        }
       }, 150);
     });
 
     setCounter(res.s, res.live);
+  }
+
+  // Place the camera so the sphere itself renders at ~TARGET_PX (or 86% of height on small screens).
+  function fitInitialView() {
+    var TARGET_PX = 480;
+    var h = box.clientHeight || TARGET_PX;
+    var targetPx = Math.min(TARGET_PX, h * 0.86);
+    var fov = (world.camera() && world.camera().fov) || 50;
+    var halfDeg = Math.min(32, (targetPx / h) * fov / 2);
+    var altitude = 1 / Math.sin(halfDeg * Math.PI / 180);
+    world.pointOfView({ lat: 22, lng: 114, altitude: altitude }, 0);
   }
 
   function startGlobe() {
