@@ -19,9 +19,6 @@ jobs:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
     - uses: actions/checkout@v4
-    - name: Install Reqs
-      run: |
-        sudo apt-get install python3-setuptools
     - name: Run
       run: |
         cd ./google_scholar_crawler
@@ -40,6 +37,7 @@ jobs:
         fi
       env:
         GOOGLE_SCHOLAR_ID: ${{ secrets.GOOGLE_SCHOLAR_ID }}
+        SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
     - name: Sync stats into main (same-origin serving)
       if: success()
       run: |

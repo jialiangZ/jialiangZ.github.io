@@ -1,70 +1,140 @@
-from scholarly import scholarly, ProxyGenerator
+# Citation stats crawler.
+#
+# Data layers (first that succeeds wins):
+#   1. SerpAPI "google_scholar_author" engine  -> exact Google Scholar numbers.
+#      Requires the SERPAPI_KEY secret (free tier: 100 searches/month, we use ~9).
+#   2. OpenAlex title search -> always-available fallback with conservative
+#      counts; labelled as its own source so the page never misrepresents data.
+#
+# Papers are parsed from ../index.md (paper-title links), so new publications
+# added to the homepage are picked up automatically.
+#
+# Output (results/):
+#   gs_data.json            {citedby, publications, source, updated}
+#                           publications keyed by Google-Scholar id when known
+#                           AND by normalized title (always).
+#   gs_data_shieldsio.json  shields.io endpoint badge payload.
+
+import datetime
+import difflib
 import json
-from datetime import datetime
 import os
-from scholarly._proxy_generator import MaxTriesExceededException
-import time
+import re
+import sys
+
+import httpx
+
+GS_USER = os.environ.get("GOOGLE_SCHOLAR_ID", "zk2uLXoAAAAJ")
+SERPAPI_KEY = os.environ.get("SERPAPI_KEY", "").strip()
+HERE = os.path.dirname(os.path.abspath(__file__))
 
 
-def get_author_with_retry(scholar_id, max_attempts=3):
-    strategies = [
-        ("直接连接（无代理）", None),
-        ("免费代理", "free"),
-    ]
+def norm(title):
+    return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9 ]", " ", title.lower())).strip()
 
-    for attempt in range(max_attempts):
-        for strategy_name, proxy_type in strategies:
+
+def parse_papers():
+    md = open(os.path.join(HERE, "..", "index.md"), encoding="utf-8").read()
+    return re.findall(
+        r'class="paper-title"><a href="https://arxiv\.org/abs/([\d.]+)v?\d*">([^<]+)</a>', md
+    )
+
+
+def write_output(total, pubs, source):
+    os.makedirs(os.path.join(HERE, "results"), exist_ok=True)
+    data = {
+        "citedby": total,
+        "publications": pubs,
+        "source": source,
+        "updated": datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S"),
+    }
+    with open(os.path.join(HERE, "results", "gs_data.json"), "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+    shield = {"schemaVersion": 1, "label": "citations", "message": str(total)}
+    with open(os.path.join(HERE, "results", "gs_data_shieldsio.json"), "w", encoding="utf-8") as f:
+        json.dump(shield, f, ensure_ascii=False)
+    print(f"[ok] source={source} total={total} papers={len(pubs)}")
+
+
+def from_serpapi():
+    r = httpx.get(
+        "https://serpapi.com/search.json",
+        params={
+            "engine": "google_scholar_author",
+            "author_id": GS_USER,
+            "num": 100,
+            "api_key": SERPAPI_KEY,
+        },
+        timeout=60,
+    )
+    r.raise_for_status()
+    d = r.json()
+    if "error" in d:
+        raise RuntimeError(d["error"])
+    total = 0
+    try:
+        total = int(d["cited_by"]["table"][0]["citations"]["all"])
+    except (KeyError, IndexError, TypeError, ValueError):
+        pass
+    pubs = {}
+    for a in d.get("articles", []):
+        title = a.get("title", "")
+        n = int(a.get("cited_by", {}).get("value", 0) or 0)
+        entry = {"title": title, "num_citations": n}
+        m = re.search(r"citation_for_view=([\w-]+:[\w-]+)", a.get("link", "") or "")
+        if m:
+            pubs[m.group(1)] = entry
+        pubs[norm(title)] = entry
+    if not pubs and not total:
+        raise RuntimeError("serpapi returned no data")
+    return total, pubs, "google-scholar"
+
+
+def from_openalex(papers):
+    pubs = {}
+    total = 0
+    with httpx.Client(timeout=30) as c:
+        for arxiv_id, title in papers:
+            n = 0
             try:
-                print(f"尝试策略: {strategy_name} (第 {attempt + 1} 次)...")
-                scholarly.set_timeout(30)
-                scholarly.set_retries(5)
+                r = c.get(
+                    "https://api.openalex.org/works",
+                    params={
+                        "filter": f"title.search:{title}",
+                        "per-page": 5,
+                        "select": "title,cited_by_count",
+                        "mailto": "webmaster@jialiangz.github.io",
+                    },
+                )
+                r.raise_for_status()
+                for w in r.json().get("results", []):
+                    if difflib.SequenceMatcher(
+                        None, norm(title), norm(w.get("title", ""))
+                    ).ratio() >= 0.75:
+                        n = max(n, int(w.get("cited_by_count", 0)))
+            except Exception as e:
+                print(f"[warn] openalex failed for {arxiv_id}: {e}", file=sys.stderr)
+            pubs[norm(title)] = {"title": title, "num_citations": n}
+            total += n
+    return total, pubs, "openalex"
 
-                if proxy_type == "free":
-                    pg = ProxyGenerator()
-                    pg.FreeProxies()
-                    scholarly.use_proxy(pg)
-                else:
-                    scholarly.use_proxy(None)
 
-                author = scholarly.search_author_id(scholar_id)
-                print("正在填充作者详细信息...")
-                scholarly.fill(author, sections=["basics", "indices", "counts", "publications"])
-                return author
-            except (MaxTriesExceededException, AttributeError, Exception) as e:
-                print(f"  {strategy_name} 失败: {e}")
-                time.sleep(5)
-                continue
+def main():
+    papers = parse_papers()
+    print(f"[info] {len(papers)} papers parsed from index.md")
 
-    raise Exception("所有策略均无法获取作者数据，Google Scholar 可能临时屏蔽了请求。")
+    if SERPAPI_KEY:
+        try:
+            total, pubs, source = from_serpapi()
+            return write_output(total, pubs, source)
+        except Exception as e:
+            print(f"[warn] serpapi failed, falling back to openalex: {e}", file=sys.stderr)
+    else:
+        print("[info] SERPAPI_KEY not set; skipping Google Scholar source")
+
+    total, pubs, source = from_openalex(papers)
+    return write_output(total, pubs, source)
 
 
-try:
-    author = get_author_with_retry(os.environ["GOOGLE_SCHOLAR_ID"])
-except Exception as e:
-    print(f"发生异常: {e}")
-    exit(1)
-
-name = author["name"]
-author["updated"] = str(datetime.now())
-author["publications"] = {v["author_pub_id"]: v for v in author["publications"]}
-print(json.dumps(author, indent=2))
-
-print("正在创建结果目录...")
-os.makedirs("results", exist_ok=True)
-
-print("正在保存作者数据...")
-with open("results/gs_data.json", "w") as outfile:
-    json.dump(author, outfile, ensure_ascii=False)
-
-print("正在生成 Shields.io 数据...")
-shieldio_data = {
-    "schemaVersion": 1,
-    "label": "citations",
-    "message": f"{author.get('citedby', 0)}",
-}
-
-print("正在保存 Shields.io 数据...")
-with open("results/gs_data_shieldsio.json", "w") as outfile:
-    json.dump(shieldio_data, outfile, ensure_ascii=False)
-
-print("数据处理完成。")
+if __name__ == "__main__":
+    main()

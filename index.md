@@ -11,7 +11,7 @@ author_profile: true
 
 I am currently a Ph.D. student in Computing and Data Science at the School of Computing and Data Science, The University of Hong Kong (HKU), supervised by Prof. Y. Cao, continuing my research on AI for climate science and scientific forecasting. I received my M.S. degree in Software Engineering (Jul 2026) from Ocean University of China (OUC), where I worked with [Gao Feng](https://oucai.club/fenggao) in the [OUC AI Lab](https://oucai.club/), and my B.S. degree in Computer Science and Technology (Jun 2023) from OUC. From June to December 2025, I was a visiting scholar at Eastern Institute of Technology, Ningbo (EIT), under the supervision of [Xiaoyu Shen](https://faculty.eitech.edu.cn/cist/sxy/main.htm), focusing on Streaming Multimodal Large Models for video understanding.
 
-My research interests encompass AI for Climate Science, Arctic sea ice prediction, scientific forecasting, and multimodal large language models (MLLMs), including streaming video reasoning and generative models. I have published some papers with total google scholar citations <a href='https://scholar.google.com/citations?user=zk2uLXoAAAAJ' class="gs-badge-link"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fjialiangz.github.io%2Fdata%2Fscholar-stats%2Fgs_data_shieldsio.json&amp;logo=Google%20Scholar&amp;labelColor=f6f6f6&amp;color=9cf&amp;style=flat&amp;label=citations" alt="citations badge" height="20"></a><span id="gs-updated" class="gs-updated"></span>.
+My research interests encompass AI for Climate Science, Arctic sea ice prediction, scientific forecasting, and multimodal large language models (MLLMs), including streaming video reasoning and generative models. I have published some papers with total citations <a href='https://scholar.google.com/citations?user=zk2uLXoAAAAJ' class="gs-badge-link"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fjialiangz.github.io%2Fdata%2Fscholar-stats%2Fgs_data_shieldsio.json&amp;logo=Google%20Scholar&amp;labelColor=f6f6f6&amp;color=9cf&amp;style=flat&amp;label=citations" alt="citations badge" height="20"></a><span id="gs-updated" class="gs-updated"></span>.
 
 <span class='anchor' id='-news'></span>
 
@@ -36,7 +36,7 @@ My research interests encompass AI for Climate Science, Arctic sea ice predictio
     <!-- <p class="paper-badges"><img src="https://img.shields.io/badge/CCF-A-blue" alt="CCF A"></p> -->
     <p class="paper-venue">CVPR, 2026</p>
     <p class="paper-authors"><strong>Jialiang Zhang</strong>, Junlong Tong, Junyan Lin, Hao Wu, Yirong Sun, Yunpu Ma, Xiaoyu Shen</p>
-    <p class="paper-citations"><span class="show_paper_citations" data="zk2uLXoAAAAJ:UeHWp8X0CEIC"></span></p>
+    <p class="paper-citations"><span class="show_paper_citations" data="zk2uLXoAAAAJ:UeHWp8X0CEIC" data-title="Think-as-You-See: Streaming Chain-of-Thought Reasoning for Large Vision-Language Models"></span></p>
   </div>
 </div>
 
@@ -49,7 +49,7 @@ My research interests encompass AI for Climate Science, Arctic sea ice predictio
     <!-- <p class="paper-badges"><img src="https://img.shields.io/badge/CCF-A-blue" alt="CCF A"></p> -->
     <p class="paper-venue">CVPR, 2026</p>
     <p class="paper-authors">Hao Wu, Xudong Wang, <strong>Jialiang Zhang</strong>, Junlong Tong, Xinghao Chen, Junyan Lin, Yunpu Ma, Xiaoyu Shen</p>
-    <p class="paper-citations"><span class="show_paper_citations" data="zk2uLXoAAAAJ:IjCSPb-OGe4C"></span></p>
+    <p class="paper-citations"><span class="show_paper_citations" data="zk2uLXoAAAAJ:IjCSPb-OGe4C" data-title="UTPTrack: Towards Simple and Unified Token Pruning for Visual Tracking"></span></p>
   </div>
 </div>
 
@@ -62,7 +62,7 @@ My research interests encompass AI for Climate Science, Arctic sea ice predictio
     <!-- <p class="paper-badges"><img src="https://img.shields.io/badge/arXiv-red" alt="arXiv"></p> -->
     <p class="paper-venue">arXiv Preprint</p>
     <p class="paper-authors">Sunbowen Lee, Qingyu Yin, Chak Tou Leong, <strong>Jialiang Zhang</strong>, Yicheng Gong, Xiaoyu Shen</p>
-    <p class="paper-citations"><span class="show_paper_citations" data="zk2uLXoAAAAJ:zYLM7Y9cAGgC"></span></p>
+    <p class="paper-citations"><span class="show_paper_citations" data="zk2uLXoAAAAJ:zYLM7Y9cAGgC" data-title="Probing the Difficulty Perception Mechanism of Large Language Models"></span></p>
   </div>
 </div>
 
@@ -75,7 +75,7 @@ My research interests encompass AI for Climate Science, Arctic sea ice predictio
     <!-- <p class="paper-badges"><img src="https://img.shields.io/badge/CCF-B-blue" alt="CCF B"> <img src="https://img.shields.io/badge/SCI-Q1-red" alt="SCI Q1"> <img src="https://img.shields.io/badge/IF-8.6-green" alt="IF 8.6"></p> -->
     <p class="paper-venue">IEEE Transactions on Geoscience and Remote Sensing (TGRS), 2025</p>
     <p class="paper-authors"><strong>Jialiang Zhang</strong>, Feng Gao, Yanhai Gan, Junyu Dong, Qian Du</p>
-    <p class="paper-citations"><span class="show_paper_citations" data="zk2uLXoAAAAJ:qjMakFHDy7sC"></span></p>
+    <p class="paper-citations"><span class="show_paper_citations" data="zk2uLXoAAAAJ:qjMakFHDy7sC" data-title="Frequency-Compensated Network for Daily Arctic Sea Ice Concentration Prediction"></span></p>
   </div>
 </div>
 
