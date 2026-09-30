@@ -63,12 +63,6 @@
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             object-fit: cover;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-            &:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-            }
         }
     }
 
@@ -182,8 +176,18 @@ h1:before,
 }
 
 // Google Scholar citation badge, shields.io "flat" style (self-hosted, no CDN)
-.gs-badge-link {
+a.gs-badge-link,
+.page__content a.gs-badge-link {
     text-decoration: none;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+
+    img {
+        box-shadow: none;
+    }
 }
 
 .shields-badge {
