@@ -1,17 +1,26 @@
 {
-  "total": 3,
+  "total": 4,
   "counts": {
-    "HK": 3
+    "HK": 4
   },
   "daily": {
     "2026-09-30": {
-      "HK": 1
+      "HK": 2
     }
   },
   "referrers": {
     "2026-09-30": {
-      "github.com": 1
+      "github.com": 2
     }
   },
-  "updated": "2026-09-30T16:10:06.384Z"
+  "cities": [
+    {
+      "country": "HK",
+      "city": "Hong Kong",
+      "lat": 22.27832,
+      "lon": 114.17469,
+      "count": 1
+    }
+  ],
+  "updated": "2026-09-30T16:18:17.239Z"
 }
