@@ -1,0 +1,23 @@
+{
+  "citedby": 3,
+  "publications": {
+    "think as you see streaming chain of thought reasoning for large vision language models": {
+      "title": "Think-as-You-See: Streaming Chain-of-Thought Reasoning for Large Vision-Language Models",
+      "num_citations": 0
+    },
+    "utptrack towards simple and unified token pruning for visual tracking": {
+      "title": "UTPTrack: Towards Simple and Unified Token Pruning for Visual Tracking",
+      "num_citations": 0
+    },
+    "probing the difficulty perception mechanism of large language models": {
+      "title": "Probing the Difficulty Perception Mechanism of Large Language Models",
+      "num_citations": 0
+    },
+    "frequency compensated network for daily arctic sea ice concentration prediction": {
+      "title": "Frequency-Compensated Network for Daily Arctic Sea Ice Concentration Prediction",
+      "num_citations": 3
+    }
+  },
+  "source": "openalex",
+  "updated": "2026-10-01 21:33:55"
+}
