@@ -29,7 +29,7 @@ My research interests encompass AI for Climate Science, Arctic sea ice predictio
 
 <div class="paper-box">
   <div class="paper-box-image">
-    <img src="images/tays-400.webp" alt="Think-as-You-See" width="800" height="451" loading="lazy" decoding="async">
+    <img src="images/papers/tays.webp" alt="Think-as-You-See" width="800" height="451" loading="lazy" decoding="async">
   </div>
   <div class="paper-box-text">
     <p class="paper-title"><a href="https://arxiv.org/abs/2603.02872">Think-as-You-See: Streaming Chain-of-Thought Reasoning for Large Vision-Language Models</a></p>
@@ -42,7 +42,7 @@ My research interests encompass AI for Climate Science, Arctic sea ice predictio
 
 <div class="paper-box">
   <div class="paper-box-image">
-    <img src="images/utptrack-400.webp" alt="UTPTrack" width="800" height="398" loading="lazy" decoding="async">
+    <img src="images/papers/utptrack.webp" alt="UTPTrack" width="800" height="398" loading="lazy" decoding="async">
   </div>
   <div class="paper-box-text">
     <p class="paper-title"><a href="https://arxiv.org/abs/2602.23734v1">UTPTrack: Towards Simple and Unified Token Pruning for Visual Tracking</a></p>
@@ -55,7 +55,7 @@ My research interests encompass AI for Climate Science, Arctic sea ice predictio
 
 <div class="paper-box">
   <div class="paper-box-image">
-    <img src="images/pdpm-400.webp" alt="PDPM" width="800" height="516" loading="lazy" decoding="async">
+    <img src="images/papers/pdpm.webp" alt="PDPM" width="800" height="516" loading="lazy" decoding="async">
   </div>
   <div class="paper-box-text">
     <p class="paper-title"><a href="https://arxiv.org/abs/2510.05969">Probing the Difficulty Perception Mechanism of Large Language Models</a></p>
@@ -68,7 +68,7 @@ My research interests encompass AI for Climate Science, Arctic sea ice predictio
 
 <div class="paper-box">
   <div class="paper-box-image">
-    <img src="images/sicfn-400.webp" alt="SICFN" width="800" height="510" loading="lazy" decoding="async">
+    <img src="images/papers/sicfn.webp" alt="SICFN" width="800" height="510" loading="lazy" decoding="async">
   </div>
   <div class="paper-box-text">
     <p class="paper-title"><a href="https://arxiv.org/abs/2504.16745">Frequency-Compensated Network for Daily Arctic Sea Ice Concentration Prediction</a></p>

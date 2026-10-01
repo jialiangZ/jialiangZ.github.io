@@ -62,7 +62,7 @@ author:
 
 exclude:
   - docs
-  - google_scholar_crawler
+  - citation-crawler
   - visitor-map-worker
   - "*.sublime-project"
   - "*.sublime-workspace"
