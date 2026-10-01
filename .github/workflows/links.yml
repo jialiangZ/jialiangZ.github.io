@@ -1,0 +1,48 @@
+name: Link Health Check
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [check-links]
+  schedule:
+    # Every Monday 06:00 UTC
+    - cron: '0 6 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+      - name: Build site
+        run: |
+          bundle lock --add-platform x86_64-linux
+          bundle install --jobs 4
+          bundle exec jekyll build
+      - name: Check links with lychee
+        uses: lycheeverse/lychee-action@v2.9.0
+        with:
+          args: >-
+            --no-progress
+            --max-retries 2
+            --timeout 20
+            --accept 200,206,301,302,303,304,307,308,403
+            --exclude 'linkedin\.com'
+            './_site/**/*.html'
+            'README.md'
+          fail: true
+          format: markdown
+          output: lychee-report.md
+      - name: Report
+        if: always()
+        run: |
+          {
+            echo "# Link Health Report"
+            echo
+            cat lychee-report.md 2>/dev/null || echo "No report generated."
+          } >> "$GITHUB_STEP_SUMMARY"

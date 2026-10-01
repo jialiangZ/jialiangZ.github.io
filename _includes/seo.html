@@ -93,4 +93,37 @@
 {% if site.baidu_site_verification %}
   <meta name="baidu-site-verification" content="{{ site.baidu_site_verification }}" />
 {% endif %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "{{ site.title }}",
+  "url": "{{ seo_url | default: site.url }}/",
+  "image": "{{ site.og_image }}",
+  "email": "mailto:{{ site.author.email }}",
+  "jobTitle": "Ph.D. Student",
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "The University of Hong Kong",
+    "sameAs": "https://www.hku.hk/"
+  },
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "Ocean University of China", "sameAs": "https://www.ouc.edu.cn/" }
+  ],
+  "sameAs": [
+    "{{ site.author.googlescholar }}",
+    "{{ site.author.orcid }}",
+    "https://github.com/{{ site.author.github }}",
+    "{{ site.author.researchgate }}"
+  ],
+  "knowsAbout": [
+    "AI for Climate Science",
+    "Arctic Sea Ice Prediction",
+    "Scientific Forecasting",
+    "Streaming Multimodal Models",
+    "Multimodal Large Language Models"
+  ]
+}
+</script>
 <!-- end SEO -->
