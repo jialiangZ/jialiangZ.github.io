@@ -1,61 +1,63 @@
 # Astro Academic Homepage
 
-一个现代化的学术个人主页模板：**改一个配置文件即可上线**，自动引用统计、可选的自托管访客地图、零第三方 CDN 依赖。
+English | [简体中文](README_zh.md)
 
-基于 [acad-homepage](https://github.com/RayeRen/acad-homepage.github.io)（Minimal Mistakes 主题）的视觉设计，用 [Astro](https://astro.build) 重建——构建 2.5 秒，组件化，配置集中。
+A modern academic personal homepage template: **go live by editing one config file**, with automatic citation tracking, an optional self-hosted visitor map, and zero third-party CDN dependencies.
+
+Visually based on [acad-homepage](https://github.com/RayeRen/acad-homepage.github.io) (the Minimal Mistakes theme), rebuilt with [Astro](https://astro.build) — 2.5s builds, componentized, centrally configured.
 
 <img width="2469" height="1420" alt="image" src="https://github.com/user-attachments/assets/99d1009e-97be-43bc-8ff2-67be5f5389be" />
 
 
-## 快速开始（5 分钟）
+## Quick Start (5 minutes)
 
-1. 点击绿色 **Use this template** 按钮，把仓库命名为 `你的用户名.github.io`
-2. 编辑 **`src/config.ts`** —— 这是唯一需要改的文件：姓名、单位、简介、社交链接、导航、论文列表都在这里
-3. 仓库 **Settings → Pages → Build and deployment → Source** 选 **GitHub Actions**
-4. （可选）把 `images/` 里的头像（`avatar.webp`）、分享卡（`og-card.png`）、论文图（`papers/`）换成你的；`.github/FUNDING.yml` 改成你的赞助账号或删除
+1. Click the green **Use this template** button and name the repo `your-username.github.io`
+2. Edit **`src/config.ts`** — the only file you need to touch: name, affiliation, bio, social links, navigation, and publication list all live here
+3. Go to **Settings → Pages → Build and deployment → Source** and choose **GitHub Actions**
+4. (Optional) Replace the assets in `images/` — `avatar.webp`, `og-card.png`, and `papers/`; update `.github/FUNDING.yml` with your own sponsorship account or delete it
 
-推送后 GitHub Actions 自动构建部署。
+GitHub Actions builds and deploys automatically on every push.
 
-## 进阶（可选功能）
+## Advanced (optional features)
 
-### 自动引用统计（推荐）
+### Automatic citation tracking (recommended)
 
-主页的引用徽章和逐篇引用数会自动更新（每周一/四）：
+Citation badges on the homepage and per-paper citation counts update automatically (Mondays and Thursdays):
 
-1. （推荐）注册 [SerpAPI](https://serpapi.com) 免费账号（每月 250 次搜索，本站只用约 9 次），拿到 API key
-2. 仓库 **Settings → Secrets and variables → Actions → New repository secret**，添加两个 secret：
-   - `SERPAPI_KEY` = 你的 SerpAPI key（精确 Google Scholar 数据）
-   - `GOOGLE_SCHOLAR_ID` = 你的 Google Scholar 主页 URL 里 `user=` 后面的那串 ID
-3. 完成。论文列表从构建产物自动解析——在 `src/config.ts` 的 `PAPERS` 里加了带 arXiv 链接的论文，引用数就会自动跟踪
+1. (Recommended) Sign up for a free [SerpAPI](https://serpapi.com) account (250 searches/month; this site uses about 9) and get an API key
+2. Go to **Settings → Secrets and variables → Actions → New repository secret** and add two secrets:
+   - `SERPAPI_KEY` = your SerpAPI key (exact Google Scholar data)
+   - `GOOGLE_SCHOLAR_ID` = the ID after `user=` in your Google Scholar profile URL
+3. That's it. The publication list is parsed from the build output — add a paper with an arXiv link to `PAPERS` in `src/config.ts` and its citation count will be tracked automatically
 
-> 不配置 secret 也能用：自动降级到 OpenAlex 数据（计数口径更保守，页面会标注来源）。
+> No secrets configured? It gracefully falls back to OpenAlex data (a more conservative counting method, and the page labels the source).
 
-### 访客地图（可选）
+### Visitor map (optional)
 
-自托管的 3D 地球访客地图（Cloudflare Worker + D1，无任何第三方统计服务，数据落盘在你自己的 git 历史里）。部署约 10 分钟，见 **`visitor-map-worker/README.md`**。不想要就把 `src/config.ts` 里 `VISITOR_MAP.enabled` 设为 `false`。
+A self-hosted 3D globe visitor map (Cloudflare Worker + D1, no third-party analytics — the data lives in your own git history). Takes about 10 minutes to deploy, see **[`visitor-map-worker/README.md`](visitor-map-worker/README.md)**. To disable it, set `VISITOR_MAP.enabled` to `false` in `src/config.ts`.
 
-## 内置特性
+## Features
 
-- **零外部 CDN**：FontAwesome 编译进主 CSS、jQuery/globe.gl 自托管——中国大陆访问不裂图
-- **SEO**：Open Graph / Twitter Card / JSON-LD (schema.org/Person) / sitemap / robots.txt
-- **三层引用数据回退**：同源数据 → jsdelivr CDN → raw.githubusercontent
-- **访客地图双层容灾**：Worker 实时数据 → 仓库每日快照（Worker 不可达时自动降级）
-- **CI**：每次推送自动构建断言；每周一自动全站外链健康检查
-- **隐私**：访客地图只存国家/城市级聚合计数，不存 IP/UA/个人标识；已知爬虫不计数
+- **Zero external CDNs**: FontAwesome is compiled into the main CSS, jQuery/globe.gl are self-hosted — no broken images from mainland China
+- **SEO**: Open Graph / Twitter Card / JSON-LD (schema.org/Person) / sitemap / robots.txt
+- **Three-tier citation data fallback**: same-origin data → jsdelivr CDN → raw.githubusercontent
+- **Two-layer visitor map failover**: live Worker data → daily repo snapshot (automatically degrades when the Worker is unreachable)
+- **CI**: build assertions on every push; weekly full-site external link health check every Monday
+- **Privacy**: the visitor map stores only country/city-level aggregate counts — no IPs, user agents, or personal identifiers; known bots are not counted
 
-## 仓库结构
+## Repository Structure
 
-| 路径 | 说明 |
+| Path | Description |
 |---|---|
-| `src/config.ts` | **所有个性化配置**（站点/作者/导航/论文/访客地图开关） |
-| `src/pages/` | 页面（index.astro / 404.astro） |
-| `src/components/` | 组件（SeoHead / Masthead / AuthorProfile / PaperBox） |
-| `src/styles/` | SCSS（主题树 `sass/` + 自定义 `sass/custom.scss`） |
-| `public/` | 原样发布的静态资产（images/、data/、vendored 库、robots.txt） |
-| `visitor-map-worker/` | 访客地图 Worker 源码（可选模块） |
-| `citation-crawler/` | 引用统计爬虫（GitHub Actions 运行） |
+| `src/config.ts` | **All personalization config** (site / author / navigation / papers / visitor map toggle) |
+| `src/pages/` | Pages (index.astro / 404.astro) |
+| `src/components/` | Components (SeoHead / Masthead / AuthorProfile / PaperBox) |
+| `src/styles/` | SCSS (theme tree `sass/` + custom `sass/custom.scss`) |
+| `public/` | Static assets published as-is (images/, data/, vendored libs, robots.txt) |
+| `visitor-map-worker/` | Visitor map Worker source (optional module) |
+| `citation-crawler/` | Citation stats crawler (run by GitHub Actions) |
 
-## 本地开发
+## Local Development
 
 ```sh
 npm install
@@ -64,6 +66,6 @@ npm run dev      # http://localhost:4321
 
 ## Credits
 
-- 设计模板：[acad-homepage](https://github.com/RayeRen/acad-homepage.github.io) by RayeRen
-- 主题：[Minimal Mistakes](https://mademistakes.com/work/jekyll-themes/minimal-mistakes/) by Michael Rose
-- 地球纹理：NASA Blue Marble（公有领域）
+- Design template: [acad-homepage](https://github.com/RayeRen/acad-homepage.github.io) by RayeRen
+- Theme: [Minimal Mistakes](https://mademistakes.com/work/jekyll-themes/minimal-mistakes/) by Michael Rose
+- Globe texture: NASA Blue Marble (public domain)
