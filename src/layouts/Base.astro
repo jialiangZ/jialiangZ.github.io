@@ -2,6 +2,7 @@
 import SeoHead from "../components/SeoHead.astro";
 import Masthead from "../components/Masthead.astro";
 import AuthorProfile from "../components/AuthorProfile.astro";
+import { REPO, VISITOR_MAP } from "../config";
 import "../styles/main.scss";
 
 interface Props {
@@ -43,12 +44,18 @@ const { title } = Astro.props;
 
     <script src="assets/vendor/jquery.min.js" is:inline></script>
     <script src="assets/js/main.min.js" is:inline></script>
-    <script is:inline>
-      // Citation stats: same-origin copy first, then jsdelivr mirror, then raw.
+
+    <script is:inline define:vars={{ repo: REPO, visitorMap: VISITOR_MAP }}>
+      // Runtime config injected from src/config.ts
+      window.SITE_CONFIG = { repo: repo };
+      window.VISITOR_MAP = visitorMap;
+
+      // Citation stats fetch chain: same-origin copy first, then CDN mirrors
+      // of the google-scholar-stats data branch.
       var urls = [
         "data/scholar-stats/gs_data.json",
-        "https://cdn.jsdelivr.net/gh/jialiangZ/jialiangZ.github.io@google-scholar-stats/gs_data.json",
-        "https://raw.githubusercontent.com/jialiangZ/jialiangZ.github.io/google-scholar-stats/gs_data.json",
+        "https://cdn.jsdelivr.net/gh/" + repo + "@google-scholar-stats/gs_data.json",
+        "https://raw.githubusercontent.com/" + repo + "/google-scholar-stats/gs_data.json",
       ];
 
       function normTitle(t) {
@@ -119,6 +126,7 @@ const { title } = Astro.props;
       if (document.readyState !== "loading") start();
       else document.addEventListener("DOMContentLoaded", start);
     </script>
-    <script src="assets/js/visitor-map.js" is:inline defer></script>
+
+    {VISITOR_MAP.enabled && <script src="assets/js/visitor-map.js" is:inline defer></script>}
   </body>
 </html>

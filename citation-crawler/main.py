@@ -24,7 +24,7 @@ import sys
 
 import httpx
 
-GS_USER = os.environ.get("GOOGLE_SCHOLAR_ID", "zk2uLXoAAAAJ")
+GS_USER = os.environ.get("GOOGLE_SCHOLAR_ID", "").strip()
 SERPAPI_KEY = os.environ.get("SERPAPI_KEY", "").strip()
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -128,14 +128,14 @@ def main():
     papers = parse_papers()
     print(f"[info] {len(papers)} papers parsed")
 
-    if SERPAPI_KEY:
+    if SERPAPI_KEY and GS_USER:
         try:
             total, pubs, source = from_serpapi()
             return write_output(total, pubs, source)
         except Exception as e:
             print(f"[warn] serpapi failed, falling back to openalex: {e}", file=sys.stderr)
     else:
-        print("[info] SERPAPI_KEY not set; skipping Google Scholar source")
+        print("[info] SERPAPI_KEY/GOOGLE_SCHOLAR_ID not set; skipping Google Scholar source")
 
     total, pubs, source = from_openalex(papers)
     return write_output(total, pubs, source)

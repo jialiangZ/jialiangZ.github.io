@@ -27,16 +27,21 @@ wrangler d1 execute visitor-map --remote --file=schema.sql
 wrangler deploy
 
 # 4. 配置密钥（fine-grained PAT: GitHub → Settings → Developer settings →
-#    Fine-grained tokens → 只勾选 jialiangZ/jialiangZ.github.io → Contents: Read and write）
+#    Fine-grained tokens → 只勾选你的仓库 → Contents: Read and write）
 wrangler secret put GITHUB_PAT
 wrangler secret put SNAPSHOT_SECRET   # 可选：手动触发 /snapshot 用的口令
 ```
 
+另外把 `wrangler.toml` 里的 `GITHUB_REPO` 改成你的仓库（`用户名/仓库名`）。
+
 部署成功后 wrangler 会输出 `https://visitor-map.<你的子域>.workers.dev`：
 
-1. 把这个 URL 填到仓库根目录 `assets/js/visitor-map.js` 第 9 行的 `WORKER_URL`
+1. 把这个 URL 填到 **`src/config.ts` 的 `VISITOR_MAP.workerUrl`**（保持 `enabled: true`）
 2. 提交推送，网站上线即开始计数
 3. 验证：`curl https://visitor-map.<子域>.workers.dev/stats` 应返回 JSON
+
+> 不想要访客地图？不用部署任何东西——把 `src/config.ts` 里 `VISITOR_MAP.enabled`
+> 设为 `false` 即可，区块、脚本、计数上报全部消失。
 
 ## 数据落盘到仓库
 

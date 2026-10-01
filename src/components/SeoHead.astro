@@ -1,8 +1,34 @@
 ---
-import { SITE, AUTHOR } from "../config";
+import { SITE, AUTHOR, KNOWS_ABOUT } from "../config";
 
 const canonical = `${SITE.url}/`;
 const seoDescription = SITE.description;
+const sameAs = [
+  AUTHOR.googlescholar,
+  AUTHOR.orcid,
+  AUTHOR.github ? `https://github.com/${AUTHOR.github}` : null,
+  AUTHOR.researchgate,
+].filter(Boolean);
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: SITE.title,
+  url: canonical,
+  image: SITE.ogImage,
+  email: AUTHOR.email ? `mailto:${AUTHOR.email}` : undefined,
+  jobTitle: AUTHOR.jobTitle || undefined,
+  affiliation: AUTHOR.affiliation
+    ? { "@type": "CollegeOrUniversity", name: AUTHOR.affiliation.name, sameAs: AUTHOR.affiliation.url }
+    : undefined,
+  alumniOf: (AUTHOR.alumniOf || []).map((a) => ({
+    "@type": "CollegeOrUniversity",
+    name: a.name,
+    sameAs: a.url,
+  })),
+  sameAs: sameAs.length ? sameAs : undefined,
+  knowsAbout: KNOWS_ABOUT.length ? KNOWS_ABOUT : undefined,
+};
 ---
 
 <meta charset="utf-8" />
@@ -33,28 +59,4 @@ const seoDescription = SITE.description;
 <meta name="theme-color" content="#ffffff" />
 <link rel="stylesheet" href="assets/css/academicons.css" />
 
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: SITE.title,
-  url: canonical,
-  image: SITE.ogImage,
-  email: `mailto:${AUTHOR.email}`,
-  jobTitle: "Ph.D. Student",
-  affiliation: {
-    "@type": "CollegeOrUniversity",
-    name: "The University of Hong Kong",
-    sameAs: "https://www.hku.hk/",
-  },
-  alumniOf: [
-    { "@type": "CollegeOrUniversity", name: "Ocean University of China", sameAs: "https://www.ouc.edu.cn/" },
-  ],
-  sameAs: [AUTHOR.googlescholar, AUTHOR.orcid, `https://github.com/${AUTHOR.github}`, AUTHOR.researchgate],
-  knowsAbout: [
-    "AI for Climate Science",
-    "Arctic Sea Ice Prediction",
-    "Scientific Forecasting",
-    "Streaming Multimodal Models",
-    "Multimodal Large Language Models",
-  ],
-})} />
+<script type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />

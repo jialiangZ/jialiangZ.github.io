@@ -1,7 +1,14 @@
 ---
 import Base from "../layouts/Base.astro";
 import PaperBox from "../components/PaperBox.astro";
-import { PAPERS, AUTHOR } from "../config";
+import { PAPERS, AUTHOR, SITE, VISITOR_MAP } from "../config";
+
+// Note: plain concatenation (no nested template literals — the Astro
+// compiler's frontmatter scanner mis-lexes them).
+const badgeUrl =
+  "https://img.shields.io/endpoint?url=" +
+  encodeURIComponent(SITE.url + "/data/scholar-stats/gs_data_shieldsio.json") +
+  "&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations";
 ---
 
 <Base title="">
@@ -18,7 +25,7 @@ import { PAPERS, AUTHOR } from "../config";
     My research interests encompass AI for Climate Science, Arctic sea ice prediction, scientific forecasting, and
     multimodal large language models (MLLMs), including streaming video reasoning and generative models. I have
     published some papers with total citations
-    <a target="_self" href={AUTHOR.googlescholar} class="gs-badge-link"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fjialiangz.github.io%2Fdata%2Fscholar-stats%2Fgs_data_shieldsio.json&amp;logo=Google%20Scholar&amp;labelColor=f6f6f6&amp;color=9cf&amp;style=flat&amp;label=citations" alt="citations badge" height="20" /></a><span id="gs-updated" class="gs-updated"></span>.
+    <a target="_self" href={AUTHOR.googlescholar} class="gs-badge-link"><img src={badgeUrl} alt="citations badge" height="20" /></a><span id="gs-updated" class="gs-updated"></span>.
   </p>
 
   <p><span class="anchor" id="-news"></span></p>
@@ -69,13 +76,19 @@ import { PAPERS, AUTHOR } from "../config";
     <li><em>2019.09 - 2023.06</em>, B.S. in Computer Science and Technology, Ocean University of China (OUC).</li>
   </ul>
 
-  <p><span class="anchor" id="-visitor-map"></span></p>
+  {VISITOR_MAP.enabled && (
+    <p><span class="anchor" id="-visitor-map"></span></p>
+  )}
 
-  <h1>🌍 Visitor Map</h1>
+  {VISITOR_MAP.enabled && (
+    <h1>🌍 Visitor Map</h1>
+  )}
 
-  <div id="visitor-map" style="text-align: center; margin-top: 1em;">
-    <div id="visitor-map-box" role="img" aria-label="Interactive 3D globe showing where this homepage's visitors come from" style="position: relative; width: 100%; height: clamp(300px, 48vw, 560px); cursor: grab;"></div>
-    <p id="visitor-map-counter" style="color: #57606a; font-size: 0.9em; margin: 0.4em 0 0;"></p>
-    <noscript><p style="color: #8b949e; font-size: 0.8em;">The visitor map needs JavaScript. Raw data: <a href="data/visitor-map.json">data/visitor-map.json</a></p></noscript>
-  </div>
+  {VISITOR_MAP.enabled && (
+    <div id="visitor-map" style="text-align: center; margin-top: 1em;">
+      <div id="visitor-map-box" role="img" aria-label="Interactive 3D globe showing where this homepage's visitors come from" style="position: relative; width: 100%; height: clamp(300px, 48vw, 560px); cursor: grab;"></div>
+      <p id="visitor-map-counter" style="color: #57606a; font-size: 0.9em; margin: 0.4em 0 0;"></p>
+      <noscript><p style="color: #8b949e; font-size: 0.8em;">The visitor map needs JavaScript. Raw data: <a href="data/visitor-map.json">data/visitor-map.json</a></p></noscript>
+    </div>
+  )}
 </Base>
