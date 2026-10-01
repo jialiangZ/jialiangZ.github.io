@@ -32,7 +32,7 @@ const { title } = Astro.props;
       </div>
 
       <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-        {title && <meta itemprop="headline" content={title} />}
+        <meta itemprop="headline" content={title ?? ""} />
         <div class="page__inner-wrap">
           <section class="page__content" itemprop="text">
             <slot />
