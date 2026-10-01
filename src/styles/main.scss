@@ -1,0 +1,40 @@
+/* Minimal Mistakes theme styles, compiled by Astro (dart-sass).
+ * Import paths point at src/styles/sass/ (the former _sass/ tree). */
+
+// Fonts live at /assets/fonts/ regardless of where this CSS gets emitted -> use an absolute path.
+$fa-font-path: "/assets/fonts";
+
+@import "sass/vendor/breakpoint/breakpoint"; // media query mixins
+@import "sass/variables";
+@import "sass/mixins";
+@import "sass/vendor/susy/susy";
+
+@import "sass/reset";
+@import "sass/base";
+
+@import "sass/utilities";
+@import "sass/animations";
+@import "sass/tables";
+@import "sass/buttons";
+@import "sass/notices";
+@import "sass/masthead";
+@import "sass/navigation";
+@import "sass/footer";
+@import "sass/syntax";
+
+@import "sass/forms";
+
+@import "sass/page";
+@import "sass/archive";
+@import "sass/sidebar";
+
+@import "sass/vendor/magnific-popup/magnific-popup";
+@import "sass/print";
+
+// Self-hosted Font Awesome 5 (fonts served from /assets/fonts/*.woff2)
+@import "sass/vendor/font-awesome/fontawesome";
+@import "sass/vendor/font-awesome/solid";
+@import "sass/vendor/font-awesome/brands";
+
+// Site-specific styles
+@import "sass/custom";

@@ -1,0 +1,39 @@
+---
+import { SITE, AUTHOR } from "../config";
+
+// Port of _includes/author-profile.html — only the links this site actually uses.
+const links = [
+  { href: AUTHOR.uri, icon: "fas fa-fw fa-link", label: "Website" },
+  { href: `mailto:${AUTHOR.email}`, icon: "fas fa-fw fa-envelope", label: "Email" },
+  { href: AUTHOR.researchgate, icon: "fab fa-fw fa-researchgate", label: "ResearchGate" },
+  { href: `https://github.com/${AUTHOR.github}`, icon: "fab fa-fw fa-github", label: "Github" },
+  { href: AUTHOR.googlescholar, icon: "fas fa-fw fa-graduation-cap", label: "Google Scholar" },
+  { href: AUTHOR.orcid, icon: "ai ai-orcid-square ai-fw", label: "ORCID" },
+].filter((l) => l.href);
+---
+
+<div itemscope itemtype="http://schema.org/Person" class="profile_box">
+  <div class="author__avatar">
+    <img src={AUTHOR.avatar} class="author__avatar" alt={AUTHOR.name} />
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">{AUTHOR.name}</h3>
+    <p class="author__bio">{AUTHOR.bio}</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <ul class="author__urls social-icons">
+      <li><div style="white-space: normal; margin-bottom: 1em;">{SITE.description}</div></li>
+      <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> {AUTHOR.location}</li>
+      {links.map((l) => (
+        <li><a href={l.href}><i class={l.icon} aria-hidden="true"></i> {l.label}</a></li>
+      ))}
+    </ul>
+    <div class="author__urls_sm">
+      {links.map((l) => (
+        <a href={l.href}><i class={l.icon} aria-hidden="true"></i></a>
+      ))}
+    </div>
+  </div>
+</div>

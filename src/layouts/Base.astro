@@ -1,0 +1,124 @@
+---
+import SeoHead from "../components/SeoHead.astro";
+import Masthead from "../components/Masthead.astro";
+import AuthorProfile from "../components/AuthorProfile.astro";
+import "../styles/main.scss";
+
+interface Props {
+  title?: string;
+}
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <SeoHead />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script is:inline>
+      document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, "") + " js ";
+    </script>
+    <base target="_blank" />
+  </head>
+
+  <body>
+    <Masthead />
+
+    <div id="main" role="main">
+      <div class="sidebar sticky">
+        <AuthorProfile />
+      </div>
+
+      <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+        <meta itemprop="headline" content={title ?? ""} />
+        <div class="page__inner-wrap">
+          <section class="page__content" itemprop="text">
+            <slot />
+          </section>
+        </div>
+      </article>
+    </div>
+
+    <script src="assets/vendor/jquery.min.js" is:inline></script>
+    <script src="assets/js/main.min.js" is:inline></script>
+    <script is:inline>
+      // Citation stats: same-origin copy first, then jsdelivr mirror, then raw.
+      var urls = [
+        "data/scholar-stats/gs_data.json",
+        "https://cdn.jsdelivr.net/gh/jialiangZ/jialiangZ.github.io@google-scholar-stats/gs_data.json",
+        "https://raw.githubusercontent.com/jialiangZ/jialiangZ.github.io/google-scholar-stats/gs_data.json",
+      ];
+
+      function normTitle(t) {
+        return (t || "").toLowerCase().replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
+      }
+
+      function findPaper(data, el) {
+        var pubs = data["publications"] || {};
+        var hit = pubs[el.getAttribute("data")];
+        if (hit) return hit;
+        var t = normTitle(el.getAttribute("data-title"));
+        if (t && pubs[t]) return pubs[t];
+        if (t) {
+          for (var k in pubs) {
+            if (k.indexOf(t) >= 0 || t.indexOf(k) >= 0) return pubs[k];
+          }
+        }
+        return null;
+      }
+
+      function tryFetch(i) {
+        if (i >= urls.length) {
+          console.error("Failed to load citation data from all sources");
+          var els = document.getElementsByClassName("show_paper_citations");
+          Array.prototype.forEach.call(els, function (el) {
+            el.innerHTML = "";
+          });
+          return;
+        }
+        var jq = window.jQuery || window.$;
+        if (jq) {
+          jq.getJSON(urls[i], renderData).fail(function () {
+            tryFetch(i + 1);
+          });
+        } else {
+          fetch(urls[i])
+            .then(function (r) {
+              if (!r.ok) throw new Error(String(r.status));
+              return r.json();
+            })
+            .then(renderData)
+            .catch(function () {
+              tryFetch(i + 1);
+            });
+        }
+      }
+
+      function renderData(data) {
+        var badge = document.getElementById("gs-citations");
+        if (badge) badge.innerHTML = data["citedby"];
+        var updated = document.getElementById("gs-updated");
+        if (updated) {
+          var when = data["updated"] ? String(data["updated"]).slice(0, 10) : "";
+          var source = data["source"] || "";
+          var map = { "google-scholar": "", openalex: " \u00b7 OpenAlex" };
+          var label = map[source] !== undefined ? map[source] : source ? " \u00b7 " + source : "";
+          if (when) updated.innerHTML = " (as of " + when + label + ")";
+          updated.title = source ? "Data source: " + source : "";
+        }
+        var citationEles = document.getElementsByClassName("show_paper_citations");
+        Array.prototype.forEach.call(citationEles, function (element) {
+          var p = findPaper(data, element);
+          element.innerHTML = p ? "| Citations: " + p["num_citations"] : "";
+        });
+      }
+
+      var start = function () { tryFetch(0); };
+      if (document.readyState !== "loading") start();
+      else document.addEventListener("DOMContentLoaded", start);
+    </script>
+    <script src="assets/js/visitor-map.js" is:inline defer></script>
+  </body>
+</html>
