@@ -4,6 +4,9 @@
 
 基于 [acad-homepage](https://github.com/RayeRen/acad-homepage.github.io)（Minimal Mistakes 主题）的视觉设计，用 [Astro](https://astro.build) 重建——构建 2.5 秒，组件化，配置集中。
 
+<img width="2469" height="1420" alt="image" src="https://github.com/user-attachments/assets/99d1009e-97be-43bc-8ff2-67be5f5389be" />
+
+
 ## 快速开始（5 分钟）
 
 1. 点击绿色 **Use this template** 按钮，把仓库命名为 `你的用户名.github.io`
@@ -19,7 +22,7 @@
 
 主页的引用徽章和逐篇引用数会自动更新（每周一/四）：
 
-1. （推荐）注册 [SerpAPI](https://serpapi.com) 免费账号（每月 100 次搜索，本站只用约 9 次），拿到 API key
+1. （推荐）注册 [SerpAPI](https://serpapi.com) 免费账号（每月 250 次搜索，本站只用约 9 次），拿到 API key
 2. 仓库 **Settings → Secrets and variables → Actions → New repository secret**，添加两个 secret：
    - `SERPAPI_KEY` = 你的 SerpAPI key（精确 Google Scholar 数据）
    - `GOOGLE_SCHOLAR_ID` = 你的 Google Scholar 主页 URL 里 `user=` 后面的那串 ID
