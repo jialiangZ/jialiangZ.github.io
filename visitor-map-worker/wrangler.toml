@@ -7,14 +7,10 @@ binding = "DB"
 database_name = "visitor-map"
 database_id = "0f396598-f3cc-4563-af62-2ec1047f7ffa"
 
-[triggers]
-crons = ["0 20 * * *"] # daily 20:00 UTC = 04:00 Beijing (next day)
-
-[vars]
-GITHUB_REPO = "jialiangZ/jialiangZ.github.io"
-STATS_FILE_PATH = "data/visitor-map.json"
-STATS_BRANCH = "main"
-
 # Secrets (set via CLI, never commit these):
-#   wrangler secret put GITHUB_PAT      # fine-grained PAT, Contents: Read & write on the repo above
-#   wrangler secret put SNAPSHOT_SECRET # optional, protects manual POST /snapshot
+#   wrangler secret put SNAPSHOT_SECRET  # shared password; the same value must
+#   # also be added to the repo's Actions secrets — the daily snapshot workflow
+#   # (.github/workflows/visitor-map-snapshot.yml) sends it as X-Snapshot-Secret.
+#
+# No GitHub credentials live here: repo snapshots are pulled by GitHub Actions
+# using its built-in GITHUB_TOKEN.

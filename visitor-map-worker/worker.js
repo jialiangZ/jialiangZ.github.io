@@ -1,6 +1,7 @@
 // Self-hosted visitor map worker.
-// Records per-country and per-city pageviews in D1, serves aggregated stats,
-// and commits a daily snapshot to the GitHub repo (data lives in your git history).
+// Records per-country and per-city pageviews in D1 and serves aggregated stats.
+// The daily repo snapshot is pulled from /stats/full by a GitHub Actions
+// workflow — the Worker itself holds no GitHub credentials.
 //
 // Recorded fields (aggregates only, no personal data):
 //   visits(country, count)              lifetime totals per country
@@ -71,17 +72,6 @@ async function getStats(env) {
     total += r.c;
   }
   return { total, counts, cities: cityRes.results, updated: new Date().toISOString() };
-}
-
-// base64 for arbitrarily large payloads: btoa(String.fromCharCode(...bytes))
-// throws RangeError once the spread exceeds the call-stack limit, so chunk it.
-function toBase64(bytes) {
-  let bin = "";
-  const CHUNK = 0x8000;
-  for (let i = 0; i < bytes.length; i += CHUNK) {
-    bin += String.fromCharCode.apply(null, bytes.subarray(i, i + CHUNK));
-  }
-  return btoa(bin);
 }
 
 // Constant-time-ish string compare (avoids early-exit timing leaks).
@@ -163,43 +153,10 @@ async function recordVisit(env, country, refHost, geo) {
   await env.DB.batch(stmts);
 }
 
-async function commitSnapshotToGitHub(env) {
-  const stats = await getFullStats(env);
-  const path = env.STATS_FILE_PATH;
-  const branch = env.STATS_BRANCH;
-  const api = `https://api.github.com/repos/${env.GITHUB_REPO}/contents/${path}`;
-
-  const headers = {
-    Authorization: `Bearer ${env.GITHUB_PAT}`,
-    Accept: "application/vnd.github+json",
-    "User-Agent": "visitor-map-worker",
-    "X-GitHub-Api-Version": "2022-11-28",
-  };
-
-  const current = await fetch(`${api}?ref=${branch}`, { headers });
-  let sha = null;
-  if (current.status === 200) {
-    sha = (await current.json()).sha;
-  } else if (current.status !== 404) {
-    throw new Error(`GitHub GET ${path} failed: ${current.status}`);
-  }
-
-  const content = toBase64(new TextEncoder().encode(JSON.stringify(stats, null, 2) + "\n"));
-
-  const put = await fetch(api, {
-    method: "PUT",
-    headers,
-    body: JSON.stringify({
-      message: "chore(visitor-map): daily stats snapshot [skip ci]",
-      content,
-      sha,
-      branch,
-    }),
-  });
-  if (!put.ok) throw new Error(`GitHub PUT ${path} failed: ${put.status} ${await put.text()}`);
-  return stats;
-}
-
+// Full stats snapshot, consumed by the repo's GitHub Actions workflow
+// (.github/workflows/visitor-map-snapshot.yml) which commits it to the repo.
+// The workflow authenticates with the shared SNAPSHOT_SECRET, so the Worker
+// holds no GitHub credentials at all.
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -246,19 +203,24 @@ export default {
       });
     }
 
-    if (url.pathname === "/snapshot" && request.method === "POST") {
-      // Manual trigger, protected by a shared secret (cron calls run regardless)
+    if (url.pathname === "/stats/full") {
+      // Snapshot payload for the GitHub Actions workflow, protected by the
+      // shared secret. Served pretty-printed so the workflow can commit it
+      // verbatim.
       if (env.SNAPSHOT_SECRET && !safeEqual(request.headers.get("X-Snapshot-Secret") || "", env.SNAPSHOT_SECRET)) {
         return jsonResponse({ ok: false, reason: "unauthorized" }, 401);
       }
-      await commitSnapshotToGitHub(env);
-      return jsonResponse({ ok: true });
+      const body = JSON.stringify(await getFullStats(env), null, 2) + "\n";
+      return new Response(body, {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          "Cache-Control": "no-store",
+          ...CORS,
+        },
+      });
     }
 
     return new Response("Not found", { status: 404, headers: CORS });
-  },
-
-  async scheduled(event, env) {
-    await commitSnapshotToGitHub(env);
   },
 };

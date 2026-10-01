@@ -1,0 +1,41 @@
+name: Visitor Map Snapshot
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [visitor-map-snapshot]
+  schedule:
+    # Daily 20:00 UTC = 04:00 Beijing (next day)
+    - cron: '0 20 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - name: Pull full stats from Worker and commit snapshot
+        env:
+          SNAPSHOT_SECRET: ${{ secrets.SNAPSHOT_SECRET }}
+        run: |
+          set -euo pipefail
+          WORKER_URL=$(node -p "require('fs').readFileSync('src/config.ts','utf8').match(/workerUrl: \"([^\"]+)\"/)[1]")
+          echo "Fetching snapshot from $WORKER_URL/stats/full"
+          curl -fsS -H "X-Snapshot-Secret: ${SNAPSHOT_SECRET}" "$WORKER_URL/stats/full" -o public/data/visitor-map.json
+          python3 - <<'EOF'
+          import json
+          d = json.load(open("public/data/visitor-map.json"))
+          assert "counts" in d and "daily" in d and "cities" in d, "unexpected payload shape"
+          print("payload OK: total =", d["total"], "| countries =", len(d["counts"]))
+          EOF
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git add public/data/visitor-map.json
+          if git diff --cached --quiet; then
+            echo "snapshot unchanged, nothing to commit"
+          else
+            git commit -m "chore(visitor-map): daily stats snapshot"
+            git push
+          fi
