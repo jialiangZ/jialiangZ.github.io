@@ -1,0 +1,81 @@
+---
+import Base from "../layouts/Base.astro";
+import PaperBox from "../components/PaperBox.astro";
+import { PAPERS, AUTHOR } from "../config";
+---
+
+<Base title="">
+  <span class="anchor" id="about-me"></span>
+
+  <p>
+    I am currently a Ph.D. student in Computing and Data Science at the School of Computing and Data Science, The
+    University of Hong Kong (HKU), supervised by Prof. Y. Cao, continuing my research on AI for climate science and
+    scientific forecasting. I received my M.S. degree in Software Engineering (Jul 2026) from Ocean University of China
+    (OUC), where I worked with <a href="https://oucai.club/fenggao">Gao Feng</a> in the <a href="https://oucai.club/">OUC AI Lab</a>, and my B.S. degree in Computer Science and Technology (Jun 2023) from OUC. From June to December 2025, I was a visiting scholar at Eastern Institute of Technology, Ningbo (EIT), under the supervision of <a href="https://faculty.eitech.edu.cn/cs/sxy/main.htm">Xiaoyu Shen</a>, focusing on Streaming Multimodal Large Models for video understanding.
+  </p>
+
+  <p>
+    My research interests encompass AI for Climate Science, Arctic sea ice prediction, scientific forecasting, and
+    multimodal large language models (MLLMs), including streaming video reasoning and generative models. I have
+    published some papers with total citations
+    <a target="_self" href={AUTHOR.googlescholar} class="gs-badge-link"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fjialiangz.github.io%2Fdata%2Fscholar-stats%2Fgs_data_shieldsio.json&amp;logo=Google%20Scholar&amp;labelColor=f6f6f6&amp;color=9cf&amp;style=flat&amp;label=citations" alt="citations badge" height="20" /></a><span id="gs-updated" class="gs-updated"></span>.
+  </p>
+
+  <span class="anchor" id="-news"></span>
+
+  <h1>🔥 News</h1>
+  <ul>
+    <li><em>2026.09</em>: &nbsp;🎓 Started my Ph.D. at The University of Hong Kong (HKU)</li>
+    <li><em>2026.02</em>: &nbsp;🎉 Two papers were accepted in CVPR2026</li>
+    <li><em>2025.10</em>: &nbsp;🏆 China Graduate AI Innovation Competition, Third Class Prize</li>
+    <li><em>2025.12</em>: &nbsp;📅 Ended academic visit at EIT</li>
+    <li><em>2025.06</em>: &nbsp;👨‍💻 Started academic visit at EIT</li>
+    <li><em>2025.04</em>: &nbsp;🎉 A paper was published in TGRS</li>
+  </ul>
+
+  <span class="anchor" id="-publications"></span>
+
+  <h1>📝 Publications</h1>
+  {PAPERS.map((p) => (
+    <PaperBox {...p} />
+  ))}
+
+  <span class="anchor" id="-honors-and-awards"></span>
+
+  <h1>🎖️ Honors and Awards</h1>
+  <ul>
+    <li><em>2026</em> SH Scholarship, The University of Hong Kong.</li>
+    <li><em>2026.04</em> Graduate Science and Technology Innovation Scholarship.</li>
+    <li><em>2026.01</em> Outstanding Graduate.</li>
+    <li><em>2025.10</em> BYD Scholarship.</li>
+    <li><em>2025.10</em> China Graduate AI Innovation Competition, Third Class Prize.</li>
+    <li><em>2024.12</em> The 2nd Greater Bay Area AI For Science Technology Competition, Second Class Prize.</li>
+    <li><em>2024.09</em> Outstanding Graduate Student Cadre of Ocean University of China.</li>
+    <li><em>2022</em> ASC Student Supercomputer Challenge, Second Class Prize.</li>
+    <li><em>2022.11</em> Outstanding Students of Ocean University of China.</li>
+    <li><em>2022.05</em> Mathematical Contest In Modeling &amp; Interdisciplinary Contest In Modeling(MCM/ICM) Honorable Mention.</li>
+    <li><em>2022.05</em> Ocean University of China Third Class Scholarship.</li>
+    <li><em>2021.05</em> Ocean University of China Third Class Scholarship.</li>
+    <li><em>2020.05</em> Outstanding Youth League Member of Ocean University of China.</li>
+  </ul>
+
+  <span class="anchor" id="-educations"></span>
+
+  <h1>📖 Educations</h1>
+  <ul>
+    <li><em>2026.09 - (now)</em>, Ph.D. in Computing and Data Science, School of Computing and Data Science, The University of Hong Kong (HKU), supervised by Prof. Y. Cao, focusing on Machine Learning Fundamentals and AI for Climate Science.</li>
+    <li><em>2025.06 - 2025.12</em>, Visiting Scholar, Eastern Institute of Technology, Ningbo (EIT), supervised by Prof. Xiaoyu Shen, focusing on Streaming Multimodal Large Models for video understanding.</li>
+    <li><em>2023.08 - 2026.07</em>, M.S. in Software Engineering, Ocean University of China (OUC), supervised by Prof. Feng Gao, thesis on Arctic sea ice concentration prediction.</li>
+    <li><em>2019.09 - 2023.06</em>, B.S. in Computer Science and Technology, Ocean University of China (OUC).</li>
+  </ul>
+
+  <span class="anchor" id="-visitor-map"></span>
+
+  <h1>🌍 Visitor Map</h1>
+
+  <div id="visitor-map" style="text-align: center; margin-top: 1em;">
+    <div id="visitor-map-box" role="img" aria-label="Interactive 3D globe showing where this homepage's visitors come from" style="position: relative; width: 100%; height: clamp(300px, 48vw, 560px); cursor: grab;"></div>
+    <p id="visitor-map-counter" style="color: #57606a; font-size: 0.9em; margin: 0.4em 0 0;"></p>
+    <noscript><p style="color: #8b949e; font-size: 0.8em;">The visitor map needs JavaScript. Raw data: <a href="data/visitor-map.json">data/visitor-map.json</a></p></noscript>
+  </div>
+</Base>

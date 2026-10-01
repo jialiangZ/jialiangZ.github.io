@@ -34,10 +34,15 @@ def norm(title):
 
 
 def parse_papers():
-    md = open(os.path.join(HERE, "..", "index.md"), encoding="utf-8").read()
-    return re.findall(
-        r'class="paper-title"><a href="https://arxiv\.org/abs/([\d.]+)v?\d*">([^<]+)</a>', md
-    )
+    # Works for both the legacy Jekyll source and the Astro build output.
+    for candidate in ("../dist/index.html", "../index.md"):
+        p = os.path.join(HERE, candidate)
+        if os.path.exists(p):
+            html = open(p, encoding="utf-8").read()
+            return re.findall(
+                r'class="paper-title"><a href="https://arxiv\.org/abs/([\d.]+)v?\d*[^"]*">([^<]+)</a>', html
+            )
+    raise SystemExit("no index source found (expected dist/index.html or index.md)")
 
 
 def write_output(total, pubs, source):
@@ -121,7 +126,7 @@ def from_openalex(papers):
 
 def main():
     papers = parse_papers()
-    print(f"[info] {len(papers)} papers parsed from index.md")
+    print(f"[info] {len(papers)} papers parsed")
 
     if SERPAPI_KEY:
         try:

@@ -1,0 +1,35 @@
+---
+interface Props {
+  image: string;
+  imageAlt: string;
+  imageWidth: number;
+  imageHeight: number;
+  title: string;
+  arxiv: string;
+  venue: string;
+  authors: string;
+  selfHighlight: string;
+  scholarId: string;
+}
+const { image, imageAlt, imageWidth, imageHeight, title, arxiv, venue, authors, selfHighlight, scholarId } = Astro.props;
+const authorList = authors.split(", ").map((a) => (a === selfHighlight ? { name: a, self: true } : { name: a, self: false }));
+---
+
+<div class="paper-box">
+  <div class="paper-box-image">
+    <img src={image} alt={imageAlt} width={imageWidth} height={imageHeight} loading="lazy" decoding="async" />
+  </div>
+  <div class="paper-box-text">
+    <p class="paper-title"><a href={arxiv}>{title}</a></p>
+    <p class="paper-venue">{venue}</p>
+    <p class="paper-authors">
+      {authorList.map((a, i) => (
+        <>
+          {i > 0 && ", "}
+          {a.self ? <strong>{a.name}</strong> : a.name}
+        </>
+      ))}
+    </p>
+    <p class="paper-citations"><span class="show_paper_citations" data={scholarId} data-title={title}></span></p>
+  </div>
+</div>
