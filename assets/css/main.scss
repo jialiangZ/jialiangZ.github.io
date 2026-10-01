@@ -164,17 +164,6 @@ h1:before,
     margin-top: -$scroll_offset;
 }
 
-.badge {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    position: absolute;
-    margin-top: .5em;
-    margin-left: -.5em;
-    color: white;
-    background-color: #00369f;
-    font-size: .8em;
-}
-
 // Google Scholar citation badge (img.shields.io, data endpoint = same-origin JSON)
 a.gs-badge-link,
 .page__content a.gs-badge-link {

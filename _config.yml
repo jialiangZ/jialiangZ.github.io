@@ -11,7 +11,6 @@ url                      : "https://jialiangz.github.io"
 og_image                 : "https://jialiangz.github.io/images/og-card.png"
 description              : "Ph.D. student at HKU. AI for climate science, Arctic sea ice prediction, scientific forecasting, and streaming multimodal models."
 repository               : "jialiangZ/jialiangZ.github.io"
-google_scholar_stats_use_cdn : true
 
 # google analytics
 google_analytics_id      :  # get google_analytics_id from https://analytics.google.com/analytics/
@@ -61,11 +60,6 @@ author:
   wikipedia        :
 
 
-# Reading Files
-include:
-  - .htaccess
-  - _pages
-  - files
 exclude:
   - docs
   - google_scholar_crawler
