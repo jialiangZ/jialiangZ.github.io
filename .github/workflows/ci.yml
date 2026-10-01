@@ -7,12 +7,12 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
-          node-version: '20'
+          node-version: '24'
       - name: JS syntax check
         run: |
           node --check assets/js/visitor-map.js
@@ -20,7 +20,7 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
-      - name: Jekyll build (catch Liquid/SCSS errors before Pages does)
+      - name: Jekyll build (catch Liquid/SCSS errors before deploy)
         run: |
           bundle lock --add-platform x86_64-linux
           bundle install --jobs 4
