@@ -183,11 +183,11 @@
     setCounter(res.s, res.live);
   }
 
-  // Place the camera so the sphere itself renders at ~TARGET_PX (or 86% of height on small screens).
+  // Place the camera so the sphere itself renders at ~TARGET_PX (or 90% of height on small screens).
   function fitInitialView() {
-    var TARGET_PX = 480;
+    var TARGET_PX = 500;
     var h = box.clientHeight || TARGET_PX;
-    var targetPx = Math.min(TARGET_PX, h * 0.86);
+    var targetPx = Math.min(TARGET_PX, h * 0.9);
     var fov = (world.camera() && world.camera().fov) || 50;
     var halfDeg = Math.min(32, (targetPx / h) * fov / 2);
     var altitude = 1 / Math.sin(halfDeg * Math.PI / 180);
