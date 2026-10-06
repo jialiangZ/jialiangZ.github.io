@@ -211,3 +211,153 @@ a.gs-badge-link,
     color: #8b949e;
     font-size: 0.8em;
 }
+
+/* ==========================================================================
+   Unified card language (matches .paper-box)
+   ========================================================================== */
+
+// Section headings: short gradient accent underline
+.page__content h1::after {
+    content: "";
+    display: block;
+    width: 52px;
+    height: 4px;
+    margin-top: 0.35em;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #0066cc, #7fc4f7);
+}
+
+// News / Honors / Educations lists as cards
+.page__content > ul {
+    list-style: none;
+    margin-left: 0;
+    padding: 0.8em 1.3em;
+    background: #fff;
+    border: 1px solid #e8ecf2;
+    border-radius: 14px;
+    box-shadow: 0 1px 3px rgba(20, 40, 80, 0.05);
+
+    li {
+        padding: 0.55em 0.5em;
+        border-radius: 8px;
+        transition: background 0.15s ease;
+
+        &:hover {
+            background: #f6f9fc;
+        }
+
+        + li {
+            border-top: 1px solid #f3f5f8;
+        }
+
+        // Date markers styled as badges (same family as .paper-venue)
+        > em:first-child {
+            font-style: normal;
+            background: #e9f0fb;
+            color: #2456c4;
+            font-size: 0.8em;
+            font-weight: 600;
+            padding: 0.18em 0.6em;
+            border-radius: 6px;
+            margin-right: 0.3em;
+            white-space: nowrap;
+        }
+    }
+}
+
+// Sidebar profile as a card
+.sidebar .profile_box {
+    background: #fff;
+    border: 1px solid #e8ecf2;
+    border-radius: 14px;
+    box-shadow: 0 1px 3px rgba(20, 40, 80, 0.05);
+    padding: 1.25em;
+
+    .author__avatar img {
+        border: 3px solid #fff;
+        box-shadow: 0 4px 14px rgba(20, 40, 80, 0.18);
+    }
+
+    .author__urls a {
+        text-decoration: none;
+        border-radius: 8px;
+        transition: color 0.2s ease, background 0.2s ease;
+
+        &:hover {
+            color: #0066cc;
+            background: #f6f9fc;
+            text-decoration: none;
+        }
+    }
+}
+
+// Visitor map section as a card + counter chip
+#visitor-map {
+    background: #fff;
+    border: 1px solid #e8ecf2;
+    border-radius: 14px;
+    box-shadow: 0 1px 3px rgba(20, 40, 80, 0.05);
+    padding: 1.2em 1.2em 1em;
+}
+
+#visitor-map-counter {
+    display: inline-block;
+    background: #f3f6fa;
+    border-radius: 999px;
+    padding: 0.3em 1em;
+}
+
+// 404 page
+.notfound-card {
+    text-align: center;
+    padding: 4em 1.5em;
+    background: #fff;
+    border: 1px solid #e8ecf2;
+    border-radius: 14px;
+    box-shadow: 0 1px 3px rgba(20, 40, 80, 0.05);
+
+    .notfound-code {
+        font-size: 5em;
+        font-weight: 700;
+        line-height: 1;
+        margin: 0;
+        background: linear-gradient(135deg, #2c3e50, #0066cc);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: #2c3e50;
+    }
+
+    .notfound-msg {
+        font-size: 1.2em;
+        color: #57606a;
+        margin: 1em 0 2em;
+    }
+
+    .notfound-home {
+        display: inline-block;
+        padding: 8px 22px;
+        background: #2c3e50;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 0.95em;
+        transition: background 0.2s ease;
+
+        &:hover {
+            background: #0066cc;
+            color: #fff;
+            text-decoration: none;
+        }
+    }
+
+    .notfound-jump {
+        margin-top: 2.5em;
+        color: #8b949e;
+        font-size: 0.9em;
+
+        a {
+            color: #0066cc;
+        }
+    }
+}
