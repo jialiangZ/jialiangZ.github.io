@@ -5,8 +5,8 @@ on:
   repository_dispatch:
     types: [run-citation-crawler]
   schedule:
-    # Daily 17:00 UTC — 1 SerpAPI search per run (~31/month, free tier is
-    # 100/month). Scholar anti-bot is SerpAPI's concern, not ours.
+    # Daily 17:00 UTC — 1 SerpAPI search per run (~31/month, plan quota is
+    # 250/month). Scholar anti-bot is SerpAPI's concern, not ours.
     - cron: '0 17 * * *'
 
 # Pushes to main only trigger a Pages rebuild (page_build does NOT re-trigger
