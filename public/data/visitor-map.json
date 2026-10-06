@@ -1,8 +1,8 @@
 {
-  "total": 41,
+  "total": 50,
   "counts": {
-    "HK": 32,
-    "SG": 9
+    "HK": 35,
+    "SG": 15
   },
   "daily": {
     "2026-09-30": {
@@ -21,6 +21,10 @@
     "2026-10-04": {
       "HK": 2,
       "SG": 3
+    },
+    "2026-10-05": {
+      "HK": 3,
+      "SG": 6
     }
   },
   "referrers": {
@@ -40,6 +44,10 @@
     },
     "2026-10-04": {
       "direct": 5
+    },
+    "2026-10-05": {
+      "direct": 8,
+      "google.com": 1
     }
   },
   "cities": [
@@ -48,15 +56,22 @@
       "city": "Hong Kong",
       "lat": 22.27832,
       "lon": 114.17469,
-      "count": 29
+      "count": 31
     },
     {
       "country": "SG",
       "city": "Singapore",
       "lat": 1.28967,
       "lon": 103.85007,
-      "count": 9
+      "count": 15
+    },
+    {
+      "country": "HK",
+      "city": "Tung Chung",
+      "lat": 22.28783,
+      "lon": 113.94243,
+      "count": 1
     }
   ],
-  "updated": "2026-10-04T22:53:20.715Z"
+  "updated": "2026-10-06T01:12:48.757Z"
 }
