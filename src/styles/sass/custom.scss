@@ -326,9 +326,9 @@ a.gs-badge-link,
         transition: transform 0.25s ease;
     }
 
-    &:hover,
-    &:focus-visible {
-        color: $ink;
+    // Neutralize the theme's own hover recolor: underline is the only feedback
+    &:hover {
+        color: $ink-soft;
     }
 
     &:hover::after,
