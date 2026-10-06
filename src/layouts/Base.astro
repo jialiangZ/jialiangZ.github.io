@@ -118,7 +118,7 @@ const { title } = Astro.props;
         var citationEles = document.getElementsByClassName("show_paper_citations");
         Array.prototype.forEach.call(citationEles, function (element) {
           var p = findPaper(data, element);
-          element.innerHTML = p ? "| Citations: " + p["num_citations"] : "";
+          element.innerHTML = p ? '<span class="cite-chip">Cited by <b>' + p["num_citations"] + "</b></span>" : "";
         });
       }
 

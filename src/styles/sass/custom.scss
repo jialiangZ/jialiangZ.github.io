@@ -9,9 +9,23 @@
     align-items: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
-    border-bottom: 1px solid #e8e8e8;
-    padding: 2em 0;
-    margin-bottom: 1em;
+    background: #fff;
+    border: 1px solid #e8ecf2;
+    border-radius: 14px;
+    box-shadow: 0 1px 3px rgba(20, 40, 80, 0.05);
+    padding: 1.6em 1.6em 1.4em;
+    margin-bottom: 1.6em;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(20, 40, 80, 0.1);
+
+        .paper-box-image img {
+            transform: scale(1.02);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+        }
+    }
 
     .paper-box-image {
         justify-content: center;
@@ -22,9 +36,10 @@
         img {
             max-width: 400px;
             width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.13);
             object-fit: cover;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
     }
 
@@ -37,10 +52,10 @@
         }
 
         .paper-title {
-            font-size: 1.15em;
+            font-size: 1.12em;
             font-weight: 600;
-            line-height: 1.4;
-            margin-bottom: 0.6em;
+            line-height: 1.45;
+            margin-bottom: 0.7em;
 
             a {
                 color: #2c3e50;
@@ -65,31 +80,76 @@
             }
         }
 
+        .paper-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5em;
+            margin-bottom: 0.75em;
+        }
+
         .paper-venue {
-            font-style: italic;
-            color: #555;
-            font-size: 0.95em;
-            margin-bottom: 0.5em;
-            font-weight: 500;
+            display: inline-block;
+            font-style: normal;
+            background: #e9f0fb;
+            color: #2456c4;
+            font-size: 0.82em;
+            font-weight: 600;
+            padding: 0.22em 0.8em;
+            border-radius: 8px;
+            letter-spacing: 0.01em;
+        }
+
+        a.paper-arxiv {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.82em;
+            font-weight: 600;
+            color: #55606e;
+            background: #fff;
+            border: 1px solid #d8dfe8;
+            border-radius: 8px;
+            padding: 0.18em 0.75em;
+            text-decoration: none;
+            transition: color 0.2s ease, border-color 0.2s ease;
+
+            &:hover {
+                color: #0066cc;
+                border-color: #9cc3ec;
+                text-decoration: none;
+            }
+        }
+
+        .paper-citations {
+            font-size: 0.82em;
+            margin-bottom: 0;
+        }
+
+        .cite-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3em;
+            background: #e2f3f7;
+            color: #0b7285;
+            font-weight: 600;
+            padding: 0.22em 0.8em;
+            border-radius: 999px;
+
+            b {
+                font-weight: 700;
+            }
         }
 
         .paper-authors {
-            color: #444;
-            font-size: 0.9em;
-            line-height: 1.5;
-            margin-bottom: 0.5em;
+            color: #4a5568;
+            font-size: 0.88em;
+            line-height: 1.6;
+            margin-bottom: 0;
 
             strong {
                 color: #2c3e50;
                 font-weight: 600;
             }
-        }
-
-        .paper-citations {
-            font-size: 0.9em;
-            color: #666;
-            font-weight: 500;
-            margin-bottom: 0;
         }
     }
 
@@ -107,10 +167,16 @@
 
         .paper-box-text {
             justify-content: left;
-            padding-left: 2em;
+            padding-left: 1.6em;
             max-width: 65%;
             order: 2;
         }
+    }
+}
+
+@media (max-width: 480px) {
+    .paper-box {
+        padding: 1.1em 1.1em 1em;
     }
 }
 
