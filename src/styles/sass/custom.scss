@@ -180,16 +180,10 @@
     }
 }
 
-$scroll_offset : 2em;
-
-h1:before,
-.anchor:before {
-    content: '';
-    display: block;
-    position: relative;
-    width: 0;
-    height: $scroll_offset;
-    margin-top: -$scroll_offset;
+// Smooth anchor scrolling, offsetting the sticky masthead
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5em;
 }
 
 // Google Scholar citation badge (img.shields.io, data endpoint = same-origin JSON)
@@ -359,5 +353,109 @@ a.gs-badge-link,
         a {
             color: #0066cc;
         }
+    }
+}
+
+/* ==========================================================================
+   Polish: masthead glass, links, selection, footer, sticky sidebar, motion
+   ========================================================================== */
+
+// Frosted-glass masthead + animated nav underline
+.masthead {
+    background-color: rgba(255, 255, 255, 0.82);
+    -webkit-backdrop-filter: blur(10px) saturate(1.4);
+    backdrop-filter: blur(10px) saturate(1.4);
+    border-bottom: 1px solid rgba(40, 60, 90, 0.08);
+}
+
+.greedy-nav a {
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -3px;
+        height: 2px;
+        border-radius: 1px;
+        background: linear-gradient(90deg, #0066cc, #7fc4f7);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.25s ease;
+    }
+
+    &:hover::after,
+    &:focus-visible::after {
+        transform: scaleX(1);
+    }
+}
+
+// Content paragraph links: unified accent + external-link arrow
+.page__content > p a {
+    color: #0066cc;
+    text-decoration-color: rgba(0, 102, 204, 0.35);
+    text-underline-offset: 2px;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+
+    &:hover {
+        color: #004c99;
+        text-decoration-color: currentColor;
+    }
+}
+
+.page__content > p a[href^="http"]:not(.gs-badge-link)::after {
+    content: " \2197";
+    font-size: 0.75em;
+    vertical-align: super;
+    opacity: 0.55;
+    margin-left: 1px;
+}
+
+// Brand selection color
+::-moz-selection {
+    color: #fff;
+    background: #0066cc;
+}
+
+::selection {
+    color: #fff;
+    background: #0066cc;
+}
+
+// Footer contrast (was near WCAG minimum on its light background)
+.page__footer {
+    color: #55606e;
+
+    a {
+        color: #0066cc;
+
+        &:hover {
+            color: #004c99;
+        }
+    }
+}
+
+// Sticky author card on tall pages (desktop side column only)
+@include breakpoint($large) {
+    .sidebar.sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 4.5em;
+    }
+}
+
+// Respect users who prefer reduced motion
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }
