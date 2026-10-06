@@ -61,5 +61,6 @@ jobs:
           echo "Scholar stats unchanged"
         else
           git commit -m "chore: sync scholar stats"
+          git pull --rebase origin main
           git push origin HEAD:main
         fi

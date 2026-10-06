@@ -37,5 +37,6 @@ jobs:
             echo "snapshot unchanged, nothing to commit"
           else
             git commit -m "chore(visitor-map): daily stats snapshot"
+            git pull --rebase origin main
             git push
           fi

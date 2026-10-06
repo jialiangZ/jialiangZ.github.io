@@ -42,8 +42,8 @@ const { title } = Astro.props;
       </article>
     </div>
 
-    <script src="assets/vendor/jquery.min.js" is:inline></script>
-    <script src="assets/js/main.min.js" is:inline></script>
+    <script src="/assets/vendor/jquery.min.js" is:inline></script>
+    <script src="/assets/js/main.min.js" is:inline></script>
 
     <script is:inline define:vars={{ repo: REPO, visitorMap: VISITOR_MAP }}>
       // Runtime config injected from src/config.ts
@@ -53,7 +53,7 @@ const { title } = Astro.props;
       // Citation stats fetch chain: same-origin copy first, then CDN mirrors
       // of the google-scholar-stats data branch.
       var urls = [
-        "data/scholar-stats/gs_data.json",
+        "/data/scholar-stats/gs_data.json",
         "https://cdn.jsdelivr.net/gh/" + repo + "@google-scholar-stats/gs_data.json",
         "https://raw.githubusercontent.com/" + repo + "/google-scholar-stats/gs_data.json",
       ];
@@ -127,6 +127,6 @@ const { title } = Astro.props;
       else document.addEventListener("DOMContentLoaded", start);
     </script>
 
-    {VISITOR_MAP.enabled && <script src="assets/js/visitor-map.js" is:inline defer></script>}
+    {VISITOR_MAP.enabled && <script src="/assets/js/visitor-map.js" is:inline defer></script>}
   </body>
 </html>

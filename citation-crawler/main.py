@@ -51,7 +51,7 @@ def write_output(total, pubs, source):
         "citedby": total,
         "publications": pubs,
         "source": source,
-        "updated": datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S"),
+        "updated": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S"),
     }
     with open(os.path.join(HERE, "results", "gs_data.json"), "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)

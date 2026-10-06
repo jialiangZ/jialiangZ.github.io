@@ -16,7 +16,7 @@ export const REPO = "jialiangZ/jialiangZ.github.io";
 
 export const AUTHOR = {
   name: "Jialiang Zhang",
-  avatar: "images/avatar.webp",
+  avatar: "/images/avatar.webp",
   bio: "Ph.D. student, The University of Hong Kong",
   location: "Hong Kong, China",
   email: "zhangjia_liang@foxmail.com",
