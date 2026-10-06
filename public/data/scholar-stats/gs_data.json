@@ -1,21 +1,21 @@
 {
-  "citedby": 28,
+  "citedby": 31,
   "publications": {
     "zk2uLXoAAAAJ:UeHWp8X0CEIC": {
       "title": "Think-as-You-See: Streaming Chain-of-Thought Reasoning for Large Vision-Language Models",
-      "num_citations": 9
+      "num_citations": 10
     },
     "think as you see streaming chain of thought reasoning for large vision language models": {
       "title": "Think-as-You-See: Streaming Chain-of-Thought Reasoning for Large Vision-Language Models",
-      "num_citations": 9
+      "num_citations": 10
     },
     "zk2uLXoAAAAJ:IjCSPb-OGe4C": {
       "title": "UTPTrack: Towards Simple and Unified Token Pruning for Visual Tracking",
-      "num_citations": 7
+      "num_citations": 9
     },
     "utptrack towards simple and unified token pruning for visual tracking": {
       "title": "UTPTrack: Towards Simple and Unified Token Pruning for Visual Tracking",
-      "num_citations": 7
+      "num_citations": 9
     },
     "zk2uLXoAAAAJ:zYLM7Y9cAGgC": {
       "title": "Probing the difficulty perception mechanism of large language models",
@@ -35,5 +35,5 @@
     }
   },
   "source": "google-scholar",
-  "updated": "2026-09-30 19:17:32"
+  "updated": "2026-10-05 23:03:32"
 }

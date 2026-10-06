@@ -52,11 +52,11 @@ jobs:
       if: success()
       run: |
         if [ ! -d citation-crawler/results ]; then echo "no results, skip"; exit 0; fi
-        mkdir -p data/scholar-stats
-        cp citation-crawler/results/*.json data/scholar-stats/
+        mkdir -p public/data/scholar-stats
+        cp citation-crawler/results/*.json public/data/scholar-stats/
         git config --local user.name "${GITHUB_ACTOR}"
         git config --local user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-        git add data/scholar-stats
+        git add public/data/scholar-stats
         if git diff --cached --quiet; then
           echo "Scholar stats unchanged"
         else
