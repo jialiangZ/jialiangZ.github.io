@@ -1,8 +1,46 @@
 /* ==========================================================================
-   Site custom styles (everything below is specific to this homepage)
-   Keep this file for our own styles; main.scss stays a pure import manifest.
+   Site custom styles — restrained academic design system
+   (ink-on-paper palette, serif headings, hairline rules, generous air)
    ========================================================================== */
 
+// ---- Design tokens ---------------------------------------------------------
+$ink:         #1c2128;   // near-black body ink
+$ink-soft:    #3d434d;   // secondary text
+$muted:       #6a7180;   // tertiary text
+$faint:       #9aa1ad;   // dates, footnotes
+$accent:      #1e4e79;   // academic navy (links, interactive)
+$accent-deep: #163d61;
+$hairline:    #e7e9ec;   // borders
+$hairline-d:  #d6dade;   // borders on hover
+$serif-x:     Georgia, "Times New Roman", "Songti SC", "SimSun", serif;
+
+// ---- Base ------------------------------------------------------------------
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5em;
+}
+
+body {
+    line-height: 1.65;
+}
+
+::selection,
+::-moz-selection {
+    color: #fff;
+    background: $accent;
+}
+
+// ---- Section headings: serif + hairline rule -------------------------------
+.page__content h1 {
+    font-family: $serif-x;
+    font-weight: 600;
+    color: $ink;
+    letter-spacing: -0.01em;
+    padding-bottom: 0.35em;
+    border-bottom: 1px solid $hairline;
+}
+
+// ---- Paper entries ---------------------------------------------------------
 .paper-box {
     display: flex;
     justify-content: left;
@@ -10,20 +48,17 @@
     flex-direction: row;
     flex-wrap: wrap;
     background: #fff;
-    border: 1px solid #e8ecf2;
-    border-radius: 14px;
-    box-shadow: 0 1px 3px rgba(20, 40, 80, 0.05);
+    border: 1px solid $hairline;
+    border-radius: 10px;
     padding: 1.6em 1.6em 1.4em;
     margin-bottom: 1.6em;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: border-color 0.25s ease;
 
     &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 30px rgba(20, 40, 80, 0.1);
+        border-color: $hairline-d;
 
         .paper-box-image img {
-            transform: scale(1.02);
-            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+            transform: scale(1.01);
         }
     }
 
@@ -36,10 +71,10 @@
         img {
             max-width: 400px;
             width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.13);
+            border-radius: 8px;
+            border: 1px solid $hairline;
             object-fit: cover;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease;
         }
     }
 
@@ -52,20 +87,24 @@
         }
 
         .paper-title {
-            font-size: 1.12em;
+            font-family: $serif-x;
+            font-size: 1.18em;
             font-weight: 600;
+            color: $ink;
             line-height: 1.45;
-            margin-bottom: 0.7em;
+            letter-spacing: -0.005em;
+            margin-bottom: 0.55em;
 
             a {
-                color: #2c3e50;
+                color: inherit;
                 text-decoration: none;
-                border-bottom: 1px solid transparent;
-                transition: color 0.2s ease, border-bottom-color 0.2s ease;
+                transition: color 0.2s ease;
 
                 &:hover {
-                    color: #0066cc;
-                    border-bottom-color: #0066cc;
+                    color: $accent;
+                    text-decoration: underline;
+                    text-underline-offset: 3px;
+                    text-decoration-color: rgba($accent, 0.35);
                 }
             }
         }
@@ -80,74 +119,62 @@
             }
         }
 
+        // Quiet metadata row: VENUE · arXiv · Cited by N
         .paper-meta {
             display: flex;
             flex-wrap: wrap;
-            align-items: center;
-            gap: 0.5em;
-            margin-bottom: 0.75em;
+            align-items: baseline;
+            column-gap: 1em;
+            row-gap: 0.35em;
+            margin-bottom: 0.7em;
         }
 
         .paper-venue {
-            display: inline-block;
-            font-style: normal;
-            background: #e9f0fb;
-            color: #2456c4;
-            font-size: 0.82em;
+            font-size: 0.78em;
             font-weight: 600;
-            padding: 0.22em 0.8em;
-            border-radius: 8px;
-            letter-spacing: 0.01em;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            color: $accent;
         }
 
         a.paper-arxiv {
-            display: inline-flex;
-            align-items: center;
             font-size: 0.82em;
-            font-weight: 600;
-            color: #55606e;
-            background: #fff;
-            border: 1px solid #d8dfe8;
-            border-radius: 8px;
-            padding: 0.18em 0.75em;
+            font-weight: 500;
+            color: $muted;
             text-decoration: none;
-            transition: color 0.2s ease, border-color 0.2s ease;
+            border-bottom: 1px solid transparent;
+            transition: color 0.2s ease, border-bottom-color 0.2s ease;
 
             &:hover {
-                color: #0066cc;
-                border-color: #9cc3ec;
+                color: $accent;
+                border-bottom-color: rgba($accent, 0.4);
                 text-decoration: none;
             }
         }
 
         .paper-citations {
             font-size: 0.82em;
+            color: $muted;
             margin-bottom: 0;
         }
 
         .cite-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3em;
-            background: #e2f3f7;
-            color: #0b7285;
-            font-weight: 600;
-            padding: 0.22em 0.8em;
-            border-radius: 999px;
+            color: $muted;
 
             b {
-                font-weight: 700;
+                color: $ink-soft;
+                font-weight: 600;
             }
         }
 
         .paper-authors {
-            color: #4a5568;
+            color: $ink-soft;
             font-size: 0.88em;
             line-height: 1.6;
             margin-bottom: 0;
 
             strong {
-                color: #2c3e50;
+                color: $ink;
                 font-weight: 600;
             }
         }
@@ -180,13 +207,81 @@
     }
 }
 
-// Smooth anchor scrolling, offsetting the sticky masthead
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 4.5em;
+// ---- Lists (News / Honors / Educations): flat, tabular dates ---------------
+.page__content > ul {
+    list-style: none;
+    margin-left: 0;
+    padding: 0.2em 0;
+
+    li {
+        padding: 0.65em 0;
+
+        + li {
+            border-top: 1px solid #f0f1f3;
+        }
+
+        > em:first-child {
+            font-style: normal;
+            font-variant-numeric: tabular-nums;
+            color: $faint;
+            font-size: 0.85em;
+            font-weight: 500;
+            display: inline-block;
+            min-width: 5.2em;
+            margin-right: 0.5em;
+        }
+    }
 }
 
-// Google Scholar citation badge (img.shields.io, data endpoint = same-origin JSON)
+// ---- Sidebar author card: flat, quiet --------------------------------------
+.sidebar .profile_box {
+    padding: 0.25em 0;
+
+    .author__avatar img {
+        padding: 4px;
+        border: 1px solid $hairline;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+    }
+
+    .author__urls a {
+        color: $ink-soft;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: color 0.2s ease, background 0.2s ease;
+
+        &:hover {
+            color: $accent;
+            background: #f6f7f9;
+            text-decoration: none;
+        }
+    }
+}
+
+.sidebar .author__name {
+    font-family: $serif-x;
+    font-weight: 600;
+    color: $ink;
+    letter-spacing: -0.01em;
+}
+
+.sidebar .author__bio {
+    color: $muted;
+}
+
+// ---- Visitor map -----------------------------------------------------------
+#visitor-map {
+    background: #fff;
+    border: 1px solid $hairline;
+    border-radius: 10px;
+    padding: 1.2em 1.2em 1em;
+}
+
+#visitor-map-counter {
+    color: $muted;
+    font-size: 0.85em;
+}
+
+// ---- Google Scholar badge ---------------------------------------------------
 a.gs-badge-link,
 .page__content a.gs-badge-link {
     text-decoration: none;
@@ -202,174 +297,21 @@ a.gs-badge-link,
 }
 
 .gs-updated {
-    color: #8b949e;
+    color: $faint;
     font-size: 0.8em;
 }
 
-/* ==========================================================================
-   Unified card language (matches .paper-box)
-   ========================================================================== */
-
-// Section headings: short gradient accent underline
-.page__content h1::after {
-    content: "";
-    display: block;
-    width: 52px;
-    height: 4px;
-    margin-top: 0.35em;
-    border-radius: 2px;
-    background: linear-gradient(90deg, #0066cc, #7fc4f7);
-}
-
-// News / Honors / Educations lists as cards
-.page__content > ul {
-    list-style: none;
-    margin-left: 0;
-    padding: 0.8em 1.3em;
-    background: #fff;
-    border: 1px solid #e8ecf2;
-    border-radius: 14px;
-    box-shadow: 0 1px 3px rgba(20, 40, 80, 0.05);
-
-    li {
-        padding: 0.55em 0.5em;
-        border-radius: 8px;
-        transition: background 0.15s ease;
-
-        &:hover {
-            background: #f6f9fc;
-        }
-
-        + li {
-            border-top: 1px solid #f3f5f8;
-        }
-
-        // Date markers styled as badges (same family as .paper-venue)
-        > em:first-child {
-            font-style: normal;
-            background: #e9f0fb;
-            color: #2456c4;
-            font-size: 0.8em;
-            font-weight: 600;
-            padding: 0.18em 0.6em;
-            border-radius: 6px;
-            margin-right: 0.3em;
-            white-space: nowrap;
-        }
-    }
-}
-
-// Sidebar profile as a card
-.sidebar .profile_box {
-    background: #fff;
-    border: 1px solid #e8ecf2;
-    border-radius: 14px;
-    box-shadow: 0 1px 3px rgba(20, 40, 80, 0.05);
-    padding: 1.25em;
-
-    .author__avatar img {
-        border: 3px solid #fff;
-        box-shadow: 0 4px 14px rgba(20, 40, 80, 0.18);
-    }
-
-    .author__urls a {
-        text-decoration: none;
-        border-radius: 8px;
-        transition: color 0.2s ease, background 0.2s ease;
-
-        &:hover {
-            color: #0066cc;
-            background: #f6f9fc;
-            text-decoration: none;
-        }
-    }
-}
-
-// Visitor map section as a card + counter chip
-#visitor-map {
-    background: #fff;
-    border: 1px solid #e8ecf2;
-    border-radius: 14px;
-    box-shadow: 0 1px 3px rgba(20, 40, 80, 0.05);
-    padding: 1.2em 1.2em 1em;
-}
-
-#visitor-map-counter {
-    display: inline-block;
-    background: #f3f6fa;
-    border-radius: 999px;
-    padding: 0.3em 1em;
-}
-
-// 404 page
-.notfound-card {
-    text-align: center;
-    padding: 4em 1.5em;
-    background: #fff;
-    border: 1px solid #e8ecf2;
-    border-radius: 14px;
-    box-shadow: 0 1px 3px rgba(20, 40, 80, 0.05);
-
-    .notfound-code {
-        font-size: 5em;
-        font-weight: 700;
-        line-height: 1;
-        margin: 0;
-        background: linear-gradient(135deg, #2c3e50, #0066cc);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        color: #2c3e50;
-    }
-
-    .notfound-msg {
-        font-size: 1.2em;
-        color: #57606a;
-        margin: 1em 0 2em;
-    }
-
-    .notfound-home {
-        display: inline-block;
-        padding: 8px 22px;
-        background: #2c3e50;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 8px;
-        font-size: 0.95em;
-        transition: background 0.2s ease;
-
-        &:hover {
-            background: #0066cc;
-            color: #fff;
-            text-decoration: none;
-        }
-    }
-
-    .notfound-jump {
-        margin-top: 2.5em;
-        color: #8b949e;
-        font-size: 0.9em;
-
-        a {
-            color: #0066cc;
-        }
-    }
-}
-
-/* ==========================================================================
-   Polish: masthead glass, links, selection, footer, sticky sidebar, motion
-   ========================================================================== */
-
-// Frosted-glass masthead + animated nav underline
+// ---- Masthead: frosted white, hairline, navy underline ----------------------
 .masthead {
-    background-color: rgba(255, 255, 255, 0.82);
-    -webkit-backdrop-filter: blur(10px) saturate(1.4);
-    backdrop-filter: blur(10px) saturate(1.4);
-    border-bottom: 1px solid rgba(40, 60, 90, 0.08);
+    background-color: rgba(255, 255, 255, 0.85);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid $hairline;
 }
 
 .greedy-nav a {
     position: relative;
+    color: $ink-soft;
 
     &::after {
         content: "";
@@ -378,11 +320,15 @@ a.gs-badge-link,
         right: 0;
         bottom: -3px;
         height: 2px;
-        border-radius: 1px;
-        background: linear-gradient(90deg, #0066cc, #7fc4f7);
+        background: $accent;
         transform: scaleX(0);
         transform-origin: left;
         transition: transform 0.25s ease;
+    }
+
+    &:hover,
+    &:focus-visible {
+        color: $ink;
     }
 
     &:hover::after,
@@ -391,15 +337,15 @@ a.gs-badge-link,
     }
 }
 
-// Content paragraph links: unified accent + external-link arrow
+// ---- Content links: navy + soft underline, external arrow -------------------
 .page__content > p a {
-    color: #0066cc;
-    text-decoration-color: rgba(0, 102, 204, 0.35);
+    color: $accent;
+    text-decoration-color: rgba($accent, 0.3);
     text-underline-offset: 2px;
     transition: color 0.2s ease, text-decoration-color 0.2s ease;
 
     &:hover {
-        color: #004c99;
+        color: $accent-deep;
         text-decoration-color: currentColor;
     }
 }
@@ -412,31 +358,22 @@ a.gs-badge-link,
     margin-left: 1px;
 }
 
-// Brand selection color
-::-moz-selection {
-    color: #fff;
-    background: #0066cc;
-}
-
-::selection {
-    color: #fff;
-    background: #0066cc;
-}
-
-// Footer contrast (was near WCAG minimum on its light background)
+// ---- Footer ------------------------------------------------------------------
 .page__footer {
-    color: #55606e;
+    color: $muted;
+    background: #fff;
+    border-top: 1px solid $hairline;
 
     a {
-        color: #0066cc;
+        color: $ink-soft;
 
         &:hover {
-            color: #004c99;
+            color: $accent;
         }
     }
 }
 
-// Sticky author card on tall pages (desktop side column only)
+// ---- Sticky author card (desktop) ---------------------------------------------
 @include breakpoint($large) {
     .sidebar.sticky {
         position: -webkit-sticky;
@@ -445,7 +382,58 @@ a.gs-badge-link,
     }
 }
 
-// Respect users who prefer reduced motion
+// ---- 404 ----------------------------------------------------------------------
+.notfound-card {
+    text-align: center;
+    padding: 4em 1.5em;
+    background: #fff;
+    border: 1px solid $hairline;
+    border-radius: 10px;
+
+    .notfound-code {
+        font-family: $serif-x;
+        font-size: 5em;
+        font-weight: 600;
+        line-height: 1;
+        margin: 0;
+        color: $ink;
+    }
+
+    .notfound-msg {
+        font-size: 1.15em;
+        color: $muted;
+        margin: 1em 0 2em;
+    }
+
+    .notfound-home {
+        display: inline-block;
+        padding: 9px 24px;
+        background: $accent;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 0.95em;
+        transition: background 0.2s ease;
+
+        &:hover {
+            background: $accent-deep;
+            color: #fff;
+            text-decoration: none;
+        }
+    }
+
+    .notfound-jump {
+        margin-top: 2.5em;
+        color: $faint;
+        font-size: 0.9em;
+
+        a {
+            color: $accent;
+        }
+    }
+}
+
+// ---- Reduced motion -------------------------------------------------------------
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
