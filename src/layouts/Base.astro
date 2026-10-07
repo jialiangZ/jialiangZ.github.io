@@ -27,6 +27,18 @@ const { title } = Astro.props;
   <body>
     <Masthead />
 
+    <script is:inline>
+      var mastheadEl = document.querySelector(".masthead");
+      if (mastheadEl) {
+        var syncMastheadHeight = function () {
+          document.documentElement.style.setProperty("--masthead-h", mastheadEl.offsetHeight + "px");
+        };
+        syncMastheadHeight();
+        if ("ResizeObserver" in window) new ResizeObserver(syncMastheadHeight).observe(mastheadEl);
+        else window.addEventListener("resize", syncMastheadHeight);
+      }
+    </script>
+
     <div id="main" role="main">
       <div class="sidebar sticky">
         <AuthorProfile />
@@ -104,18 +116,18 @@ const { title } = Astro.props;
       }
 
       function renderData(data) {
-        var badge = document.getElementById("gs-citations");
-        if (badge && typeof data["citedby"] === "number" && Number.isFinite(data["citedby"]) && data["citedby"] >= 0) {
-          badge.textContent = data["citedby"].toLocaleString();
+        var citationLink = document.getElementById("gs-citation-link");
+        var citationSentence = document.getElementById("gs-citation-sentence");
+        if (citationLink && citationSentence && typeof data["citedby"] === "number" && Number.isFinite(data["citedby"]) && data["citedby"] >= 0) {
+          citationLink.textContent = data["citedby"].toLocaleString() + (data["citedby"] === 1 ? " citation" : " citations");
+          citationSentence.replaceChildren(document.createTextNode("My publications have received "), citationLink, document.createTextNode("."));
         }
-        var updated = document.getElementById("gs-updated");
-        if (updated) {
+        if (citationLink) {
           var when = data["updated"] ? String(data["updated"]).slice(0, 10) : "";
           var source = data["source"] || "";
           var map = { "google-scholar": "", openalex: " \u00b7 OpenAlex" };
           var label = map[source] !== undefined ? map[source] : source ? " \u00b7 " + source : "";
-          if (when) updated.textContent = "Updated " + when + label;
-          updated.title = source ? "Data source: " + source : "";
+          citationLink.title = when ? "Updated " + when + label : "View publications on Google Scholar";
         }
         var citationEles = document.getElementsByClassName("show_paper_citations");
         Array.prototype.forEach.call(citationEles, function (element) {

@@ -1,0 +1,124 @@
+<section class="not-found" aria-labelledby="not-found-title">
+  <p class="not-found__code" aria-hidden="true">404</p>
+  <h1 id="not-found-title" class="not-found__title">Page not found</h1>
+  <p class="not-found__hint">The link may have changed, or the page may no longer exist.</p>
+  <a target="_self" href="/" class="not-found__home"><span aria-hidden="true">&larr;</span> Back to homepage</a>
+  <nav class="not-found__links" aria-label="Homepage sections">
+    <p>Explore the homepage</p>
+    <ul>
+      <li><a target="_self" href="/#about-me">About Me</a></li>
+      <li><a target="_self" href="/#-publications">Publications</a></li>
+      <li><a target="_self" href="/#-news">News</a></li>
+      <li><a target="_self" href="/#-visitor-map">Visitor Map</a></li>
+    </ul>
+  </nav>
+</section>
+
+<style>
+  .not-found {
+    max-width: 36rem;
+    margin: 0 auto;
+    padding: clamp(2.5rem, 8vw, 5rem) 1rem 3rem;
+    text-align: center;
+  }
+
+  .not-found__code {
+    margin: 0 0 1rem;
+    color: #224b8d;
+    font-size: clamp(4rem, 10vw, 6rem);
+    font-weight: 600;
+    letter-spacing: -0.05em;
+    line-height: 1;
+  }
+
+  .not-found__title {
+    margin: 0 0 1rem;
+    padding: 0;
+    border: 0;
+    color: #2c3e50;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .not-found__hint {
+    margin: 0 auto 1.75rem;
+    max-width: 28rem;
+    color: #66717e;
+    font-size: 0.875rem;
+  }
+
+  .not-found__home {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.625rem 1.125rem;
+    border: 1px solid #224b8d;
+    border-radius: 6px;
+    background: #224b8d;
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .not-found__home:hover {
+    background: #1a386a;
+    border-color: #1a386a;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .not-found__links {
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid #e8ecf2;
+  }
+
+  .not-found__links p {
+    margin: 0 0 0.5rem;
+    color: #66717e;
+    font-size: 0.8rem;
+  }
+
+  .not-found__links ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .not-found__links li {
+    margin: 0;
+  }
+
+  .not-found__links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: #224b8d;
+    font-size: 0.875rem;
+    text-decoration: none;
+  }
+
+  .not-found__links a:hover {
+    text-decoration: underline;
+  }
+
+  a:focus-visible {
+    outline: 2px solid #224b8d;
+    outline-offset: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .not-found__home {
+      transition: none;
+    }
+  }
+</style>

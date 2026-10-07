@@ -9,6 +9,20 @@ export default defineConfig({
   vite: {
     css: {
       devSourcemap: false,
+      preprocessorOptions: {
+        scss: {
+          // susy/breakpoint vendor libs are unmaintained and still use
+          // legacy @import / if() / global built-ins; the theme itself
+          // can't move to @use without rewriting them. Safe until Sass 3.0.
+          silenceDeprecations: [
+            "import",
+            "global-builtin",
+            "slash-div",
+            "color-functions",
+            "if-function",
+          ],
+        },
+      },
     },
   },
 });

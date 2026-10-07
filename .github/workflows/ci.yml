@@ -23,6 +23,6 @@ jobs:
           test -f dist/index.html
           test -f dist/404.html
           test -f dist/robots.txt
-          grep -q "gs-badge" dist/index.html
-          grep -q "visitor-map-box" dist/index.html
+          grep -q "visitor-map-points" dist/index.html
+          grep -q "visitor-map-flat-counter" dist/index.html
           grep -q 'class="paper-title"' dist/index.html

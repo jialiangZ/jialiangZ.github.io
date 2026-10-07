@@ -19,31 +19,26 @@ import { NAVIGATION } from "../config";
 </div>
 
 <script is:inline>
-  // Native anchor scrolling respects the sticky header's scroll-margin.
-  // Register before the legacy smooth-scroll handler so it cannot override it.
-  document.getElementById("site-nav").addEventListener("click", function (event) {
+  // Capture-phase handler: fires before the legacy jQuery smoothScroll
+  // plugin ($("a").smoothScroll({offset:-20}) in main.min.js) which binds
+  // directly on each <a>. stopPropagation() keeps its animated scroll
+  // from overriding this exact position.
+  document.addEventListener("click", function (event) {
     if (!(event.target instanceof Element)) return;
     var link = event.target.closest("a");
-    if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (!link || !link.closest("#site-nav")) return;
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     var url = new URL(link.href);
     if (url.origin !== location.origin || url.pathname !== location.pathname || url.search !== location.search || !url.hash) return;
     var target = document.getElementById(url.hash.slice(1));
     if (!target) return;
     event.preventDefault();
-    event.stopImmediatePropagation();
-    if (url.hash === "#-visitor-map") {
-      var details = document.querySelector(".visitor-details");
-      if (details) details.open = true;
-    }
-    target.scrollIntoView({ block: "start", behavior: "auto" });
+    event.stopPropagation();
+    var masthead = document.querySelector(".masthead");
+    var head = target.nextElementSibling || target;
+    var y = head.getBoundingClientRect().top + window.pageYOffset - ((masthead ? masthead.offsetHeight : 0) + 8);
+    window.scrollTo({ top: Math.max(0, y), behavior: "auto" });
     if (location.hash !== url.hash) history.pushState(null, "", url.hash);
     document.querySelector("#site-nav .hidden-links").classList.add("hidden");
-  });
-
-  document.addEventListener("DOMContentLoaded", function () {
-    if (location.hash === "#-visitor-map") {
-      var details = document.querySelector(".visitor-details");
-      if (details) details.open = true;
-    }
-  });
+  }, true);
 </script>

@@ -1,9 +1,12 @@
 ---
+import { Image } from "astro:assets";
+
 interface Props {
   image: string;
   imageAlt: string;
   imageWidth: number;
   imageHeight: number;
+  loading?: "eager" | "lazy";
   title: string;
   arxiv: string;
   venue: string;
@@ -11,13 +14,13 @@ interface Props {
   selfHighlight: string;
   scholarId: string;
 }
-const { image, imageAlt, imageWidth, imageHeight, title, arxiv, venue, authors, selfHighlight, scholarId } = Astro.props;
+const { image, imageAlt, imageWidth, imageHeight, loading = "lazy", title, arxiv, venue, authors, selfHighlight, scholarId } = Astro.props;
 const authorList = authors.split(", ").map((a) => (a === selfHighlight ? { name: a, self: true } : { name: a, self: false }));
 ---
 
 <div class="paper-box">
   <div class="paper-box-image">
-    <img src={image} alt={imageAlt} width={imageWidth} height={imageHeight} loading="lazy" decoding="async" />
+    <Image src={image.startsWith("/") ? image : "/" + image} alt={imageAlt} width={imageWidth} height={imageHeight} loading={loading} decoding="async" />
   </div>
   <div class="paper-box-text">
     <p class="paper-title"><a href={arxiv}>{title}</a></p>

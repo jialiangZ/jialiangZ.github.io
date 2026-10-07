@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import { Image } from "astro:assets";
 import PaperBox from "../components/PaperBox.astro";
 import { PAPERS, AUTHOR, VISITOR_MAP } from "../config";
 ---
@@ -9,8 +10,8 @@ import { PAPERS, AUTHOR, VISITOR_MAP } from "../config";
 
   <p>
     I am a Ph.D. student in Computing and Data Science at The University of Hong Kong (HKU), supervised by <a href="https://yuancaohku.github.io/">Prof. Yuan Cao</a>.
-    My research focuses on <strong>AI for climate science and scientific forecasting</strong>, including Arctic sea ice prediction,
-    and on multimodal large language models for streaming video reasoning.
+    My research focuses on <strong>AI4Earth</strong> and <strong>multimodal large language models (MLLMs)</strong>, with an emphasis on AI for data assimilation, Arctic sea ice prediction,
+    and <strong>MLLMs for streaming video understanding and reasoning</strong>.
   </p>
 
   <p>
@@ -18,14 +19,7 @@ import { PAPERS, AUTHOR, VISITOR_MAP } from "../config";
     <a href="https://oucai.club/fenggao">Prof. Feng Gao</a> in the <a href="https://oucai.club/">OUC AI Lab</a>,
     and visited Eastern Institute of Technology, Ningbo, with
     <a href="https://faculty.eitech.edu.cn/cs/sxy/main.htm">Prof. Xiaoyu Shen</a>.
-  </p>
-
-  <p class="research-stats">
-    <a target="_self" href={AUTHOR.googlescholar} class="citation-summary" aria-label="Research citations on Google Scholar">
-      <span class="citation-label">Citations</span>
-      <span id="gs-citations" class="citation-count">Google Scholar</span>
-    </a>
-    <span id="gs-updated" class="gs-updated"></span>
+    <span id="gs-citation-sentence">See my publications on <a target="_self" href={AUTHOR.googlescholar} id="gs-citation-link">Google Scholar</a>.</span>
   </p>
 
   <span class="anchor" id="-news"></span>
@@ -43,8 +37,8 @@ import { PAPERS, AUTHOR, VISITOR_MAP } from "../config";
   <span class="anchor" id="-publications"></span>
 
   <h2>Publications</h2>
-  {PAPERS.map((p) => (
-    <PaperBox {...p} />
+  {PAPERS.map((p, index) => (
+    <PaperBox {...p} loading={index < 2 ? "eager" : "lazy"} />
   ))}
 
   <span class="anchor" id="-honors-and-awards"></span>
@@ -84,14 +78,16 @@ import { PAPERS, AUTHOR, VISITOR_MAP } from "../config";
   {VISITOR_MAP.enabled && (
     <>
     <span class="anchor" id="-visitor-map"></span>
-    <details class="archive-details visitor-details">
-      <summary>Visitor map</summary>
-      <div id="visitor-map" style="text-align: center; margin-top: 1em;">
-      <div id="visitor-map-box" role="img" aria-label="Interactive 3D globe showing where this homepage's visitors come from" style="position: relative; width: 100%; height: clamp(240px, 30vw, 340px); cursor: grab;"></div>
-      <p id="visitor-map-counter" style="color: #57606a; font-size: 0.9em; margin: 0.4em 0 0;"></p>
-      <noscript><p style="color: #8b949e; font-size: 0.8em;">The visitor map needs JavaScript. Raw data: <a href="/data/visitor-map.json">/data/visitor-map.json</a></p></noscript>
+    <section class="visitor-section" aria-labelledby="visitor-map-title">
+      <h2 id="visitor-map-title">Visitor Map</h2>
+      <div class="visitor-flat-map">
+        <Image src="/images/world-map.svg" alt="" width={960} height={420} loading="lazy" decoding="async" />
+        <div id="visitor-map-points" class="visitor-map-points" role="group" aria-label="Visitor locations. Select a point to see its location and page views."></div>
+        <div id="visitor-map-tooltip" class="visitor-map-tooltip" role="status" hidden></div>
       </div>
-    </details>
+      <p id="visitor-map-flat-counter" class="visitor-stats" aria-live="polite">Loading visitor statistics…</p>
+    <noscript><p class="visitor-map-note">Visitor statistics require JavaScript.</p></noscript>
+    </section>
     </>
   )}
 </Base>
