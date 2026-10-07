@@ -22,13 +22,23 @@
     .paper-box-image {
         justify-content: center;
         display: flex;
+        align-items: center;
         width: 100%;
+        min-width: 0;
+        min-height: 0;
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        background: #fafbfc;
+        border: 1px solid #edf0f3;
+        border-radius: 4px;
         order: 2;
 
         img {
-            max-width: 400px;
+            max-width: 100%;
             width: 100%;
-            height: auto;
+            height: 100%;
+            min-width: 0;
+            min-height: 0;
             border-radius: 4px;
             object-fit: contain;
         }
@@ -151,6 +161,7 @@
 
         .paper-box-image {
             justify-content: flex-start;
+            align-self: start;
             min-width: 0;
             max-width: 100%;
             order: 1;
@@ -207,9 +218,41 @@ body {
     }
 
     .research-stats {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem 0.75rem;
         color: #66717e;
         font-size: 0.875em;
 
+    }
+
+    a.citation-summary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.625rem;
+        padding: 0.375rem 0.75rem;
+        background: #f3f6fa;
+        border: 1px solid #e3e9f1;
+        border-radius: 6px;
+        color: $link-color;
+        text-decoration: none;
+        transition: border-color 0.2s ease, background-color 0.2s ease;
+
+        &:hover {
+            background: #eaf0f8;
+            border-color: #c8d3e0;
+            text-decoration: none;
+        }
+    }
+
+    .citation-label {
+        color: #55606e;
+    }
+
+    .citation-count {
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
     }
 
     .paper-box a:hover img {
