@@ -6,9 +6,8 @@ import { NAVIGATION } from "../config";
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
-        <button><div class="navicon"></div></button>
+        <button type="button" aria-label="More navigation links"><div class="navicon"></div></button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg masthead__menu-home-item"><a target="_self" href="#about-me">Homepage</a></li>
           {NAVIGATION.map((link) => (
             <li class="masthead__menu-item"><a target="_self" href={link.url}>{link.title}</a></li>
           ))}
@@ -18,3 +17,33 @@ import { NAVIGATION } from "../config";
     </div>
   </div>
 </div>
+
+<script is:inline>
+  // Native anchor scrolling respects the sticky header's scroll-margin.
+  // Register before the legacy smooth-scroll handler so it cannot override it.
+  document.getElementById("site-nav").addEventListener("click", function (event) {
+    if (!(event.target instanceof Element)) return;
+    var link = event.target.closest("a");
+    if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    var url = new URL(link.href);
+    if (url.origin !== location.origin || url.pathname !== location.pathname || url.search !== location.search || !url.hash) return;
+    var target = document.getElementById(url.hash.slice(1));
+    if (!target) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    if (url.hash === "#-visitor-map") {
+      var details = document.querySelector(".visitor-details");
+      if (details) details.open = true;
+    }
+    target.scrollIntoView({ block: "start", behavior: "auto" });
+    if (location.hash !== url.hash) history.pushState(null, "", url.hash);
+    document.querySelector("#site-nav .hidden-links").classList.add("hidden");
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    if (location.hash === "#-visitor-map") {
+      var details = document.querySelector(".visitor-details");
+      if (details) details.open = true;
+    }
+  });
+</script>

@@ -1,62 +1,63 @@
 ---
 import Base from "../layouts/Base.astro";
 import PaperBox from "../components/PaperBox.astro";
-import { PAPERS, AUTHOR, SITE, VISITOR_MAP } from "../config";
-
-// Note: plain concatenation (no nested template literals — the Astro
-// compiler's frontmatter scanner mis-lexes them).
-const badgeUrl =
-  "https://img.shields.io/endpoint?url=" +
-  encodeURIComponent(SITE.url + "/data/scholar-stats/gs_data_shieldsio.json") +
-  "&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations";
+import { PAPERS, AUTHOR, VISITOR_MAP } from "../config";
 ---
 
 <Base title="">
-  <p><span class="anchor" id="about-me"></span></p>
+  <span class="anchor" id="about-me"></span>
 
   <p>
-    I am currently a Ph.D. student in Computing and Data Science at the School of Computing and Data Science, The
-    University of Hong Kong (HKU), supervised by Prof. Y. Cao, continuing my research on AI for climate science and
-    scientific forecasting. I received my M.S. degree in Software Engineering (Jul 2026) from Ocean University of China
-    (OUC), where I worked with <a href="https://oucai.club/fenggao">Gao Feng</a> in the <a href="https://oucai.club/">OUC AI Lab</a>, and my B.S. degree in Computer Science and Technology (Jun 2023) from OUC. From June to December 2025, I was a visiting scholar at Eastern Institute of Technology, Ningbo (EIT), under the supervision of <a href="https://faculty.eitech.edu.cn/cs/sxy/main.htm">Xiaoyu Shen</a>, focusing on Streaming Multimodal Large Models for video understanding.
+    I am a Ph.D. student in Computing and Data Science at The University of Hong Kong (HKU), supervised by Prof. Y. Cao.
+    My research focuses on <strong>AI for climate science and scientific forecasting</strong>, including Arctic sea ice prediction,
+    and on multimodal large language models for streaming video reasoning.
   </p>
 
   <p>
-    My research interests encompass AI for Climate Science, Arctic sea ice prediction, scientific forecasting, and
-    multimodal large language models (MLLMs), including streaming video reasoning and generative models. I have
-    published some papers with total citations
-    <a target="_self" href={AUTHOR.googlescholar} class="gs-badge-link"><img src={badgeUrl} alt="citations badge" height="20" /></a><span id="gs-updated" class="gs-updated"></span>.
+    Previously, I received my M.S. and B.S. degrees from Ocean University of China, working with
+    <a href="https://oucai.club/fenggao">Prof. Feng Gao</a> in the <a href="https://oucai.club/">OUC AI Lab</a>,
+    and visited Eastern Institute of Technology, Ningbo, with
+    <a href="https://faculty.eitech.edu.cn/cs/sxy/main.htm">Prof. Xiaoyu Shen</a>.
   </p>
 
-  <p><span class="anchor" id="-news"></span></p>
+  <p class="research-stats">
+    Research citations:
+    <a target="_self" href={AUTHOR.googlescholar}><span id="gs-citations">View on Google Scholar</span></a><span id="gs-updated" class="gs-updated"></span>.
+  </p>
 
-  <h1>🔥 News</h1>
-  <ul>
-    <li><em>2026.09</em>: &nbsp;🎓 Started my Ph.D. at The University of Hong Kong (HKU)</li>
-    <li><em>2026.02</em>: &nbsp;🎉 Two papers were accepted in CVPR2026</li>
-    <li><em>2025.10</em>: &nbsp;🏆 China Graduate AI Innovation Competition, Third Class Prize</li>
-    <li><em>2025.12</em>: &nbsp;📅 Ended academic visit at EIT</li>
-    <li><em>2025.06</em>: &nbsp;👨‍💻 Started academic visit at EIT</li>
-    <li><em>2025.04</em>: &nbsp;🎉 A paper was published in TGRS</li>
+  <span class="anchor" id="-news"></span>
+
+  <h2>News</h2>
+  <ul class="dated-list news-list">
+    <li><time datetime="2026-09">2026.09</time><span>Started my Ph.D. at The University of Hong Kong (HKU).</span></li>
+    <li><time datetime="2026-02">2026.02</time><span>Two papers accepted at <strong>CVPR 2026</strong>.</span></li>
+    <li><time datetime="2025-12">2025.12</time><span>Completed my academic visit at EIT.</span></li>
+    <li><time datetime="2025-10">2025.10</time><span>Third Class Prize, China Graduate AI Innovation Competition.</span></li>
+    <li><time datetime="2025-06">2025.06</time><span>Started my academic visit at EIT.</span></li>
+    <li><time datetime="2025-04">2025.04</time><span>A paper published in <strong>TGRS</strong>.</span></li>
   </ul>
 
-  <p><span class="anchor" id="-publications"></span></p>
+  <span class="anchor" id="-publications"></span>
 
-  <h1>📝 Publications</h1>
+  <h2>Publications</h2>
   {PAPERS.map((p) => (
     <PaperBox {...p} />
   ))}
 
-  <p><span class="anchor" id="-honors-and-awards"></span></p>
+  <span class="anchor" id="-honors-and-awards"></span>
 
-  <h1>🎖️ Honors and Awards</h1>
-  <ul>
+  <h2>Honors and Awards</h2>
+  <ul class="awards-list">
     <li><em>2026</em> SH Scholarship, The University of Hong Kong.</li>
     <li><em>2026.04</em> Graduate Science and Technology Innovation Scholarship.</li>
     <li><em>2026.01</em> Outstanding Graduate.</li>
     <li><em>2025.10</em> BYD Scholarship.</li>
     <li><em>2025.10</em> China Graduate AI Innovation Competition, Third Class Prize.</li>
     <li><em>2024.12</em> The 2nd Greater Bay Area AI For Science Technology Competition, Second Class Prize.</li>
+  </ul>
+  <details class="archive-details">
+    <summary>More honors and awards</summary>
+    <ul class="awards-list">
     <li><em>2024.09</em> Outstanding Graduate Student Cadre of Ocean University of China.</li>
     <li><em>2022</em> ASC Student Supercomputer Challenge, Second Class Prize.</li>
     <li><em>2022.11</em> Outstanding Students of Ocean University of China.</li>
@@ -64,31 +65,30 @@ const badgeUrl =
     <li><em>2022.05</em> Ocean University of China Third Class Scholarship.</li>
     <li><em>2021.05</em> Ocean University of China Third Class Scholarship.</li>
     <li><em>2020.05</em> Outstanding Youth League Member of Ocean University of China.</li>
+    </ul>
+  </details>
+
+  <span class="anchor" id="-educations"></span>
+
+  <h2>Education</h2>
+  <ul class="education-list">
+    <li><em>2026.09 – present</em><div><strong>The University of Hong Kong</strong><br />Ph.D. in Computing and Data Science · Supervisor: Prof. Y. Cao</div></li>
+    <li><em>2025.06 – 2025.12</em><div><strong>Eastern Institute of Technology, Ningbo</strong><br />Visiting Scholar · Supervisor: Prof. Xiaoyu Shen</div></li>
+    <li><em>2023.08 – 2026.07</em><div><strong>Ocean University of China</strong><br />M.S. in Software Engineering · Supervisor: Prof. Feng Gao</div></li>
+    <li><em>2019.09 – 2023.06</em><div><strong>Ocean University of China</strong><br />B.S. in Computer Science and Technology</div></li>
   </ul>
 
-  <p><span class="anchor" id="-educations"></span></p>
-
-  <h1>📖 Educations</h1>
-  <ul>
-    <li><em>2026.09 - (now)</em>, Ph.D. in Computing and Data Science, School of Computing and Data Science, The University of Hong Kong (HKU), supervised by Prof. Y. Cao, focusing on Machine Learning Fundamentals and AI for Climate Science.</li>
-    <li><em>2025.06 - 2025.12</em>, Visiting Scholar, Eastern Institute of Technology, Ningbo (EIT), supervised by Prof. Xiaoyu Shen, focusing on Streaming Multimodal Large Models for video understanding.</li>
-    <li><em>2023.08 - 2026.07</em>, M.S. in Software Engineering, Ocean University of China (OUC), supervised by Prof. Feng Gao, thesis on Arctic sea ice concentration prediction.</li>
-    <li><em>2019.09 - 2023.06</em>, B.S. in Computer Science and Technology, Ocean University of China (OUC).</li>
-  </ul>
-
   {VISITOR_MAP.enabled && (
-    <p><span class="anchor" id="-visitor-map"></span></p>
-  )}
-
-  {VISITOR_MAP.enabled && (
-    <h1>🌍 Visitor Map</h1>
-  )}
-
-  {VISITOR_MAP.enabled && (
-    <div id="visitor-map" style="text-align: center; margin-top: 1em;">
-      <div id="visitor-map-box" role="img" aria-label="Interactive 3D globe showing where this homepage's visitors come from" style="position: relative; width: 100%; height: clamp(300px, 48vw, 560px); cursor: grab;"></div>
+    <>
+    <span class="anchor" id="-visitor-map"></span>
+    <details class="archive-details visitor-details">
+      <summary>Visitor map</summary>
+      <div id="visitor-map" style="text-align: center; margin-top: 1em;">
+      <div id="visitor-map-box" role="img" aria-label="Interactive 3D globe showing where this homepage's visitors come from" style="position: relative; width: 100%; height: clamp(240px, 30vw, 340px); cursor: grab;"></div>
       <p id="visitor-map-counter" style="color: #57606a; font-size: 0.9em; margin: 0.4em 0 0;"></p>
       <noscript><p style="color: #8b949e; font-size: 0.8em;">The visitor map needs JavaScript. Raw data: <a href="/data/visitor-map.json">/data/visitor-map.json</a></p></noscript>
-    </div>
+      </div>
+    </details>
+    </>
   )}
 </Base>

@@ -44,7 +44,7 @@ export const NAVIGATION = [
   { title: "News", url: "/#-news" },
   { title: "Publications", url: "/#-publications" },
   { title: "Honors and Awards", url: "/#-honors-and-awards" },
-  { title: "Educations", url: "/#-educations" },
+  { title: "Education", url: "/#-educations" },
   { title: "Visitor Map", url: "/#-visitor-map" },
 ];
 

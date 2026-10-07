@@ -105,7 +105,9 @@ const { title } = Astro.props;
 
       function renderData(data) {
         var badge = document.getElementById("gs-citations");
-        if (badge) badge.innerHTML = data["citedby"];
+        if (badge && typeof data["citedby"] === "number" && Number.isFinite(data["citedby"]) && data["citedby"] >= 0) {
+          badge.textContent = data["citedby"].toLocaleString();
+        }
         var updated = document.getElementById("gs-updated");
         if (updated) {
           var when = data["updated"] ? String(data["updated"]).slice(0, 10) : "";

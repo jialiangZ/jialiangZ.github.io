@@ -1,5 +1,5 @@
 ---
-import { SITE, AUTHOR } from "../config";
+import { AUTHOR } from "../config";
 
 // Port of _includes/author-profile.html — only the links this site actually uses.
 const links = [
@@ -18,13 +18,12 @@ const links = [
   </div>
 
   <div class="author__content">
-    <h3 class="author__name">{AUTHOR.name}</h3>
+    <h1 class="author__name">{AUTHOR.name}</h1>
     <p class="author__bio">{AUTHOR.bio}</p>
   </div>
 
   <div class="author__urls-wrapper">
     <ul class="author__urls social-icons">
-      <li><div style="white-space: normal; margin-bottom: 1em;">{SITE.description}</div></li>
       <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> {AUTHOR.location}</li>
       {links.map((l) => (
         <li><a href={l.href}><i class={l.icon} aria-hidden="true"></i> {l.label}</a></li>
@@ -32,7 +31,7 @@ const links = [
     </ul>
     <div class="author__urls_sm">
       {links.map((l) => (
-        <a href={l.href}><i class={l.icon} aria-hidden="true"></i></a>
+        <a href={l.href} aria-label={l.label} title={l.label}><i class={l.icon} aria-hidden="true"></i></a>
       ))}
     </div>
   </div>
