@@ -1,5 +1,5 @@
 {
-  "citedby": 31,
+  "citedby": 33,
   "publications": {
     "zk2uLXoAAAAJ:UeHWp8X0CEIC": {
       "title": "Think-as-You-See: Streaming Chain-of-Thought Reasoning for Large Vision-Language Models",
@@ -19,21 +19,21 @@
     },
     "zk2uLXoAAAAJ:zYLM7Y9cAGgC": {
       "title": "Probing the difficulty perception mechanism of large language models",
-      "num_citations": 7
+      "num_citations": 8
     },
     "probing the difficulty perception mechanism of large language models": {
       "title": "Probing the difficulty perception mechanism of large language models",
-      "num_citations": 7
+      "num_citations": 8
     },
     "zk2uLXoAAAAJ:qjMakFHDy7sC": {
       "title": "Frequency-compensated network for daily Arctic sea ice concentration prediction",
-      "num_citations": 5
+      "num_citations": 6
     },
     "frequency compensated network for daily arctic sea ice concentration prediction": {
       "title": "Frequency-compensated network for daily Arctic sea ice concentration prediction",
-      "num_citations": 5
+      "num_citations": 6
     }
   },
   "source": "google-scholar",
-  "updated": "2026-10-08 21:35:31"
+  "updated": "2026-10-09 21:21:28"
 }
