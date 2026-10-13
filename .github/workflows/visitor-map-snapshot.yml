@@ -8,8 +8,17 @@ on:
     # Daily 20:00 UTC = 04:00 Beijing (next day)
     - cron: '0 20 * * *'
 
+# GITHUB_TOKEN pushes don't trigger deploy-pages.yml (anti-recursion rule),
+# so this workflow deploys Pages itself after committing the snapshot.
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+# Same concurrency group as deploy-pages.yml so parallel deploys never clash.
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   snapshot:
@@ -40,3 +49,19 @@ jobs:
             git pull --rebase origin main
             git push
           fi
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Build with Astro
+        # Runs after the fresh visitor-map.json lands in public/, so the
+        # build bundles today's snapshot into dist/.
+        run: |
+          npm ci
+          npm run build
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

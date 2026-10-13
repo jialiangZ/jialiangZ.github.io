@@ -9,10 +9,18 @@ on:
     # 250/month). Scholar anti-bot is SerpAPI's concern, not ours.
     - cron: '0 17 * * *'
 
-# Pushes to main only trigger a Pages rebuild (page_build does NOT re-trigger
-# this workflow anymore), so there is no loop risk.
+# NOTE: pushes made with GITHUB_TOKEN do NOT trigger other workflows (GitHub's
+# anti-recursion rule), so deploy-pages.yml never fires for our stats commits.
+# This workflow therefore deploys Pages itself as its final step.
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+# Same concurrency group as deploy-pages.yml so parallel deploys never clash.
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -64,3 +72,15 @@ jobs:
           git pull --rebase origin main
           git push origin HEAD:main
         fi
+    - name: Refresh stats in the prebuilt site
+      # The site was built before crawling; overwrite the stale JSONs in dist/
+      # so the artifact we deploy carries today's numbers.
+      run: |
+        mkdir -p dist/data/scholar-stats
+        cp citation-crawler/results/*.json dist/data/scholar-stats/
+    - uses: actions/upload-pages-artifact@v5
+      with:
+        path: dist
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v5
