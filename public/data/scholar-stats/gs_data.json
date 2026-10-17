@@ -1,20 +1,20 @@
 {
-  "citedby": 36,
+  "citedby": 37,
   "publications": {
+    "zk2uLXoAAAAJ:IjCSPb-OGe4C": {
+      "title": "UTPTrack: Towards Simple and Unified Token Pruning for Visual Tracking",
+      "num_citations": 12
+    },
+    "utptrack towards simple and unified token pruning for visual tracking": {
+      "title": "UTPTrack: Towards Simple and Unified Token Pruning for Visual Tracking",
+      "num_citations": 12
+    },
     "zk2uLXoAAAAJ:UeHWp8X0CEIC": {
       "title": "Think-as-You-See: Streaming Chain-of-Thought Reasoning for Large Vision-Language Models",
       "num_citations": 11
     },
     "think as you see streaming chain of thought reasoning for large vision language models": {
       "title": "Think-as-You-See: Streaming Chain-of-Thought Reasoning for Large Vision-Language Models",
-      "num_citations": 11
-    },
-    "zk2uLXoAAAAJ:IjCSPb-OGe4C": {
-      "title": "UTPTrack: Towards Simple and Unified Token Pruning for Visual Tracking",
-      "num_citations": 11
-    },
-    "utptrack towards simple and unified token pruning for visual tracking": {
-      "title": "UTPTrack: Towards Simple and Unified Token Pruning for Visual Tracking",
       "num_citations": 11
     },
     "zk2uLXoAAAAJ:zYLM7Y9cAGgC": {
@@ -35,5 +35,5 @@
     }
   },
   "source": "google-scholar",
-  "updated": "2026-10-16 19:44:23"
+  "updated": "2026-10-17 18:54:25"
 }
