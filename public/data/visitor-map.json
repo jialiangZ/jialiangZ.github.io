@@ -1,9 +1,11 @@
 {
-  "total": 121,
+  "total": 127,
   "counts": {
-    "HK": 49,
-    "JP": 11,
-    "SG": 43,
+    "BR": 1,
+    "HK": 51,
+    "JP": 12,
+    "KR": 1,
+    "SG": 44,
     "TW": 4,
     "US": 14
   },
@@ -82,6 +84,13 @@
     },
     "2026-10-20": {
       "JP": 2
+    },
+    "2026-10-21": {
+      "BR": 1,
+      "HK": 2,
+      "JP": 1,
+      "KR": 1,
+      "SG": 1
     }
   },
   "referrers": {
@@ -151,6 +160,10 @@
     "2026-10-20": {
       "direct": 1,
       "google.com": 1
+    },
+    "2026-10-21": {
+      "bing.com": 1,
+      "direct": 5
     }
   },
   "cities": [
@@ -159,14 +172,14 @@
       "city": "Hong Kong",
       "lat": 22.27832,
       "lon": 114.17469,
-      "count": 45
+      "count": 47
     },
     {
       "country": "SG",
       "city": "Singapore",
       "lat": 1.28967,
       "lon": 103.85007,
-      "count": 43
+      "count": 44
     },
     {
       "country": "US",
@@ -180,7 +193,7 @@
       "city": "Tokyo",
       "lat": 35.6895,
       "lon": 139.69171,
-      "count": 11
+      "count": 12
     },
     {
       "country": "TW",
@@ -202,7 +215,21 @@
       "lat": 39.04372,
       "lon": -77.48749,
       "count": 1
+    },
+    {
+      "country": "BR",
+      "city": "Rio de Janeiro",
+      "lat": -22.90642,
+      "lon": -43.18223,
+      "count": 1
+    },
+    {
+      "country": "KR",
+      "city": "Seoul",
+      "lat": 37.566,
+      "lon": 126.9784,
+      "count": 1
     }
   ],
-  "updated": "2026-10-20T23:02:13.222Z"
+  "updated": "2026-10-21T23:05:22.168Z"
 }
