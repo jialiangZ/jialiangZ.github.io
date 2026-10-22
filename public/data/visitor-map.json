@@ -1,13 +1,13 @@
 {
-  "total": 127,
+  "total": 131,
   "counts": {
     "BR": 1,
-    "HK": 51,
+    "HK": 52,
     "JP": 12,
     "KR": 1,
     "SG": 44,
-    "TW": 4,
-    "US": 14
+    "TW": 5,
+    "US": 16
   },
   "daily": {
     "2026-09-30": {
@@ -91,6 +91,11 @@
       "JP": 1,
       "KR": 1,
       "SG": 1
+    },
+    "2026-10-22": {
+      "HK": 1,
+      "TW": 1,
+      "US": 2
     }
   },
   "referrers": {
@@ -164,6 +169,11 @@
     "2026-10-21": {
       "bing.com": 1,
       "direct": 5
+    },
+    "2026-10-22": {
+      "direct": 2,
+      "google.com": 1,
+      "google.com.hk": 1
     }
   },
   "cities": [
@@ -172,7 +182,7 @@
       "city": "Hong Kong",
       "lat": 22.27832,
       "lon": 114.17469,
-      "count": 47
+      "count": 48
     },
     {
       "country": "SG",
@@ -200,7 +210,7 @@
       "city": "Taipei",
       "lat": 25.05306,
       "lon": 121.52639,
-      "count": 4
+      "count": 5
     },
     {
       "country": "HK",
@@ -229,7 +239,21 @@
       "lat": 37.566,
       "lon": 126.9784,
       "count": 1
+    },
+    {
+      "country": "US",
+      "city": "Elmsford",
+      "lat": 41.0551,
+      "lon": -73.82013,
+      "count": 1
+    },
+    {
+      "country": "US",
+      "city": "Boardman",
+      "lat": 45.83986,
+      "lon": -119.70058,
+      "count": 1
     }
   ],
-  "updated": "2026-10-21T23:05:22.168Z"
+  "updated": "2026-10-22T23:04:16.967Z"
 }
