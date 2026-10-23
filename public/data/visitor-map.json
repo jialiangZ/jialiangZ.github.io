@@ -1,13 +1,13 @@
 {
-  "total": 131,
+  "total": 135,
   "counts": {
     "BR": 1,
     "HK": 52,
     "JP": 12,
     "KR": 1,
     "SG": 44,
-    "TW": 5,
-    "US": 16
+    "TW": 6,
+    "US": 19
   },
   "daily": {
     "2026-09-30": {
@@ -96,6 +96,10 @@
       "HK": 1,
       "TW": 1,
       "US": 2
+    },
+    "2026-10-23": {
+      "TW": 1,
+      "US": 3
     }
   },
   "referrers": {
@@ -174,6 +178,10 @@
       "direct": 2,
       "google.com": 1,
       "google.com.hk": 1
+    },
+    "2026-10-23": {
+      "bing.com": 1,
+      "direct": 3
     }
   },
   "cities": [
@@ -210,7 +218,14 @@
       "city": "Taipei",
       "lat": 25.05306,
       "lon": 121.52639,
-      "count": 5
+      "count": 6
+    },
+    {
+      "country": "US",
+      "city": "Council Bluffs",
+      "lat": 41.26194,
+      "lon": -95.86083,
+      "count": 2
     },
     {
       "country": "HK",
@@ -253,7 +268,14 @@
       "lat": 45.83986,
       "lon": -119.70058,
       "count": 1
+    },
+    {
+      "country": "US",
+      "city": "Dallas",
+      "lat": 32.78306,
+      "lon": -96.80667,
+      "count": 1
     }
   ],
-  "updated": "2026-10-22T23:04:16.967Z"
+  "updated": "2026-10-23T22:57:39.673Z"
 }
