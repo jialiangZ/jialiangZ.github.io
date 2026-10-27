@@ -1,5 +1,5 @@
 {
-  "citedby": 37,
+  "citedby": 39,
   "publications": {
     "zk2uLXoAAAAJ:IjCSPb-OGe4C": {
       "title": "UTPTrack: Towards Simple and Unified Token Pruning for Visual Tracking",
@@ -19,11 +19,11 @@
     },
     "zk2uLXoAAAAJ:zYLM7Y9cAGgC": {
       "title": "Probing the difficulty perception mechanism of large language models",
-      "num_citations": 8
+      "num_citations": 10
     },
     "probing the difficulty perception mechanism of large language models": {
       "title": "Probing the difficulty perception mechanism of large language models",
-      "num_citations": 8
+      "num_citations": 10
     },
     "zk2uLXoAAAAJ:qjMakFHDy7sC": {
       "title": "Frequency-compensated network for daily Arctic sea ice concentration prediction",
@@ -35,5 +35,5 @@
     }
   },
   "source": "google-scholar",
-  "updated": "2026-10-26 21:15:16"
+  "updated": "2026-10-27 21:01:54"
 }
