@@ -1,13 +1,13 @@
 {
-  "total": 145,
+  "total": 149,
   "counts": {
     "BR": 1,
     "HK": 53,
-    "JP": 12,
+    "JP": 13,
     "KR": 1,
     "SG": 47,
-    "TW": 12,
-    "US": 19
+    "TW": 14,
+    "US": 20
   },
   "daily": {
     "2026-09-30": {
@@ -114,6 +114,11 @@
       "HK": 1,
       "SG": 2,
       "TW": 2
+    },
+    "2026-10-28": {
+      "JP": 1,
+      "TW": 2,
+      "US": 1
     }
   },
   "referrers": {
@@ -209,6 +214,9 @@
     "2026-10-27": {
       "direct": 4,
       "google.com.hk": 1
+    },
+    "2026-10-28": {
+      "direct": 4
     }
   },
   "cities": [
@@ -227,25 +235,25 @@
       "count": 47
     },
     {
-      "country": "US",
-      "city": "Los Angeles",
-      "lat": 34.0559,
-      "lon": -118.2666,
-      "count": 13
+      "country": "TW",
+      "city": "Taipei",
+      "lat": 25.05306,
+      "lon": 121.52639,
+      "count": 14
     },
     {
       "country": "JP",
       "city": "Tokyo",
       "lat": 35.6895,
       "lon": 139.69171,
-      "count": 12
+      "count": 13
     },
     {
-      "country": "TW",
-      "city": "Taipei",
-      "lat": 25.05306,
-      "lon": 121.52639,
-      "count": 12
+      "country": "US",
+      "city": "Los Angeles",
+      "lat": 34.0559,
+      "lon": -118.2666,
+      "count": 13
     },
     {
       "country": "US",
@@ -302,7 +310,14 @@
       "lat": 32.78306,
       "lon": -96.80667,
       "count": 1
+    },
+    {
+      "country": "US",
+      "city": "Santa Clara",
+      "lat": 37.3483,
+      "lon": -121.9844,
+      "count": 1
     }
   ],
-  "updated": "2026-10-27T23:37:53.651Z"
+  "updated": "2026-10-28T23:56:02.517Z"
 }
