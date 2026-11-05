@@ -1,13 +1,13 @@
 {
-  "total": 162,
+  "total": 166,
   "counts": {
     "BR": 1,
-    "HK": 54,
+    "HK": 55,
     "JP": 15,
     "KR": 1,
-    "SG": 47,
+    "SG": 48,
     "TW": 14,
-    "US": 29,
+    "US": 31,
     "VE": 1
   },
   "daily": {
@@ -140,6 +140,11 @@
     "2026-11-03": {
       "HK": 1,
       "US": 3
+    },
+    "2026-11-04": {
+      "HK": 1,
+      "SG": 1,
+      "US": 2
     }
   },
   "referrers": {
@@ -256,6 +261,9 @@
     },
     "2026-11-03": {
       "direct": 4
+    },
+    "2026-11-04": {
+      "direct": 4
     }
   },
   "cities": [
@@ -264,21 +272,21 @@
       "city": "Hong Kong",
       "lat": 22.27832,
       "lon": 114.17469,
-      "count": 50
+      "count": 51
     },
     {
       "country": "SG",
       "city": "Singapore",
       "lat": 1.28967,
       "lon": 103.85007,
-      "count": 47
+      "count": 48
     },
     {
       "country": "US",
       "city": "Los Angeles",
       "lat": 34.0559,
       "lon": -118.2666,
-      "count": 21
+      "count": 22
     },
     {
       "country": "JP",
@@ -299,6 +307,13 @@
       "city": "Council Bluffs",
       "lat": 41.26194,
       "lon": -95.86083,
+      "count": 2
+    },
+    {
+      "country": "US",
+      "city": "Salt Lake City",
+      "lat": 40.7371,
+      "lon": -111.8258,
       "count": 2
     },
     {
@@ -363,14 +378,7 @@
       "lat": 10.64232,
       "lon": -71.61089,
       "count": 1
-    },
-    {
-      "country": "US",
-      "city": "Salt Lake City",
-      "lat": 40.7371,
-      "lon": -111.8258,
-      "count": 1
     }
   ],
-  "updated": "2026-11-04T00:29:13.262Z"
+  "updated": "2026-11-05T00:47:31.162Z"
 }
