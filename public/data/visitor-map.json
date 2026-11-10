@@ -1,15 +1,15 @@
 {
-  "total": 175,
+  "total": 183,
   "counts": {
     "BR": 1,
     "GB": 1,
-    "HK": 59,
+    "HK": 62,
     "JP": 15,
     "KR": 1,
     "MO": 2,
-    "SG": 48,
+    "SG": 51,
     "TW": 14,
-    "US": 33,
+    "US": 35,
     "VE": 1
   },
   "daily": {
@@ -162,6 +162,13 @@
     },
     "2026-11-08": {
       "US": 1
+    },
+    "2026-11-09": {
+      "HK": 3,
+      "SG": 3
+    },
+    "2026-11-10": {
+      "US": 2
     }
   },
   "referrers": {
@@ -294,6 +301,13 @@
     },
     "2026-11-08": {
       "google.com": 1
+    },
+    "2026-11-09": {
+      "direct": 6
+    },
+    "2026-11-10": {
+      "bing.com": 1,
+      "direct": 1
     }
   },
   "cities": [
@@ -302,14 +316,14 @@
       "city": "Hong Kong",
       "lat": 22.27832,
       "lon": 114.17469,
-      "count": 54
+      "count": 57
     },
     {
       "country": "SG",
       "city": "Singapore",
       "lat": 1.28967,
       "lon": 103.85007,
-      "count": 48
+      "count": 51
     },
     {
       "country": "US",
@@ -337,6 +351,13 @@
       "city": "Council Bluffs",
       "lat": 41.26194,
       "lon": -95.86083,
+      "count": 3
+    },
+    {
+      "country": "US",
+      "city": "Dallas",
+      "lat": 32.78306,
+      "lon": -96.80667,
       "count": 2
     },
     {
@@ -397,13 +418,6 @@
     },
     {
       "country": "US",
-      "city": "Dallas",
-      "lat": 32.78306,
-      "lon": -96.80667,
-      "count": 1
-    },
-    {
-      "country": "US",
       "city": "Santa Clara",
       "lat": 37.3483,
       "lon": -121.9844,
@@ -438,5 +452,5 @@
       "count": 1
     }
   ],
-  "updated": "2026-11-08T23:29:51.333Z"
+  "updated": "2026-11-10T02:36:26.439Z"
 }
