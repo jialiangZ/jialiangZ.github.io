@@ -1,15 +1,15 @@
 {
-  "total": 183,
+  "total": 188,
   "counts": {
     "BR": 1,
     "GB": 1,
-    "HK": 62,
+    "HK": 66,
     "JP": 15,
     "KR": 1,
     "MO": 2,
     "SG": 51,
     "TW": 14,
-    "US": 35,
+    "US": 36,
     "VE": 1
   },
   "daily": {
@@ -168,7 +168,8 @@
       "SG": 3
     },
     "2026-11-10": {
-      "US": 2
+      "HK": 4,
+      "US": 3
     }
   },
   "referrers": {
@@ -307,7 +308,8 @@
     },
     "2026-11-10": {
       "bing.com": 1,
-      "direct": 1
+      "direct": 5,
+      "google.com.hk": 1
     }
   },
   "cities": [
@@ -316,7 +318,7 @@
       "city": "Hong Kong",
       "lat": 22.27832,
       "lon": 114.17469,
-      "count": 57
+      "count": 61
     },
     {
       "country": "SG",
@@ -330,7 +332,7 @@
       "city": "Los Angeles",
       "lat": 34.0559,
       "lon": -118.2666,
-      "count": 23
+      "count": 24
     },
     {
       "country": "JP",
@@ -452,5 +454,5 @@
       "count": 1
     }
   ],
-  "updated": "2026-11-10T02:36:26.439Z"
+  "updated": "2026-11-11T00:28:25.086Z"
 }
