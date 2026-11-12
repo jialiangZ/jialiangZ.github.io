@@ -1,15 +1,15 @@
 {
-  "total": 188,
+  "total": 196,
   "counts": {
     "BR": 1,
     "GB": 1,
-    "HK": 66,
+    "HK": 71,
     "JP": 15,
     "KR": 1,
     "MO": 2,
-    "SG": 51,
+    "SG": 52,
     "TW": 14,
-    "US": 36,
+    "US": 38,
     "VE": 1
   },
   "daily": {
@@ -170,6 +170,11 @@
     "2026-11-10": {
       "HK": 4,
       "US": 3
+    },
+    "2026-11-11": {
+      "HK": 5,
+      "SG": 1,
+      "US": 2
     }
   },
   "referrers": {
@@ -310,6 +315,10 @@
       "bing.com": 1,
       "direct": 5,
       "google.com.hk": 1
+    },
+    "2026-11-11": {
+      "direct": 7,
+      "google.com.hk": 1
     }
   },
   "cities": [
@@ -318,21 +327,21 @@
       "city": "Hong Kong",
       "lat": 22.27832,
       "lon": 114.17469,
-      "count": 61
+      "count": 66
     },
     {
       "country": "SG",
       "city": "Singapore",
       "lat": 1.28967,
       "lon": 103.85007,
-      "count": 51
+      "count": 52
     },
     {
       "country": "US",
       "city": "Los Angeles",
       "lat": 34.0559,
       "lon": -118.2666,
-      "count": 24
+      "count": 25
     },
     {
       "country": "JP",
@@ -354,6 +363,13 @@
       "lat": 41.26194,
       "lon": -95.86083,
       "count": 3
+    },
+    {
+      "country": "US",
+      "city": "Ashburn",
+      "lat": 39.04372,
+      "lon": -77.48749,
+      "count": 2
     },
     {
       "country": "US",
@@ -381,13 +397,6 @@
       "city": "Tung Chung",
       "lat": 22.28783,
       "lon": 113.94243,
-      "count": 1
-    },
-    {
-      "country": "US",
-      "city": "Ashburn",
-      "lat": 39.04372,
-      "lon": -77.48749,
       "count": 1
     },
     {
@@ -454,5 +463,5 @@
       "count": 1
     }
   ],
-  "updated": "2026-11-11T00:28:25.086Z"
+  "updated": "2026-11-12T01:50:30.222Z"
 }
