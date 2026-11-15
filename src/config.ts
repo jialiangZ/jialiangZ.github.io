@@ -45,7 +45,6 @@ export const NAVIGATION = [
   { title: "Publications", url: "/#-publications" },
   { title: "Honors and Awards", url: "/#-honors-and-awards" },
   { title: "Education", url: "/#-educations" },
-  { title: "Writing", url: "/writing/" },
   { title: "Visitor Map", url: "/#-visitor-map" },
 ];
 
@@ -101,6 +100,16 @@ export const PAPERS = [
     scholarId: "zk2uLXoAAAAJ:qjMakFHDy7sC",
   },
 ];
+
+// Entry point to the writing site, shown under the profile in the sidebar.
+// Absolute URL on purpose: the link checker resolves root-relative paths
+// against this repo's own dist/, where the writing site does not exist.
+export const WRITING_SITE = {
+  label: "Writing",
+  title: "流形 · Manifold",
+  url: `${SITE.url}/writing/`,
+  note: "Notes on AI, climate and tools, in Chinese and English.",
+};
 
 // Optional visitor-map module (self-hosted Cloudflare Worker + D1, no
 // third-party analytics). Set enabled: false if you don't want it — the

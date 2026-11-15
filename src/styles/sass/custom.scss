@@ -405,6 +405,73 @@ body {
     line-height: 1.3;
 }
 
+/* Entry point to the writing site, sitting under the profile in the sidebar. */
+.writing-card {
+    display: block;
+    margin-top: 1.5rem;
+    padding: 0.85rem 0.95rem 1rem;
+    border: 1px solid #e8ecf2;
+    border-radius: 8px;
+    background: #fff;
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+        border-color: #c8d3e0;
+        box-shadow: 0 2px 10px rgba(20, 40, 80, 0.07);
+        transform: translateY(-1px);
+
+        .writing-card__arrow {
+            opacity: 1;
+            transform: translateX(2px);
+        }
+    }
+
+    .writing-card__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        margin-bottom: 0.55rem;
+    }
+
+    .writing-card__label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: #66717e;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+    }
+
+    .writing-card__arrow {
+        opacity: 0.5;
+        font-size: 0.8rem;
+        color: #66717e;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .writing-card__title {
+        display: block;
+        margin-bottom: 0.3rem;
+        color: #2c3e50;
+        font-size: 1.05rem;
+        font-weight: 600;
+        line-height: 1.3;
+        overflow-wrap: break-word;
+    }
+
+    .writing-card__note {
+        display: block;
+        color: #66717e;
+        font-size: 0.8rem;
+        line-height: 1.55;
+    }
+}
+
 .author__urls_sm {
     display: flex;
     flex-wrap: wrap;
@@ -448,6 +515,10 @@ body {
         flex-basis: 100%;
         margin-left: 0;
         cursor: auto;
+    }
+
+    .writing-card {
+        margin-top: 0;
     }
 }
 
