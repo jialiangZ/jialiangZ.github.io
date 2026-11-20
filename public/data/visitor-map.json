@@ -1,12 +1,12 @@
 {
-  "total": 216,
+  "total": 218,
   "counts": {
     "BR": 1,
     "DE": 1,
     "GB": 1,
     "HK": 76,
-    "JP": 19,
-    "KR": 1,
+    "JP": 20,
+    "KR": 2,
     "MO": 2,
     "SG": 55,
     "TW": 20,
@@ -205,6 +205,10 @@
       "HK": 1,
       "JP": 1,
       "TW": 1
+    },
+    "2026-11-19": {
+      "JP": 1,
+      "KR": 1
     }
   },
   "referrers": {
@@ -373,6 +377,10 @@
     },
     "2026-11-18": {
       "direct": 3
+    },
+    "2026-11-19": {
+      "bing.com": 1,
+      "direct": 1
     }
   },
   "cities": [
@@ -398,18 +406,18 @@
       "count": 26
     },
     {
+      "country": "JP",
+      "city": "Tokyo",
+      "lat": 35.6895,
+      "lon": 139.69171,
+      "count": 20
+    },
+    {
       "country": "TW",
       "city": "Taipei",
       "lat": 25.05306,
       "lon": 121.52639,
       "count": 20
-    },
-    {
-      "country": "JP",
-      "city": "Tokyo",
-      "lat": 35.6895,
-      "lon": 139.69171,
-      "count": 19
     },
     {
       "country": "US",
@@ -423,6 +431,13 @@
       "city": "Ashburn",
       "lat": 39.04372,
       "lon": -77.48749,
+      "count": 2
+    },
+    {
+      "country": "KR",
+      "city": "Seoul",
+      "lat": 37.566,
+      "lon": 126.9784,
       "count": 2
     },
     {
@@ -458,13 +473,6 @@
       "city": "Rio de Janeiro",
       "lat": -22.90642,
       "lon": -43.18223,
-      "count": 1
-    },
-    {
-      "country": "KR",
-      "city": "Seoul",
-      "lat": 37.566,
-      "lon": 126.9784,
       "count": 1
     },
     {
@@ -524,5 +532,5 @@
       "count": 1
     }
   ],
-  "updated": "2026-11-19T01:46:56.204Z"
+  "updated": "2026-11-20T01:42:22.855Z"
 }
