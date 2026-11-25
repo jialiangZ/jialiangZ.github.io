@@ -1,13 +1,14 @@
 {
-  "total": 226,
+  "total": 230,
   "counts": {
     "BR": 1,
     "DE": 1,
     "GB": 1,
-    "HK": 81,
+    "HK": 84,
     "JP": 23,
     "KR": 2,
     "MO": 2,
+    "MY": 1,
     "SG": 55,
     "TW": 20,
     "US": 39,
@@ -223,6 +224,10 @@
     "2026-11-23": {
       "HK": 2,
       "JP": 1
+    },
+    "2026-11-24": {
+      "HK": 3,
+      "MY": 1
     }
   },
   "referrers": {
@@ -407,6 +412,10 @@
     },
     "2026-11-23": {
       "direct": 3
+    },
+    "2026-11-24": {
+      "direct": 3,
+      "qq.com": 1
     }
   },
   "cities": [
@@ -415,7 +424,7 @@
       "city": "Hong Kong",
       "lat": 22.27832,
       "lon": 114.17469,
-      "count": 75
+      "count": 77
     },
     {
       "country": "SG",
@@ -453,6 +462,13 @@
       "count": 3
     },
     {
+      "country": "HK",
+      "city": "Kwai Chung",
+      "lat": 22.36828,
+      "lon": 114.13877,
+      "count": 3
+    },
+    {
       "country": "US",
       "city": "Ashburn",
       "lat": 39.04372,
@@ -478,13 +494,6 @@
       "city": "Salt Lake City",
       "lat": 40.7371,
       "lon": -111.8258,
-      "count": 2
-    },
-    {
-      "country": "HK",
-      "city": "Kwai Chung",
-      "lat": 22.36828,
-      "lon": 114.13877,
       "count": 2
     },
     {
@@ -556,7 +565,14 @@
       "lat": 49.45421,
       "lon": 11.07752,
       "count": 1
+    },
+    {
+      "country": "MY",
+      "city": "Sepang",
+      "lat": 2.6931,
+      "lon": 101.7498,
+      "count": 1
     }
   ],
-  "updated": "2026-11-24T04:40:05.953Z"
+  "updated": "2026-11-25T03:25:47.534Z"
 }
