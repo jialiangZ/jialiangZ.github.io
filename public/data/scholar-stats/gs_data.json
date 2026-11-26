@@ -1,5 +1,5 @@
 {
-  "citedby": 44,
+  "citedby": 45,
   "publications": {
     "zk2uLXoAAAAJ:UeHWp8X0CEIC": {
       "title": "Think-as-You-See: Streaming Chain-of-Thought Reasoning for Large Vision-Language Models",
@@ -27,13 +27,13 @@
     },
     "zk2uLXoAAAAJ:qjMakFHDy7sC": {
       "title": "Frequency-compensated network for daily Arctic sea ice concentration prediction",
-      "num_citations": 6
+      "num_citations": 7
     },
     "frequency compensated network for daily arctic sea ice concentration prediction": {
       "title": "Frequency-compensated network for daily Arctic sea ice concentration prediction",
-      "num_citations": 6
+      "num_citations": 7
     }
   },
   "source": "google-scholar",
-  "updated": "2026-11-25 01:08:44"
+  "updated": "2026-11-26 00:43:31"
 }
