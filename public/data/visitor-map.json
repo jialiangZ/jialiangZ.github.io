@@ -1,17 +1,17 @@
 {
-  "total": 231,
+  "total": 236,
   "counts": {
     "BR": 1,
     "DE": 1,
     "GB": 1,
-    "HK": 84,
+    "HK": 87,
     "JP": 23,
     "KR": 2,
     "MO": 2,
     "MY": 2,
     "SG": 55,
     "TW": 20,
-    "US": 39,
+    "US": 41,
     "VE": 1
   },
   "daily": {
@@ -231,6 +231,10 @@
     },
     "2026-11-25": {
       "MY": 1
+    },
+    "2026-11-26": {
+      "HK": 3,
+      "US": 2
     }
   },
   "referrers": {
@@ -422,6 +426,9 @@
     },
     "2026-11-25": {
       "direct": 1
+    },
+    "2026-11-26": {
+      "direct": 5
     }
   },
   "cities": [
@@ -430,7 +437,7 @@
       "city": "Hong Kong",
       "lat": 22.27832,
       "lon": 114.17469,
-      "count": 77
+      "count": 80
     },
     {
       "country": "SG",
@@ -497,6 +504,13 @@
     },
     {
       "country": "US",
+      "city": "Santa Clara",
+      "lat": 37.3483,
+      "lon": -121.9844,
+      "count": 2
+    },
+    {
+      "country": "US",
       "city": "Salt Lake City",
       "lat": 40.7371,
       "lon": -111.8258,
@@ -545,13 +559,6 @@
       "count": 1
     },
     {
-      "country": "US",
-      "city": "Santa Clara",
-      "lat": 37.3483,
-      "lon": -121.9844,
-      "count": 1
-    },
-    {
       "country": "VE",
       "city": "Maracaibo",
       "lat": 10.64232,
@@ -578,7 +585,14 @@
       "lat": 49.45421,
       "lon": 11.07752,
       "count": 1
+    },
+    {
+      "country": "US",
+      "city": "Davenport",
+      "lat": 28.1614,
+      "lon": -81.60174,
+      "count": 1
     }
   ],
-  "updated": "2026-11-26T02:42:26.607Z"
+  "updated": "2026-11-27T02:42:13.687Z"
 }
